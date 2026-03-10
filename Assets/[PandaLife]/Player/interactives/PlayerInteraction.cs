@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     //==================cultivar=====================
 
     public LayerMask cropLayer; // coger la capa de cultivos
+    public LayerMask farmingLayer; // capa con un trozo de parcela
 
     //==================recoger y soltar cubo=====================
 
@@ -31,8 +32,11 @@ public class PlayerInteraction : MonoBehaviour
         // Al pulsar la E intenta cosechar
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryHarvest();
-            PickBucket();
+             if (!TryHarvest())   // prueba hacer cosecha y si le da false
+            { sow(); }       // intenta plantar
+
+            PickBucket(); 
+            
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -40,24 +44,34 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
     //==================cultivar=====================
-    void TryHarvest()
+    bool TryHarvest()
     {
         // 1. Crea una esfera invisible y guarda en un array todos los objetos que toca
         Collider[] detectedObjects = Physics.OverlapSphere(interactionArea.position, detectionRadius, cropLayer);
+        //Collider[] terrain = Physics.OverlapSphere(interactionArea.position, detectionRadius, farmingLayer);
+
 
         // 2. Recorre cada objeto que ha tocado la esfera
         foreach (Collider col in detectedObjects)
         {
             // Buscamos si el objeto del collider tiene el script Crop
             Crop foundCrop = col.GetComponent<Crop>();
+            FarmingArea area = col.GetComponentInParent<FarmingArea>();
 
+            
             if (foundCrop != null) // Si el objeto tiene el script Crop
             {
                 // Estas dos funciones pertenecen a la clase Crop
                 if (foundCrop.IsHarvestable()) // Comprueba si su estado de crecimiento es 3
                 {
                     foundCrop.Harvest(); // Recolecta el cultivo y destruye el objeto
-                    break;
+
+                    if (area != null)
+                        area.ThereIsSomething = false;
+
+                    Debug.Log("recolectado");
+                    return true;
+
                 }
                 else
                 {
@@ -65,6 +79,8 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
+        return false;
+
     }
     void PickBucket()
     {
@@ -110,5 +126,33 @@ public class PlayerInteraction : MonoBehaviour
             Picke_bucket = null;
         }
     }
+
+    
+void sow()
+{
+    if (Picke_bucket != null)
+    {
+        Debug.Log("tienes una cubeta y necesitas las dos manos campeon");
+        return;
+    }
+   
+
+    Collider[] terrain = Physics.OverlapSphere(interactionArea.position, detectionRadius, farmingLayer);
+
+    foreach (Collider col in terrain)
+    {
+        FarmingArea area = col.GetComponentInParent<FarmingArea>();
+        if (area != null)
+        {
+            Debug.Log("el terreno tiene crops? " + area.ThereIsSomething);
+
+            if (!area.ThereIsSomething)
+            {
+                area.sowing();
+                break;
+            }
+        }
+    }
+}
 
 }
