@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     //==================cultivar=====================
 
     public LayerMask cropLayer; // coger la capa de cultivos
+    public LayerMask farmingLayer; // capa con un trozo de parcela
 
     //==================recoger y soltar cubo=====================
 
@@ -31,8 +32,11 @@ public class PlayerInteraction : MonoBehaviour
         // Al pulsar la E intenta cosechar
         if (Input.GetKeyDown(KeyCode.E))
         {
-            TryHarvest();
-            PickBucket();
+             if (!TryHarvest())   // prueba hacer cosecha y si le da false
+            { sow(); }       // intenta plantar
+
+            PickBucket(); 
+            
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -40,24 +44,41 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
     //==================cultivar=====================
-    void TryHarvest()
+    bool TryHarvest()
     {
+        //esto es para que si tiene la cubeta, que no coseche------------------------
+         if (Picke_bucket != null)
+        {
+            Debug.Log("harvest: tienes una cubeta y necesitas las dos manos campeon");
+            return false;
+        }
+        //-----------------------------------------------------------------------------
+
         // 1. Crea una esfera invisible y guarda en un array todos los objetos que toca
-        Collider[] detectedObjects = Physics.OverlapSphere(interactionArea.position, detectionRadius, cropLayer);
+        Collider[] detectedObjects = Physics.OverlapSphere(interactionArea.position, detectionRadius, cropLayer); //cropLayer debe tener farmingArea y crops en unity
 
         // 2. Recorre cada objeto que ha tocado la esfera
         foreach (Collider col in detectedObjects)
         {
             // Buscamos si el objeto del collider tiene el script Crop
             Crop foundCrop = col.GetComponent<Crop>();
-
+            FarmingArea area = col.GetComponentInParent<FarmingArea>();  //y los colliders con farmingArea lo metemos en otra variable
+            
             if (foundCrop != null) // Si el objeto tiene el script Crop
             {
+                area.ThereIsSomething = true; // dice que el farmingArea no esta vacia
+
                 // Estas dos funciones pertenecen a la clase Crop
                 if (foundCrop.IsHarvestable()) // Comprueba si su estado de crecimiento es 3
                 {
                     foundCrop.Harvest(); // Recolecta el cultivo y destruye el objeto
-                    break;
+
+                    //esta funcion es de farmingArea
+                    if (area != null)
+                        area.ThereIsSomething = false; //dice que el terreno de cultivo (farmingArea) esta vacio
+
+                    Debug.Log("recolectado");
+                    return true; //devuelve true si cosecho
                 }
                 else
                 {
@@ -65,7 +86,9 @@ public class PlayerInteraction : MonoBehaviour
                 }
             }
         }
+        return false; //false si no cosecho
     }
+
     void PickBucket()
     {
         Collider[] detectedObjects = Physics.OverlapSphere(interactionArea.position, detectionRadius, pickeLayer);
@@ -110,5 +133,35 @@ public class PlayerInteraction : MonoBehaviour
             Picke_bucket = null;
         }
     }
+
+//====================================plantar=========================================    
+void sow()
+{
+    //para ver que no tenga la cubeta -------------------------------------------
+    if (Picke_bucket != null)
+    {
+        Debug.Log("sow: tienes una cubeta y necesitas las dos manos campeon");
+        return;
+    }
+    //----------------------------------------------------------------------------
+    
+    Collider[] terrain = Physics.OverlapSphere(interactionArea.position, detectionRadius, farmingLayer); //tiene las cosas de la capa de farming en unity
+
+    foreach (Collider col in terrain)
+    {
+        //agarras todos los colliders que tengan FarmingArea que choquen con el gizmo del player
+        FarmingArea area = col.GetComponentInParent<FarmingArea>(); 
+        if (area != null)
+        {
+            Debug.Log("el terreno tiene crops? " + area.ThereIsSomething);
+
+            if (!area.ThereIsSomething) //si el terreno NO tiene un crop
+            {
+                area.sowing(); //plantas 
+                break;
+            }
+        }
+    }
+}
 
 }
