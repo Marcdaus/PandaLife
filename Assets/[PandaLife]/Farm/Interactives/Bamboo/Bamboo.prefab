@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3972717668228270576}
-  - component: {fileID: 8748745902697896322}
+  - component: {fileID: -8189739713686810787}
   - component: {fileID: 7903741058323924715}
   m_Layer: 6
   m_Name: Bamboo
@@ -36,7 +36,7 @@ Transform:
   - {fileID: 5535340537349627650}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8748745902697896322
+--- !u!114 &-8189739713686810787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c17984d663700141ad966a91136411c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthStage: 3
+  growthStage: 1
+  valor: 1
 --- !u!65 &7903741058323924715
 BoxCollider:
   m_ObjectHideFlags: 0
