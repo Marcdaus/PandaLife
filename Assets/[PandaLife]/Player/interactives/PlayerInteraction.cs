@@ -72,6 +72,7 @@ public class PlayerInteraction : MonoBehaviour
                 if (foundCrop.IsHarvestable()) // Comprueba si su estado de crecimiento es 3
                 {
                     foundCrop.Harvest(); // Recolecta el cultivo y destruye el objeto
+                    
 
                     //esta funcion es de farmingArea
                     if (area != null)
