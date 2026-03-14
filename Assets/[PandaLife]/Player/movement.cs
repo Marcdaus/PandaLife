@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class movement : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
+    private CharacterController controller;
     [SerializeField] private float playerSpeed = 7.0f;
-   
+    [SerializeField] private bool useCameraRef = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,7 +17,12 @@ public class movement : MonoBehaviour
     {
 
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-  
+
+
+        if (useCameraRef)
+        {
+            move = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.y, Vector3.up) * move;
+        }
 
         if (move != Vector3.zero)
         {
