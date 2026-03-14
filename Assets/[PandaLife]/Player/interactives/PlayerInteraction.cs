@@ -32,10 +32,12 @@ public class PlayerInteraction : MonoBehaviour
         // Al pulsar la E intenta cosechar
         if (Input.GetKeyDown(KeyCode.E))
         {
-             if (!TryHarvest())   // prueba hacer cosecha y si le da false
+            PickBucket();
+            if(Picke_bucket == null) //si no tiene la cubeta, que intente cosechar
+                if (!TryHarvest())   // prueba hacer cosecha y si le da false
             { sow(); }       // intenta plantar
 
-            PickBucket(); 
+          
             
         }
         if (Input.GetKeyDown(KeyCode.Q))

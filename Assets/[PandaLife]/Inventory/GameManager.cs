@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       // CargarMonedas();
        bambuverde = 0;
         ActualizarInventarioUI();
     }
@@ -33,24 +32,12 @@ public class GameManager : MonoBehaviour
     {
         bambuverde += cantidad;
         ActualizarInventarioUI();
-        //GuardarMonedas();
     }
 
-    void ActualizarInventarioUI() //actualiza el textomonedas segun las monedas que tenemos
+    void ActualizarInventarioUI() //actualiza el texto segun los recursos que tenemos
     {
         if(textoBambuVerde != null)
             textoBambuVerde.text = "x " + bambuverde.ToString();
     }
-
-   /* void GuardarMonedas()
-    {
-        PlayerPrefs.SetInt("Monedas", monedas);
-        PlayerPrefs.Save();
-    }*/
-   /* void CargarMonedas()
-    {
-        monedas = PlayerPrefs.GetInt("Monedas", 0);
-    }*/
-
 
 }
