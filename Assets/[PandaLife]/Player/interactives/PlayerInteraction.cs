@@ -5,7 +5,7 @@ public class PlayerInteraction : MonoBehaviour
     public Transform interactionArea; 
     public float detectionRadius = 1f; // Area de la esfera de interacción
    
-    //==================cultivar=====================
+    //==================cosechar=====================
 
     public LayerMask cropLayer; // coger la capa de cultivos
     public LayerMask farmingLayer; // capa con un trozo de parcela
@@ -45,7 +45,7 @@ public class PlayerInteraction : MonoBehaviour
             DropBucket();
         }
     }
-    //==================cultivar=====================
+    //==================cosechar=====================
     bool TryHarvest()
     {
         //esto es para que si tiene la cubeta, que no coseche------------------------
