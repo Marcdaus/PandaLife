@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -36,72 +37,84 @@ public class Player : MonoBehaviour
     {
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        IInteractuable targetInteractable = null;
-        IInteractuable otherInteractable = null;
+        Harvest harvestTarget = null;
+        WaterCrop waterTarget = null;
+        IInteractuable otherTarget = null;
 
+        // Primero buscamos cosecha
         foreach (Collider col in detected)
         {
-            IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
-            if (interactuable == null) continue;
-
-            // -----------------------------
-            // Riego
-            // -----------------------------
-            if (interactuable is WaterCrop waterCrop)
-            {
-                PickupDrop bucket = GetBucket();
-                if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
-                {
-                    Debug.Log("Necesitas un cubo lleno para regar");
-                    continue;
-                }
-                targetInteractable = waterCrop;
-                break;
-            }
-
-            // -----------------------------
-            // Cosecha
-            // -----------------------------
             Harvest harvest = col.GetComponentInParent<Harvest>();
-            if (harvest != null)
+            if (harvest != null && CanHarvest(harvest))
             {
-                Crop crop = harvest.GetCrop();
-                if (crop != null && crop.IsHarvestable())
+                harvestTarget = harvest;
+                break; // Prioridad: cosechar primero
+            }
+        }
+
+        // Luego buscamos riego solo si no hay cosecha
+        if (harvestTarget == null)
+        {
+            foreach (Collider col in detected)
+            {
+                WaterCrop waterCrop = col.GetComponentInParent<WaterCrop>();
+                if (waterCrop != null && CanWater(waterCrop))
                 {
-                    targetInteractable = harvest;
+                    waterTarget = waterCrop;
                     break;
                 }
-                else
+            }
+        }
+
+        // Finalmente otros
+        if (harvestTarget == null && waterTarget == null)
+        {
+            foreach (Collider col in detected)
+            {
+                IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
+                if (interactuable != null)
                 {
-                    Debug.Log("Crop null o no está lista para cosechar");
-                    continue;
+                    otherTarget = interactuable;
+                    break;
                 }
             }
-
-            // -----------------------------
-            // Plantar / otros
-            // -----------------------------
-            if (otherInteractable == null)
-                otherInteractable = interactuable;
         }
 
-        // Ejecutar interacción
-        if (targetInteractable != null)
+        // Ejecutamos la interacción según prioridad
+        if (harvestTarget != null) harvestTarget.Interactuar();
+        else if (waterTarget != null) waterTarget.Interactuar();
+        else if (otherTarget != null) HandleOtherInteraction(otherTarget);
+    }
+
+    bool CanWater(WaterCrop waterCrop)
+    {
+        PickupDrop bucket = GetBucket();
+        if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
         {
-            targetInteractable.Interactuar();
+            // Solo mostrar mensaje si no hay cosecha pendiente
+            return false;
         }
-        else if (otherInteractable != null)
+        return true;
+    }
+
+    bool CanHarvest(Harvest harvest)
+    {
+        Crop crop = harvest.GetCrop();
+        if (crop != null && crop.IsHarvestable()) return true;
+        Debug.Log("Crop null o no está lista para cosechar");
+        return false;
+    }
+
+    void HandleOtherInteraction(IInteractuable interactuable)
+    {
+        if (interactuable is PickupDrop cube && pickedobject == null)
         {
-            PickupDrop cube = otherInteractable as PickupDrop;
-            if (cube != null && pickedobject == null)
-            {
-                cube.PickUp();
-                pickedobject = cube;
-            }
-            else
-            {
-                otherInteractable.Interactuar();
-            }
+            cube.PickUp();
+            pickedobject = cube;
+        }
+        else
+        {
+            interactuable.Interactuar();
         }
     }
 
