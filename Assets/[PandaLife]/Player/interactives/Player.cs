@@ -36,51 +36,70 @@ public class Player : MonoBehaviour
     {
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        // Si tienes algo en la mano, solo puedes recoger/soltar objetos, no plantar ni cosechar
-        if (pickedobject != null)
-        {
-            Debug.Log("Tienes un objeto en la mano, no puedes plantar ni cosechar.");
-            return;
-        }
-
-        IInteractuable cropToHarvest = null;
+        IInteractuable targetInteractable = null;
         IInteractuable otherInteractable = null;
 
-        // Buscamos primero cultivos, si no hay, otros interactuables
         foreach (Collider col in detected)
         {
             IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
             if (interactuable == null) continue;
 
-            // Prioridad: cultivo
-            if (col.GetComponentInParent<Crop>() != null)
+            // -----------------------------
+            // Riego
+            // -----------------------------
+            if (interactuable is WaterCrop waterCrop)
             {
-                cropToHarvest = interactuable;
-                break; // ya tenemos cultivo, no necesitamos buscar más
+                PickupDrop bucket = GetBucket();
+                if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
+                {
+                    Debug.Log("Necesitas un cubo lleno para regar");
+                    continue;
+                }
+                targetInteractable = waterCrop;
+                break;
             }
 
-            // Si no es cultivo, lo guardamos como alternativa
+            // -----------------------------
+            // Cosecha
+            // -----------------------------
+            Harvest harvest = col.GetComponentInParent<Harvest>();
+            if (harvest != null)
+            {
+                Crop crop = harvest.GetCrop();
+                if (crop != null && crop.IsHarvestable())
+                {
+                    targetInteractable = harvest;
+                    break;
+                }
+                else
+                {
+                    Debug.Log("Crop null o no está lista para cosechar");
+                    continue;
+                }
+            }
+
+            // -----------------------------
+            // Plantar / otros
+            // -----------------------------
             if (otherInteractable == null)
                 otherInteractable = interactuable;
         }
 
-        // Interactuar con cultivo si existe, si no con otro interactuable
-        if (cropToHarvest != null)
+        // Ejecutar interacción
+        if (targetInteractable != null)
         {
-            cropToHarvest.Interactuar();
+            targetInteractable.Interactuar();
         }
         else if (otherInteractable != null)
         {
-            // Si es cubo y no tenemos ninguno en mano
             PickupDrop cube = otherInteractable as PickupDrop;
             if (cube != null && pickedobject == null)
             {
-                cube.PickUp();   // Recogemos cubo
+                cube.PickUp();
                 pickedobject = cube;
             }
             else
             {
-                // Otros interactuables (parcelas)
                 otherInteractable.Interactuar();
             }
         }
@@ -93,5 +112,10 @@ public class Player : MonoBehaviour
             pickedobject.Drop(); // función separada para soltar
             pickedobject = null;
         }
+    }
+
+    public PickupDrop GetBucket()
+    {
+        return pickedobject;
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Harvest : Interactuable
 {
-    private Crop crop;
+    [SerializeField] private Crop crop;
     public FarmingArea area; //se guarda la parcela donde esta plantado para marcarla como vacia al cosechar
 
     void Awake()
@@ -29,5 +29,11 @@ public class Harvest : Interactuable
         {
             Debug.Log("Aún no está libre");
         }
+    }
+
+    // permite que Player obtenga la referencia al Crop
+    public Crop GetCrop()
+    {
+        return crop;
     }
 }

@@ -291,9 +291,9 @@ GameObject:
   - component: {fileID: 4393243063098544268}
   - component: {fileID: 674473246068566467}
   - component: {fileID: 136756687616532411}
-  - component: {fileID: 8255322244199743927}
   - component: {fileID: 70132565213890961}
   - component: {fileID: 4069140448926639788}
+  - component: {fileID: 1854719733215657051}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -332,7 +332,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d4cb563138d084f8b532fc5c06c0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 136756687616532411}
   playerSpeed: 7
 --- !u!143 &136756687616532411
 CharacterController:
@@ -359,30 +358,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &8255322244199743927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7962232415491356993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2962dfa370d212448eeed933477037e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactionArea: {fileID: 4344011161654564815}
-  detectionRadius: 1.2
-  cropLayer:
-    serializedVersion: 2
-    m_Bits: 320
-  farmingLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  Hand_point: {fileID: 3144905417419177736}
-  pickeLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!136 &70132565213890961
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -419,3 +394,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushPower: 2
+--- !u!114 &1854719733215657051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962232415491356993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91ce445427215a41a59ab611376d4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionarea: {fileID: 4344011161654564815}
+  detectionradius: 1.5
+  interactlayer:
+    serializedVersion: 2
+    m_Bits: 512
