@@ -11,6 +11,13 @@ public class BucketWater : MonoBehaviour
 
     public void Fill()
     {
+
+        if (hasWater)
+        {
+            Debug.Log("El cubo ya está lleno");
+            return; // No hacer nada más
+        }
+
         hasWater = true;
         bucketrenderer.material = fullbucket;
         Debug.Log("Cubo lleno");
