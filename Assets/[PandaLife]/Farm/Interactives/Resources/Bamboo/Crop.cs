@@ -20,5 +20,6 @@ public class Crop : MonoBehaviour
         Debug.Log("Bambú cosechado");
         GameManager.instance.sumarBambuVerde(Valor);
         Destroy(gameObject);
+
     }
 }
