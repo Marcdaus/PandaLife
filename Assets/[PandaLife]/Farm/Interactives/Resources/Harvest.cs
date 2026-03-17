@@ -18,7 +18,7 @@ public class Harvest : Interactuable
         
         if (crop.IsHarvestable())
         {
-            //Destroy(crop.gameObject);
+          
             crop.Harvest(); // llama a la función de cosechar del Crop
 
             if (area != null)

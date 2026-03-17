@@ -86,11 +86,14 @@ public class Player : MonoBehaviour
         else if (otherTarget != null) HandleOtherInteraction(otherTarget);
     }
 
-    bool IsHoldingBucket()
+    public bool IsHoldingBucket()
     {
         return pickedobject != null && pickedobject.GetComponent<BucketWater>() != null;
     }
-
+    public bool IsHoldingDish()
+    {
+        return pickedobject != null && pickedobject.GetComponent<PickupDrop>() != null;
+    }
     bool CanWater(WaterCrop waterCrop)
     {
         PickupDrop bucket = GetBucket();

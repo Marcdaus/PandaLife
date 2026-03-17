@@ -24,7 +24,7 @@ public class PickupDrop : Interactuable
         transform.SetParent(handpoint);
 
         picked = true;
-        Mensaje("Cubo recogido");
+        Mensaje($"{rb.name} recogido");
     }
 
     public void Drop()
@@ -37,8 +37,9 @@ public class PickupDrop : Interactuable
         transform.SetParent(null);
 
         picked = false;
-        Mensaje("Cubo soltado");
+        Mensaje($"{rb.name} soltado");
     }
+
 
     public override void Interactuar()
     {
