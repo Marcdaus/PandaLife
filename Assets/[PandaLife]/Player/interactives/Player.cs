@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
         }
-
     }
+
     void Update()
     {
         // Interactuar con E (cultivos, parcelas, cubo)
@@ -37,9 +37,9 @@ public class Player : MonoBehaviour
     {
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        Harvest harvestTarget = null;
-        WaterCrop waterTarget = null;
-        IInteractuable otherTarget = null;
+        Harvest harvesttarget = null;
+        WaterCrop watertarget = null;
+        IInteractuable othertarget = null;
 
         // Primero buscamos cosecha
         foreach (Collider col in detected)
@@ -47,59 +47,60 @@ public class Player : MonoBehaviour
             Harvest harvest = col.GetComponentInParent<Harvest>();
             if (harvest != null && CanHarvest(harvest))
             {
-                harvestTarget = harvest;
+                harvesttarget = harvest;
                 break; // Prioridad: cosechar primero
             }
         }
 
         // Luego buscamos riego solo si no hay cosecha
-        if (harvestTarget == null)
+        if (harvesttarget == null)
         {
             foreach (Collider col in detected)
             {
-                WaterCrop waterCrop = col.GetComponentInParent<WaterCrop>();
-                if (waterCrop != null && CanWater(waterCrop))
+                WaterCrop watercrop = col.GetComponentInParent<WaterCrop>();
+                if (watercrop != null && CanWater(watercrop))
                 {
-                    waterTarget = waterCrop;
+                    watertarget = watercrop;
                     break;
                 }
             }
         }
 
         // Finalmente otros
-        if (harvestTarget == null && waterTarget == null)
+        if (harvesttarget == null && watertarget == null)
         {
             foreach (Collider col in detected)
             {
                 IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
                 if (interactuable != null)
                 {
-                    otherTarget = interactuable;
+                    othertarget = interactuable;
                     break;
                 }
             }
         }
 
         // Ejecutamos la interacción según prioridad
-        if (harvestTarget != null) harvestTarget.Interactuar();
-        else if (waterTarget != null) waterTarget.Interactuar();
-        else if (otherTarget != null) HandleOtherInteraction(otherTarget);
+        if (harvesttarget != null) harvesttarget.Interactuar();
+        else if (watertarget != null) watertarget.Interactuar();
+        else if (othertarget != null) HandleOtherInteraction(othertarget);
     }
 
     public bool IsHoldingBucket()
     {
         return pickedobject != null && pickedobject.GetComponent<BucketWater>() != null;
     }
+
     public bool IsHoldingDish()
     {
         return pickedobject != null && pickedobject.GetComponent<PickupDrop>() != null;
     }
-    bool CanWater(WaterCrop waterCrop)
+
+    bool CanWater(WaterCrop watercrop)
     {
         PickupDrop bucket = GetBucket();
-        if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
+        if (bucket == null || !bucket.GetComponent<BucketWater>().haswater)
         {
-            // Solo mostrar mensaje si no hay cosecha pendiente
             return false;
         }
         return true;
@@ -115,6 +116,7 @@ public class Player : MonoBehaviour
 
         Crop crop = harvest.GetCrop();
         if (crop != null && crop.IsHarvestable()) return true;
+
         Debug.Log("Crop null o no está lista para cosechar");
         return false;
     }
@@ -126,6 +128,7 @@ public class Player : MonoBehaviour
             Debug.Log("No puedes plantar mientras sostienes el cubo");
             return;
         }
+
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
             cube.PickUp();
@@ -141,7 +144,7 @@ public class Player : MonoBehaviour
     {
         if (pickedobject != null)
         {
-            pickedobject.Drop(); // función separada para soltar
+            pickedobject.Drop();
             pickedobject = null;
         }
     }

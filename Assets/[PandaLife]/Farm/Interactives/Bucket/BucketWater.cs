@@ -7,25 +7,24 @@ public class BucketWater : MonoBehaviour
     [SerializeField] private Material emptybucket;
     [SerializeField] private Material fullbucket;
 
-    public bool hasWater = false;
+    public bool haswater = false;
 
     public void Fill()
     {
-
-        if (hasWater)
+        if (haswater)
         {
             Debug.Log("El cubo ya está lleno");
-            return; // No hacer nada más
+            return;
         }
 
-        hasWater = true;
+        haswater = true;
         bucketrenderer.material = fullbucket;
         Debug.Log("Cubo lleno");
     }
 
     public void Empty()
     {
-        hasWater = false;
-        bucketrenderer.material= emptybucket;
+        haswater = false;
+        bucketrenderer.material = emptybucket;
     }
 }

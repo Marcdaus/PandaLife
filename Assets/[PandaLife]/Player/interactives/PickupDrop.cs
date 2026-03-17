@@ -11,8 +11,6 @@ public class PickupDrop : Interactuable
         rb = GetComponent<Rigidbody>();
     }
 
-    
-
     public void PickUp()
     {
         if (picked) return;
@@ -39,7 +37,6 @@ public class PickupDrop : Interactuable
         picked = false;
         Mensaje($"{rb.name} soltado");
     }
-
 
     public override void Interactuar()
     {

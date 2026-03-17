@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PushObjects : MonoBehaviour
 {
-    public float pushPower = 2.0f; // Fuerza con la que empuja el objeto
+    public float pushpower = 2.0f; // Fuerza con la que empuja el objeto
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -21,10 +21,10 @@ public class PushObjects : MonoBehaviour
             return;
         }
 
-        // Direcci�n del empuje
-        Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
+        // Dirección del empuje
+        Vector3 pushdir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
 
         // Aplicar fuerza al objeto
-        body.linearVelocity = pushDir * pushPower;
+        body.linearVelocity = pushdir * pushpower;
     }
 }
