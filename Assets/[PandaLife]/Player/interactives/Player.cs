@@ -86,6 +86,11 @@ public class Player : MonoBehaviour
         else if (otherTarget != null) HandleOtherInteraction(otherTarget);
     }
 
+    bool IsHoldingBucket()
+    {
+        return pickedobject != null && pickedobject.GetComponent<BucketWater>() != null;
+    }
+
     bool CanWater(WaterCrop waterCrop)
     {
         PickupDrop bucket = GetBucket();
@@ -99,6 +104,12 @@ public class Player : MonoBehaviour
 
     bool CanHarvest(Harvest harvest)
     {
+        if (IsHoldingBucket())
+        {
+            Debug.Log("No puedes cosechar mientras sostienes el cubo");
+            return false;
+        }
+
         Crop crop = harvest.GetCrop();
         if (crop != null && crop.IsHarvestable()) return true;
         Debug.Log("Crop null o no está lista para cosechar");
@@ -107,6 +118,11 @@ public class Player : MonoBehaviour
 
     void HandleOtherInteraction(IInteractuable interactuable)
     {
+        if (IsHoldingBucket() && !(interactuable is River))
+        {
+            Debug.Log("No puedes plantar mientras sostienes el cubo");
+            return;
+        }
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
             cube.PickUp();
