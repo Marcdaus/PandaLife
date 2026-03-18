@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-       bambuverde = 0;
+       //bambuverde = 0;
         ActualizarInventarioUI();
     }
 
@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            bambuverde = 0;
         }
         else
         {
@@ -32,6 +33,14 @@ public class GameManager : MonoBehaviour
     {
         bambuverde += cantidad;
         ActualizarInventarioUI();
+    }
+    public void ActualizarUIManual()
+    {
+        ActualizarInventarioUI();
+    }
+    public void SetTextoBambu(TextMeshProUGUI texto)
+    {
+        textoBambuVerde = texto;
     }
 
     void ActualizarInventarioUI() //actualiza el texto segun los recursos que tenemos
