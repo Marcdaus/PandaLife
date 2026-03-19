@@ -37,23 +37,41 @@ public class Player : MonoBehaviour
     {
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
+        PickupDrop bucketTarget = null;
         Harvest harvesttarget = null;
         WaterCrop watertarget = null;
         IInteractuable othertarget = null;
 
-        // Primero buscamos cosecha
-        foreach (Collider col in detected)
+        //  Prioridad máxima: coger cubo si hay uno y no estás sosteniendo nada
+        if (pickedobject == null)
         {
-            Harvest harvest = col.GetComponentInParent<Harvest>();
-            if (harvest != null && CanHarvest(harvest))
+            foreach (Collider col in detected)
             {
-                harvesttarget = harvest;
-                break; // Prioridad: cosechar primero
+                PickupDrop cube = col.GetComponentInParent<PickupDrop>();
+                if (cube != null && cube.GetComponent<BucketWater>() != null)
+                {
+                    bucketTarget = cube;
+                    break;
+                }
             }
         }
 
-        // Luego buscamos riego solo si no hay cosecha
-        if (harvesttarget == null)
+        // 2 Buscar cosecha solo si no hay cubo
+        if (bucketTarget == null)
+        {
+            foreach (Collider col in detected)
+            {
+                Harvest harvest = col.GetComponentInParent<Harvest>();
+                if (harvest != null && CanHarvest(harvest))
+                {
+                    harvesttarget = harvest;
+                    break;
+                }
+            }
+        }
+
+        //  Buscar riego solo si no hay cubo ni cosecha
+        if (bucketTarget == null && harvesttarget == null)
         {
             foreach (Collider col in detected)
             {
@@ -66,8 +84,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Finalmente otros
-        if (harvesttarget == null && watertarget == null)
+        //  Otros objetos si no hay cubo, cosecha ni riego
+        if (bucketTarget == null && harvesttarget == null && watertarget == null)
         {
             foreach (Collider col in detected)
             {
@@ -80,8 +98,13 @@ public class Player : MonoBehaviour
             }
         }
 
-        // Ejecutamos la interacción según prioridad
-        if (harvesttarget != null) harvesttarget.Interactuar();
+        // Ejecutar interacción según prioridad
+        if (bucketTarget != null)
+        {
+            bucketTarget.PickUp();
+            pickedobject = bucketTarget;
+        }
+        else if (harvesttarget != null) harvesttarget.Interactuar();
         else if (watertarget != null) watertarget.Interactuar();
         else if (othertarget != null) HandleOtherInteraction(othertarget);
     }

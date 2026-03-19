@@ -9,7 +9,7 @@ public class Crop : MonoBehaviour
     [SerializeField] private GameObject stage1;
     [SerializeField] private GameObject stage2;
     [SerializeField] private GameObject stage3;
-
+    
     [SerializeField] private float growtime = 10f;
 
     private bool watered = false;
