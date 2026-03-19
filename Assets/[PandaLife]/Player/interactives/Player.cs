@@ -16,8 +16,8 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
         }
-
     }
+
     void Update()
     {
         // Interactuar con E (cultivos, parcelas, cubo)
@@ -37,66 +37,93 @@ public class Player : MonoBehaviour
     {
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        Harvest harvestTarget = null;
-        WaterCrop waterTarget = null;
-        IInteractuable otherTarget = null;
+        PickupDrop bucketTarget = null;
+        Harvest harvesttarget = null;
+        WaterCrop watertarget = null;
+        IInteractuable othertarget = null;
 
-        // Primero buscamos cosecha
-        foreach (Collider col in detected)
-        {
-            Harvest harvest = col.GetComponentInParent<Harvest>();
-            if (harvest != null && CanHarvest(harvest))
-            {
-                harvestTarget = harvest;
-                break; // Prioridad: cosechar primero
-            }
-        }
-
-        // Luego buscamos riego solo si no hay cosecha
-        if (harvestTarget == null)
+        //  Prioridad máxima: coger cubo si hay uno y no estás sosteniendo nada
+        if (pickedobject == null)
         {
             foreach (Collider col in detected)
             {
-                WaterCrop waterCrop = col.GetComponentInParent<WaterCrop>();
-                if (waterCrop != null && CanWater(waterCrop))
+                PickupDrop cube = col.GetComponentInParent<PickupDrop>();
+                if (cube != null && cube.GetComponent<BucketWater>() != null)
                 {
-                    waterTarget = waterCrop;
+                    bucketTarget = cube;
                     break;
                 }
             }
         }
 
-        // Finalmente otros
-        if (harvestTarget == null && waterTarget == null)
+        // 2 Buscar cosecha solo si no hay cubo
+        if (bucketTarget == null)
+        {
+            foreach (Collider col in detected)
+            {
+                Harvest harvest = col.GetComponentInParent<Harvest>();
+                if (harvest != null && CanHarvest(harvest))
+                {
+                    harvesttarget = harvest;
+                    break;
+                }
+            }
+        }
+
+        //  Buscar riego solo si no hay cubo ni cosecha
+        if (bucketTarget == null && harvesttarget == null)
+        {
+            foreach (Collider col in detected)
+            {
+                WaterCrop watercrop = col.GetComponentInParent<WaterCrop>();
+                if (watercrop != null && CanWater(watercrop))
+                {
+                    watertarget = watercrop;
+                    break;
+                }
+            }
+        }
+
+        //  Otros objetos si no hay cubo, cosecha ni riego
+        if (bucketTarget == null && harvesttarget == null && watertarget == null)
         {
             foreach (Collider col in detected)
             {
                 IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
                 if (interactuable != null)
                 {
-                    otherTarget = interactuable;
+                    othertarget = interactuable;
                     break;
                 }
             }
         }
 
-        // Ejecutamos la interacción según prioridad
-        if (harvestTarget != null) harvestTarget.Interactuar();
-        else if (waterTarget != null) waterTarget.Interactuar();
-        else if (otherTarget != null) HandleOtherInteraction(otherTarget);
+        // Ejecutar interacción según prioridad
+        if (bucketTarget != null)
+        {
+            bucketTarget.PickUp();
+            pickedobject = bucketTarget;
+        }
+        else if (harvesttarget != null) harvesttarget.Interactuar();
+        else if (watertarget != null) watertarget.Interactuar();
+        else if (othertarget != null) HandleOtherInteraction(othertarget);
     }
 
-    bool IsHoldingBucket()
+    public bool IsHoldingBucket()
     {
         return pickedobject != null && pickedobject.GetComponent<BucketWater>() != null;
     }
 
-    bool CanWater(WaterCrop waterCrop)
+    public bool IsHoldingDish()
+    {
+        return pickedobject != null && pickedobject.GetComponent<PickupDrop>() != null;
+    }
+
+    bool CanWater(WaterCrop watercrop)
     {
         PickupDrop bucket = GetBucket();
-        if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
+        if (bucket == null || !bucket.GetComponent<BucketWater>().haswater)
         {
-            // Solo mostrar mensaje si no hay cosecha pendiente
             return false;
         }
         return true;
@@ -112,6 +139,7 @@ public class Player : MonoBehaviour
 
         Crop crop = harvest.GetCrop();
         if (crop != null && crop.IsHarvestable()) return true;
+
         Debug.Log("Crop null o no está lista para cosechar");
         return false;
     }
@@ -123,6 +151,7 @@ public class Player : MonoBehaviour
             Debug.Log("No puedes plantar mientras sostienes el cubo");
             return;
         }
+
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
             cube.PickUp();
@@ -138,7 +167,7 @@ public class Player : MonoBehaviour
     {
         if (pickedobject != null)
         {
-            pickedobject.Drop(); // función separada para soltar
+            pickedobject.Drop();
             pickedobject = null;
         }
     }

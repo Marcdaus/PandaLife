@@ -13,7 +13,6 @@ public class WaterCrop : Interactuable
 
     public override void Interactuar()
     {
-        
         PickupDrop bucket = player.GetBucket();
 
         if (bucket == null)
@@ -24,7 +23,7 @@ public class WaterCrop : Interactuable
 
         BucketWater water = bucket.GetComponent<BucketWater>();
 
-        if (water == null || !water.hasWater)
+        if (water == null || !water.haswater)
         {
             Debug.Log("El cubo está vacío");
             return;
@@ -33,5 +32,4 @@ public class WaterCrop : Interactuable
         crop.Water();
         water.Empty();
     }
-
 }

@@ -4,31 +4,36 @@ public class movement : MonoBehaviour
 {
     private CharacterController controller;
     [SerializeField] private float playerSpeed = 7.0f;
-    //[SerializeField] private bool useCameraRef = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
       controller = GetComponent<CharacterController>();
     }
-
-    // Update is called once per frame
     void Update()
     {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 move = new Vector3(h, 0, v);
 
+        // Obtener la dirección de la cámara (solo eje Y)
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
 
-        /*if (useCameraRef)
+        camForward.y = 0;
+        camRight.y = 0;
+
+        camForward.Normalize();
+        camRight.Normalize();
+
+        // Convertir movimiento relativo a cámara
+        Vector3 moveDir = camForward * v + camRight * h;
+
+        if (moveDir != Vector3.zero)
         {
-            move = Quaternion.AngleAxis(Camera.main.transform.rotation.eulerAngles.y, Vector3.up) * move;
-        }*/
-
-        if (move != Vector3.zero)
-        {
-            gameObject.transform.forward = move;
+            transform.forward = moveDir;
         }
-        controller.SimpleMove(move * playerSpeed);
 
+        controller.SimpleMove(moveDir * playerSpeed);
     }
 }
