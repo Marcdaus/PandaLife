@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PushObjects : MonoBehaviour
 {
-    public float pushpower = 2.0f; // Fuerza con la que empuja el objeto
+    [SerializeField] private float pushpower = 4.0f; // Fuerza con la que empuja el objeto
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
