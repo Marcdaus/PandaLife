@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class SceneChange : Interactuable
 {
     // Campos
-    [SerializeField] private int scenenumber = 1; // Variable que contendrá el número de la escena a cargar
+    [SerializeField] private GameString scenename; // Variable que contendrá el nombre de la escena a cargar
     private Player player;
     private PickupDrop pickupobject;
 
@@ -21,7 +21,7 @@ public class SceneChange : Interactuable
     {
         if (player.IsHoldingBucket() || player.IsHoldingDish())
         {
-            Debug.Log("Deja el cubo antes de entrar en casa");
+            Debug.Log($"Deja el {pickupobject.name} antes de entrar en casa");
             // Suelta el cubo
             pickupobject.Drop();
             // Llama a la corutina
@@ -29,7 +29,7 @@ public class SceneChange : Interactuable
         }
         else 
         {
-            SceneManager.LoadScene(scenenumber);
+            SceneManager.LoadScene(scenename.Value);
         }
 
 
@@ -38,9 +38,9 @@ public class SceneChange : Interactuable
     // Corutina que dará un pequeño tiempo para ver cómo cae el cubo. 
     IEnumerator EsperarParaCargar()
     {
-        // Pausa de 2 segundos
+        // Pausa de 0.5 segundos
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(scenenumber);
+        SceneManager.LoadScene(scenename.Value);
     }
 
     private void OnTriggerEnter(Collider other)
