@@ -7,7 +7,13 @@ public class GameManager : MonoBehaviour
 
     [Header ("bambuVerde")]
     public int bambuverde = 0;
+    public int bamburojo = 0;
+    public int bayauchuva = 0;
+    public int bayaarandanos = 0;
     public TextMeshProUGUI textoBambuVerde;
+    public TextMeshProUGUI textoBambuRojo;
+    public TextMeshProUGUI textoBayaArandanos;
+    public TextMeshProUGUI textoBayaUchuva;
 
     void Start()
     {
@@ -41,6 +47,18 @@ public class GameManager : MonoBehaviour
     public void SetTextoBambu(TextMeshProUGUI texto)
     {
         textoBambuVerde = texto;
+    }
+    public void SetTextoBambuRojo(TextMeshProUGUI texto)
+    {
+        textoBambuRojo = texto;
+    }
+    public void SetTextoBayaUchuva(TextMeshProUGUI texto)
+    {
+        textoBayaUchuva = texto;
+    }
+    public void SetTextoBayaArandanos(TextMeshProUGUI texto)
+    {
+        textoBayaArandanos = texto;
     }
 
     void ActualizarInventarioUI() //actualiza el texto segun los recursos que tenemos
