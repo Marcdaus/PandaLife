@@ -21,13 +21,13 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Interactuar con E (cultivos, parcelas, cubo)
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetButtonDown("Interactuar"))
         {
             Interact();
         }
 
         // Soltar objetos con Q
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetButtonDown("Soltar"))
         {
             Drop();
         }
