@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             bambuverde = 0;
+            bamburojo = 0;
+            bayaarandanos = 0;
+            bayauchuva = 0;
         }
         else
         {
@@ -35,11 +38,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void sumarBambuVerde(int cantidad)
+    public void sumarBambu(int cantidad, int tipo)
     {
-        bambuverde += cantidad;
-        ActualizarInventarioUI();
+        if (tipo == 1)
+        {
+            bambuverde += cantidad;
+            ActualizarInventarioUI();
+        }
+        else if (tipo == 2)
+        {
+            bamburojo += cantidad;
+            ActualizarInventarioUI();
+        }
+        else if(tipo == 3)
+        {
+            bayaarandanos += cantidad;
+            ActualizarInventarioUI();
+        }
+        else if(tipo == 4)
+        {
+            bayauchuva += cantidad;
+            ActualizarInventarioUI();
+        }
+        else
+        {
+            return;
+        }
+        
     }
+
+
     public void ActualizarUIManual()
     {
         ActualizarInventarioUI();
@@ -65,6 +93,12 @@ public class GameManager : MonoBehaviour
     {
         if(textoBambuVerde != null)
             textoBambuVerde.text = "x " + bambuverde.ToString();
+        if(textoBambuRojo != null)
+            textoBambuRojo.text = "x " + bamburojo.ToString();
+        if(textoBayaArandanos != null)
+            textoBayaArandanos.text = "x " + bayaarandanos.ToString();
+        if(textoBayaUchuva != null)
+            textoBayaUchuva.text = "x " + bayauchuva.ToString();
     }
 
 }
