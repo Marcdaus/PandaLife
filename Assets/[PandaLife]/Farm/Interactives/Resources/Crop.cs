@@ -11,6 +11,7 @@ public class Crop : MonoBehaviour
     [SerializeField] private GameObject stage3;
     
     [SerializeField] private float growtime = 10f;
+    [SerializeField] private int Type;
 
     private bool watered = false;
     public int Valor
@@ -75,7 +76,7 @@ public class Crop : MonoBehaviour
     public void Harvest()
     {
         Debug.Log("Bambú cosechado");
-        GameManager.instance.sumarBambuVerde(Valor);
+        GameManager.instance.sumarBambu(Valor,Type);
         Destroy(gameObject);
     }
 }
