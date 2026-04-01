@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    [Header("Variables de Tutorial")]
+    public bool tutorialCuboCompletado = false;
+
     [Header ("bambuVerde")]
     public int bambuverde = 0;
     public int bamburojo = 0;

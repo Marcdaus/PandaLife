@@ -7,27 +7,17 @@ public class MessageController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ToggleElements();
-        }
+        EvaluateAllPins();
     }
 
-    private void ToggleElements()
+    private void EvaluateAllPins()
     {
-        // Recorremos cada elemento de la lista
         foreach (PinUIElement element in elementsList)
         {
-            
-                if (element.gameObject.activeSelf)
-                {
-                    element.Hide();
-                }
-                else
-                {
-                    element.Show();
-                }
-            
+            if (element != null)
+            {
+                element.Evaluate();
+            }
         }
     }
 }

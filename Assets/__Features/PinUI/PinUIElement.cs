@@ -1,24 +1,25 @@
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class PinUIElement : MonoBehaviour
+public abstract class PinUIElement : MonoBehaviour
 {
 
     [SerializeField] private Transform worldPosition;
-
-    RectTransform rect;
-
     [SerializeField] new private Camera camera;
 
+    RectTransform rect;
     Animator animator;
 
-
+    //=========================================================================================================================
     void Awake()
     {
         rect = GetComponent<RectTransform>();
         if (camera == null) camera = Camera.main;
-        gameObject.SetActive(false);
+
         animator = GetComponent<Animator>();
+
+        gameObject.SetActive(false);
+
     }
 
     void LateUpdate()
@@ -30,12 +31,32 @@ public class PinUIElement : MonoBehaviour
             rect.anchorMin = pos;
         }
     }
+    //=========================================================================================================================
+
+    // Esta función se tiene que hacer override y poner la condición que sea necesaria
+    public abstract bool CheckCondition();
+
+    // Desde MessageController llamamos a ésta función
+    public void Evaluate()
+    {
+        bool conditionMet = CheckCondition();
+
+        if (conditionMet)
+        {
+            Show();
+        }
+        else if (!conditionMet)
+        {
+            Hide();
+        }
+    }
 
 
     public void Show()
     {
         gameObject.SetActive(true);
     }
+
     public void Hide()
     {
         animator.SetTrigger("hide");
