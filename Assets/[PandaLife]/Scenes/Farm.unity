@@ -450,6 +450,10 @@ PrefabInstance:
       propertyPath: handpoint
       value: 
       objectReference: {fileID: 438026451}
+    - target: {fileID: 3508135008985015564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: mensajeInteraccion
+      value: Coger cubeta
+      objectReference: {fileID: 0}
     - target: {fileID: 6157236845774057936, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.600378
@@ -2147,12 +2151,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 206125105861672744, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: mensajeInteraccion
+      value: Plantar
+      objectReference: {fileID: 0}
+    - target: {fileID: 206125105861672744, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: cultivoSeleccionado
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1015394913649135633, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: mensajeInteraccion
+      value: Plantar
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015394913649135633, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: cultivoSeleccionado
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2071733374936540932, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: mensajeInteraccion
+      value: Plantar
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2193,6 +2209,10 @@ PrefabInstance:
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: mensajeInteraccion
+      value: Plantar
       objectReference: {fileID: 0}
     - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: cultivoSeleccionado
@@ -3373,7 +3393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c821a749437fe4b80edc13f7db2578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mensajeInteraccion: interactuar
+  mensajeInteraccion: Llenar cubeta
 --- !u!65 &8232041274847519606
 BoxCollider:
   m_ObjectHideFlags: 0

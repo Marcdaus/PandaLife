@@ -116,6 +116,26 @@ public class Player : MonoBehaviour
                     {
                         continue;
                     }
+                    // Ignorar el río si NO tenemos el cubo en la mano
+                    if (interactuable is River && !IsHoldingBucket())
+                    {
+                        continue;
+                    }
+
+                    // Ignorar la tierra si ya hay algo plantado en ella
+                    if (interactuableComp != null)
+                    {
+                        FarmingArea area = interactuableComp.GetComponent<FarmingArea>();
+                        // Si es una zona de cultivo y la variable ThereIsSomething es true pasamos
+                        if (area != null && area.ThereIsSomething)
+                        {
+                            continue;
+                        }
+                    }
+                    if (interactuable is Harvest || interactuable is WaterCrop)
+                    {
+                        continue;
+                    }
 
                     // objetivo real
                     othertarget = interactuable;
@@ -128,6 +148,7 @@ public class Player : MonoBehaviour
         currentTarget = null;
         currentActionText = "";
 
+        // Determinamos el objetivo final y le asignamos su texto al mismo tiempo
         if (bucketTarget != null)
         {
             currentTarget = bucketTarget;
@@ -147,18 +168,19 @@ public class Player : MonoBehaviour
         {
             currentTarget = othertarget;
 
-            // Excepción para el río
-            if (othertarget is River)
+            // Si es un objeto genérico, leemos el texto de su Inspector
+            Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
+            if (interactuableRef != null)
             {
-                currentActionText = "llenar cubeta";
+                currentActionText = interactuableRef.mensajeInteraccion;
             }
             else
             {
-                currentActionText = "interactuar"; // Mensaje por defecto
+                currentActionText = "interactuar"; // Texto por defecto
             }
         }
 
-        // Avisamos al objeto de la UI para que encienda o apague el texto
+        // Finalmente, encendemos la UI con el texto que haya ganado, o la apagamos
         if (currentTarget != null)
         {
             InteractionTextUI.instance.MostrarMensaje(currentActionText);
@@ -215,14 +237,14 @@ public class Player : MonoBehaviour
     {
         if (IsHoldingBucket())
         {
-            Debug.Log("No puedes cosechar mientras sostienes el cubo");
+            //Debug.Log("No puedes cosechar mientras sostienes el cubo");
             return false;
         }
 
         Crop crop = harvest.GetCrop();
         if (crop != null && crop.IsHarvestable()) return true;
 
-        Debug.Log("Crop null o no está lista para cosechar");
+        //Debug.Log("Crop null o no está lista para cosechar");
         return false;
     }
 
