@@ -9,6 +9,12 @@ public class Player : MonoBehaviour
 
     private PickupDrop pickedobject = null; // referencia al objeto que tienes en la mano
 
+    // Guardar el objeto prioritario detectado
+    private object currentTarget = null;
+
+    // Guardar el texto para mostrar en la pantalla
+    private string currentActionText = "";
+
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -20,8 +26,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        ScanInteractables();
+
         // Interactuar con E (cultivos, parcelas, cubo)
-        if (Input.GetButtonDown("Interactuar"))
+        if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
             Interact();
         }
@@ -33,16 +41,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Interact()
+    // Buscar objetos
+    void ScanInteractables()
     {
+        // Lanzamos la esfera de detección
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
+        // Variables temporales para ver qué encontramos
         PickupDrop bucketTarget = null;
         Harvest harvesttarget = null;
         WaterCrop watertarget = null;
         IInteractuable othertarget = null;
 
-        //  Prioridad máxima: coger cubo si hay uno y no estás sosteniendo nada
+        // 1. Prioridad máxima: coger cubo si hay uno y no estás sosteniendo nada
         if (pickedobject == null)
         {
             foreach (Collider col in detected)
@@ -56,7 +67,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 2 Buscar cosecha solo si no hay cubo
+        // 2. Buscar cosecha solo si no hay cubo
         if (bucketTarget == null)
         {
             foreach (Collider col in detected)
@@ -70,7 +81,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        //  Buscar riego solo si no hay cubo ni cosecha
+        // 3. Buscar riego solo si no hay cubo ni cosecha
         if (bucketTarget == null && harvesttarget == null)
         {
             foreach (Collider col in detected)
@@ -84,29 +95,100 @@ public class Player : MonoBehaviour
             }
         }
 
-        //  Otros objetos si no hay cubo, cosecha ni riego
+        // 4. Otros objetos si no hay cubo, cosecha ni riego
         if (bucketTarget == null && harvesttarget == null && watertarget == null)
         {
             foreach (Collider col in detected)
             {
                 IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
+
                 if (interactuable != null)
                 {
+                    // Ignorar el objeto que ya tenemos en las manos
+                    Component interactuableComp = interactuable as Component;
+                    if (interactuableComp != null && pickedobject != null && interactuableComp.gameObject == pickedobject.gameObject)
+                    {
+                        continue;
+                    }
+
+                    // Si tenemos el cubo en la mano, ignorar lo que no sea el río
+                    if (IsHoldingBucket() && !(interactuable is River))
+                    {
+                        continue;
+                    }
+
+                    // objetivo real
                     othertarget = interactuable;
                     break;
                 }
             }
         }
 
-        // Ejecutar interacción según prioridad
+        // Reseteamos las variables por si hemos dejado de mirar un objeto
+        currentTarget = null;
+        currentActionText = "";
+
         if (bucketTarget != null)
         {
-            bucketTarget.PickUp();
-            pickedobject = bucketTarget;
+            currentTarget = bucketTarget;
+            currentActionText = "coger cubeta";
         }
-        else if (harvesttarget != null) harvesttarget.Interactuar();
-        else if (watertarget != null) watertarget.Interactuar();
-        else if (othertarget != null) HandleOtherInteraction(othertarget);
+        else if (harvesttarget != null)
+        {
+            currentTarget = harvesttarget;
+            currentActionText = "cosechar";
+        }
+        else if (watertarget != null)
+        {
+            currentTarget = watertarget;
+            currentActionText = "regar";
+        }
+        else if (othertarget != null)
+        {
+            currentTarget = othertarget;
+
+            // Excepción para el río
+            if (othertarget is River)
+            {
+                currentActionText = "llenar cubeta";
+            }
+            else
+            {
+                currentActionText = "interactuar"; // Mensaje por defecto
+            }
+        }
+
+        // Avisamos al objeto de la UI para que encienda o apague el texto
+        if (currentTarget != null)
+        {
+            InteractionTextUI.instance.MostrarMensaje(currentActionText);
+        }
+        else
+        {
+            InteractionTextUI.instance.OcultarMensaje();
+        }
+    }
+
+    void Interact()
+    {
+        // Miramos de qué tipo es el objeto que guardamos en "currentTarget" y ejecutamos su función
+        if (currentTarget is PickupDrop bucket)
+        {
+            bucket.PickUp();
+            pickedobject = bucket;
+        }
+        else if (currentTarget is Harvest harvest)
+        {
+            harvest.Interactuar();
+        }
+        else if (currentTarget is WaterCrop water)
+        {
+            water.Interactuar();
+        }
+        else if (currentTarget is IInteractuable other)
+        {
+            HandleOtherInteraction(other);
+        }
     }
 
     public bool IsHoldingBucket()
