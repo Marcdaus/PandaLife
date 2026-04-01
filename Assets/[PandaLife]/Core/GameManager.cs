@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 
     [Header("Variables de Tutorial")]
     public bool tutorialCuboCompletado = false;
+    public bool tutorialRioCompletado = false;
+
 
     [Header ("bambuVerde")]
     public int bambuverde = 0;
