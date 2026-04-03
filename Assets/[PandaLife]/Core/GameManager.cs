@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public int numeroDia = 1;
     public float multiplicadorVelocidad = 1f;
     public float DiaActual = 1;
-   
+
     void Start()
     {
        //bambuverde = 0;
