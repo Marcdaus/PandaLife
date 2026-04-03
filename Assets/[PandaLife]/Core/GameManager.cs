@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public int numeroDia = 0;
     public float multiplicadorVelocidad = 1f;
     public float DiaActual = 0;
+    public float horaEmpiezaOscurecer = 20f;
     void Start()
     {
        //bambuverde = 0;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // Necesario si usas TextMeshPro
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -18,7 +19,10 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private float duracionEnMinutos = 5f;
     [SerializeField] private TextMeshProUGUI textoReloj;
     [SerializeField] private TextMeshProUGUI textoDia;
-   
+
+    [Header("Efecto de Oscurecimiento")]
+    [SerializeField] private Image fadeImage;
+    
 
 
     private float duracionEnSegundos;
@@ -43,6 +47,9 @@ public class DayNightCycle : MonoBehaviour
 
             // 2. Control de Reloj
             ActualizarReloj(porcentaje);
+
+            // 2. Control de obscurezers
+            ActualizarFundido();
         }
         else
         {
@@ -75,5 +82,31 @@ public class DayNightCycle : MonoBehaviour
 
         // Actualizamos el texto con formato de dos dígitos (00:00)
         textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
+    }
+    void ActualizarFundido()
+    {
+        if (fadeImage == null) return;
+
+        // Convertimos la hora actual de minutos totales a formato 24h decimal
+        float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+
+        if (horaActualDecimal > GameManager.instance.horaEmpiezaOscurecer)
+        {
+            // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
+            // Esto nos da un valor entre 0 y 1
+            float progresoOscurecimiento = (horaActualDecimal - GameManager.instance.horaEmpiezaOscurecer) / (horaFin - GameManager.instance.horaEmpiezaOscurecer);
+
+            // Aplicamos ese progreso al Alpha de la imagen
+            Color c = fadeImage.color;
+            c.a = Mathf.Clamp01(progresoOscurecimiento);
+            fadeImage.color = c;
+        }
+        else
+        {
+            // Si aún no son las 20:00, aseguramos que sea invisible
+            Color c = fadeImage.color;
+            c.a = 0f;
+            fadeImage.color = c;
+        }
     }
 }
