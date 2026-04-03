@@ -2,7 +2,16 @@ using UnityEngine;
 
 public class CheatMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject cheatPanel;
+    private GameObject cheatPanel;
+
+    void Start()
+    {
+        // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
+        if (CheatMenuPersistent.instance != null)
+        {
+            cheatPanel = CheatMenuPersistent.instance.transform.GetChild(0).gameObject;
+        }
+    }
 
     void Update()
     {
