@@ -25,14 +25,15 @@ public class GameManager : MonoBehaviour
     [Header("Variables de Sistema de dia")]
     public float tiempoTranscurrido = 0f;
     public float minutosActualesTotales;
-    public int numeroDia = 0;
+    public int numeroDia = 1;
     public float multiplicadorVelocidad = 1f;
-    public float DiaActual = 0;
-    public float horaEmpiezaOscurecer = 20f;
+    public float DiaActual = 1;
+   
     void Start()
     {
        //bambuverde = 0;
         ActualizarInventarioUI();
+
     }
 
     void Awake()

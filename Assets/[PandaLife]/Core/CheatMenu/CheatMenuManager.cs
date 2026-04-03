@@ -24,6 +24,9 @@ public class CheatMenuManager : MonoBehaviour
     public void Cheat_DarBambu()
     {
         GameManager.instance.sumarBambu(10, 1);
+        GameManager.instance.sumarBambu(10, 2);
+        GameManager.instance.sumarBambu(10, 3);
+        GameManager.instance.sumarBambu(10, 4);
         Debug.Log("CHEAT: +10 Bambú");
     }
     public void Cheat_acelerardia()

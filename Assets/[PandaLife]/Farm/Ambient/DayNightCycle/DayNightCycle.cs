@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Runtime.CompilerServices;
+using System;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -20,16 +22,19 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textoReloj;
     [SerializeField] private TextMeshProUGUI textoDia;
 
-    [Header("Efecto de Oscurecimiento")]
+    [Header("Efecto de Oscurecimiento y texto")]
     [SerializeField] private Image fadeImage;
-    
+     private float horaEmpiezaOscurecer = 20.0f;
+     private float horaEfecto = 20.8333f;
 
+    private RectTransform rectTextoDia;
 
     private float duracionEnSegundos;
 
     void Start()
     {
         duracionEnSegundos = duracionEnMinutos * 60f;
+        rectTextoDia = textoDia.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -48,15 +53,18 @@ public class DayNightCycle : MonoBehaviour
             // 2. Control de Reloj
             ActualizarReloj(porcentaje);
 
-            // 2. Control de obscurezers
+            // 3. Control de obscurezers
             ActualizarFundido();
+
+            // 4. Control del texto dia
+            ActualizarTexto();
         }
         else
         {
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
         }
-            textoDia.text = "Día " + GameManager.instance.numeroDia;
+
 
         if (GameManager.instance.DiaActual != GameManager.instance.numeroDia)
         {
@@ -89,12 +97,13 @@ public class DayNightCycle : MonoBehaviour
 
         // Convertimos la hora actual de minutos totales a formato 24h decimal
         float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
-
-        if (horaActualDecimal > GameManager.instance.horaEmpiezaOscurecer)
+        
+         
+        if (horaActualDecimal > horaEmpiezaOscurecer)
         {
             // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
             // Esto nos da un valor entre 0 y 1
-            float progresoOscurecimiento = (horaActualDecimal - GameManager.instance.horaEmpiezaOscurecer) / (horaFin - GameManager.instance.horaEmpiezaOscurecer);
+            float progresoOscurecimiento = (horaActualDecimal - horaEmpiezaOscurecer) / (horaFin - horaEmpiezaOscurecer);
 
             // Aplicamos ese progreso al Alpha de la imagen
             Color c = fadeImage.color;
@@ -103,10 +112,35 @@ public class DayNightCycle : MonoBehaviour
         }
         else
         {
+            
             // Si aún no son las 20:00, aseguramos que sea invisible
             Color c = fadeImage.color;
             c.a = 0f;
             fadeImage.color = c;
+        }
+ 
+
+    }
+    void ActualizarTexto()
+    {
+        float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+        if (horaActualDecimal > horaEfecto)
+        {
+            textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
+
+            // Centrar instantáneamente
+            rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
+            rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
+            rectTextoDia.pivot = new Vector2(0.5f, 0.5f);
+            rectTextoDia.anchoredPosition = Vector2.zero;
+
+            // Tamaño grande y alineación
+            textoDia.fontSize = 80f; // Ajusta este número a tu gusto
+            textoDia.alignment = TextAlignmentOptions.Center;
+        }
+        else
+        {
+            textoDia.text = "Día " + GameManager.instance.numeroDia;
         }
     }
 }
