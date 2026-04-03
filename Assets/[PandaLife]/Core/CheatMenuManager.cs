@@ -26,10 +26,20 @@ public class CheatMenuManager : MonoBehaviour
         GameManager.instance.sumarBambu(10, 1);
         Debug.Log("CHEAT: +10 Bambú");
     }
-    public void Cheat_DayNight()
+    public void Cheat_acelerardia()
     {
-        GameManager.instance.sumarBambu(10, 5);
-        Debug.Log("CHEAT: +10 Bambú");
+        if(GameManager.instance.multiplicadorVelocidad == 1f)
+        {
+            GameManager.instance.multiplicadorVelocidad = 20f;
+            Debug.Log("CHEAT: multiplicador de velocidad activado");
+        }
+        else
+        {
+            GameManager.instance.multiplicadorVelocidad = 1f;
+            Debug.Log("CHEAT: multiplicador de velocidad desactivado");
+        }
+
     }
+
 
 }

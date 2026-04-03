@@ -1,20 +1,26 @@
 using UnityEngine;
-using TMPro; // Necesario si usas TextMeshPro
+using TMPro;
+using UnityEngine.SceneManagement; // Necesario si usas TextMeshPro
 
 public class DayNightCycle : MonoBehaviour
 {
-    [SerializeField] bool isInto = false;
+    [SerializeField] private GameString scenename;
+    [SerializeField] private bool isInto = false;
     [Header("Configuración de Rotación")]
-    [SerializeField] public float anguloInicial = -10f;
-    [SerializeField] public float anguloFinal = 200f;
-    [SerializeField] public float duracionEnMinutos = 5f;
+    [SerializeField] private float anguloInicial = -10f;
+    [SerializeField] private float anguloFinal = 200f;
+
+
 
     [Header("Configuración de Tiempo")]
-    [SerializeField] public int horaInicio = 8;
-    [SerializeField] public int horaFin = 21;
-    [SerializeField] public TextMeshProUGUI textoReloj; // Arrastra tu objeto de texto aquí
+    [SerializeField] private int horaInicio = 8;
+    [SerializeField] private int horaFin = 21;
+    [SerializeField] private float duracionEnMinutos = 5f;
+    [SerializeField] private TextMeshProUGUI textoReloj;
+    [SerializeField] private TextMeshProUGUI textoDia;
+   
 
-    
+
     private float duracionEnSegundos;
 
     void Start()
@@ -24,10 +30,11 @@ public class DayNightCycle : MonoBehaviour
 
     void Update()
     {
+
         
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            GameManager.instance.tiempoTranscurrido += Time.deltaTime;
+            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorVelocidad ;
             float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
             // 1. Control de Rotación
@@ -40,6 +47,14 @@ public class DayNightCycle : MonoBehaviour
         else
         {
             GameManager.instance.tiempoTranscurrido = 0f;
+            GameManager.instance.numeroDia++;
+        }
+            textoDia.text = "Día " + GameManager.instance.numeroDia;
+
+        if (GameManager.instance.DiaActual != GameManager.instance.numeroDia)
+        {
+            SceneManager.LoadScene(scenename.Value);
+            GameManager.instance.DiaActual++;
         }
     }
 
