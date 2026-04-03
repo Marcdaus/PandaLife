@@ -16,19 +16,10 @@ public class Path : MonoBehaviour
 
     private Places currentPlace;
 
-    private static bool managerInitialized = false;
-
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-
-        // Inicializa PlacesManager solo una vez
-        if (!managerInitialized)
-        {
-            PlacesManager.Initialize(pathPoints);
-            managerInitialized = true;
-        }
-
+        PlacesManager.Initialize(pathPoints);
         MoveToNextPlace(); // primer movimiento
     }
 
