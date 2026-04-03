@@ -3044,6 +3044,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5be56924d51a74c57af04d1f5138edd9, type: 3}
+--- !u!114 &1404169771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3482300084304871463, guid: 5be56924d51a74c57af04d1f5138edd9, type: 3}
+  m_PrefabInstance: {fileID: 1404169770}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1475293346 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7648257999352670433, guid: f0733ac5d57eba2419aa12791ae5abee, type: 3}
@@ -4163,6 +4174,7 @@ GameObject:
   - component: {fileID: 2111321049}
   - component: {fileID: 2111321048}
   - component: {fileID: 2111321050}
+  - component: {fileID: 2111321051}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -4273,6 +4285,25 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!114 &2111321051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111321047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e89bc6301325ea84db26befc14487875, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInto: 1
+  anguloInicial: 0
+  anguloFinal: 200
+  duracionEnMinutos: 5
+  horaInicio: 8
+  horaFin: 21
+  textoReloj: {fileID: 1404169771}
 --- !u!1001 &830576718925617566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4498,21 +4529,21 @@ SceneRoots:
   m_Roots:
   - {fileID: 1482568693}
   - {fileID: 2058936108}
-  - {fileID: 66770829}
   - {fileID: 2111321049}
+  - {fileID: 1768322937}
+  - {fileID: 1404169770}
+  - {fileID: 1909436378}
+  - {fileID: 868507951}
+  - {fileID: 1856458189}
   - {fileID: 81142417}
+  - {fileID: 66770829}
   - {fileID: 923299978}
   - {fileID: 1503270493}
   - {fileID: 887667492}
-  - {fileID: 1768322937}
   - {fileID: 386525915}
   - {fileID: 830576718925617566}
   - {fileID: 1728999943}
   - {fileID: 1366001817}
-  - {fileID: 1909436378}
-  - {fileID: 868507951}
   - {fileID: 5142898655650215727}
-  - {fileID: 1404169770}
-  - {fileID: 1856458189}
   - {fileID: 1342155164}
   - {fileID: 1553955991}

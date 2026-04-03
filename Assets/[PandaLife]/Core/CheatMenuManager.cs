@@ -26,5 +26,10 @@ public class CheatMenuManager : MonoBehaviour
         GameManager.instance.sumarBambu(10, 1);
         Debug.Log("CHEAT: +10 Bambú");
     }
+    public void Cheat_DayNight()
+    {
+        GameManager.instance.sumarBambu(10, 5);
+        Debug.Log("CHEAT: +10 Bambú");
+    }
 
 }
