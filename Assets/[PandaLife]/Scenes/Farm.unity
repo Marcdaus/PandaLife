@@ -345,6 +345,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5096898177279698985, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       insertIndex: -1
       addedObject: {fileID: 200892159}
+    - targetCorrespondingSourceObject: {fileID: 5096898177279698985, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 200892163}
   m_SourcePrefab: {fileID: 100100000, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
 --- !u!1 &200892158 stripped
 GameObject:
@@ -363,6 +366,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &200892163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 200892158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d776d2925673eda4bb1b84631d316d86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementslist:
+  - {fileID: 589010045}
+  - {fileID: 1565060262}
 --- !u!1001 &233826724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -937,6 +955,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &589010043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4400191439030145451, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+  m_PrefabInstance: {fileID: 7167082073772853415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &589010045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589010043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4702018ff041f6449bc71a69c5d3951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardDay: 1
+  bag: {fileID: 589010043}
 --- !u!1 &600981219 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7913319227785200282, guid: 1a564409017b3b6488e077c1264e9cfe, type: 3}
@@ -1410,6 +1447,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1565060260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1118398281773413282, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
+  m_PrefabInstance: {fileID: 4135960344912131777}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1565060262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565060260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44079b1118e2c3a4aa6b7f86496db001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rewardDay: 1
+  bag: {fileID: 1565060260}
 --- !u!1 &1702262040 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6026995165798742918, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
@@ -1814,9 +1870,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red_Dragon_bag
       objectReference: {fileID: 0}
+    - target: {fileID: 3321272393401300654, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4532065210998729467, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.26
+      value: -2.43
       objectReference: {fileID: 0}
     - target: {fileID: 4532065210998729467, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1853,6 +1913,10 @@ PrefabInstance:
     - target: {fileID: 4532065210998729467, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619237941195576677, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.325
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1985,9 +2049,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blueberry_bag
       objectReference: {fileID: 0}
+    - target: {fileID: 1118398281773413282, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6404494416749105310, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.39
+      value: -1.24
       objectReference: {fileID: 0}
     - target: {fileID: 6404494416749105310, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2025,10 +2093,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8863051084572021921, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.325
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1118398281773413282, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565060262}
   m_SourcePrefab: {fileID: 100100000, guid: ceedee366abd17f4da120c2df5c3ff75, type: 3}
 --- !u!1001 &4818443114162564143
 PrefabInstance:
@@ -2276,6 +2351,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Uchuva_berry_bag
       objectReference: {fileID: 0}
+    - target: {fileID: 2173024617083804106, guid: bd326d9bebc074349a3ab99daa11a5d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5217995485434280751, guid: bd326d9bebc074349a3ab99daa11a5d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.325
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2334,14 +2417,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4061155840951419740, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.325
+      objectReference: {fileID: 0}
     - target: {fileID: 4400191439030145451, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
       propertyPath: m_Name
       value: Bamboo_bag
       objectReference: {fileID: 0}
+    - target: {fileID: 4400191439030145451, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126069530496831155, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+      propertyPath: bag
+      value: 
+      objectReference: {fileID: 589010043}
+    - target: {fileID: 9126069530496831155, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+      propertyPath: rewardDay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4400191439030145451, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 589010045}
   m_SourcePrefab: {fileID: 100100000, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
 --- !u!114 &8232041274847519602
 MonoBehaviour:
@@ -2591,6 +2693,6 @@ SceneRoots:
   - {fileID: 80174473}
   - {fileID: 807739816}
   - {fileID: 7167082073772853415}
-  - {fileID: 1073364513548452840}
   - {fileID: 4135960344912131777}
+  - {fileID: 1073364513548452840}
   - {fileID: 6337127276706452832}

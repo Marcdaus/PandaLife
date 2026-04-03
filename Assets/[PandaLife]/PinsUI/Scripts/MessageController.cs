@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MessageController : MonoBehaviour
 {
-    [SerializeField] private List<PinUIElement> elementsList = new List<PinUIElement>();
+    [SerializeField] private List<PinUIElement> elementslist = new List<PinUIElement>();
 
     void Update()
     {
@@ -12,7 +12,7 @@ public class MessageController : MonoBehaviour
 
     private void EvaluateAllPins()
     {
-        foreach (PinUIElement element in elementsList)
+        foreach (PinUIElement element in elementslist)
         {
             if (element != null)
             {
