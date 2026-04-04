@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class Bamboo_bag : RewardBagElement
+public class RedDragonBag : RewardBagElement
 {
-    public override void MostrarMensaje()
-    {
-        //Debug.Log($"¡Día {rewardDay}! Has desbloqueado el Saco de Bambú. ");
-    }
 
     public override bool CheckCondition()
     {

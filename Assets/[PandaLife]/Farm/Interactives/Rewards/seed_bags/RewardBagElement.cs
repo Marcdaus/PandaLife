@@ -1,18 +1,18 @@
+using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public abstract class RewardBagElement : MonoBehaviour
 {
     [SerializeField] protected int rewardDay;
     [SerializeField] protected GameObject bag;
 
-    public abstract void MostrarMensaje();
     public abstract bool CheckCondition();
 
     public void Evaluate()
     {
         if (CheckCondition())
         {
-            MostrarMensaje();
             Show(); 
         }
     }

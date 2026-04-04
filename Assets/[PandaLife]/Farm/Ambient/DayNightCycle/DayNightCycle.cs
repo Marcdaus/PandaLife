@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -28,8 +29,10 @@ public class DayNightCycle : MonoBehaviour
      private float horaEmpiezaOscurecer = 20.0f;
     private float horaEfecto = 20.8333f;
 
-    [Header("Lista de sacos")]
+    [Header("Recompensas")]
     [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
+ 
+    
 
     private RectTransform rectTextoDia;
 
@@ -39,6 +42,7 @@ public class DayNightCycle : MonoBehaviour
     {
         duracionEnSegundos = duracionEnMinutos * 60f;
         rectTextoDia = textoDia.GetComponent<RectTransform>();
+        RewardBagManager.EvaluateAllBags(elementslist);
     }
 
     void Update()
@@ -67,6 +71,8 @@ public class DayNightCycle : MonoBehaviour
         {
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
+            Rewards("Bags");
+            Rewards("Collectables");
         }
 
 
@@ -77,6 +83,21 @@ public class DayNightCycle : MonoBehaviour
             RewardBagManager.EvaluateAllBags(elementslist);
         }
     }
+    void Rewards(string type)
+    {
+        if (type == "Bags")
+        {
+            if (GameManager.instance.numeroDia == 2)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Red Dragon desbloqueado");
+            }
+            else if (GameManager.instance.numeroDia == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Uchuva desbloqueado");
+            }
+        }
+    }
+
 
     void ActualizarReloj(float pct)
     {

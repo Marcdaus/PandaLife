@@ -3393,6 +3393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: messageRewardSacks
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: textoBayaArandanos
       value: 
       objectReference: {fileID: 0}
@@ -3465,7 +3469,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cheatPanel: {fileID: 1694242418}
 --- !u!1001 &1657581879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3641,11 +3644,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
---- !u!1 &1694242418 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2352899215303400628, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-  m_PrefabInstance: {fileID: 1694242417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1728999943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4613,6 +4611,7 @@ MonoBehaviour:
   textoReloj: {fileID: 1412944818}
   textoDia: {fileID: 1412944817}
   fadeImage: {fileID: 1412944819}
+  elementslist: []
 --- !u!1001 &830576718925617566
 PrefabInstance:
   m_ObjectHideFlags: 0
