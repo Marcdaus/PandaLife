@@ -52,6 +52,18 @@ public class CheatMenuManager : MonoBehaviour
         }
 
     }
+    public void Cheat_cambiardia1()
+    {
+        GameManager.instance.numeroDia = 1;
+    }
+    public void Cheat_cambiardia2()
+    {
+        GameManager.instance.numeroDia = 2;
+    }
+    public void Cheat_cambiardia3()
+    {
+        GameManager.instance.numeroDia = 3;
+    }   
 
 
 }
