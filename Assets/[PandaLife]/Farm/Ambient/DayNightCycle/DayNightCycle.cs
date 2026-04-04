@@ -93,22 +93,22 @@ public class DayNightCycle : MonoBehaviour
         {
             if (GameManager.instance.numeroDia == 2)
             {
-                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Red Dragon desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado", 5f, type);
             }
             else if (GameManager.instance.numeroDia == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Uchuva desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado", 5f, type);
             }
         }
         else if (type == "Collectables")
         {
             if (GameManager.instance.numeroDia == 2 && GameManager.instance.miniPandasHambrientos == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡mini pandas 3/3 coleccionable carta desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable carta desbloqueado", 5f, type);
             }
             else if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡mini pandas 3/3! coleccionable muñeco desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable muñeco desbloqueado", 5f, type);
             }
         }
     }

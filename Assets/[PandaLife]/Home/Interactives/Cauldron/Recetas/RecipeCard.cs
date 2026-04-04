@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RecipeCard : MonoBehaviour
 {
@@ -11,11 +12,27 @@ public class RecipeCard : MonoBehaviour
     [SerializeField] private TextMeshProUGUI ingredientes;
 
     [SerializeField] private RecipesData receta;
+    [SerializeField] private MenuCauldron menucauldron;
+
+    private Button cookingbutton;
+    private Color colorOriginal;
+
+    [SerializeField] private GameObject iconocandado;
 
     private void Start()
     {
         ShowRecipe();
+        cookingbutton = GetComponent<Button>();
+        cookingbutton.onClick.AddListener(OnClick);
+
+        colorOriginal = GetComponent<Button>().image.color;
     }
+
+    private void OnClick()
+    {
+        menucauldron.StartCooking(receta);
+    }
+
     private void ShowRecipe()
     {
         nombrereceta.text = receta.nombrereceta;
@@ -43,5 +60,43 @@ public class RecipeCard : MonoBehaviour
             }
         }
         return texto;
+    }
+
+    public void CheckIngredients()
+    {
+        if (!menucauldron.HasIngredients(receta)) Block();
+        else UnBlock();
+    }
+
+    public void CheckUnblock()
+    {
+        if (GameManager.instance.numeroDia < receta.diadesbloqueado)
+        {
+            BlockedByDay();
+            return;
+        }
+        CheckIngredients();
+    }
+
+    public void BlockedByDay()
+    {
+        cookingbutton.interactable = false;
+        cookingbutton.image.color = Color.black;
+        if (iconocandado != null) iconocandado.SetActive(true);
+        // aquí pondremos el candado
+    }
+
+    public void Block()
+    {
+        cookingbutton.interactable = false;
+        cookingbutton.image.color = Color.gray;
+    }
+
+    public void UnBlock()
+    {
+
+        cookingbutton.interactable = true;
+        cookingbutton.image.color = colorOriginal;
+        if (iconocandado != null) iconocandado.SetActive(false);
     }
 }
