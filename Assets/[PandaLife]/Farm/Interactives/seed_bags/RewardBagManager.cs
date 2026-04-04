@@ -3,14 +3,8 @@ using UnityEngine;
 
 public class RewardBagManager : MonoBehaviour
 {
-    [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
 
-    void Update()
-    {
-        EvaluateAllBags();
-    }
-
-    private void EvaluateAllBags()
+    public static void EvaluateAllBags(List<RewardBagElement> elementslist)
     {
         foreach (RewardBagElement element in elementslist)
         {

@@ -1,9 +1,10 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Runtime.CompilerServices;
-using System;
 
 public class DayNightCycle : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class DayNightCycle : MonoBehaviour
     [Header("Efecto de Oscurecimiento y texto")]
     [SerializeField] private Image fadeImage;
      private float horaEmpiezaOscurecer = 20.0f;
-     private float horaEfecto = 20.8333f;
+    private float horaEfecto = 20.8333f;
+
+    [Header("Lista de sacos")]
+    [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
 
     private RectTransform rectTextoDia;
 
@@ -70,6 +74,7 @@ public class DayNightCycle : MonoBehaviour
         {
             SceneManager.LoadScene(scenename.Value);
             GameManager.instance.DiaActual++;
+            RewardBagManager.EvaluateAllBags(elementslist);
         }
     }
 
