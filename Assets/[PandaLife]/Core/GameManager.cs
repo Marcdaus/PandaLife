@@ -5,6 +5,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+
+
+
     [Header ("bambuVerde")]
     public int bambuverde = 0;
     public int bamburojo = 0;
@@ -15,10 +18,22 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoBayaArandanos;
     public TextMeshProUGUI textoBayaUchuva;
 
+    [Header("Variables de Tutorial")]
+    public bool tutorialCuboCompletado = false;
+    public bool tutorialRioCompletado = false;
+
+    [Header("Variables de Sistema de dia")]
+    public float tiempoTranscurrido = 0f;
+    public float minutosActualesTotales;
+    public int numeroDia = 1;
+    public float multiplicadorVelocidad = 1f;
+    public float DiaActual = 1;
+
     void Start()
     {
        //bambuverde = 0;
         ActualizarInventarioUI();
+
     }
 
     void Awake()
@@ -40,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     public void sumarBambu(int cantidad, int tipo)
     {
+        
         if (tipo == 1)
         {
             bambuverde += cantidad;

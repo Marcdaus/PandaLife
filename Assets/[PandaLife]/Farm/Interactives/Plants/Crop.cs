@@ -14,6 +14,7 @@ public class Crop : MonoBehaviour
     [SerializeField] private int Type;
 
     private bool watered = false;
+    public bool IsWatered { get { return watered; } }
     public int Valor
     {
         get { return valor; }

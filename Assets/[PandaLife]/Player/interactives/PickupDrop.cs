@@ -23,6 +23,13 @@ public class PickupDrop : Interactuable
 
         picked = true;
         Mensaje($"{rb.name} recogido");
+
+        // Completar el tutorial de coger la cubeta y no mostrar más el pin
+        if (!GameManager.instance.tutorialCuboCompletado)
+        {
+            GameManager.instance.tutorialCuboCompletado = true;
+            Debug.Log("Tutorial de coger el cubo completado para esta partida.");
+        }
     }
 
     public void Drop()

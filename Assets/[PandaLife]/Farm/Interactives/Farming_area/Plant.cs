@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Sow : Interactuable
+public class Plant : Interactuable
 {
     private FarmingArea area;
     public GameObject cropbamboo;
