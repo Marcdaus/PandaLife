@@ -26,13 +26,13 @@ public class DayNightCycle : MonoBehaviour
 
     [Header("Efecto de Oscurecimiento y texto")]
     [SerializeField] private Image fadeImage;
-     private float horaEmpiezaOscurecer = 20.0f;
+    private float horaEmpiezaOscurecer = 20.0f;
     private float horaEfecto = 20.8333f;
 
     [Header("Recompensas")]
     [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
- 
-    
+
+
 
     private RectTransform rectTextoDia;
 
@@ -48,15 +48,15 @@ public class DayNightCycle : MonoBehaviour
     void Update()
     {
 
-        
+
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorVelocidad ;
+            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorVelocidad;
             float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
             // 1. Control de Rotación
             float anguloActual = Mathf.Lerp(anguloInicial, anguloFinal, porcentaje);
-            if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);  
+            if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
 
             // 2. Control de Reloj
             ActualizarReloj(porcentaje);
@@ -73,15 +73,10 @@ public class DayNightCycle : MonoBehaviour
             GameManager.instance.numeroDia++;
             Rewards("Bags");
             Rewards("Collectables");
-        }
-
-
-        if (GameManager.instance.DiaActual != GameManager.instance.numeroDia)
-        {
             SceneManager.LoadScene(scenename.Value);
-            GameManager.instance.DiaActual++;
             RewardBagManager.EvaluateAllBags(elementslist);
         }
+
     }
     void Rewards(string type)
     {
@@ -89,84 +84,95 @@ public class DayNightCycle : MonoBehaviour
         {
             if (GameManager.instance.numeroDia == 2)
             {
-                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Red Dragon desbloqueado");
+                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Red Dragon desbloqueado", 5f, type);
             }
             else if (GameManager.instance.numeroDia == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Uchuva desbloqueado");
+                GameManager.instance.MostrarMensajeTemporal($"!Dia {GameManager.instance.numeroDia}¡ Saco de semillas Uchuva desbloqueado", 5f, type);
+            }
+        }
+        else if (type == "Collectables")
+        {
+            if (GameManager.instance.numeroDia == 2 && GameManager.instance.miniPandasHambrientos == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡mini pandas 3/3 coleccionable carta desbloqueado", 5f, type);
+            }
+            else if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡mini pandas 3/3! coleccionable muñeco desbloqueado", 5f, type);
             }
         }
     }
 
 
-    void ActualizarReloj(float pct)
-    {
-        if (textoReloj == null) return;
-
-        // Calculamos el total de minutos entre las 8:00 y las 21:00
-        float minutosInicio = horaInicio * 60;
-        float minutosFin = horaFin * 60;
-
-        // Calculamos cuántos minutos han pasado según el porcentaje del ciclo
-        GameManager.instance.minutosActualesTotales = Mathf.Lerp(minutosInicio, minutosFin, pct);
-
-        // Convertimos esos minutos totales a formato HH:mm
-        int horas = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales / 60);
-        int minutos = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales % 60);
-
-        // Actualizamos el texto con formato de dos dígitos (00:00)
-        textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
-    }
-    void ActualizarFundido()
-    {
-        if (fadeImage == null) return;
-
-        // Convertimos la hora actual de minutos totales a formato 24h decimal
-        float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
-        
-         
-        if (horaActualDecimal > horaEmpiezaOscurecer)
+        void ActualizarReloj(float pct)
         {
-            // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
-            // Esto nos da un valor entre 0 y 1
-            float progresoOscurecimiento = (horaActualDecimal - horaEmpiezaOscurecer) / (horaFin - horaEmpiezaOscurecer);
+            if (textoReloj == null) return;
 
-            // Aplicamos ese progreso al Alpha de la imagen
-            Color c = fadeImage.color;
-            c.a = Mathf.Clamp01(progresoOscurecimiento);
-            fadeImage.color = c;
+            // Calculamos el total de minutos entre las 8:00 y las 21:00
+            float minutosInicio = horaInicio * 60;
+            float minutosFin = horaFin * 60;
+
+            // Calculamos cuántos minutos han pasado según el porcentaje del ciclo
+            GameManager.instance.minutosActualesTotales = Mathf.Lerp(minutosInicio, minutosFin, pct);
+
+            // Convertimos esos minutos totales a formato HH:mm
+            int horas = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales / 60);
+            int minutos = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales % 60);
+
+            // Actualizamos el texto con formato de dos dígitos (00:00)
+            textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
         }
-        else
+        void ActualizarFundido()
         {
-            
-            // Si aún no son las 20:00, aseguramos que sea invisible
-            Color c = fadeImage.color;
-            c.a = 0f;
-            fadeImage.color = c;
-        }
- 
+            if (fadeImage == null) return;
 
-    }
-    void ActualizarTexto()
-    {
-        float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
-        if (horaActualDecimal > horaEfecto)
+            // Convertimos la hora actual de minutos totales a formato 24h decimal
+            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+
+
+            if (horaActualDecimal > horaEmpiezaOscurecer)
+            {
+                // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
+                // Esto nos da un valor entre 0 y 1
+                float progresoOscurecimiento = (horaActualDecimal - horaEmpiezaOscurecer) / (horaFin - horaEmpiezaOscurecer);
+
+                // Aplicamos ese progreso al Alpha de la imagen
+                Color c = fadeImage.color;
+                c.a = Mathf.Clamp01(progresoOscurecimiento);
+                fadeImage.color = c;
+            }
+            else
+            {
+
+                // Si aún no son las 20:00, aseguramos que sea invisible
+                Color c = fadeImage.color;
+                c.a = 0f;
+                fadeImage.color = c;
+            }
+
+
+        }
+        void ActualizarTexto()
         {
-            textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
+            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+            if (horaActualDecimal > horaEfecto)
+            {
+                textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
 
-            // Centrar instantáneamente
-            rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
-            rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
-            rectTextoDia.pivot = new Vector2(0.5f, 0.5f);
-            rectTextoDia.anchoredPosition = Vector2.zero;
+                // Centrar instantáneamente
+                rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
+                rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
+                rectTextoDia.pivot = new Vector2(0.5f, 0.5f);
+                rectTextoDia.anchoredPosition = Vector2.zero;
 
-            // Tamaño grande y alineación
-            textoDia.fontSize = 80f; // Ajusta este número a tu gusto
-            textoDia.alignment = TextAlignmentOptions.Center;
+                // Tamaño grande y alineación
+                textoDia.fontSize = 80f; // Ajusta este número a tu gusto
+                textoDia.alignment = TextAlignmentOptions.Center;
+            }
+            else
+            {
+                textoDia.text = "Día " + GameManager.instance.numeroDia;
+            }
         }
-        else
-        {
-            textoDia.text = "Día " + GameManager.instance.numeroDia;
-        }
-    }
 }

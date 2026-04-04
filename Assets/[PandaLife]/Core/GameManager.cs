@@ -28,10 +28,13 @@ public class GameManager : MonoBehaviour
     public float minutosActualesTotales;
     public int numeroDia = 1;
     public float multiplicadorVelocidad = 1f;
-    public float DiaActual = 1;
 
     [Header("Recompensas")]
     public TextMeshProUGUI messageRewardSacks;
+    public TextMeshProUGUI messageRewardCollectable;
+
+    [Header("Mini pandas")]
+    public int miniPandasHambrientos = 3;
 
     void Start()
     {
@@ -120,20 +123,28 @@ public class GameManager : MonoBehaviour
         if (textoBayaUchuva != null)
             textoBayaUchuva.text = "x " + bayauchuva.ToString();
     }
-    public void MostrarMensajeTemporal(string mensaje, float duracion = 5f)
+    public void MostrarMensajeTemporal(string mensaje, float duracion, string type)
     {
-        StartCoroutine(MensajeRoutine(mensaje, duracion));
+        StartCoroutine(MensajeRoutine(mensaje, duracion, type));
     }
     //Recompensas textos temporales
-    private IEnumerator MensajeRoutine(string mensaje, float duracion)
+    private IEnumerator MensajeRoutine(string mensaje, float duracion, string type)
     {
-        messageRewardSacks.text = mensaje;
-        messageRewardSacks.gameObject.SetActive(true);
-
-        yield return new WaitForSeconds(duracion);
-
-        messageRewardSacks.text = "";
-        messageRewardSacks.gameObject.SetActive(false);
+        if (type == "Bags")
+        {            messageRewardSacks.text = mensaje;
+            messageRewardSacks.gameObject.SetActive(true);
+            yield return new WaitForSeconds(duracion);
+            messageRewardSacks.text = "";
+            messageRewardSacks.gameObject.SetActive(false);
+        }
+        else if (type == "Collectables")
+        {
+            messageRewardCollectable.text = mensaje;
+            messageRewardCollectable.gameObject.SetActive(true);
+            yield return new WaitForSeconds(duracion);
+            messageRewardCollectable.text = "";
+            messageRewardCollectable.gameObject.SetActive(false);
+        }
     }
 
 }
