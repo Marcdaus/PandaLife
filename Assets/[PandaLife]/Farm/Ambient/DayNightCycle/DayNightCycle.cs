@@ -9,8 +9,11 @@ using System.Collections;
 
 public class DayNightCycle : MonoBehaviour
 {
-    [SerializeField] private GameString scenename;
+    [Header("Configuración Escenas")]
+    [SerializeField] private GameString homeScene;
+    [SerializeField] private GameString theEnd;
     [SerializeField] private bool isInto = false;
+
     [Header("Configuración de Rotación")]
     [SerializeField] private float anguloInicial = -10f;
     [SerializeField] private float anguloFinal = 200f;
@@ -73,8 +76,14 @@ public class DayNightCycle : MonoBehaviour
             GameManager.instance.numeroDia++;
             Rewards("Bags");
             Rewards("Collectables");
-            SceneManager.LoadScene(scenename.Value);
+            SceneManager.LoadScene(homeScene.Value);
             RewardBagManager.EvaluateAllBags(elementslist);
+
+            if(GameManager.instance.numeroDia == 4)
+            {
+                GameManager.instance.numeroDia = 1;
+                SceneManager.LoadScene(theEnd.Value);
+            }
         }
 
     }
@@ -156,7 +165,7 @@ public class DayNightCycle : MonoBehaviour
         void ActualizarTexto()
         {
             float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
-            if (horaActualDecimal > horaEfecto)
+            if (horaActualDecimal > horaEfecto && GameManager.instance.numeroDia < 3)
             {
                 textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
 
@@ -167,7 +176,7 @@ public class DayNightCycle : MonoBehaviour
                 rectTextoDia.anchoredPosition = Vector2.zero;
 
                 // Tamaño grande y alineación
-                textoDia.fontSize = 80f; // Ajusta este número a tu gusto
+                textoDia.fontSize = 80f;
                 textoDia.alignment = TextAlignmentOptions.Center;
             }
             else
