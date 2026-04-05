@@ -89,6 +89,14 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    public void quitarBambu()
+    {
+       bambuverde = 0;
+       bamburojo = 0;
+       bayaarandanos = 0;
+       bayauchuva = 0;
+       ActualizarInventarioUI();
+    }
 
 
     public void ActualizarUIManual()

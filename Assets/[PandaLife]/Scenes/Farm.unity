@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menucauldron: {fileID: 0}
 --- !u!114 &200892163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2557,69 +2558,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 200892159}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Cheat_cambiarDia
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CheatMenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1282254319583798299, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 200892159}
     - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Cheat_cambiarDia
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CheatMenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328375569157219052, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 200892159}
+    - target: {fileID: 4027832354484856713, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 200892159}
     - target: {fileID: 4158139926832371322, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2629,37 +2578,9 @@ PrefabInstance:
       value: CanvasCheatMenu
       objectReference: {fileID: 0}
     - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 200892159}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Cheat_cambiarDia
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: CheatMenuManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7621325505870409932, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 8305013933618087655, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
