@@ -112,9 +112,11 @@ public class MenuCauldron : MonoBehaviour
         // Spawn del plato
         if (receta.prefabResultado != null) {
             cauldron.SpawnDish(receta.prefabResultado, panelcauldron.activeSelf);
-    }
+        }
         foreach (RecipeCard tarjeta in tarjetas)
             tarjeta.CheckUnblock();
+
+        worldpanelbar.SetActive(false);
 
         yield return new WaitForSeconds(2f);
         panelcooking.SetActive(false);
