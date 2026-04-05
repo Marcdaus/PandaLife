@@ -83,7 +83,7 @@ public class RecipeCard : MonoBehaviour
         cookingbutton.interactable = false;
         cookingbutton.image.color = Color.black;
         if (iconocandado != null) iconocandado.SetActive(true);
-        // aquí pondremos el candado
+        // aquí ponemos luego el candado
     }
 
     public void Block()

@@ -93,11 +93,11 @@ public class DayNightCycle : MonoBehaviour
         {
             if (GameManager.instance.numeroDia == 2)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado, Receta Ensalada de Bambú Desbloqueada", 5f, type);
             }
             else if (GameManager.instance.numeroDia == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado, Receta de Sopa de Bayas Desbloqueada, Receta de Boba Tea Desbloqueada", 5f, type);
             }
         }
         else if (type == "Collectables")
