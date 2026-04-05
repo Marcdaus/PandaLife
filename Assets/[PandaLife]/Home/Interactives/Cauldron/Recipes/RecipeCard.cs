@@ -71,6 +71,8 @@ public class RecipeCard : MonoBehaviour
 
     public void CheckUnblock()
     {
+        Debug.Log($"{receta.nombrereceta} - DiaDesbloqueo: {receta.diadesbloqueado} - DiaActual: {GameManager.instance.numeroDia}");
+
         if (GameManager.instance.numeroDia < receta.diadesbloqueado)
         {
             BlockedByDay();
@@ -91,13 +93,10 @@ public class RecipeCard : MonoBehaviour
     {
         cookingbutton.interactable = false;
         cookingbutton.image.color = Color.gray;
-        if (iconocandado != null) iconocandado.SetActive(false);
-
     }
 
     public void UnBlock()
     {
-
         cookingbutton.interactable = true;
         cookingbutton.image.color = colorOriginal;
         if (iconocandado != null) iconocandado.SetActive(false);

@@ -15,4 +15,5 @@ public class RecipesData : ScriptableObject
     [Header("Resultados")]
     public int saciedad;
     public int tiempopreparacion;
+    public GameObject prefabResultado;
 }

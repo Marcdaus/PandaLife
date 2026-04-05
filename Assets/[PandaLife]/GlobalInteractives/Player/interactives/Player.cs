@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float detectionradius = 1f;
     public LayerMask interactlayer;
 
-    private PickupDrop pickedobject = null; // referencia al objeto que tienes en la mano
+    public PickupDrop pickedobject = null; // referencia al objeto que tienes en la mano
 
     // Guardar el objeto prioritario detectado
     private object currentTarget = null;
@@ -104,48 +104,58 @@ public class Player : MonoBehaviour
         // 4. Otros objetos si no hay cubo, cosecha ni riego
         if (bucketTarget == null && harvesttarget == null && watertarget == null)
         {
+            // Prioridad 1: caldero con plato pendiente
             foreach (Collider col in detected)
             {
-                IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
-
-                if (interactuable != null)
+                Cauldron cauldron = col.GetComponentInParent<Cauldron>();
+                if (cauldron != null && cauldron.tieneplatopendiente)
                 {
-                    // Ignorar el objeto que ya tenemos en las manos
-                    Component interactuableComp = interactuable as Component;
-                    if (interactuableComp != null && pickedobject != null && interactuableComp.gameObject == pickedobject.gameObject)
-                    {
-                        continue;
-                    }
-
-                    // Si tenemos el cubo en la mano, ignorar lo que no sea el río
-                    if (IsHoldingBucket() && !(interactuable is River))
-                    {
-                        continue;
-                    }
-                    // Ignorar el río si NO tenemos el cubo en la mano
-                    if (interactuable is River && !IsHoldingBucket())
-                    {
-                        continue;
-                    }
-
-                    // Ignorar la tierra si ya hay algo plantado en ella
-                    if (interactuableComp != null)
-                    {
-                        FarmingArea area = interactuableComp.GetComponent<FarmingArea>();
-                        // Si es una zona de cultivo y la variable ThereIsSomething es true pasamos
-                        if (area != null && area.ThereIsSomething)
-                        {
-                            continue;
-                        }
-                    }
-                    if (interactuable is Harvest || interactuable is WaterCrop)
-                    {
-                        continue;
-                    }
-
-                    // objetivo real
-                    othertarget = interactuable;
+                    othertarget = cauldron;
                     break;
+                }
+            }
+
+            // Prioridad 2: plato en el suelo
+            if (othertarget == null && pickedobject == null)
+            {
+                foreach (Collider col in detected)
+                {
+                    PickupDrop pickup = col.GetComponentInParent<PickupDrop>();
+                    if (pickup != null && pickup.GetComponent<BucketWater>() == null)
+                    {
+                        othertarget = pickup;
+                        break;
+                    }
+                }
+            }
+
+            // Si no hay caldero con plato pendiente, buscar cualquier interactuable
+            if (othertarget == null)
+            {
+                foreach (Collider col in detected)
+                {
+                    IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
+                    if (interactuable != null)
+                    {
+                        Component interactuableComp = interactuable as Component;
+                        if (interactuableComp != null && pickedobject != null && interactuableComp.gameObject == pickedobject.gameObject)
+                            continue;
+                        if (IsHoldingBucket() && !(interactuable is River))
+                            continue;
+                        if (interactuable is River && !IsHoldingBucket())
+                            continue;
+                        if (interactuableComp != null)
+                        {
+                            FarmingArea area = interactuableComp.GetComponent<FarmingArea>();
+                            if (area != null && area.ThereIsSomething)
+                                continue;
+                        }
+                        if (interactuable is Harvest || interactuable is WaterCrop)
+                            continue;
+
+                        othertarget = interactuable;
+                        break;
+                    }
                 }
             }
         }
@@ -173,6 +183,7 @@ public class Player : MonoBehaviour
         else if (othertarget != null)
         {
             currentTarget = othertarget;
+
 
             // Si es un objeto genérico, leemos el texto de su Inspector
             Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
@@ -202,6 +213,7 @@ public class Player : MonoBehaviour
         // Miramos de qué tipo es el objeto que guardamos en "currentTarget" y ejecutamos su función
         if (currentTarget is PickupDrop bucket)
         {
+            bucket.SetHandpoint(handpoint.transform);
             bucket.PickUp();
             pickedobject = bucket;
         }
@@ -261,9 +273,9 @@ public class Player : MonoBehaviour
             Debug.Log("No puedes plantar mientras sostienes el cubo");
             return;
         }
-
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
+            cube.SetHandpoint(handpoint.transform);
             cube.PickUp();
             pickedobject = cube;
         }
@@ -285,5 +297,10 @@ public class Player : MonoBehaviour
     public PickupDrop GetBucket()
     {
         return pickedobject;
+    }
+
+    public void SetPickedObject(PickupDrop obj)
+    {
+        pickedobject = obj;
     }
 }
