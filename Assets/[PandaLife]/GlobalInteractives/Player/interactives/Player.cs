@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -15,6 +16,9 @@ public class Player : MonoBehaviour
     // Guardar el texto para mostrar en la pantalla
     private string currentActionText = "";
 
+    [SerializeField] private GameObject handpoint;
+    [SerializeField] private GameObject bucket;
+    [SerializeField] private bool isinto = false;
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -82,15 +86,17 @@ public class Player : MonoBehaviour
         }
 
         // 3. Buscar riego solo si no hay cubo ni cosecha
-        if (bucketTarget == null && harvesttarget == null)
-        {
-            foreach (Collider col in detected)
+        if(isinto == false) {
+            if (bucketTarget == null && harvesttarget == null && handpoint.transform.Find(bucket.name))
             {
-                WaterCrop watercrop = col.GetComponentInParent<WaterCrop>();
-                if (watercrop != null && CanWater(watercrop))
+                foreach (Collider col in detected)
                 {
-                    watertarget = watercrop;
-                    break;
+                    WaterCrop watercrop = col.GetComponentInParent<WaterCrop>();
+                    if (watercrop != null && CanWater(watercrop))
+                    {
+                        watertarget = watercrop;
+                        break;
+                    }
                 }
             }
         }
