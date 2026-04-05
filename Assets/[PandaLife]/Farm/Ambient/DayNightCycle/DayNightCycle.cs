@@ -72,18 +72,18 @@ public class DayNightCycle : MonoBehaviour
         }
         else
         {
+            
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
+            RewardBagManager.EvaluateAllBags(elementslist);
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
-            RewardBagManager.EvaluateAllBags(elementslist);
-
-            if(GameManager.instance.numeroDia == 4)
-            {
-                GameManager.instance.numeroDia = 1;
-                SceneManager.LoadScene(theEnd.Value);
-            }
+        }
+        if (GameManager.instance.numeroDia == 4)
+        {
+            GameManager.instance.numeroDia = 1;
+            SceneManager.LoadScene(theEnd.Value);
         }
 
     }
