@@ -85,6 +85,7 @@ public class DayNightCycle : MonoBehaviour
         if (GameManager.instance.numeroDia == 4)
         {
             GameManager.instance.numeroDia = 1;
+            GameManager.instance.quitarBambu();
             SceneManager.LoadScene(theEnd.Value);
         }
 

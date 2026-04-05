@@ -40,6 +40,13 @@ public class CheatMenuManager : MonoBehaviour
         GameManager.instance.sumarBambu(10, 4);
         Debug.Log("CHEAT: +10 Bambú");
     }
+    public void Cheat_QuitarBambu()
+    {
+        GameManager.instance.quitarBambu();
+
+        Debug.Log("CHEAT: 0 Bambú");
+    }
+
     public void Cheat_acelerardia()
     {
         if(GameManager.instance.multiplicadorVelocidad == 1f)
@@ -76,7 +83,7 @@ public class CheatMenuManager : MonoBehaviour
         MenuCauldron menuCauldron = FindAnyObjectByType<MenuCauldron>();
         if (menuCauldron != null)
             menuCauldron.RefreshCards();
-    }   
+    }
 
 
 }
