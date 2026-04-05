@@ -27,7 +27,9 @@ public class MenuCauldron : MonoBehaviour
     {
         panelcauldron.SetActive(true);
         panelcooking.SetActive(false);
-        panelcauldron.SetActive(false); // volver a desactivar
+
+        worldpanelbar.SetActive(false);
+        panelcauldron.SetActive(false);
 
     }
 
