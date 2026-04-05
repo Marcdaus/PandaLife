@@ -4,6 +4,7 @@ using UnityEngine;
 public class CheatMenuManager : MonoBehaviour
 {
     private GameObject cheatPanel;
+    [SerializeField] private MenuCauldron menucauldron;
 
     void Start()
     {
@@ -72,6 +73,9 @@ public class CheatMenuManager : MonoBehaviour
         DayNightCycle.Rewards("Bags");
         DayNightCycle.Rewards("Collectables");
 
+        MenuCauldron menuCauldron = FindAnyObjectByType<MenuCauldron>();
+        if (menuCauldron != null)
+            menuCauldron.RefreshCards();
     }   
 
 
