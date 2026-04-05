@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     [Header("Recompensas")]
     public TextMeshProUGUI messageRewardSacks;
     public TextMeshProUGUI messageRewardCollectable;
+    public bool tedypersistente = false;
+    public bool notepersistente = false;
 
     [Header("Mini pandas")]
     public int miniPandasHambrientos = 3;

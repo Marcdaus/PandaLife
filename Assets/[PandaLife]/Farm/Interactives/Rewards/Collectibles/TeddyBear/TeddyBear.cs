@@ -7,9 +7,13 @@ public class TeddyBear : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia >= 3 && GameManager.instance.miniPandasHambrientos == 3)
+        if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
         {
-            Debug.Log("TeddyBear desbloqueado");
+            GameManager.instance.tedypersistente = true;
+            return true;
+        }
+        if (GameManager.instance.tedypersistente)
+        {
             return true;
         }
         return false;

@@ -1,5 +1,7 @@
 using System.Security.Cryptography;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CheatMenuManager : MonoBehaviour
 {
@@ -62,7 +64,21 @@ public class CheatMenuManager : MonoBehaviour
         }
 
     }
-    public void Cheat_cambiarDia(int dia)
+    
+    public void Cheat_adelantardia()
+    {
+        GameManager.instance.tiempoTranscurrido = 280.0f;
+    }
+    public void Cheat_Volver_dia1()
+    {
+        GameManager.instance.tedypersistente = false;
+        GameManager.instance.notepersistente = false;
+        GameManager.instance.numeroDia = 1;
+        GameManager.instance.quitarBambu();
+        SceneManager.LoadScene("Home");
+    }
+
+    /*public void Cheat_cambiarDia(int dia)
     {
         Debug.Log("Has seleccionado el día: " + dia);
 
@@ -84,7 +100,7 @@ public class CheatMenuManager : MonoBehaviour
         MenuCauldron menuCauldron = FindAnyObjectByType<MenuCauldron>();
         if (menuCauldron != null)
             menuCauldron.RefreshCards();
-    }
+    }*/
 
 
 }
