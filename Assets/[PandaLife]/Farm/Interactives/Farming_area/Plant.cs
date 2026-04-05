@@ -1,17 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Plant : Interactuable
 {
     private FarmingArea area;
-    public GameObject cropbamboo;
-    public GameObject cropreddragon;
-    public GameObject cropblue_Berry;
-    public GameObject cropuchuva;
-    // Declaramos el enum
-    private enum Cultivo { bamboo, reddragon, blueberry, uchuva }
+    [SerializeField] private List<GameObject> cropslist = new List<GameObject>();
+    [SerializeField] private List<GameObject> childrenlist = new List<GameObject>();
 
-    // Esta es la variable que aparecerá en el Inspector
-    [SerializeField] private Cultivo cultivoSeleccionado;
+    [SerializeField] private GameObject handpoint;
+  
 
     void Awake()
     {
@@ -24,38 +21,34 @@ public class Plant : Interactuable
 
         if (!area.ThereIsSomething)
         {
-            if (cultivoSeleccionado == Cultivo.bamboo)
+
+            GameObject cropselected = ChangePlant();
+            if (cropselected == null)
             {
-                GameObject crop = Instantiate(cropbamboo, area.spawnpoint.position, Quaternion.identity);
-                crop.transform.SetParent(area.transform);
-                area.ThereIsSomething = true;
-                crop.GetComponent<Harvest>().area = area;
+                Debug.Log("No tienes un saco para sembrar");
+                return;
             }
-            else if (cultivoSeleccionado == Cultivo.reddragon)
-            {
-                GameObject crop = Instantiate(cropreddragon, area.spawnpoint.position, Quaternion.identity);
-                crop.transform.SetParent(area.transform);
-                area.ThereIsSomething = true;
-                crop.GetComponent<Harvest>().area = area;
-            }
-            else if (cultivoSeleccionado == Cultivo.blueberry)
-            {
-                GameObject crop = Instantiate(cropblue_Berry, area.spawnpoint.position, Quaternion.identity);
-                crop.transform.SetParent(area.transform);
-                area.ThereIsSomething = true;
-                crop.GetComponent<Harvest>().area = area;
-            }
-            else if (cultivoSeleccionado == Cultivo.uchuva)
-            {
-                GameObject crop = Instantiate(cropuchuva, area.spawnpoint.position, Quaternion.identity);
-                crop.transform.SetParent(area.transform);
-                area.ThereIsSomething = true;
-                crop.GetComponent<Harvest>().area = area;
-            }
+            GameObject crop = Instantiate(cropselected, area.spawnpoint.position, Quaternion.identity);
+            crop.transform.SetParent(area.transform);
+            area.ThereIsSomething = true;
+            crop.GetComponent<Harvest>().area = area;
 
             area.sowing();
             area.ThereIsSomething = true; 
             Debug.Log("Sembrado correctamente");
         }
+    }
+    private GameObject ChangePlant()
+    {
+        GameObject crop = null;
+        for (int i = 0; i < childrenlist.Count;i++ )
+        {
+            if (handpoint.transform.Find(childrenlist[i].name))
+            {
+                crop = cropslist[i];
+                break;
+            }
+        }
+        return crop;
     }
 }
