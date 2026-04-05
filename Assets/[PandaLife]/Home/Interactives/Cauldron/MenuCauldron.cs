@@ -20,8 +20,10 @@ public class MenuCauldron : MonoBehaviour
 
     private void Start()
     {
-        panelcauldron.SetActive(false);
+        panelcauldron.SetActive(true);
         panelcooking.SetActive(false);
+        panelcauldron.SetActive(false); // volver a desactivar
+
     }
 
     private void Update()
@@ -107,5 +109,11 @@ public class MenuCauldron : MonoBehaviour
             && gm.bamburojo >= recipe.bamburojo
             && gm.bayaarandanos >= recipe.arandano
             && gm.bayauchuva >= recipe.bayauchuva;
+    }
+
+    public void RefreshCards()
+    {
+        foreach (RecipeCard tarjeta in tarjetas)
+            tarjeta.CheckUnblock();
     }
 }
