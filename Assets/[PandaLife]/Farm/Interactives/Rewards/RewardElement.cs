@@ -13,7 +13,11 @@ public abstract class RewardElement : MonoBehaviour
     {
         if (CheckCondition())
         {
-            Show(); 
+            Show();
+        }
+        else
+        {
+            Hide();
         }
     }
 
@@ -22,6 +26,13 @@ public abstract class RewardElement : MonoBehaviour
         if (element != null)
         {
             element.SetActive(true);
+        }
+    }
+    public void Hide()
+    {
+        if (element != null)
+        {
+            element.SetActive(false);
         }
     }
 }

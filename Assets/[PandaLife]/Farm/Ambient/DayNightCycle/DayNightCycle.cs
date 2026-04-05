@@ -33,10 +33,9 @@ public class DayNightCycle : MonoBehaviour
     private float horaEfecto = 20.8333f;
 
     [Header("Recompensas")]
-    [SerializeField] private  List<RewardElement> elementslist = new List<RewardElement>();
-    [SerializeField] private  RewardElement teddy;
-    [SerializeField] private  RewardElement note;
-
+    [SerializeField] private  List<RewardElement> elementlistbag = new List<RewardElement>();
+    [SerializeField] private RewardElement tedy ;
+    [SerializeField] private RewardElement note;
     [Header("Menú Caldero")]
     [SerializeField] private MenuCauldron menucauldron;
 
@@ -49,7 +48,13 @@ public class DayNightCycle : MonoBehaviour
     {
         duracionEnSegundos = duracionEnMinutos * 60f;
         rectTextoDia = textoDia.GetComponent<RectTransform>();
-        RewardManager.EvaluateAllElements(elementslist);
+
+            RewardManager.EvaluatelElement(note);
+        
+
+            RewardManager.EvaluatelElement(tedy);
+        
+        RewardManager.EvaluateAllElements(elementlistbag);
     }
 
     void Update()
@@ -74,14 +79,13 @@ public class DayNightCycle : MonoBehaviour
             // 4. Control del texto dia
             ActualizarTexto();
 
-            RewardManager.EvaluatelElement(note);
-            RewardManager.EvaluatelElement(teddy);
         }
         else
         {
             
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
+
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
@@ -98,7 +102,7 @@ public class DayNightCycle : MonoBehaviour
     {
         if (type == "Bags")
         {
-            RewardManager.EvaluateAllElements(elementslist);
+            
             if (GameManager.instance.numeroDia == 2)
             {
                 GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado \n ¡Nueva receta desbloqueada!", 5f, type);
@@ -110,6 +114,7 @@ public class DayNightCycle : MonoBehaviour
         }
         else if (type == "Collectables")
         {
+            
             if (GameManager.instance.numeroDia == 2 && GameManager.instance.miniPandasHambrientos == 3)
             {
                 GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable carta desbloqueado", 5f, type);

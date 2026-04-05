@@ -1825,6 +1825,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1631425543}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: tedy
+      value: 
+      objectReference: {fileID: 1932578477}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: teddy
       value: 
       objectReference: {fileID: 1932578477}
@@ -1846,14 +1850,30 @@ PrefabInstance:
       objectReference: {fileID: 8018199601868414255}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: elementslist.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: elementlistbag.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: 'elementslist.Array.data[0]'
       value: 
-      objectReference: {fileID: 1932578477}
+      objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: 'elementslist.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1631425543}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: elementlistcollectable.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: 'elementlistcollectable.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1932578477}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: 'elementlistcollectable.Array.data[1]'
       value: 
       objectReference: {fileID: 1631425543}
     - target: {fileID: 8597119396594009098, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
