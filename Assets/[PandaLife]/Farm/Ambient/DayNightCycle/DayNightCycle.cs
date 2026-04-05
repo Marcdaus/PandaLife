@@ -87,7 +87,7 @@ public class DayNightCycle : MonoBehaviour
         }
 
     }
-    void Rewards(string type)
+    public static void Rewards(string type)
     {
         if (type == "Bags")
         {

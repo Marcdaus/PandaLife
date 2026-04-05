@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class CheatMenuManager : MonoBehaviour
@@ -52,17 +53,25 @@ public class CheatMenuManager : MonoBehaviour
         }
 
     }
-    public void Cheat_cambiardia1()
+    public void Cheat_cambiarDia(int dia)
     {
-        GameManager.instance.numeroDia = 1;
-    }
-    public void Cheat_cambiardia2()
-    {
-        GameManager.instance.numeroDia = 2;
-    }
-    public void Cheat_cambiardia3()
-    {
-        GameManager.instance.numeroDia = 3;
+        Debug.Log("Has seleccionado el día: " + dia);
+
+        switch (dia)
+        {
+            case 1:
+                GameManager.instance.numeroDia = 1;
+                break;
+            case 2:
+                GameManager.instance.numeroDia = 2;
+                break;
+            case 3:
+                GameManager.instance.numeroDia = 3;
+                break;
+        }
+        DayNightCycle.Rewards("Bags");
+        DayNightCycle.Rewards("Collectables");
+
     }   
 
 
