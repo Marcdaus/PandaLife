@@ -33,7 +33,9 @@ public class DayNightCycle : MonoBehaviour
     private float horaEfecto = 20.8333f;
 
     [Header("Recompensas")]
-    [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
+    [SerializeField] private  List<RewardElement> elementslist = new List<RewardElement>();
+    [SerializeField] private  RewardElement teddy;
+    [SerializeField] private  RewardElement note;
 
     [Header("Menú Caldero")]
     [SerializeField] private MenuCauldron menucauldron;
@@ -47,7 +49,7 @@ public class DayNightCycle : MonoBehaviour
     {
         duracionEnSegundos = duracionEnMinutos * 60f;
         rectTextoDia = textoDia.GetComponent<RectTransform>();
-        RewardBagManager.EvaluateAllBags(elementslist);
+        RewardManager.EvaluateAllElements(elementslist);
     }
 
     void Update()
@@ -71,13 +73,15 @@ public class DayNightCycle : MonoBehaviour
 
             // 4. Control del texto dia
             ActualizarTexto();
+
+            RewardManager.EvaluatelElement(note);
+            RewardManager.EvaluatelElement(teddy);
         }
         else
         {
             
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
-            RewardBagManager.EvaluateAllBags(elementslist);
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
@@ -90,17 +94,18 @@ public class DayNightCycle : MonoBehaviour
         }
 
     }
-    public static void Rewards(string type)
+    public void Rewards(string type)
     {
         if (type == "Bags")
         {
+            RewardManager.EvaluateAllElements(elementslist);
             if (GameManager.instance.numeroDia == 2)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado /n ¡Nueva receta desbloqueada!", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado \n ¡Nueva receta desbloqueada!", 5f, type);
             }
             else if (GameManager.instance.numeroDia == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado /n ¡Nuevas recetas desbloqueadas! x2", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado \n ¡Nuevas recetas desbloqueadas! x2", 5f, type);
             }
         }
         else if (type == "Collectables")
@@ -111,7 +116,7 @@ public class DayNightCycle : MonoBehaviour
             }
             else if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
             {
-                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable muñeco desbloqueado", 5f, type);
+                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable muñeco desbloqueado", 5f, type); 
             }
         }
     }

@@ -2,10 +2,10 @@ using TMPro;
 using UnityEngine;
 using System.Collections;
 
-public abstract class RewardBagElement : MonoBehaviour
+public abstract class RewardElement : MonoBehaviour
 {
-    [SerializeField] protected int rewardDay;
-    [SerializeField] protected GameObject bag;
+
+    [SerializeField] protected GameObject element;
 
     public abstract bool CheckCondition();
 
@@ -19,9 +19,9 @@ public abstract class RewardBagElement : MonoBehaviour
 
     public void Show()
     {
-        if (bag != null)
+        if (element != null)
         {
-            bag.SetActive(true);
+            element.SetActive(true);
         }
     }
 }

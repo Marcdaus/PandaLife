@@ -5,6 +5,7 @@ public class CheatMenuManager : MonoBehaviour
 {
     private GameObject cheatPanel;
     [SerializeField] private MenuCauldron menucauldron;
+    [SerializeField] private DayNightCycle daynightcycle;
 
     void Start()
     {
@@ -77,8 +78,8 @@ public class CheatMenuManager : MonoBehaviour
                 GameManager.instance.numeroDia = 3;
                 break;
         }
-        DayNightCycle.Rewards("Bags");
-        DayNightCycle.Rewards("Collectables");
+        daynightcycle.Rewards("Bags");
+        daynightcycle.Rewards("Collectables");
 
         MenuCauldron menuCauldron = FindAnyObjectByType<MenuCauldron>();
         if (menuCauldron != null)
