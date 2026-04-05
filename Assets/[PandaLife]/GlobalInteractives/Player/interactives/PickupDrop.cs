@@ -14,6 +14,11 @@ public class PickupDrop : Interactuable
     public void PickUp()
     {
         if (picked) return;
+        if (handpoint == null)
+        {
+            Debug.LogError("Handpoint no asignado en " + gameObject.name);
+            return;
+        }
 
         rb.useGravity = false;
         rb.isKinematic = true;
@@ -48,5 +53,10 @@ public class PickupDrop : Interactuable
     public override void Interactuar()
     {
         PickUp();
+    }
+
+    public void SetHandpoint(Transform newHandpoint)
+    {
+        handpoint = newHandpoint;
     }
 }

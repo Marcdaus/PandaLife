@@ -7,22 +7,29 @@ using UnityEngine.UI;
 public class MenuCauldron : MonoBehaviour
 {
     [SerializeField] private GameObject panelcauldron;
+    [SerializeField] private Cauldron cauldron;
 
     [Header("Cooking")]
     [SerializeField] private GameObject panelcooking;
     [SerializeField] private TextMeshProUGUI cookingtext;
     [SerializeField] private Slider progressbar;
 
-    private static bool cooking = false;
+    private bool cooking = false;
 
     [Header("Tarjetas")]
     [SerializeField] private RecipeCard[] tarjetas;
+
+    [Header("Barra mundo")]
+    [SerializeField] private Slider worldprogressbar;
+    [SerializeField] private GameObject worldpanelbar;
 
     private void Start()
     {
         panelcauldron.SetActive(true);
         panelcooking.SetActive(false);
-        panelcauldron.SetActive(false); // volver a desactivar
+
+        worldpanelbar.SetActive(false);
+        panelcauldron.SetActive(false);
 
     }
 
@@ -37,6 +44,7 @@ public class MenuCauldron : MonoBehaviour
     public void OpenCauldron()
     {
         panelcauldron.SetActive(true);
+        worldpanelbar.SetActive(false);
         if (!cooking)
         {
             foreach (RecipeCard tarjeta in tarjetas)
@@ -47,8 +55,8 @@ public class MenuCauldron : MonoBehaviour
     public void CloseCauldron()
     {
         panelcauldron.SetActive(false);
-        if(!cooking)
-            panelcooking.SetActive(false);
+        if (cooking) worldpanelbar.SetActive(true);
+        else panelcooking.SetActive(false);
     }
 
     public void StartCooking(RecipesData recipe)
@@ -75,7 +83,11 @@ public class MenuCauldron : MonoBehaviour
     {
         cooking = true;
         panelcooking.SetActive(true);
+        worldpanelbar.SetActive(true); 
+
         progressbar.value = 0f;
+        worldprogressbar.value = 0f; 
+
         cookingtext.text = "Cocinando " + receta.nombrereceta + "...";
 
         // Bloquear todas las tarjetas
@@ -89,6 +101,7 @@ public class MenuCauldron : MonoBehaviour
         {
             tiempoTranscurrido += Time.deltaTime;
             progressbar.value = tiempoTranscurrido / tiempoTotal;
+            worldprogressbar.value = tiempoTranscurrido / tiempoTotal;
             yield return null;
         }
 
@@ -96,9 +109,16 @@ public class MenuCauldron : MonoBehaviour
         cookingtext.text = "¡" + receta.nombrereceta + " listo!";
         cooking = false;
 
-        // Desbloquear todas las tarjetas
+        // Spawn del plato
+        if (receta.prefabResultado != null) {
+            cauldron.SpawnDish(receta.prefabResultado, panelcauldron.activeSelf);
+    }
         foreach (RecipeCard tarjeta in tarjetas)
             tarjeta.CheckUnblock();
+
+        yield return new WaitForSeconds(2f);
+        panelcooking.SetActive(false);
+        worldpanelbar.SetActive(false);
 
     }
 
