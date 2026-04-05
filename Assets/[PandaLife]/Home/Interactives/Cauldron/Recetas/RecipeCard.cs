@@ -19,13 +19,14 @@ public class RecipeCard : MonoBehaviour
 
     [SerializeField] private GameObject iconocandado;
 
-    private void Start()
+    private void Awake()
     {
-        ShowRecipe();
         cookingbutton = GetComponent<Button>();
+        colorOriginal = GetComponent<Button>().image.color;
+        if (iconocandado != null) iconocandado.SetActive(false);
+        ShowRecipe();
         cookingbutton.onClick.AddListener(OnClick);
 
-        colorOriginal = GetComponent<Button>().image.color;
     }
 
     private void OnClick()

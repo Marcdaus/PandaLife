@@ -13,7 +13,7 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private TextMeshProUGUI cookingtext;
     [SerializeField] private Slider progressbar;
 
-    private bool cooking = false;
+    private static bool cooking = false;
 
     [Header("Tarjetas")]
     [SerializeField] private RecipeCard[] tarjetas;
@@ -26,7 +26,7 @@ public class MenuCauldron : MonoBehaviour
 
     private void Update()
     {
-        if(panelcauldron.activeSelf && Input.GetButtonDown("SalirMenuCaldero"))
+        if (panelcauldron.activeSelf && Input.GetButtonDown("SalirMenuCaldero"))
         {
             CloseCauldron();
         }

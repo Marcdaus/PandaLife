@@ -29,12 +29,14 @@ public class DayNightCycle : MonoBehaviour
 
     [Header("Efecto de Oscurecimiento y texto")]
     [SerializeField] private Image fadeImage;
-    private float horaEmpiezaOscurecer = 20.0f;
+    private static float horaEmpiezaOscurecer = 20.0f;
     private float horaEfecto = 20.8333f;
 
     [Header("Recompensas")]
     [SerializeField] private List<RewardBagElement> elementslist = new List<RewardBagElement>();
 
+    [Header("Menú Caldero")]
+    [SerializeField] private MenuCauldron menucauldron;
 
 
     private RectTransform rectTextoDia;
@@ -167,7 +169,8 @@ public class DayNightCycle : MonoBehaviour
             float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
             if (horaActualDecimal > horaEfecto && GameManager.instance.numeroDia < 3)
             {
-                textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
+            menucauldron.CloseCauldron();
+            textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
 
                 // Centrar instantáneamente
                 rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
@@ -181,7 +184,8 @@ public class DayNightCycle : MonoBehaviour
             }
             else
             {
-                textoDia.text = "Día " + GameManager.instance.numeroDia;
+            textoDia.text = "Día " + GameManager.instance.numeroDia;
             }
+
         }
 }
