@@ -20,14 +20,21 @@ public class HungerSystem : BarSystem
     // Variable para pausar la barra
     private bool isPaused = false;
 
-    // Variable que activa la ira de un panda
-    private static bool cheatActivated = false;
-    HungerSystem[] allPandas;
+    //Propiedades
+    public RageSystem Ragesystem
+    {
+        get => rageSystem;
+        set => rageSystem = value;
+    }
+
+    public bool RageActivated
+    {
+        get => rageActivated;
+        set => rageActivated = value;
+    }
 
     void Start()
     {
-        //Obtiene a los pandas
-        allPandas = Object.FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
         GenerateDerivedColors();
         // Inicializa valores desde el manager
         if (BarraManager.Instancia != null)
@@ -53,27 +60,36 @@ public class HungerSystem : BarSystem
 
     protected override void Update()
     {
-     
         if (isActive)
             UpdateSystem();
     }
 
     protected override void UpdateValue()
     {
-        if (rageActivated || isPaused) return;
-
-        currentValue -= changeRate * Time.deltaTime; // Disminuye el hambre con el tiempo
-        currentValue = Mathf.Clamp(currentValue, 0, maxValue); //Pone el máximo y el mínimo
-
-        //Guarda el valor  en el manager
+        // Leer valores directamente del manager en tiempo real
         if (BarraManager.Instancia != null)
-            BarraManager.Instancia.HungerCurrentValue = currentValue;
+        {
+            maxValue = BarraManager.Instancia.HungerMaxValue;
+            changeRate = BarraManager.Instancia.HungerChangeRate;
+            rageActivated = BarraManager.Instancia.RageActivated;
+        }
 
-        //Activa la barra de ira
-        if (currentValue <= 0 && rageSystem != null)
+        // Disminuir hambre solo si no está pausada
+        if (!isPaused)
+        {
+            currentValue -= changeRate * Time.deltaTime;
+            currentValue = Mathf.Clamp(currentValue, 0, maxValue);
+
+            if (BarraManager.Instancia != null)
+                BarraManager.Instancia.HungerCurrentValue = currentValue;
+        }
+
+        // Activar ira si llega a 0 o si RageActivated ya está en true
+        if (rageSystem != null && (!rageActivated && currentValue <= 0 || (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)))
         {
             rageActivated = true;
-            if (BarraManager.Instancia != null) BarraManager.Instancia.RageActivated = true;
+            if (BarraManager.Instancia != null)
+                BarraManager.Instancia.RageActivated = true;
 
             Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
@@ -101,36 +117,4 @@ public class HungerSystem : BarSystem
         normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.5f);
         hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.7f);
     }
-
-    // Función para activar la barra de ira de un panda al máximo
-    private void ActivateCheat()
-    {
-        if (!cheatActivated && rageSystem != null)
-        {
-            cheatActivated = true;
-            rageActivated = true;
-
-            if (BarraManager.Instancia != null)
-                BarraManager.Instancia.RageActivated = true;
-
-            // 🔹 Pausar hambre de este panda
-            PauseHunger();
-
-            // 🔹 Pausar hambre de todos los demás pandas
-            
-            foreach (HungerSystem panda in allPandas)
-            {
-                if (panda != this) // No pausar el que activó el cheat
-                {
-                    panda.PauseHunger();
-                }
-            }
-
-            Deactivate();
-            rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
-        }
-    }
-    // Funciones para pausar/reanudar
-    public void PauseHunger() { isPaused = true; }
-    public void ResumeHunger() { isPaused = false; }
 }

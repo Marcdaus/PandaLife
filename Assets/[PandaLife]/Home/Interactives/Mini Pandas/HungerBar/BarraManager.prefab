@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6479141188962369153}
   - component: {fileID: 8239960131543002150}
+  - component: {fileID: 524391270605927879}
   m_Layer: 0
   m_Name: BarraManager
   m_TagString: Untagged
@@ -44,11 +45,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afdae64300c8334bb8e02a39d32fc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerCurrentValue: 100
-  hungerMaxValue: 100
-  hungerChangeRate: 5
-  rageActivated: 0
-  rageCurrentValue: 0
-  rageMaxValue: 100
-  rageChangeRate: 5
-  saciedadOIra: 100
+  HungerCurrentValue: 100
+  HungerMaxValue: 100
+  HungerChangeRate: 5
+  RageActivated: 0
+  RageCurrentValue: 0
+  RageMaxValue: 100
+  RageChangeRate: 5
+--- !u!114 &524391270605927879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2235641847290846742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menucauldron: {fileID: 0}
+  daynightcycle: {fileID: 0}
