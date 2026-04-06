@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3642257978724896819}
   - component: {fileID: 5248873980076209252}
   - component: {fileID: 2283922301970050759}
+  - component: {fileID: 8958001784880312900}
+  - component: {fileID: 8000259469959664285}
   m_Layer: 0
   m_Name: Mini Panda
   m_TagString: Untagged
@@ -80,6 +82,44 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   waitTime: 2
+--- !u!114 &8958001784880312900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697390463127504195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
+  fillImage: {fileID: 0}
+  indicatorImage: {fileID: 0}
+  maxValue: 100
+  currentValue: 0
+  changeRate: 5
+  initialCircleColor: {r: 0.9547169, g: 0.5315432, b: 0.22877175, a: 1}
+  rageSystem: {fileID: 8000259469959664285}
+--- !u!114 &8000259469959664285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697390463127504195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
+  fillImage: {fileID: 0}
+  indicatorImage: {fileID: 0}
+  maxValue: 100
+  currentValue: 0
+  changeRate: 5
 --- !u!1 &5191220348732443675
 GameObject:
   m_ObjectHideFlags: 0
