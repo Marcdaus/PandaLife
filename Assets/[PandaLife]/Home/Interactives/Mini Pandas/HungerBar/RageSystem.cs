@@ -20,13 +20,15 @@ public class RageSystem : BarSystem
         }
     }
 
+    //Activa el estado de Ira
     public void ActivateRage(Slider sharedBar, Image sharedFill, Image sharedIndicator, Color currentFaceColor)
     {
+        //Realiza las asignaciones
         bar = sharedBar;
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
 
-        // Si es una activación fresca (valor 0)
+        // Si el manager existe, obtenemos los valores actuales
         if (BarraManager.Instancia != null && BarraManager.Instancia.RageCurrentValue <= 0)
             currentValue = 0f;
 
@@ -44,6 +46,7 @@ public class RageSystem : BarSystem
             BarraManager.Instancia.RageCurrentValue = currentValue;
     }
 
+    //Cambia el color al pasar el 50% de la barra
     protected override void UpdateColors()
     {
         float percentage = (currentValue / maxValue) * 100f;

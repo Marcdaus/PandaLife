@@ -3,21 +3,29 @@ using UnityEngine.UI;
 
 public abstract class BarSystem : MonoBehaviour, IBarSystem
 {
-    [Header("UI References")]
+    //Variables comunes a ambos sistemas
     [SerializeField] protected Slider bar;
     [SerializeField] protected Image fillImage;
     [SerializeField] protected Image indicatorImage;
 
-    [Header("Settings")]
+    //Variables de la barra
     [SerializeField] protected float maxValue = 100f;
     [SerializeField] protected float currentValue;
     [SerializeField] protected float changeRate = 5f;
 
     protected bool isActive = false;
 
+    // Propiedades
+    public float CurrentValue { get => currentValue; set => currentValue = value; }
+    public float MaxValue { get => maxValue; set => maxValue = value; }
+    public float ChangeRate { get => changeRate; set => changeRate = value; }
+    public bool IsActive => isActive;
+
+
     public virtual void Activate() => isActive = true;
     public virtual void Deactivate() => isActive = false;
 
+    // Método para actualizar la UI y el valor de la barra
     public void UpdateSystem()
     {
         if (!isActive) return;
@@ -43,8 +51,5 @@ public abstract class BarSystem : MonoBehaviour, IBarSystem
     protected abstract void UpdateValue();
     protected abstract void UpdateColors();
 
-    // Propiedades
-    public float CurrentValue { get => currentValue; set => currentValue = value; }
-    public float MaxValue { get => maxValue; set => maxValue = value; }
-    public float ChangeRate { get => changeRate; set => changeRate = value; }
+    
 }
