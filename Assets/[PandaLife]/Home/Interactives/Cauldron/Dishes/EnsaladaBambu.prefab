@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5531168270316349706}
+  - component: {fileID: 8836790190539737235}
   m_Layer: 0
   m_Name: EnsaladaBambu
   m_TagString: Untagged
@@ -32,6 +33,23 @@ Transform:
   - {fileID: 5609089627189762949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8836790190539737235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963523368852234866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saciedad: 0
+  bambuverde: 0
+  bamburojo: 0
+  arandano: 0
+  bayauchuva: 0
 --- !u!1 &8957575411253748905
 GameObject:
   m_ObjectHideFlags: 0

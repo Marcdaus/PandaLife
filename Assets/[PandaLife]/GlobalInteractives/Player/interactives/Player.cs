@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float detectionradius = 1f;
     public LayerMask interactlayer;
 
+    [SerializeField] private RecipesData receta;
+
     public PickupDrop pickedobject = null; // referencia al objeto que tienes en la mano
 
     // Guardar el objeto prioritario detectado
@@ -48,16 +50,16 @@ public class Player : MonoBehaviour
     // Buscar objetos
     void ScanInteractables()
     {
-        // Lanzamos la esfera de detección
+        // Lanzamos la esfera de detecciï¿½n
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        // Variables temporales para ver qué encontramos
+        // Variables temporales para ver quï¿½ encontramos
         PickupDrop bucketTarget = null;
         Harvest harvesttarget = null;
         WaterCrop watertarget = null;
         IInteractuable othertarget = null;
 
-        // 1. Prioridad máxima: coger cubo si hay uno y no estás sosteniendo nada
+        // 1. Prioridad mï¿½xima: coger cubo si hay uno y no estï¿½s sosteniendo nada
         if (pickedobject == null)
         {
             foreach (Collider col in detected)
@@ -185,7 +187,7 @@ public class Player : MonoBehaviour
             currentTarget = othertarget;
 
 
-            // Si es un objeto genérico, leemos el texto de su Inspector
+            // Si es un objeto genï¿½rico, leemos el texto de su Inspector
             Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
             if (interactuableRef != null)
             {
@@ -210,7 +212,7 @@ public class Player : MonoBehaviour
 
     void Interact()
     {
-        // Miramos de qué tipo es el objeto que guardamos en "currentTarget" y ejecutamos su función
+        // Miramos de quï¿½ tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funciï¿½n
         if (currentTarget is PickupDrop bucket)
         {
             bucket.SetHandpoint(handpoint.transform);
@@ -262,7 +264,7 @@ public class Player : MonoBehaviour
         Crop crop = harvest.GetCrop();
         if (crop != null && crop.IsHarvestable()) return true;
 
-        //Debug.Log("Crop null o no está lista para cosechar");
+        //Debug.Log("Crop null o no estï¿½ lista para cosechar");
         return false;
     }
 
@@ -278,6 +280,21 @@ public class Player : MonoBehaviour
             cube.SetHandpoint(handpoint.transform);
             cube.PickUp();
             pickedobject = cube;
+
+            Dish dishComp = pickedobject.GetComponent<Dish>();
+            if (dishComp != null && dishComp.GetSaciedad() == 0)
+            {
+                // Inicializa con la receta correcta antes de usarla
+                dishComp.Initialize(receta); // miReceta debe ser la receta actual que corresponda
+            }
+        }
+        if (interactuable is Minipandas minipanda)
+        {
+            if (CanInteractWithMiniPanda())
+            {
+                minipanda.InteractuarConPlato(pickedobject, this);
+                return;
+            }
         }
         else
         {
@@ -302,5 +319,20 @@ public class Player : MonoBehaviour
     public void SetPickedObject(PickupDrop obj)
     {
         pickedobject = obj;
+    }
+
+    //------------------------------
+
+    bool CanInteractWithMiniPanda()
+    {
+        // Tiene objeto en mano
+        if (pickedobject == null)
+            return false;
+
+        // Es un plato 
+        if (pickedobject.GetComponent<Dish>() == null)
+            return false;
+
+        return true;
     }
 }

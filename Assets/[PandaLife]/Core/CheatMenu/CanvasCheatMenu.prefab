@@ -776,7 +776,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ejemplo
+  m_text: 'Game Over
+
 
 '
   m_isRightToLeft: 0
@@ -1113,7 +1114,7 @@ GameObject:
   - component: {fileID: 1636268858387542826}
   - component: {fileID: 8458614273651356751}
   m_Layer: 5
-  m_Name: Ejemplo
+  m_Name: Pausarhambre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1220,7 +1221,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1636268858387542826}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CheatMenuManager, Assembly-CSharp
+        m_MethodName: Cheat_PausarOReanudarHambre
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4073255212532252129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1247,7 @@ GameObject:
   - component: {fileID: 8203788734754149916}
   - component: {fileID: 5241297045271893572}
   m_Layer: 5
-  m_Name: Ejemplo_01
+  m_Name: Gameover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,7 +1354,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8203788734754149916}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CheatMenuManager, Assembly-CSharp
+        m_MethodName: Cheat_PandasIraMaxima
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4092015026748909681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1490,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatMenuManager, Assembly-CSharp
-        m_MethodName: Cheat_acelerardia
+        m_MethodName: Cheat_Volver_dia1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1892,7 +1917,7 @@ GameObject:
   - component: {fileID: 1226148379925573626}
   - component: {fileID: 226109487578395472}
   m_Layer: 5
-  m_Name: Ejemplo
+  m_Name: Barras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1945,7 +1970,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ejemplo
+  m_text: 'Barras
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2139,7 +2166,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: CheatMenuManager, Assembly-CSharp
-        m_MethodName: Cheat_acelerardia
+        m_MethodName: Cheat_adelantardia
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2462,7 +2489,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Ejemplo
+  m_text: 'Pausar/Reanudar hambre
 
 '
   m_isRightToLeft: 0

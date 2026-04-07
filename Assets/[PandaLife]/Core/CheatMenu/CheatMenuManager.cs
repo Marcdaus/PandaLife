@@ -9,12 +9,19 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
 
+    private float originalHungerChangeRate = 0f;
+
     void Start()
     {
         // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
         if (CheatMenuPersistent.instance != null)
         {
             cheatPanel = CheatMenuPersistent.instance.transform.GetChild(0).gameObject;
+        }
+
+        if (BarraManager.Instancia != null)
+        {
+            originalHungerChangeRate = BarraManager.Instancia.HungerChangeRate;
         }
     }
 
@@ -101,6 +108,35 @@ public class CheatMenuManager : MonoBehaviour
         if (menuCauldron != null)
             menuCauldron.RefreshCards();
     }*/
+    // 🔹 Cheat: Poner a los 3 pandas en estado de ira
+    public void Cheat_PandasIraMaxima()
+    {
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.RageActivated = true;
+            BarraManager.Instancia.RageCurrentValue = BarraManager.Instancia.RageMaxValue;
+        }
 
+        Debug.Log("CHEAT: Todos los pandas en ira máxima");
+    }
+
+    // 🔹 Cheat: Pausar o reanudar la disminución de hambre
+    public void Cheat_PausarOReanudarHambre()
+    {
+        if (BarraManager.Instancia == null) return;
+
+        if (BarraManager.Instancia.HungerChangeRate != 0f)
+        {
+            // Pausar hambre
+            BarraManager.Instancia.HungerChangeRate = 0f;
+            Debug.Log("CHEAT: Disminución de hambre pausada");
+        }
+        else
+        {
+            // Reanudar hambre
+            BarraManager.Instancia.HungerChangeRate = originalHungerChangeRate;
+            Debug.Log("CHEAT: Disminución de hambre reanudada");
+        }
+    }
 
 }

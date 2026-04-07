@@ -26,7 +26,7 @@ public class FarmingArea : MonoBehaviour
         }
         else
         {
-            Debug.Log("ya tienes algo plantado friendo");
+            Debug.Log("ya tienes algo plantado");
         }       
     }
 
