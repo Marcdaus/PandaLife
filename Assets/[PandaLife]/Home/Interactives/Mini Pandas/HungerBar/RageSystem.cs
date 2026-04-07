@@ -38,6 +38,7 @@ public class RageSystem : BarSystem
 
     protected override void UpdateValue()
     {
+        Debug.Log("Hunger actual: " + currentValue + " | Active: " + isActive);
         currentValue += changeRate * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 

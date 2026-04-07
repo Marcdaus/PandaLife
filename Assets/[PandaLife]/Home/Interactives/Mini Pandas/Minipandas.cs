@@ -9,7 +9,7 @@ public class Minipandas : Interactuable
         Dish dish = plato.GetComponent<Dish>();
         if (dish != null)
         {
-            Debug.Log("Saciedad: " + dish.GetSaciedad());
+            Debug.Log("alimentaste con el plato");
         }
 
         plato.Drop();
