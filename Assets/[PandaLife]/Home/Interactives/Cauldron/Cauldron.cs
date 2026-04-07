@@ -51,7 +51,11 @@ public class Cauldron : Interactuable
         }
         else
         {
-            platopendiente = prefab;
+            GameObject plato = Instantiate(prefab);
+            Dish dish = plato.GetComponent<Dish>();
+            dish.Initialize(receta);
+            platopendiente = plato;
+        
             recetaPendiente = receta;
             mensajeInteraccion = "recoger plato";
         }
@@ -59,10 +63,24 @@ public class Cauldron : Interactuable
 
     private void GiveDish()
     {
-        GameObject plato = Instantiate(platopendiente, handpoint.position, Quaternion.identity);
-
+        GameObject plato = platopendiente;
         Dish dish = plato.GetComponent<Dish>();
-        if (dish != null)
+       
+        plato.transform.position = handpoint.position;
+        plato.transform.rotation = Quaternion.identity;
+
+        PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>(); 
+        if (pickup != null)
+        {
+            pickup.SetHandpoint(handpoint);
+            pickup.PickUp();
+            jugador.SetPickedObject(pickup);
+        }
+
+        platopendiente = null;
+        mensajeInteraccion = "abrir menú";
+       
+       /* if (dish != null)
         {
             dish.Initialize(recetaPendiente);
         }
@@ -76,6 +94,6 @@ public class Cauldron : Interactuable
         }
 
         platopendiente = null;
-        mensajeInteraccion = "abrir men�";
+        mensajeInteraccion = "abrir men�"; */
     }
 }

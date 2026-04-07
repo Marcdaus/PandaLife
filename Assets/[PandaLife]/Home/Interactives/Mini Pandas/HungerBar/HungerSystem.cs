@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class HungerSystem : BarSystem
 {
@@ -93,24 +94,27 @@ public class HungerSystem : BarSystem
             if (BarraManager.Instancia != null)
                 BarraManager.Instancia.RageActivated = true;
 
-            Deactivate();
+            isPaused = true;
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
         }
+        Debug.Log("Hambre en Update: " + currentValue);
     }
 
     //Funcion que actualiza los colores de las caras y barras
     protected override void UpdateColors()
     {
-        float percentage = (currentValue / maxValue) * 100f;
-
-        if (fillImage != null)
-            fillImage.color = (percentage >= 80f) ? satisfiedBarColor : (percentage >= 41f) ? normalBarColor : hungryBarColor;
-
-        if (indicatorImage != null)
+        if (!rageActivated) // <-- solo cambia colores si no hay ira
         {
-            Color faceColor = (percentage >= 80f) ? initialCircleColor : (percentage >= 41f) ? normalCircleColor : hungryCircleColor;
-            faceColor.a = 1f;
-            indicatorImage.color = faceColor;
+            float percentage = (currentValue / maxValue) * 100f;
+            if (fillImage != null)
+                fillImage.color = (percentage >= 80f) ? satisfiedBarColor : (percentage >= 41f) ? normalBarColor : hungryBarColor;
+
+            if (indicatorImage != null)
+            {
+                Color faceColor = (percentage >= 80f) ? initialCircleColor : (percentage >= 41f) ? normalCircleColor : hungryCircleColor;
+                faceColor.a = 1f;
+                indicatorImage.color = faceColor;
+            }
         }
     }
     //Hace que las caras varien de color a otro tono
@@ -118,5 +122,38 @@ public class HungerSystem : BarSystem
     {
         normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.5f);
         hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.7f);
+    }
+
+    public void Restaurar(float cantidad)
+    {
+        float amount = (cantidad / 100f) * maxValue;
+
+        currentValue += amount;
+        currentValue = Mathf.Clamp(currentValue, 0, maxValue);
+
+        if (BarraManager.Instancia != null)
+        BarraManager.Instancia.HungerCurrentValue = currentValue;
+
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.HungerCurrentValue = currentValue;
+        }
+
+        Debug.Log("Nueva hambre: " + currentValue);
+
+         UpdateUI();
+
+    }
+
+    public void PauseHunger(float seconds)
+    {
+        StartCoroutine(PauseRoutine(seconds));
+    }
+
+    private IEnumerator PauseRoutine(float seconds)
+    {
+        isPaused = true;
+        yield return new WaitForSeconds(seconds);
+        isPaused = false;
     }
 }

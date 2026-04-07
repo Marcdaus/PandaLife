@@ -19,7 +19,6 @@ public class RageSystem : BarSystem
         {
             currentValue = BarraManager.Instancia.RageCurrentValue;
             maxValue = BarraManager.Instancia.RageMaxValue;
-            changeRate = BarraManager.Instancia.RageChangeRate;
             Activate();
             UpdateUI();
         }

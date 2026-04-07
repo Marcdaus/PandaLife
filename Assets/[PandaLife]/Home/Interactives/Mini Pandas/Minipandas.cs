@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class Minipandas : Interactuable
 {
+
+    private HungerSystem hungerSystem;
+    void Awake()
+    {
+        hungerSystem = GetComponent<HungerSystem>();
+    }
+
     public void InteractuarConPlato(PickupDrop plato, Player player)
     {
         Debug.Log("Mini panda se come el plato ");
@@ -9,7 +16,10 @@ public class Minipandas : Interactuable
         Dish dish = plato.GetComponent<Dish>();
         if (dish != null)
         {
+            int saciedad = dish.GetSaciedad();
             Debug.Log("alimentaste con el plato");
+            hungerSystem.Restaurar(20);
+            hungerSystem.PauseHunger(5f);
         }
 
         plato.Drop();
