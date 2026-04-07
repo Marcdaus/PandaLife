@@ -9,13 +9,13 @@ public class BarraManager : MonoBehaviour
    
     public float HungerCurrentValue = 100f;
     public float HungerMaxValue = 100f;
-    public float HungerChangeRate = 5f;
+    public float HungerChangeRate = 1f;
 
     
     public bool RageActivated = false;
     public float RageCurrentValue = 0f;
     public float RageMaxValue = 100f;
-    public float RageChangeRate = 5f;
+    public float RageChangeRate = 1f;
 
     private void Awake()
     {

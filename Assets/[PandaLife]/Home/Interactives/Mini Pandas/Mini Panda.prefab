@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 2283922301970050759}
   - component: {fileID: -1311684679302540139}
   - component: {fileID: 7793113910654388182}
+  - component: {fileID: -8230807787575040685}
+  - component: {fileID: 4816879433320051377}
+  - component: {fileID: -2163482778149182526}
   m_Layer: 9
   m_Name: Mini Panda
   m_TagString: Untagged
@@ -118,6 +121,59 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!114 &-8230807787575040685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697390463127504195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a793406f6cc54534bb604e199c6c042, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hungerSystem: {fileID: 0}
+  rageSystem: {fileID: 0}
+  barraUI: {fileID: 0}
+--- !u!114 &4816879433320051377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697390463127504195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
+  fillImage: {fileID: 0}
+  indicatorImage: {fileID: 0}
+  maxValue: 100
+  currentValue: 0
+  changeRate: 1
+  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
+  rageSystem: {fileID: 0}
+--- !u!114 &-2163482778149182526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697390463127504195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bar: {fileID: 0}
+  fillImage: {fileID: 0}
+  indicatorImage: {fileID: 0}
+  maxValue: 100
+  currentValue: 0
+  changeRate: 1
 --- !u!1 &5191220348732443675
 GameObject:
   m_ObjectHideFlags: 0

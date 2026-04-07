@@ -7,6 +7,11 @@ public class RageSystem : BarSystem
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
     private Color lockedFaceColor = Color.red;
 
+    void Awake()
+    {
+        Deactivate();
+    }
+
     void Start()
     {
         // Si al cargar escena el manager dice que la ira está activa, recuperamos datos

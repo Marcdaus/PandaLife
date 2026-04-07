@@ -41,7 +41,7 @@ public class HungerSystem : BarSystem
         {
             currentValue = BarraManager.Instancia.HungerCurrentValue;
             maxValue = BarraManager.Instancia.HungerMaxValue;
-            changeRate = BarraManager.Instancia.HungerChangeRate;
+            //changeRate = BarraManager.Instancia.HungerChangeRate;
             rageActivated = BarraManager.Instancia.RageActivated;
         }
         //Si la ira ya está activada, muestra la barra de ira
@@ -56,6 +56,8 @@ public class HungerSystem : BarSystem
         }
         // Actualiza la UI
         UpdateUI();
+       Debug.Log("ira al iniciar: " + rageActivated);
+
     }
 
     protected override void Update()
@@ -70,7 +72,7 @@ public class HungerSystem : BarSystem
         if (BarraManager.Instancia != null)
         {
             maxValue = BarraManager.Instancia.HungerMaxValue;
-            changeRate = BarraManager.Instancia.HungerChangeRate;
+            //changeRate = BarraManager.Instancia.HungerChangeRate;
             rageActivated = BarraManager.Instancia.RageActivated;
         }
 
