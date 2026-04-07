@@ -106,12 +106,12 @@ public class MenuCauldron : MonoBehaviour
         }
 
         progressbar.value = 1f;
-        cookingtext.text = "¡" + receta.nombrereceta + " listo!";
+        cookingtext.text = "ï¿½" + receta.nombrereceta + " listo!";
         cooking = false;
 
         // Spawn del plato
         if (receta.prefabResultado != null) {
-            cauldron.SpawnDish(receta.prefabResultado, panelcauldron.activeSelf);
+            cauldron.SpawnDish(receta.prefabResultado, receta, panelcauldron.activeSelf);
         }
         foreach (RecipeCard tarjeta in tarjetas)
             tarjeta.CheckUnblock();

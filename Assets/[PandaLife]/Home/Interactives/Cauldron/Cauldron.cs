@@ -8,12 +8,13 @@ public class Cauldron : Interactuable
     [SerializeField] private Player jugador;
 
     private GameObject platopendiente = null;
+    private RecipesData recetaPendiente;
 
     public bool tieneplatopendiente => platopendiente != null;
 
     public override void Interactuar()
     {
-        // Si hay un plato pendiente de recoger, dárselo al jugador
+        // Si hay un plato pendiente de recoger, dï¿½rselo al jugador
         if (platopendiente != null)
         {
             GiveDish();
@@ -24,12 +25,20 @@ public class Cauldron : Interactuable
             cauldronmenuUI.OpenCauldron();
     }
 
-    public void SpawnDish(GameObject prefab, bool menuabierto)
+    //public void SpawnDish(GameObject prefab, bool menuabierto)
+    public void SpawnDish(GameObject prefab, RecipesData receta, bool menuabierto)
     {
         if (menuabierto)
         {
             // Instanciar directo en la mano
             GameObject plato = Instantiate(prefab, handpoint.position, Quaternion.identity);
+
+            Dish dish = plato.GetComponent<Dish>();
+            if (dish != null)
+            {
+                dish.Initialize(receta);
+            }
+
             PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>();
             if (pickup != null)
             {
@@ -43,6 +52,7 @@ public class Cauldron : Interactuable
         else
         {
             platopendiente = prefab;
+            recetaPendiente = receta;
             mensajeInteraccion = "recoger plato";
         }
     }
@@ -50,6 +60,13 @@ public class Cauldron : Interactuable
     private void GiveDish()
     {
         GameObject plato = Instantiate(platopendiente, handpoint.position, Quaternion.identity);
+
+        Dish dish = plato.GetComponent<Dish>();
+        if (dish != null)
+        {
+            dish.Initialize(recetaPendiente);
+        }
+        
         PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>(); 
         if (pickup != null)
         {
@@ -59,6 +76,6 @@ public class Cauldron : Interactuable
         }
 
         platopendiente = null;
-        mensajeInteraccion = "abrir menú";
+        mensajeInteraccion = "abrir menï¿½";
     }
 }
