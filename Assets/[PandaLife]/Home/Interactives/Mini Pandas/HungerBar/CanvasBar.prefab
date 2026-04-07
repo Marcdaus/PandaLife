@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -258, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &439706667309357884
@@ -47,8 +47,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1533674993995792620}
   - component: {fileID: 6196631446990617408}
-  - component: {fileID: 2700127213016579715}
-  - component: {fileID: 4788018390631351034}
+  - component: {fileID: 3095320881801691548}
   m_Layer: 5
   m_Name: LightBar
   m_TagString: Untagged
@@ -128,7 +127,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2700127213016579715
+--- !u!114 &3095320881801691548
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,35 +136,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 439706667309357884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5060abcf1608f4dac9927900cf7c0b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 6196631446990617408}
-  fillImage: {fileID: 1519301508659520442}
-  indicatorImage: {fileID: 1651613807102534689}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
-  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
-  rageSystem: {fileID: 4788018390631351034}
---- !u!114 &4788018390631351034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 439706667309357884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 6196631446990617408}
-  fillImage: {fileID: 1519301508659520442}
-  indicatorImage: {fileID: 1651613807102534689}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
+  slider: {fileID: 6196631446990617408}
 --- !u!1 &618546041350601371
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,8 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4324810586116022313}
   - component: {fileID: 8519800803023918455}
-  - component: {fileID: 2948274815783954297}
-  - component: {fileID: 3659520876204032516}
+  - component: {fileID: 8666854112065493008}
   m_Layer: 5
   m_Name: DarkBar
   m_TagString: Untagged
@@ -361,7 +334,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2948274815783954297
+--- !u!114 &8666854112065493008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -370,35 +343,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320350894622175545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5060abcf1608f4dac9927900cf7c0b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 8519800803023918455}
-  fillImage: {fileID: 9212895339237685362}
-  indicatorImage: {fileID: 689679151739948623}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
-  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
-  rageSystem: {fileID: 3659520876204032516}
---- !u!114 &3659520876204032516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1320350894622175545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 8519800803023918455}
-  fillImage: {fileID: 9212895339237685362}
-  indicatorImage: {fileID: 689679151739948623}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
+  slider: {fileID: 8519800803023918455}
 --- !u!1 &1641116978183416165
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,7 +417,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -258, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1726567446291506974
@@ -731,7 +679,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 7}
+  m_AnchoredPosition: {x: -258, y: 7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3467228342614733411
@@ -930,8 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2784450896879753544}
   - component: {fileID: 5433664464095246381}
-  - component: {fileID: 6070342717537656680}
-  - component: {fileID: 5638341154122873607}
+  - component: {fileID: 1312283248724880843}
   m_Layer: 5
   m_Name: RedBar
   m_TagString: Untagged
@@ -1011,7 +958,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6070342717537656680
+--- !u!114 &1312283248724880843
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1020,35 +967,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6459059391231801173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5060abcf1608f4dac9927900cf7c0b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 5433664464095246381}
-  fillImage: {fileID: 1845472684084505865}
-  indicatorImage: {fileID: 5358906013452315592}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
-  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
-  rageSystem: {fileID: 5638341154122873607}
---- !u!114 &5638341154122873607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6459059391231801173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar: {fileID: 5433664464095246381}
-  fillImage: {fileID: 1845472684084505865}
-  indicatorImage: {fileID: 5358906013452315592}
-  maxValue: 100
-  currentValue: 0
-  changeRate: 5
+  slider: {fileID: 5433664464095246381}
 --- !u!1 &6822550028588751550
 GameObject:
   m_ObjectHideFlags: 0
