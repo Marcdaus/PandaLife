@@ -33,7 +33,7 @@ public class Cauldron : Interactuable
             // Instanciar directo en la mano
             GameObject plato = Instantiate(prefab, handpoint.position, Quaternion.identity);
 
-            Dish dish = plato.GetComponent<Dish>();
+            Dish dish = plato.GetComponentInChildren<Dish>();
             if (dish != null)
             {
                 dish.Initialize(receta);
@@ -47,16 +47,18 @@ public class Cauldron : Interactuable
                 jugador.SetPickedObject(pickup); // decirle al jugador que tiene el plato
             }
             cauldronmenuUI.CloseCauldron();
-
+            Debug.Log("saciedad de plato en caldero:" + dish.GetSaciedad());
         }
         else
         {
             GameObject plato = Instantiate(prefab);
-            Dish dish = plato.GetComponent<Dish>();
+            Dish dish = plato.GetComponentInChildren<Dish>();
             dish.Initialize(receta);
             platopendiente = plato;
         
             recetaPendiente = receta;
+            Debug.Log("saciedad de plato:" + dish.GetSaciedad());
+
             mensajeInteraccion = "recoger plato";
         }
     }
@@ -64,7 +66,7 @@ public class Cauldron : Interactuable
     private void GiveDish()
     {
         GameObject plato = platopendiente;
-        Dish dish = plato.GetComponent<Dish>();
+        Dish dish = plato.GetComponentInChildren<Dish>();
        
         plato.transform.position = handpoint.position;
         plato.transform.rotation = Quaternion.identity;
@@ -80,20 +82,7 @@ public class Cauldron : Interactuable
         platopendiente = null;
         mensajeInteraccion = "abrir menú";
        
-       /* if (dish != null)
-        {
-            dish.Initialize(recetaPendiente);
-        }
-        
-        PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>(); 
-        if (pickup != null)
-        {
-            pickup.SetHandpoint(handpoint);
-            pickup.PickUp();
-            jugador.SetPickedObject(pickup);
-        }
-
-        platopendiente = null;
-        mensajeInteraccion = "abrir men�"; */
+      
+      
     }
 }

@@ -1640,7 +1640,7 @@ PrefabInstance:
       objectReference: {fileID: 1597996734}
     - target: {fileID: 3006752344759472490, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
       propertyPath: m_Name
-      value: DarkMiniPanda Variant
+      value: DarkMiniPanda
       objectReference: {fileID: 0}
     - target: {fileID: 3743121433790640506, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
       propertyPath: barraUI
@@ -2742,6 +2742,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0733ac5d57eba2419aa12791ae5abee, type: 3}
+--- !u!1 &1015671321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2621583324551982397, guid: 920e0db728d6c564892574a9d51456ff, type: 3}
+  m_PrefabInstance: {fileID: 1937414795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1015671323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015671321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receta: {fileID: 11400000, guid: 2184d93c406ee654086273cb7ed328fe, type: 2}
 --- !u!1001 &1019205181
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4670,7 +4688,7 @@ PrefabInstance:
       objectReference: {fileID: 1597996734}
     - target: {fileID: 5278786288208957454, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
       propertyPath: m_Name
-      value: LightMiniPanda Variant
+      value: LightMiniPanda
       objectReference: {fileID: 0}
     - target: {fileID: 5983621882240184350, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
       propertyPath: barraUI
@@ -6041,7 +6059,7 @@ PrefabInstance:
       objectReference: {fileID: 1827599354}
     - target: {fileID: 4060880759531892577, guid: 90453d1801c1c4768af98c225b145c64, type: 3}
       propertyPath: m_Name
-      value: RedMiniPanda Variant
+      value: RedMiniPanda
       objectReference: {fileID: 0}
     - target: {fileID: 6072292591135846536, guid: 90453d1801c1c4768af98c225b145c64, type: 3}
       propertyPath: bar
@@ -6712,7 +6730,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2621583324551982397, guid: 920e0db728d6c564892574a9d51456ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1015671323}
+    - targetCorrespondingSourceObject: {fileID: 1765520836785327664, guid: 920e0db728d6c564892574a9d51456ff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2065737881}
   m_SourcePrefab: {fileID: 100100000, guid: 920e0db728d6c564892574a9d51456ff, type: 3}
 --- !u!1 &1950793732
 GameObject:
@@ -7103,6 +7127,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2065737874 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1765520836785327664, guid: 920e0db728d6c564892574a9d51456ff, type: 3}
+  m_PrefabInstance: {fileID: 1937414795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2065737881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065737874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receta: {fileID: 11400000, guid: 2184d93c406ee654086273cb7ed328fe, type: 2}
 --- !u!1 &2071546390
 GameObject:
   m_ObjectHideFlags: 0

@@ -278,26 +278,39 @@ public class Player : MonoBehaviour
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
             cube.SetHandpoint(handpoint.transform);
-            cube.PickUp();
+
             pickedobject = cube;
 
-            Dish dishComp = pickedobject.GetComponent<Dish>();
-            if (dishComp != null && dishComp.GetSaciedad() == 0)
+            Dish dishComp = pickedobject.GetComponentInParent<Dish>();
+            if (dishComp != null)
             {
-                // Inicializa con la receta correcta antes de usarla
-                dishComp.Initialize(receta); // miReceta debe ser la receta actual que corresponda
+                Debug.Log("Plato recogido con saciedad: " + dishComp.GetSaciedad());
+                Debug.Log(dishComp.GetIngredientesTexto());
+                Debug.Log("ANTES de darlo:");
+                Debug.Log("Dish name: " + pickedobject.name);
+                Debug.Log("Dish instance ID: " + pickedobject.GetInstanceID());
             }
+
+            cube.PickUp();
+        
         }
         if (interactuable is Minipandas minipanda)
         {
             if (CanInteractWithMiniPanda())
             {
-                minipanda.InteractuarConPlato(pickedobject, this);
+                Debug.Log("intentaste darle el plato a un minipanda");
+                Dish dishComp = pickedobject.GetComponentInParent<Dish>();
+                Debug.Log("ANTES de darlo:");
+                Debug.Log("player: Dish name: " + pickedobject.name);
+                Debug.Log("player: Dish instance ID: " + pickedobject.GetInstanceID()); 
+                minipanda.InteractuarConPlato(dishComp, this);
+                Debug.Log("pikedu:" + dishComp);
                 return;
             }
         }
         else
         {
+            Debug.Log("esta usando su interactuar normal");
             interactuable.Interactuar();
         }
     }

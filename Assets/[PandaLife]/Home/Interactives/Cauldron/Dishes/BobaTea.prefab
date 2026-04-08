@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5805913682748092612}
-  - component: {fileID: 4126029572816948338}
   m_Layer: 0
   m_Name: BobaTea
   m_TagString: Untagged
@@ -33,23 +32,6 @@ Transform:
   - {fileID: 8213691198615862219}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4126029572816948338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3820725306655128992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saciedad: 0
-  bambuverde: 0
-  bamburojo: 0
-  arandano: 0
-  bayauchuva: 0
 --- !u!1 &6544776036747766502
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +46,7 @@ GameObject:
   - component: {fileID: 8612115062660968740}
   - component: {fileID: 1619906052114228053}
   - component: {fileID: 3757578023711705721}
+  - component: {fileID: 2368686206414214432}
   m_Layer: 9
   m_Name: BobaTea
   m_TagString: Untagged
@@ -201,3 +184,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &2368686206414214432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6544776036747766502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receta: {fileID: 11400000, guid: 2184d93c406ee654086273cb7ed328fe, type: 2}
