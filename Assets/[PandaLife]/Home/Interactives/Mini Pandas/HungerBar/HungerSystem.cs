@@ -47,11 +47,12 @@ public class HungerSystem : BarSystem
       
         //Si la ira ya está activada, muestra la barra de ira
         if (rageActivated && rageSystem != null)
-        { Deactivate();
+        {
+            Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, hungryCircleColor);
         }
-        else
-        { Activate();}
+        
+        Activate();
 
         UpdateUI();
 
