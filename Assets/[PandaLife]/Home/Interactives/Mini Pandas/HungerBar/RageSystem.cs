@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class RageSystem : BarSystem
 {
+    [SerializeField] private string pandaID;
+
     private Color calmColor = new Color(1f, 0f, 0f); // Rojo claro
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
     private Color lockedFaceColor = Color.red;
@@ -15,19 +17,19 @@ public class RageSystem : BarSystem
     void Start()
     {
         // Si al cargar escena el manager dice que la ira está activa, recuperamos datos
-     /*   if (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)
+     if (BarraManager.Instancia != null && pandaID != "")
         {
-            currentValue = BarraManager.Instancia.RageCurrentValue;
-            maxValue = BarraManager.Instancia.RageMaxValue;
-           
-        }*/
-        if (BarraManager.Instancia != null)
-        {
-            maxValue = BarraManager.Instancia.rageMaxValue;
-            changeRate = BarraManager.Instancia.rageChangeRate;
+            var manager = BarraManager.Instancia;
+
+            if (manager.rageValues.ContainsKey(pandaID))
+            {
+                currentValue = manager.rageValues[pandaID];
+                 maxValue = BarraManager.Instancia.rageMaxValue;
+                changeRate = BarraManager.Instancia.rageChangeRate;
+            }
         }
-           // Activate();
-            UpdateUI();
+       
+         UpdateUI();
     }
 
     //Activa el estado de Ira
@@ -38,7 +40,10 @@ public class RageSystem : BarSystem
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
 
-        currentValue = 0f;
+        if (!BarraManager.Instancia.rageValues.ContainsKey(pandaID))
+        {
+            currentValue = 0f;
+        }
 
         lockedFaceColor = currentFaceColor;
         Activate();
@@ -67,4 +72,12 @@ public class RageSystem : BarSystem
             indicatorImage.color = c;
         }
     }
+    void LateUpdate()
+    {
+        if (BarraManager.Instancia != null && pandaID != "")
+        {
+            BarraManager.Instancia.rageValues[pandaID] = currentValue;
+        }
+    }
+
 }

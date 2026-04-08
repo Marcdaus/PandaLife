@@ -4,6 +4,9 @@ using System.Collections;
 
 public class HungerSystem : BarSystem
 {
+    [SerializeField] private string pandaID;
+    [SerializeField] private PandaBarUIConection barraUI;
+
     // Variables de la barra según estados
     private Color satisfiedBarColor = Color.green;
     private Color normalBarColor = Color.yellow;
@@ -16,7 +19,7 @@ public class HungerSystem : BarSystem
 
     // Variables estado de ira
     [SerializeField] RageSystem rageSystem;
-    [SerializeField] private PandaBarUIConection barraUI;
+
     private bool rageActivated = false;
 
     // Variable para pausar la barra
@@ -39,17 +42,30 @@ public class HungerSystem : BarSystem
     {
         GenerateDerivedColors();
 
-        if (BarraManager.Instancia != null)
+        if (BarraManager.Instancia != null && pandaID != "")
+    {
+        var manager = BarraManager.Instancia;
+
+        if (manager.hungerValues.ContainsKey(pandaID))
         {
-            maxValue = BarraManager.Instancia.hungerMaxValue;
-            changeRate = BarraManager.Instancia.hungerChangeRate;
+            currentValue = manager.hungerValues[pandaID];
+            rageActivated = manager.rageStates[pandaID];
         }
+        else
+        {
+            currentValue = maxValue;
+        }
+    }
+    
       
         //Si la ira ya está activada, muestra la barra de ira
         if (rageActivated && rageSystem != null)
         {
             Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, hungryCircleColor);
+
+            if (barraUI != null)
+                barraUI.SetRage(rageSystem);
         }
         
         Activate();
@@ -89,6 +105,15 @@ public class HungerSystem : BarSystem
 
             Debug.Log("Hambre en Update: " + currentValue);
     }
+
+        void LateUpdate()
+        {
+            if (BarraManager.Instancia != null && pandaID != "")
+            {
+                BarraManager.Instancia.hungerValues[pandaID] = currentValue;
+                BarraManager.Instancia.rageStates[pandaID] = rageActivated;
+            }
+        }
 
     //Funcion que actualiza los colores de las caras y barras
     protected override void UpdateColors()
@@ -153,4 +178,6 @@ public class HungerSystem : BarSystem
             barraUI.SetRage(rageSystem);
     }
 }
+
+
 }

@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class BarraManager : MonoBehaviour
 {
@@ -12,6 +14,11 @@ public class BarraManager : MonoBehaviour
     public float rageMaxValue = 100f;
     public float rageChangeRate = 1f;
 
+
+    public Dictionary<string, float> hungerValues = new();
+    public Dictionary<string, float> rageValues = new();
+    public Dictionary<string, bool> rageStates = new();
+
     private void Awake()
     {
         if (_instancia == null)
@@ -24,4 +31,6 @@ public class BarraManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   
 }
