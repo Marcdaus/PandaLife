@@ -20,8 +20,8 @@ public class Minipandas : Interactuable
 
             hungerSystem.Restaurar(saciedad);
             hungerSystem.PauseHunger(5f);
-            Debug.Log("minipandas: Dish name: " + dish.name);
-            Debug.Log("minipandas: Dish instance ID: " + dish.GetInstanceID());
+            //Debug.Log("minipandas: Dish name: " + dish.name);
+            //Debug.Log("minipandas: Dish instance ID: " + dish.GetInstanceID());
         }
   
        Destroy(player.pickedobject.gameObject);

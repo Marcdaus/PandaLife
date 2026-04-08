@@ -286,9 +286,9 @@ public class Player : MonoBehaviour
             {
                 Debug.Log("Plato recogido con saciedad: " + dishComp.GetSaciedad());
                 Debug.Log(dishComp.GetIngredientesTexto());
-                Debug.Log("ANTES de darlo:");
-                Debug.Log("Dish name: " + pickedobject.name);
-                Debug.Log("Dish instance ID: " + pickedobject.GetInstanceID());
+                //Debug.Log("ANTES de darlo:");
+                //Debug.Log("Dish name: " + pickedobject.name);
+                //Debug.Log("Dish instance ID: " + pickedobject.GetInstanceID());
             }
 
             cube.PickUp();
@@ -298,13 +298,12 @@ public class Player : MonoBehaviour
         {
             if (CanInteractWithMiniPanda())
             {
-                Debug.Log("intentaste darle el plato a un minipanda");
                 Dish dishComp = pickedobject.GetComponentInParent<Dish>();
-                Debug.Log("ANTES de darlo:");
-                Debug.Log("player: Dish name: " + pickedobject.name);
-                Debug.Log("player: Dish instance ID: " + pickedobject.GetInstanceID()); 
+                //Debug.Log("ANTES de darlo:");
+                //Debug.Log("player: Dish name: " + pickedobject.name);
+                //Debug.Log("player: Dish instance ID: " + pickedobject.GetInstanceID()); 
                 minipanda.InteractuarConPlato(dishComp, this);
-                Debug.Log("pikedu:" + dishComp);
+                //Debug.Log("pikedu:" + dishComp);
                 return;
             }
         }
