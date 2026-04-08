@@ -2,18 +2,30 @@ using UnityEngine;
 
 public class Minipandas : Interactuable
 {
-    public void InteractuarConPlato(PickupDrop plato, Player player)
+
+    private HungerSystem hungerSystem;
+    void Awake()
+    {
+        hungerSystem = GetComponent<HungerSystem>();
+    }
+
+    public void InteractuarConPlato(Dish dish, Player player)
     {
         Debug.Log("Mini panda se come el plato ");
-
-        Dish dish = plato.GetComponent<Dish>();
+        
         if (dish != null)
         {
-            Debug.Log("Saciedad: " + dish.GetSaciedad());
-        }
+            int saciedad = dish.GetSaciedad();
+            Debug.Log("saciedad en minipandas al alimentar: " + saciedad);
 
-        plato.Drop();
-        Destroy(plato.gameObject);
+            hungerSystem.Restaurar(saciedad);
+            hungerSystem.PauseHunger(5f);
+            //Debug.Log("minipandas: Dish name: " + dish.name);
+            //Debug.Log("minipandas: Dish instance ID: " + dish.GetInstanceID());
+        }
+  
+       Destroy(player.pickedobject.gameObject);
+        player.SetPickedObject(null);
     }
 
     public override void Interactuar()

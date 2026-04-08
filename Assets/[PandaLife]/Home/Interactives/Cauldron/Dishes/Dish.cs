@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class Dish : MonoBehaviour
 {
-    private RecipesData receta;
+    [SerializeField]private RecipesData receta;
 
-    [SerializeField] private int saciedad;
+    private int saciedad;
 
     private int bambuverde;
     private int bamburojo;

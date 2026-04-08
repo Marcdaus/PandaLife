@@ -3,21 +3,33 @@ using UnityEngine.UI;
 
 public class RageSystem : BarSystem
 {
+    [SerializeField] private string pandaID;
+
     private Color calmColor = new Color(1f, 0f, 0f); // Rojo claro
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
     private Color lockedFaceColor = Color.red;
 
+    void Awake()
+    {
+        Deactivate();
+    }
+
     void Start()
     {
         // Si al cargar escena el manager dice que la ira está activa, recuperamos datos
-        if (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)
+     if (BarraManager.Instancia != null && pandaID != "")
         {
-            currentValue = BarraManager.Instancia.RageCurrentValue;
-            maxValue = BarraManager.Instancia.RageMaxValue;
-            changeRate = BarraManager.Instancia.RageChangeRate;
-            Activate();
-            UpdateUI();
+            var manager = BarraManager.Instancia;
+
+            if (manager.rageValues.ContainsKey(pandaID))
+            {
+                currentValue = manager.rageValues[pandaID];
+                 maxValue = BarraManager.Instancia.rageMaxValue;
+                changeRate = BarraManager.Instancia.rageChangeRate;
+            }
         }
+       
+         UpdateUI();
     }
 
     //Activa el estado de Ira
@@ -28,9 +40,10 @@ public class RageSystem : BarSystem
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
 
-        // Si el manager existe, obtenemos los valores actuales
-        if (BarraManager.Instancia != null && BarraManager.Instancia.RageCurrentValue <= 0)
+        if (!BarraManager.Instancia.rageValues.ContainsKey(pandaID))
+        {
             currentValue = 0f;
+        }
 
         lockedFaceColor = currentFaceColor;
         Activate();
@@ -38,13 +51,11 @@ public class RageSystem : BarSystem
 
     protected override void UpdateValue()
     {
+        Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
         currentValue += changeRate * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
-        // Guardar en el Manager
-        if (BarraManager.Instancia != null)
-            BarraManager.Instancia.RageCurrentValue = currentValue;
-    }
+      }
 
     //Cambia el color al pasar el 50% de la barra
     protected override void UpdateColors()
@@ -61,4 +72,12 @@ public class RageSystem : BarSystem
             indicatorImage.color = c;
         }
     }
+    void LateUpdate()
+    {
+        if (BarraManager.Instancia != null && pandaID != "")
+        {
+            BarraManager.Instancia.rageValues[pandaID] = currentValue;
+        }
+    }
+
 }

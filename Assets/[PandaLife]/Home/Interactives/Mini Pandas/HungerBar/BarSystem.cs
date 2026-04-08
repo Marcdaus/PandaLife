@@ -11,7 +11,7 @@ public abstract class BarSystem : MonoBehaviour, IBarSystem
     //Variables de la barra
     [SerializeField] protected float maxValue = 100f;
     [SerializeField] protected float currentValue;
-    [SerializeField] protected float changeRate = 5f;
+    [SerializeField] protected float changeRate = 1f;
 
     protected bool isActive = false;
 

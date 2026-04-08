@@ -1,21 +1,23 @@
 using UnityEngine;
+using System.Collections.Generic;
+
 
 public class BarraManager : MonoBehaviour
 {
-    //Variables que guardan datos
     private static BarraManager _instancia;
     public static BarraManager Instancia => _instancia;
 
-   
-    public float HungerCurrentValue = 100f;
-    public float HungerMaxValue = 100f;
-    public float HungerChangeRate = 5f;
+    // config
+    public float hungerMaxValue = 100f;
+    public float hungerChangeRate = 1f;
 
-    
-    public bool RageActivated = false;
-    public float RageCurrentValue = 0f;
-    public float RageMaxValue = 100f;
-    public float RageChangeRate = 5f;
+    public float rageMaxValue = 100f;
+    public float rageChangeRate = 1f;
+
+
+    public Dictionary<string, float> hungerValues = new();
+    public Dictionary<string, float> rageValues = new();
+    public Dictionary<string, bool> rageStates = new();
 
     private void Awake()
     {
@@ -29,4 +31,6 @@ public class BarraManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   
 }

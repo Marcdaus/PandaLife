@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 204355452003132263}
   - component: {fileID: 7184842000476666553}
   - component: {fileID: 383611640043245302}
-  - component: {fileID: 2645815469560983671}
   m_Layer: 9
   m_Name: BambuCocido
   m_TagString: Untagged
@@ -165,28 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saciedad: 0
-  bambuverde: 0
-  bamburojo: 0
-  arandano: 0
-  bayauchuva: 0
---- !u!114 &2645815469560983671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059920775125752919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saciedad: 0
-  bambuverde: 0
-  bamburojo: 0
-  arandano: 0
-  bayauchuva: 0
+  receta: {fileID: 11400000, guid: f4456a04bf3bec5428f8eb2fbc84733b, type: 2}
 --- !u!1 &8947952397835903005
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +174,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7934503245053058857}
-  - component: {fileID: -2286293279947681065}
   m_Layer: 0
   m_Name: BambuCocido
   m_TagString: Untagged
@@ -220,20 +197,3 @@ Transform:
   - {fileID: 5607863205917639771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2286293279947681065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8947952397835903005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saciedad: 0
-  bambuverde: 0
-  bamburojo: 0
-  arandano: 0
-  bayauchuva: 0

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7693345166780370918}
-  - component: {fileID: 7395465479244556982}
   m_Layer: 0
   m_Name: BambuRelleno
   m_TagString: Untagged
@@ -33,23 +32,6 @@ Transform:
   - {fileID: 3966580740650344338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7395465479244556982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2132842341688637665}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saciedad: 0
-  bambuverde: 0
-  bamburojo: 0
-  arandano: 0
-  bayauchuva: 0
 --- !u!1 &6782431196409620073
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +46,7 @@ GameObject:
   - component: {fileID: 5292946282583464525}
   - component: {fileID: 3588120799058677877}
   - component: {fileID: 8034460978777970561}
+  - component: {fileID: 7584759872538321217}
   m_Layer: 9
   m_Name: BambuRelleno
   m_TagString: Untagged
@@ -201,3 +184,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7584759872538321217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782431196409620073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba9bddd6f72d9455d97f570e6dff855c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receta: {fileID: 11400000, guid: 9c7b09319dfd906499c2fe3a8d22a79c, type: 2}
