@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 36702331613538537}
   - component: {fileID: 4883566758012373200}
   m_Layer: 9
-  m_Name: DarkMiniPanda Variant
+  m_Name: DarkMiniPanda
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,10 +152,11 @@ MonoBehaviour:
   fillImage: {fileID: 0}
   indicatorImage: {fileID: 0}
   maxValue: 100
-  currentValue: 0
+  currentValue: 100
   changeRate: 1
   initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
   rageSystem: {fileID: 4883566758012373200}
+  barraUI: {fileID: 0}
 --- !u!114 &4883566758012373200
 MonoBehaviour:
   m_ObjectHideFlags: 0
