@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class CheatMenuManager : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
 
-    private float originalHungerChangeRate = 0f;
+    private Dictionary<HungerSystem, float> originalRates = new Dictionary<HungerSystem, float>();
+  
 
     void Start()
     {
@@ -19,10 +21,6 @@ public class CheatMenuManager : MonoBehaviour
             cheatPanel = CheatMenuPersistent.instance.transform.GetChild(0).gameObject;
         }
 
-        if (BarraManager.Instancia != null)
-        {
-            originalHungerChangeRate = BarraManager.Instancia.HungerChangeRate;
-        }
     }
 
     void Update()
@@ -108,35 +106,50 @@ public class CheatMenuManager : MonoBehaviour
         if (menuCauldron != null)
             menuCauldron.RefreshCards();
     }*/
-    // 🔹 Cheat: Poner a los 3 pandas en estado de ira
-    public void Cheat_PandasIraMaxima()
+
+    // Cheat: Poner a los 3 pandas en estado de ira
+   public void Cheat_PandasIraMaxima()
     {
-        if (BarraManager.Instancia != null)
+        HungerSystem[] pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+
+        foreach (var panda in pandas)
         {
-            BarraManager.Instancia.RageActivated = true;
-            BarraManager.Instancia.RageCurrentValue = BarraManager.Instancia.RageMaxValue;
+            panda.ForceRage();
         }
 
         Debug.Log("CHEAT: Todos los pandas en ira máxima");
     }
 
-    // 🔹 Cheat: Pausar o reanudar la disminución de hambre
+        //  Cheat: Pausar o reanudar la disminución de hambre
     public void Cheat_PausarOReanudarHambre()
     {
-        if (BarraManager.Instancia == null) return;
+        HungerSystem[] pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
 
-        if (BarraManager.Instancia.HungerChangeRate != 0f)
+        bool pause = true;
+
+        foreach (var panda in pandas)
         {
-            // Pausar hambre
-            BarraManager.Instancia.HungerChangeRate = 0f;
-            Debug.Log("CHEAT: Disminución de hambre pausada");
+            if (panda.ChangeRate == 0f)
+                pause = false;
         }
-        else
+
+        foreach (var panda in pandas)
         {
-            // Reanudar hambre
-            BarraManager.Instancia.HungerChangeRate = originalHungerChangeRate;
-            Debug.Log("CHEAT: Disminución de hambre reanudada");
+            if (pause)
+            {
+                if (!originalRates.ContainsKey(panda))
+                    originalRates[panda] = panda.ChangeRate;
+
+                panda.ChangeRate = 0f;
+            }
+            else
+            {
+                if (originalRates.ContainsKey(panda))
+                    panda.ChangeRate = originalRates[panda];
+            }
         }
+
+        Debug.Log(pause ? "CHEAT: Hambre pausada" : "CHEAT: Hambre reanudada");
     }
 
 }

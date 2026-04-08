@@ -16,6 +16,7 @@ public class HungerSystem : BarSystem
 
     // Variables estado de ira
     [SerializeField] RageSystem rageSystem;
+    [SerializeField] private PandaBarUIConection barraUI;
     private bool rageActivated = false;
 
     // Variable para pausar la barra
@@ -37,27 +38,22 @@ public class HungerSystem : BarSystem
     void Start()
     {
         GenerateDerivedColors();
-        // Inicializa valores desde el manager
+
         if (BarraManager.Instancia != null)
         {
-            currentValue = BarraManager.Instancia.HungerCurrentValue;
-            maxValue = BarraManager.Instancia.HungerMaxValue;
-            //changeRate = BarraManager.Instancia.HungerChangeRate;
-            rageActivated = BarraManager.Instancia.RageActivated;
+            maxValue = BarraManager.Instancia.hungerMaxValue;
+            changeRate = BarraManager.Instancia.hungerChangeRate;
         }
+      
         //Si la ira ya está activada, muestra la barra de ira
         if (rageActivated && rageSystem != null)
-        {
-            Deactivate();
+        { Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, hungryCircleColor);
         }
         else
-        {
-            Activate();
-        }
-        // Actualiza la UI
+        { Activate();}
+
         UpdateUI();
-       Debug.Log("ira al iniciar: " + rageActivated);
 
     }
 
@@ -69,13 +65,6 @@ public class HungerSystem : BarSystem
 
     protected override void UpdateValue()
     {
-        // Leer valores directamente del manager en tiempo real
-        if (BarraManager.Instancia != null)
-        {
-            maxValue = BarraManager.Instancia.HungerMaxValue;
-            //changeRate = BarraManager.Instancia.HungerChangeRate;
-            rageActivated = BarraManager.Instancia.RageActivated;
-        }
 
         // Disminuir hambre solo si no está pausada
         if (!isPaused)
@@ -83,21 +72,21 @@ public class HungerSystem : BarSystem
             currentValue -= changeRate * Time.deltaTime;
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
-            if (BarraManager.Instancia != null)
-                BarraManager.Instancia.HungerCurrentValue = currentValue;
         }
 
         // Activar ira si llega a 0 o si RageActivated ya está en true
-        if (rageSystem != null && (!rageActivated && currentValue <= 0 || (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)))
+        if (rageSystem != null && !rageActivated && currentValue <= 0 )     
         {
             rageActivated = true;
-            if (BarraManager.Instancia != null)
-                BarraManager.Instancia.RageActivated = true;
-
-            isPaused = true;
+            Deactivate(); // apaga la barra de hambre 
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+            
+            if (barraUI != null)
+                barraUI.SetRage(rageSystem); 
+
         }
-        Debug.Log("Hambre en Update: " + currentValue);
+
+            Debug.Log("Hambre en Update: " + currentValue);
     }
 
     //Funcion que actualiza los colores de las caras y barras
@@ -131,17 +120,9 @@ public class HungerSystem : BarSystem
         currentValue += amount;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
-        if (BarraManager.Instancia != null)
-        BarraManager.Instancia.HungerCurrentValue = currentValue;
-
-        if (BarraManager.Instancia != null)
-        {
-            BarraManager.Instancia.HungerCurrentValue = currentValue;
-        }
-
         Debug.Log("Nueva hambre: " + currentValue);
 
-         UpdateUI();
+        UpdateUI();
 
     }
 
@@ -156,4 +137,19 @@ public class HungerSystem : BarSystem
         yield return new WaitForSeconds(seconds);
         isPaused = false;
     }
+
+    public void ForceRage()
+{
+    if (!rageActivated)
+    {
+        rageActivated = true;
+
+        Deactivate();
+
+        rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+
+        if (barraUI != null)
+            barraUI.SetRage(rageSystem);
+    }
+}
 }

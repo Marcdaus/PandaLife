@@ -1543,9 +1543,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1827599353}
     - target: {fileID: 36702331613538537, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
+      propertyPath: barraUI
+      value: 
+      objectReference: {fileID: 1990852748}
+    - target: {fileID: 36702331613538537, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 1827599350}
+    - target: {fileID: 36702331613538537, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
+      propertyPath: changeRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 36702331613538537, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
+      propertyPath: currentValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 36702331613538537, guid: 1a62716fc35794d3faa52d2f136b298d, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -4605,9 +4617,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1827599361}
     - target: {fileID: 1955038742388269089, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
+      propertyPath: barraUI
+      value: 
+      objectReference: {fileID: 1827599368}
+    - target: {fileID: 1955038742388269089, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 1827599358}
+    - target: {fileID: 1955038742388269089, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
+      propertyPath: currentValue
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1955038742388269089, guid: 8cbad6891461a4e52bdeae186e43958e, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -6007,6 +6027,10 @@ PrefabInstance:
       propertyPath: bar
       value: 
       objectReference: {fileID: 1827599357}
+    - target: {fileID: 3925000151688609082, guid: 90453d1801c1c4768af98c225b145c64, type: 3}
+      propertyPath: barraUI
+      value: 
+      objectReference: {fileID: 1827599367}
     - target: {fileID: 3925000151688609082, guid: 90453d1801c1c4768af98c225b145c64, type: 3}
       propertyPath: fillImage
       value: 

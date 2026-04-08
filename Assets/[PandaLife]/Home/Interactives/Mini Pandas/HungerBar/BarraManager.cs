@@ -2,20 +2,15 @@ using UnityEngine;
 
 public class BarraManager : MonoBehaviour
 {
-    //Variables que guardan datos
     private static BarraManager _instancia;
     public static BarraManager Instancia => _instancia;
 
-   
-    public float HungerCurrentValue = 100f;
-    public float HungerMaxValue = 100f;
-    public float HungerChangeRate = 1f;
+    // config
+    public float hungerMaxValue = 100f;
+    public float hungerChangeRate = 1f;
 
-    
-    public bool RageActivated = false;
-    public float RageCurrentValue = 0f;
-    public float RageMaxValue = 100f;
-    public float RageChangeRate = 1f;
+    public float rageMaxValue = 100f;
+    public float rageChangeRate = 1f;
 
     private void Awake()
     {

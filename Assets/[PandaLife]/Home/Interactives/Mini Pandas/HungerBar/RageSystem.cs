@@ -15,13 +15,19 @@ public class RageSystem : BarSystem
     void Start()
     {
         // Si al cargar escena el manager dice que la ira está activa, recuperamos datos
-        if (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)
+     /*   if (BarraManager.Instancia != null && BarraManager.Instancia.RageActivated)
         {
             currentValue = BarraManager.Instancia.RageCurrentValue;
             maxValue = BarraManager.Instancia.RageMaxValue;
+           
+        }*/
+        if (BarraManager.Instancia != null)
+        {
+            maxValue = BarraManager.Instancia.rageMaxValue;
+            changeRate = BarraManager.Instancia.rageChangeRate;
+        }
             Activate();
             UpdateUI();
-        }
     }
 
     //Activa el estado de Ira
@@ -32,9 +38,7 @@ public class RageSystem : BarSystem
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
 
-        // Si el manager existe, obtenemos los valores actuales
-        if (BarraManager.Instancia != null && BarraManager.Instancia.RageCurrentValue <= 0)
-            currentValue = 0f;
+        currentValue = 0f;
 
         lockedFaceColor = currentFaceColor;
         Activate();
@@ -42,14 +46,11 @@ public class RageSystem : BarSystem
 
     protected override void UpdateValue()
     {
-        Debug.Log("Hunger actual: " + currentValue + " | Active: " + isActive);
+        Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
         currentValue += changeRate * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
-        // Guardar en el Manager
-        if (BarraManager.Instancia != null)
-            BarraManager.Instancia.RageCurrentValue = currentValue;
-    }
+      }
 
     //Cambia el color al pasar el 50% de la barra
     protected override void UpdateColors()

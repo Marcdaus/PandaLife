@@ -5,18 +5,30 @@ public class PandaBarUIConection : MonoBehaviour
 {
     public Slider slider;
     private HungerSystem hunger;
+    private RageSystem rage;
 
-    public void SetTarget(HungerSystem target)
-    {
-        hunger = target;
-    }
+    public void SetHunger(HungerSystem target)
+{
+    hunger = target;
+    rage = null;
+}
 
-    void Update()
+public void SetRage(RageSystem target)
+{
+    rage = target;
+    hunger = null;
+}
+void Update()
+{
+    if (hunger != null)
     {
-        if (hunger != null)
-        {
-            slider.maxValue = hunger.MaxValue;
-            slider.value = hunger.CurrentValue;
-        }
+        slider.maxValue = hunger.MaxValue;
+        slider.value = hunger.CurrentValue;
     }
+    else if (rage != null)
+    {
+        slider.maxValue = rage.MaxValue;
+        slider.value = rage.CurrentValue;
+    }
+}
 }
