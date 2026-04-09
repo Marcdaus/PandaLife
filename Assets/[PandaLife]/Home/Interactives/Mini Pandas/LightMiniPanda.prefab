@@ -316,6 +316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mensajeInteraccion: dar plato
+  indicePanda: 2
+  pedidoDeseado: 
 --- !u!136 &3668991432809108123
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -371,10 +373,11 @@ MonoBehaviour:
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 100
-  changeRate: 1
-  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
-  rageSystem: {fileID: 7994404267010699718}
+  changeRate: 0.5
+  pandaID: LightPanda
   barraUI: {fileID: 0}
+  rageSystem: {fileID: 7994404267010699718}
+  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &7994404267010699718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,4 +395,5 @@ MonoBehaviour:
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 0
-  changeRate: 1
+  changeRate: 0.5
+  pandaID: LightPanda

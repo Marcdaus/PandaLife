@@ -676,12 +676,13 @@ MonoBehaviour:
   tiempoTranscurrido: 0
   minutosActualesTotales: 0
   numeroDia: 1
-  multiplicadorVelocidad: 1
+  multiplicadorvelocidaddia: 1
   messageRewardSacks: {fileID: 5575639054432991157}
   messageRewardCollectable: {fileID: 850184530770280005}
   tedypersistente: 0
   notepersistente: 0
   miniPandasHambrientos: 3
+  barmultiplicator: 1
 --- !u!114 &1687261246731974107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +697,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menucauldron: {fileID: 0}
   daynightcycle: {fileID: 0}
+  pandaRequest: {fileID: 2889715848130647437}
+  minipanda: {fileID: 0}
 --- !u!114 &3160739717008820012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,9 +731,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnlockedCrops: []
-  pin1Text: {fileID: 0}
-  pin2Text: {fileID: 0}
-  pin3Text: {fileID: 0}
 --- !u!1 &6232961565616963001
 GameObject:
   m_ObjectHideFlags: 0
