@@ -267,6 +267,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growthstage: 1
+  maxStages: 3
+  waterRequiredPerStage: 2
   valor: 1
   stage1: {fileID: 8101133190524558882}
   stage2: {fileID: 5924996268290644558}
@@ -285,6 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30c6ee5772bf25478569a7d5dade4be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mensajeInteraccion: interactuar
   crop: {fileID: 5785784968455073456}
 --- !u!114 &5593828259048265856
 MonoBehaviour:
@@ -298,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23a7f72d1321e6448bd681bf830f1ac0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mensajeInteraccion: interactuar
   crop: {fileID: 5785784968455073456}
   area: {fileID: 0}
 --- !u!65 &6678586896100264572

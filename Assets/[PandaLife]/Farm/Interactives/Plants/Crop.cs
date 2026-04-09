@@ -13,6 +13,8 @@ public class Crop : MonoBehaviour
     [SerializeField] private float growtime = 10f;
     [SerializeField] private int Type;
 
+    [SerializeField] private int maxStages = 3;
+
     private bool watered = false;
     public bool IsWatered { get { return watered; } }
     public int Valor
@@ -22,7 +24,7 @@ public class Crop : MonoBehaviour
 
     public bool IsHarvestable()
     {
-        return growthstage >= 3;
+        return growthstage >= maxStages;
     }
 
     // ========================
@@ -60,7 +62,7 @@ public class Crop : MonoBehaviour
             stage2.SetActive(true);
             growthstage = 2;
         }
-        else if (growthstage == 2)
+        else if (growthstage == 2 && maxStages == 3)
         {
             stage2.SetActive(false);
             stage3.SetActive(true);
