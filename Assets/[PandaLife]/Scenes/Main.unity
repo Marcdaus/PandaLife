@@ -4943,7 +4943,7 @@ PrefabInstance:
     - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: daynightcycle
       value: 
-      objectReference: {fileID: 1713541571}
+      objectReference: {fileID: 0}
     - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: textoBambuRojo
       value: 
@@ -5321,6 +5321,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1553955993}
+    - target: {fileID: 4027832354484856713, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1553955993}
+      objectReference: {fileID: 1553955993}
     - target: {fileID: 4158139926832371322, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -5332,6 +5337,7 @@ PrefabInstance:
     - target: {fileID: 5241297045271893572, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 1553955993}
       objectReference: {fileID: 1553955993}
     - target: {fileID: 5241297045271893572, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -5345,10 +5351,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1553955993}
-    - target: {fileID: 6942229694941388820, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Cheat_MiniPandaEnIra
-      objectReference: {fileID: 0}
     - target: {fileID: 8305013933618087655, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -7516,3 +7518,4 @@ SceneRoots:
   - {fileID: 4235124895629241780}
   - {fileID: 1553955991}
   - {fileID: 875793099}
+  - {fileID: 1553955991}
