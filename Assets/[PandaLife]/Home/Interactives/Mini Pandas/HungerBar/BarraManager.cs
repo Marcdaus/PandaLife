@@ -55,7 +55,7 @@ public class BarraManager : MonoBehaviour
             rageValues[key] = Mathf.Clamp(rageValues[key], 0f, rageMaxValue);
             rageStates[key] = rageValues[key] >= rageMaxValue;
         }
-
+        
         CheckRage();
 
     }
@@ -95,21 +95,35 @@ public class BarraManager : MonoBehaviour
 
     public void CheckRage()
     {
-        if (sceneLoaded || rageValues.Count == 0) return;
+        if (sceneLoaded) return;
 
-        //Game Over de los 3 pandas: revisamos si los tres específicos están en ira
-        string[] pandaIDs = new string[] { "DarkPanda", "RedPanda", "LightPanda" };
-        bool allThreeRaging = pandaIDs.All(id => rageStates.ContainsKey(id) && rageStates[id]);
+        HungerSystem[] pandas =
+            FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
 
-        if (allThreeRaging)
+        int ragingCount = 0;
+
+        foreach (var panda in pandas)
+        {
+            if (panda.IsRageActivated)
+            {
+                ragingCount++;
+                
+            }
+        }
+
+        
+
+        // Todos en estado de ira
+        if (ragingCount == 3)
         {
             sceneLoaded = true;
             comingFromGameOver = false;
             Debug.Log("GAME OVER: Los 3 pandas están en ira");
             SceneManager.LoadScene("Theend");
+            return;
         }
 
-        // Game Over individual: cualquier panda llega a ira máxima
+      //Uno en ira la máximo
         foreach (var value in rageValues.Values)
         {
             if (value >= rageMaxValue)
@@ -118,15 +132,12 @@ public class BarraManager : MonoBehaviour
                 comingFromGameOver = false;
                 Debug.Log("GAME OVER: Un panda llegó a ira máxima");
                 SceneManager.LoadScene("Theend");
-                foreach (var key in rageValues.Keys)
-                {
-                    Debug.Log("Clave en rageValues: " + key);
-                }
-                return;
+                return; 
             }
         }
-
-        
     }
-
 }
+
+
+
+
