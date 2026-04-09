@@ -19,7 +19,7 @@ public class PinNeedWater : PinUIElement
         if (currentCrop != null)
         {
             // El pin se muestra si no está regado y si no ha crecido del todo
-            return !currentCrop.IsWatered && currentCrop.growthstage < 3;
+            return !currentCrop.IsWatered && currentCrop.growthstage < currentCrop.maxStages;
         }
 
         return false;
