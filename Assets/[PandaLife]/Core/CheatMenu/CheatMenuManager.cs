@@ -89,7 +89,7 @@ public class CheatMenuManager : MonoBehaviour
         GameManager.instance.notepersistente = false;
         GameManager.instance.numeroDia = 1;
         GameManager.instance.quitarBambu();
-        SceneManager.LoadScene("Home");
+        SceneManager.LoadScene("Main");
     }
 
     // Cheat: Llevar directamente al Game Over

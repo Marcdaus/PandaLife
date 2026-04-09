@@ -17,38 +17,43 @@ public class Plant : Interactuable
 
     public override void Interactuar()
     {
+        // Verificamos que tengamos la referencia a la parcela
         if (area == null) return;
 
-        if (!area.ThereIsSomething)
+        //  Si ya hay algo plantado, no hacemos nada (evita solapar cultivos)
+        if (area.ThereIsSomething)
         {
-
-            GameObject cropselected = ChangePlant();
-            if (cropselected == null)
-            {
-                Debug.Log("No tienes un saco para sembrar");
-                return;
-            }
-            GameObject crop = Instantiate(cropselected, area.spawnpoint.position, Quaternion.identity);
-            crop.transform.SetParent(area.transform);
-            area.ThereIsSomething = true;
-            crop.GetComponent<Harvest>().area = area;
-
-            area.sowing();
-            area.ThereIsSomething = true; 
-            Debug.Log("Sembrado correctamente");
+            Debug.Log("Ya hay algo creciendo aquí.");
+            return;
         }
+
+        //  Detectamos qué saco tiene el jugador en la mano
+        GameObject cropselected = ChangePlant();
+
+        if (cropselected == null)
+        {
+            Debug.Log("No tienes un saco de semillas en la mano");
+            return;
+        }
+
+        area.SetCropPrefab(cropselected);
+        area.sowing();
+        Debug.Log("Sembrado correctamente y registrado en el sistema de guardado.");
     }
+
     private GameObject ChangePlant()
     {
-        GameObject crop = null;
-        for (int i = 0; i < childrenlist.Count;i++ )
+        // Recorre la lista de posibles semillas
+        for (int i = 0; i < childrenlist.Count; i++)
         {
+            // Si el objeto visual está activo en la mano del jugador
             if (handpoint.transform.Find(childrenlist[i].name))
             {
-                crop = cropslist[i];
-                break;
+                // Devolvemos el Prefab del cultivo correspondiente
+                return cropslist[i];
             }
         }
-        return crop;
+        return null;
     }
 }
+

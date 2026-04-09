@@ -11,11 +11,13 @@ public class Crop : MonoBehaviour
     [SerializeField] private GameObject stage3;
     
     [SerializeField] private float growtime = 10f;
-    [SerializeField] private int Type;
+    public int type;
 
-    [SerializeField] public int maxStages = 3;
+    public int maxStages = 3;
 
     private bool watered = false;
+
+    public string areaID;
     public bool IsWatered { get { return watered; } }
     public int Valor
     {
@@ -45,6 +47,7 @@ public class Crop : MonoBehaviour
         }
 
         watered = true;
+        UpdateSingletonData();
         StartCoroutine(Grow());
     }
 
@@ -68,9 +71,9 @@ public class Crop : MonoBehaviour
             stage3.SetActive(true);
             growthstage = 3;
         }
-
+        UpdateSingletonData();
         Debug.Log("Nueva fase: " + growthstage);
-        Debug.Log("Fase actual: " + growthstage + " | Stage3 activo: " + stage3.activeSelf);
+
     }
 
     // ========================
@@ -79,7 +82,37 @@ public class Crop : MonoBehaviour
     public void Harvest()
     {
         Debug.Log("Bambú cosechado");
-        GameManager.instance.sumarBambu(Valor,Type);
+        GameManager.instance.sumarBambu(Valor,type);
+        CropSaveData emptyData = new CropSaveData { isPlanted = false };
+        FarmDataManager.instance.SaveArea(areaID, emptyData);
         Destroy(gameObject);
+    }
+    //  función para cargar el estado al entrar a la escena
+    public void LoadSavedState(int savedStage, bool savedWatered)
+    {
+        growthstage = savedStage;
+        watered = savedWatered;
+
+        stage1.SetActive(growthstage == 1);
+        stage2.SetActive(growthstage == 2);
+        if (stage3 != null)stage3.SetActive(growthstage == 3);
+
+
+        // Si estaba regado y no ha terminado de crecer, retomamos la corrutina
+        if (watered && growthstage < maxStages)
+        {
+            StartCoroutine(Grow());
+        }
+    }
+    private void UpdateSingletonData()
+    {
+        CropSaveData data = new CropSaveData
+        {
+            isPlanted = true,
+            growthStage = growthstage,
+            cropType = type,
+            isWatered = watered
+        };
+        FarmDataManager.instance.SaveArea(areaID, data);
     }
 }
