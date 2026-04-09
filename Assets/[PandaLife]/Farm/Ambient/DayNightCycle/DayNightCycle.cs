@@ -86,9 +86,24 @@ public class DayNightCycle : MonoBehaviour
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
 
+            // Buscamos el PandaRequest que va a sobrevivir al cambio de escena
+            PandaRequest persistenteReq = GameManager.instance.GetComponent<PandaRequest>();
+
+            if (persistenteReq != null)
+            {
+                persistenteReq.UnlockCropsForDay(GameManager.instance.numeroDia);
+                persistenteReq.GenerateRandomRequests();
+                Debug.Log("Nuevos pedidos generados para el día: " + GameManager.instance.numeroDia);
+            }
+            else
+            {
+                Debug.LogError("El GameManager no tiene el script PandaRequest");
+            }
+
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
+
         }
         if (GameManager.instance.numeroDia == 4)
         {

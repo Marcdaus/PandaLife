@@ -626,6 +626,7 @@ GameObject:
   - component: {fileID: 2105156229392085248}
   - component: {fileID: 1687261246731974107}
   - component: {fileID: 3160739717008820012}
+  - component: {fileID: 2889715848130647437}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -711,6 +712,25 @@ MonoBehaviour:
   hungerChangeRate: 1
   rageMaxValue: 100
   rageChangeRate: 1
+  sceneLoaded: 0
+  comingFromGameOver: 0
+  hungerPaused: 0
+--- !u!114 &2889715848130647437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096898177279698985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cfe81cafa8d2b149be8ccf925c919fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnlockedCrops: []
+  pin1Text: {fileID: 0}
+  pin2Text: {fileID: 0}
+  pin3Text: {fileID: 0}
 --- !u!1 &6232961565616963001
 GameObject:
   m_ObjectHideFlags: 0

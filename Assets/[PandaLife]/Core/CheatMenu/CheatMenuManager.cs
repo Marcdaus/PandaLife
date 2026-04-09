@@ -10,6 +10,7 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
     HungerSystem[] pandas;
+    [SerializeField] private PandaRequest pandaRequest;
     private Dictionary<HungerSystem, float> originalRates = new Dictionary<HungerSystem, float>();
 
     void Start()
@@ -105,4 +106,16 @@ public class CheatMenuManager : MonoBehaviour
             Debug.Log(BarraManager.Instancia.hungerPaused ? "CHEAT: Hambre pausada" : "CHEAT: Hambre reanudada");
         }
     }
+
+    public void RerollPedidos()
+    {
+        pandaRequest.GenerateRandomRequests();
+    }
+
+    public void DesbloquearPedidos() 
+    {
+        pandaRequest.UnlockCropsForDay(2);
+    }
+
+
 }
