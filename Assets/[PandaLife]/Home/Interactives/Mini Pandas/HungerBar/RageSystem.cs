@@ -53,7 +53,7 @@ public class RageSystem : BarSystem
     protected override void UpdateValue()
     {
         //Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
-        currentValue += changeRate * Time.deltaTime;
+        currentValue += changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
       }

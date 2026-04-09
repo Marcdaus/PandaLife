@@ -56,7 +56,7 @@ public class HungerSystem : BarSystem
 
         if (!isPaused && !globalPause)
         {
-            currentValue -= changeRate * Time.deltaTime;
+            currentValue -= changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
         }
 
@@ -66,6 +66,7 @@ public class HungerSystem : BarSystem
             rageActivated = true;
             Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+            GameManager.instance.miniPandasHambrientos--;
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
         }

@@ -13,6 +13,7 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] private PandaRequest pandaRequest;
     private Dictionary<HungerSystem, float> originalRates = new Dictionary<HungerSystem, float>();
 
+    public HungerSystem minipanda;
     void Start()
     {
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
@@ -65,14 +66,14 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_acelerardia()
     {
-        if (GameManager.instance.multiplicadorVelocidad == 1f)
+        if (GameManager.instance.multiplicadorvelocidaddia == 1f)
         {
-            GameManager.instance.multiplicadorVelocidad = 20f;
+            GameManager.instance.multiplicadorvelocidaddia = 20f;
             Debug.Log("CHEAT: multiplicador de velocidad activado");
         }
         else
         {
-            GameManager.instance.multiplicadorVelocidad = 1f;
+            GameManager.instance.multiplicadorvelocidaddia = 1f;
             Debug.Log("CHEAT: multiplicador de velocidad desactivado");
         }
     }
@@ -117,5 +118,14 @@ public class CheatMenuManager : MonoBehaviour
         pandaRequest.UnlockCropsForDay(2);
     }
 
+
+    public void Cheat_MiniPandaEnIra()
+    {
+        if (BarraManager.Instancia != null)
+        {
+            minipanda.CurrentValue = 10f;
+            Debug.Log("CHEAT: bajar hambre");
+        }
+    }
 
 }
