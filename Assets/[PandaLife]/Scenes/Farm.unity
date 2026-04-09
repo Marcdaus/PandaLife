@@ -387,6 +387,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: minipanda
+      value: 
+      objectReference: {fileID: 887701530}
+    - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: daynightcycle
       value: 
       objectReference: {fileID: 962703665}
@@ -1509,6 +1513,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4400191439030145451, guid: 3d6792c08159bb74eb06b931708bcf8e, type: 3}
   m_PrefabInstance: {fileID: 7167082073772853415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &887701530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+  m_PrefabInstance: {fileID: 777538270}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &962703665 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}

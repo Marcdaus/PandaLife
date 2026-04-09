@@ -8,15 +8,8 @@ public class TheEndActions : MonoBehaviour
 
     public void MainMenu()
     {
-        // Limpiar datos de BarraManager
-        if (BarraManager.Instancia != null)
-        {
-            BarraManager.Instancia.hungerValues.Clear();
-            BarraManager.Instancia.rageValues.Clear();
-            BarraManager.Instancia.rageStates.Clear();
-            BarraManager.Instancia.sceneLoaded = false;
-            BarraManager.Instancia.comingFromGameOver = false;
-        }
+       
+      
         SceneManager.LoadScene(MainmenuScene.Value);
     }
     public void Replay()

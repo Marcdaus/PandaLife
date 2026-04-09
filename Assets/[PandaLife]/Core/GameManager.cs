@@ -158,6 +158,36 @@ public class GameManager : MonoBehaviour
             messageRewardCollectable.gameObject.SetActive(false);
         }
     }
+    public void ResetearJuego()
+    {
+        // Recursos
+        bambuverde = 0;
+        bamburojo = 0;
+        bayaarandanos = 0;
+        bayauchuva = 0;
 
+        // Tutorial
+        tutorialCuboCompletado = false;
+        tutorialRioCompletado = false;
+
+        // Día
+        tiempoTranscurrido = 0f;
+        minutosActualesTotales = 0f;
+        numeroDia = 1;
+        multiplicadorvelocidaddia = 1f;
+
+        // Recompensas
+        tedypersistente = false;
+        notepersistente = false;
+
+        // Mini pandas
+        miniPandasHambrientos = 3;
+
+        // Barras
+        barmultiplicator = 1f;
+
+        // UI
+        ActualizarInventarioUI();
+    }
 
 }

@@ -1,21 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 
-public class CheatMenuManager : MonoBehaviour
+public class CheatMenuManager : MonoBehaviour 
 {
     private GameObject cheatPanel;
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
+    [SerializeField] PinUIElement pinUIElement;
+
     HungerSystem[] pandas;
     [SerializeField] private PandaRequest pandaRequest;
-    private Dictionary<HungerSystem, float> originalRates = new Dictionary<HungerSystem, float>();
 
     public HungerSystem minipanda;
     void Start()
     {
+        
+        pinUIElement.gameObject.SetActive(false);
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
         // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
         if (CheatMenuPersistent.instance != null)
@@ -85,17 +89,38 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_Volver_dia1()
     {
-        GameManager.instance.tedypersistente = false;
-        GameManager.instance.notepersistente = false;
-        GameManager.instance.numeroDia = 1;
-        GameManager.instance.quitarBambu();
-        SceneManager.LoadScene("Main");
+        if (!GameManager.instance.numeroDia.Equals(1))
+        {
+            GameManager.instance.tedypersistente = false;
+            GameManager.instance.notepersistente = false;
+            GameManager.instance.numeroDia = 1;
+            GameManager.instance.quitarBambu();
+            SceneManager.LoadScene("Main");
+        }
+        StartCoroutine(MostrarTemporal(2f));
+    }
+    public IEnumerator MostrarTemporal(float duracion)
+    {
+        pinUIElement.Show();
+
+        yield return new WaitForSeconds(duracion);
+
+        pinUIElement.Hide();
     }
 
     // Cheat: Llevar directamente al Game Over
     public void Cheat_GameOver()
     {
-       SceneManager.LoadScene("Theend");
+        GameManager.instance.tedypersistente = false;
+        GameManager.instance.notepersistente = false;
+        GameManager.instance.numeroDia = 1;
+        GameManager.instance.quitarBambu();
+        BarraManager.Instancia.hungerValues.Clear();
+        BarraManager.Instancia.rageValues.Clear();
+        BarraManager.Instancia.rageStates.Clear();
+        BarraManager.Instancia.sceneLoaded = false;
+        BarraManager.Instancia.comingFromGameOver = false;
+        SceneManager.LoadScene("Theend");
     }
 
     // Cheat: Pausar o reanudar la disminución de hambre
@@ -121,9 +146,11 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_MiniPandaEnIra()
     {
+        
         if (BarraManager.Instancia != null)
         {
             minipanda.CurrentValue = 10f;
+
             Debug.Log("CHEAT: bajar hambre");
         }
     }
