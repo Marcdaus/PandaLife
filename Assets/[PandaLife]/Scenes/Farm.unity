@@ -2879,6 +2879,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 727231055772758430, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 200892166}
+    - target: {fileID: 727231055772758430, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cheat_adelantardia
+      objectReference: {fileID: 0}
     - target: {fileID: 1170575996102017509, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2922,6 +2930,14 @@ PrefabInstance:
     - target: {fileID: 4605410451441073680, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_Name
       value: -----Barras-----
+      objectReference: {fileID: 0}
+    - target: {fileID: 5050967266116083649, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 200892166}
+    - target: {fileID: 5050967266116083649, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Cheat_Volver_dia1
       objectReference: {fileID: 0}
     - target: {fileID: 5241297045271893572, guid: 7d6ea3401f50ea14d960bc6b1c69cfae, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3390,6 +3406,10 @@ PrefabInstance:
     - target: {fileID: 2920709801012057853, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: m_Name
       value: Directional Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: isInto
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: textoDia

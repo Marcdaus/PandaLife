@@ -52,7 +52,7 @@ public class RageSystem : BarSystem
     //Actualiza el valor de ira
     protected override void UpdateValue()
     {
-        Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
+        //Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
         currentValue += changeRate * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 

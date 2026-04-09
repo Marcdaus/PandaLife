@@ -70,7 +70,7 @@ public class HungerSystem : BarSystem
                 barraUI.SetRage(rageSystem);
         }
 
-        Debug.Log("Hambre en Update: " + currentValue);
+        //Debug.Log("Hambre en Update: " + currentValue);
     }
 
     void LateUpdate()
