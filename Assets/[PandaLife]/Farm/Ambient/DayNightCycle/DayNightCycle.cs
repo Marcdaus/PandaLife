@@ -1,0 +1,204 @@
+using System;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
+
+public class DayNightCycle : MonoBehaviour
+{
+    [Header("Configuración Escenas")]
+    [SerializeField] private GameString homeScene;
+    [SerializeField] private GameString theEnd;
+    [SerializeField] private bool isInto = false;
+
+    [Header("Configuración de Rotación")]
+    [SerializeField] private float anguloInicial = -10f;
+    [SerializeField] private float anguloFinal = 200f;
+
+
+
+    [Header("Configuración de Tiempo")]
+    [SerializeField] private int horaInicio = 8;
+    [SerializeField] private int horaFin = 21;
+    [SerializeField] private float duracionEnMinutos = 5f;
+    [SerializeField] private TextMeshProUGUI textoReloj;
+    [SerializeField] private TextMeshProUGUI textoDia;
+
+    [Header("Efecto de Oscurecimiento y texto")]
+    [SerializeField] private Image fadeImage;
+    private static float horaEmpiezaOscurecer = 20.0f;
+    private float horaEfecto = 20.8333f;
+
+    [Header("Recompensas")]
+    [SerializeField] private  List<RewardElement> elementlistbag = new List<RewardElement>();
+    [SerializeField] private RewardElement tedy ;
+    [SerializeField] private RewardElement note;
+    [Header("Menú Caldero")]
+    [SerializeField] private MenuCauldron menucauldron;
+
+
+    private RectTransform rectTextoDia;
+
+    private float duracionEnSegundos;
+
+    void Start()
+    {
+        duracionEnSegundos = duracionEnMinutos * 60f;
+        rectTextoDia = textoDia.GetComponent<RectTransform>();
+
+            RewardManager.EvaluatelElement(note);
+        
+
+            RewardManager.EvaluatelElement(tedy);
+        
+        RewardManager.EvaluateAllElements(elementlistbag);
+    }
+
+    void Update()
+    {
+
+
+        if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
+        {
+            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorVelocidad;
+            float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
+
+            // 1. Control de Rotación
+            float anguloActual = Mathf.Lerp(anguloInicial, anguloFinal, porcentaje);
+            if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
+
+            // 2. Control de Reloj
+            ActualizarReloj(porcentaje);
+
+            // 3. Control de obscurezers
+            ActualizarFundido();
+
+            // 4. Control del texto dia
+            ActualizarTexto();
+
+        }
+        else
+        {
+            
+            GameManager.instance.tiempoTranscurrido = 0f;
+            GameManager.instance.numeroDia++;
+
+            Rewards("Bags");
+            Rewards("Collectables");
+            SceneManager.LoadScene(homeScene.Value);
+        }
+        if (GameManager.instance.numeroDia == 4)
+        {
+            GameManager.instance.tedypersistente = false;
+            GameManager.instance.notepersistente = false;
+            GameManager.instance.numeroDia = 1;
+            GameManager.instance.quitarBambu();
+            SceneManager.LoadScene(theEnd.Value);
+        }
+
+    }
+    public void Rewards(string type)
+    {
+        if (type == "Bags")
+        {
+            
+            if (GameManager.instance.numeroDia == 2)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Red Dragon desbloqueado \n ¡Nueva receta desbloqueada!", 5f, type);
+            }
+            else if (GameManager.instance.numeroDia == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numeroDia}! Saco de semillas Uchuva desbloqueado \n ¡Nuevas recetas desbloqueadas! x2", 5f, type);
+            }
+        }
+        else if (type == "Collectables")
+        {
+            
+            if (GameManager.instance.numeroDia == 2 && GameManager.instance.miniPandasHambrientos == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable carta desbloqueado", 5f, type);
+            }
+            else if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
+            {
+                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable muñeco desbloqueado", 5f, type); 
+            }
+        }
+    }
+
+
+        void ActualizarReloj(float pct)
+        {
+            if (textoReloj == null) return;
+
+            // Calculamos el total de minutos entre las 8:00 y las 21:00
+            float minutosInicio = horaInicio * 60;
+            float minutosFin = horaFin * 60;
+
+            // Calculamos cuántos minutos han pasado según el porcentaje del ciclo
+            GameManager.instance.minutosActualesTotales = Mathf.Lerp(minutosInicio, minutosFin, pct);
+
+            // Convertimos esos minutos totales a formato HH:mm
+            int horas = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales / 60);
+            int minutos = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales % 60);
+
+            // Actualizamos el texto con formato de dos dígitos (00:00)
+            textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
+        }
+        void ActualizarFundido()
+        {
+            if (fadeImage == null) return;
+
+            // Convertimos la hora actual de minutos totales a formato 24h decimal
+            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+
+
+            if (horaActualDecimal > horaEmpiezaOscurecer)
+            {
+                // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
+                // Esto nos da un valor entre 0 y 1
+                float progresoOscurecimiento = (horaActualDecimal - horaEmpiezaOscurecer) / (horaFin - horaEmpiezaOscurecer);
+
+                // Aplicamos ese progreso al Alpha de la imagen
+                Color c = fadeImage.color;
+                c.a = Mathf.Clamp01(progresoOscurecimiento);
+                fadeImage.color = c;
+            }
+            else
+            {
+
+                // Si aún no son las 20:00, aseguramos que sea invisible
+                Color c = fadeImage.color;
+                c.a = 0f;
+                fadeImage.color = c;
+            }
+
+
+        }
+        void ActualizarTexto()
+        {
+            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+            if (horaActualDecimal > horaEfecto && GameManager.instance.numeroDia < 3)
+            {
+            menucauldron.CloseCauldron();
+            textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
+
+                // Centrar instantáneamente
+                rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
+                rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
+                rectTextoDia.pivot = new Vector2(0.5f, 0.5f);
+                rectTextoDia.anchoredPosition = Vector2.zero;
+
+                // Tamaño grande y alineación
+                textoDia.fontSize = 80f;
+                textoDia.alignment = TextAlignmentOptions.Center;
+            }
+            else
+            {
+            textoDia.text = "Día " + GameManager.instance.numeroDia;
+            }
+
+        }
+}
