@@ -16,9 +16,11 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] private PandaRequest pandaRequest;
 
     public HungerSystem minipanda;
+    RageSystem rageSystem;
+    
     void Start()
     {
-        
+        // Ira al minimo
         pinUIElement.gameObject.SetActive(false);
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
         // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
@@ -153,6 +155,30 @@ public class CheatMenuManager : MonoBehaviour
 
             Debug.Log("CHEAT: bajar hambre");
         }
+    }
+    public void Cheat_ResetHambreEira()
+    {
+        // Reset global de hambre si existe sistema global
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.hungerPaused = false;
+        }
+
+        // Buscar todos los pandas en escena
+        
+
+        foreach (var panda in pandas)
+        {
+            //  hambre al máximo
+            panda.Restaurar(100f);
+
+            rageSystem = panda.GetComponent<RageSystem>();
+
+
+            rageSystem.SetRage(0);
+        }
+
+        Debug.Log("CHEAT: hambre a 100 y ira reseteada");
     }
 
 }

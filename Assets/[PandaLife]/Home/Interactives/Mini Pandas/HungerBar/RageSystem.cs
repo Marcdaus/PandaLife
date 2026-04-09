@@ -32,6 +32,11 @@ public class RageSystem : BarSystem
        
          UpdateUI();
     }
+    public void SetRage(float value)
+    {
+        currentValue = value;
+         UpdateUI();    
+    }
 
     //Activa el estado de Ira
     public void ActivateRage(Slider sharedBar, Image sharedFill, Image sharedIndicator, Color currentFaceColor)
