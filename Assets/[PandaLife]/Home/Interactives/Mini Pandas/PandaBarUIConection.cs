@@ -22,11 +22,13 @@ void Update()
 {
     if (hunger != null)
     {
+        Debug.Log("UI usando HUNGER");
         slider.maxValue = hunger.MaxValue;
         slider.value = hunger.CurrentValue;
     }
-    else if (rage != null)
+    if (rage != null)
     {
+        Debug.Log("UI usando RAGE");
         slider.maxValue = rage.MaxValue;
         slider.value = rage.CurrentValue;
     }

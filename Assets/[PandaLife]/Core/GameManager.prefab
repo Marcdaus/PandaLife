@@ -708,9 +708,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerMaxValue: 100
-  hungerChangeRate: 1
+  hungerChangeRate: 0.5
   rageMaxValue: 100
-  rageChangeRate: 1
+  rageChangeRate: 0.5
+  sceneLoaded: 0
+  comingFromGameOver: 0
+  hungerPaused: 0
 --- !u!1 &6232961565616963001
 GameObject:
   m_ObjectHideFlags: 0
