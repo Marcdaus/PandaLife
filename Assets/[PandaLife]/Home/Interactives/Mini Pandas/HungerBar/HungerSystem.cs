@@ -1,124 +1,91 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class HungerSystem : BarSystem
 {
     [SerializeField] private string pandaID;
     [SerializeField] private PandaBarUIConection barraUI;
 
-    // Variables de la barra según estados
+    [SerializeField] private RageSystem rageSystem;
+    private bool rageActivated = false;
+
     private Color satisfiedBarColor = Color.green;
     private Color normalBarColor = Color.yellow;
     private Color hungryBarColor = Color.red;
 
-    // Variables de las caras según estados
-    [SerializeField] Color initialCircleColor = Color.white;
+    [SerializeField] Color initialCircleColor;
     private Color normalCircleColor;
     private Color hungryCircleColor;
 
-    // Variables estado de ira
-    [SerializeField] RageSystem rageSystem;
-
-    private bool rageActivated = false;
-
-    // Variable para pausar la barra
     private bool isPaused = false;
 
-    //Propiedades
-    public RageSystem Ragesystem
-    {
-        get => rageSystem;
-        set => rageSystem = value;
-    }
-
-    public bool RageActivated
-    {
-        get => rageActivated;
-        set => rageActivated = value;
-    }
-
+    public bool IsRageActivated => rageActivated;
     void Start()
     {
         GenerateDerivedColors();
 
         if (BarraManager.Instancia != null && pandaID != "")
-    {
-        var manager = BarraManager.Instancia;
-
-        if (manager.hungerValues.ContainsKey(pandaID))
         {
+            var manager = BarraManager.Instancia;
+            if (!manager.hungerValues.ContainsKey(pandaID))
+                manager.hungerValues[pandaID] = maxValue;
+            if (!manager.rageValues.ContainsKey(pandaID))
+                manager.rageValues[pandaID] = 0f;
+            if (!manager.rageStates.ContainsKey(pandaID))
+                manager.rageStates[pandaID] = false;
+
             currentValue = manager.hungerValues[pandaID];
             rageActivated = manager.rageStates[pandaID];
         }
-        else
-        {
-            currentValue = maxValue;
-        }
-    }
-    
-      
-        //Si la ira ya está activada, muestra la barra de ira
-        if (rageActivated && rageSystem != null)
-        {
-            Deactivate();
-            rageSystem.ActivateRage(bar, fillImage, indicatorImage, hungryCircleColor);
 
-            if (barraUI != null)
-                barraUI.SetRage(rageSystem);
-        }
-        
         Activate();
-
         UpdateUI();
-
     }
 
     protected override void Update()
     {
         if (isActive)
-            UpdateSystem();
+            UpdateSystem(); //Actualiza solo si esta activa en barra de hambre
     }
 
+    //Recalcula el valor de hambre, considerando pausas y el cheat global
     protected override void UpdateValue()
     {
+        // Pausar hambre si está activo el cheat global
+        bool globalPause = BarraManager.Instancia != null && BarraManager.Instancia.hungerPaused;
 
-        // Disminuir hambre solo si no está pausada
-        if (!isPaused)
+        if (!isPaused && !globalPause)
         {
             currentValue -= changeRate * Time.deltaTime;
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
-
         }
 
-        // Activar ira si llega a 0 o si RageActivated ya está en true
-        if (rageSystem != null && !rageActivated && currentValue <= 0 )     
+        //Si el sistema de ira está asignado, no se ha activado aún y el hambre llegó a 0, activamos la ira
+        if (rageSystem != null && !rageActivated && currentValue <= 0)
         {
             rageActivated = true;
-            Deactivate(); // apaga la barra de hambre 
+            Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
-            
             if (barraUI != null)
-                barraUI.SetRage(rageSystem); 
-
+                barraUI.SetRage(rageSystem);
         }
 
-            Debug.Log("Hambre en Update: " + currentValue);
+        Debug.Log("Hambre en Update: " + currentValue);
     }
 
-        void LateUpdate()
+    void LateUpdate()
+    {
+        if (BarraManager.Instancia != null && pandaID != "")
         {
-            if (BarraManager.Instancia != null && pandaID != "")
-            {
-                BarraManager.Instancia.hungerValues[pandaID] = currentValue;
-                BarraManager.Instancia.rageStates[pandaID] = rageActivated;
-            }
+            BarraManager.Instancia.hungerValues[pandaID] = currentValue;
+            BarraManager.Instancia.rageStates[pandaID] = rageActivated;
         }
+    }
 
-    //Funcion que actualiza los colores de las caras y barras
+    //Cambia el color segun el estado
     protected override void UpdateColors()
     {
-        if (!rageActivated) // <-- solo cambia colores si no hay ira
+        if (!rageActivated)
         {
             float percentage = (currentValue / maxValue) * 100f;
             if (fillImage != null)
@@ -132,52 +99,34 @@ public class HungerSystem : BarSystem
             }
         }
     }
-    //Hace que las caras varien de color a otro tono
+
+    //Genera los diferentes colores de cada carita
     void GenerateDerivedColors()
     {
         normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.5f);
         hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.7f);
     }
 
+    //Restaura un porcentaje de la barra, considerando el valor máximo
     public void Restaurar(float cantidad)
     {
         float amount = (cantidad / 100f) * maxValue;
-
         currentValue += amount;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
-
-        Debug.Log("Nueva hambre: " + currentValue);
-
         UpdateUI();
-
     }
 
+    //Pausa el hambre
     public void PauseHunger(float seconds)
     {
         StartCoroutine(PauseRoutine(seconds));
     }
 
-    private IEnumerator PauseRoutine(float seconds)
+    private System.Collections.IEnumerator PauseRoutine(float seconds)
     {
         isPaused = true;
         yield return new WaitForSeconds(seconds);
         isPaused = false;
     }
-
-    public void ForceRage()
-{
-    if (!rageActivated)
-    {
-        rageActivated = true;
-
-        Deactivate();
-
-        rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
-
-        if (barraUI != null)
-            barraUI.SetRage(rageSystem);
-    }
-}
-
 
 }

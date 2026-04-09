@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class RageSystem : BarSystem
 {
+    //Variables específicas del sistema de ira
     [SerializeField] private string pandaID;
 
     private Color calmColor = new Color(1f, 0f, 0f); // Rojo claro
@@ -48,7 +49,7 @@ public class RageSystem : BarSystem
         lockedFaceColor = currentFaceColor;
         Activate();
     }
-
+    //Actualiza el valor de ira
     protected override void UpdateValue()
     {
         Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
