@@ -182,7 +182,8 @@ public class DayNightCycle : MonoBehaviour
             float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
             if (horaActualDecimal > horaEfecto && GameManager.instance.numeroDia < 3)
             {
-            menucauldron.CloseCauldron();
+            if(isInto) menucauldron.CloseCauldron();
+
             textoDia.text = "Día " + (GameManager.instance.numeroDia + 1);
 
                 // Centrar instantáneamente
