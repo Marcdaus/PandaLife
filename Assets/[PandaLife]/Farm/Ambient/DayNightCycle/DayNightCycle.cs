@@ -63,7 +63,7 @@ public class DayNightCycle : MonoBehaviour
 
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorVelocidad;
+            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
             float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
             // 1. Control de Rotación
@@ -85,7 +85,7 @@ public class DayNightCycle : MonoBehaviour
             
             GameManager.instance.tiempoTranscurrido = 0f;
             GameManager.instance.numeroDia++;
-
+            GameManager.instance.barmultiplicator += 0.05f; // Incremento del multiplicador de velocidad de día
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);

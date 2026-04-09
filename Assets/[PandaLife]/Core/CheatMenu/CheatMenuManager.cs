@@ -65,14 +65,14 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_acelerardia()
     {
-        if (GameManager.instance.multiplicadorVelocidad == 1f)
+        if (GameManager.instance.multiplicadorvelocidaddia == 1f)
         {
-            GameManager.instance.multiplicadorVelocidad = 20f;
+            GameManager.instance.multiplicadorvelocidaddia = 20f;
             Debug.Log("CHEAT: multiplicador de velocidad activado");
         }
         else
         {
-            GameManager.instance.multiplicadorVelocidad = 1f;
+            GameManager.instance.multiplicadorvelocidaddia = 1f;
             Debug.Log("CHEAT: multiplicador de velocidad desactivado");
         }
     }
