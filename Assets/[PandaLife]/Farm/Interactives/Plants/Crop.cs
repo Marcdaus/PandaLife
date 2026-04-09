@@ -13,7 +13,7 @@ public class Crop : MonoBehaviour
     [SerializeField] private float growtime = 10f;
     [SerializeField] private int Type;
 
-    [SerializeField] private int maxStages = 3;
+    [SerializeField] public int maxStages = 3;
 
     private bool watered = false;
     public bool IsWatered { get { return watered; } }
