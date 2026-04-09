@@ -113,6 +113,7 @@ public class CheatMenuManager : MonoBehaviour
     // Cheat: Llevar directamente al Game Over
     public void Cheat_GameOver()
     {
+        SceneManager.LoadScene("Theend");
         GameManager.instance.tedypersistente = false;
         GameManager.instance.notepersistente = false;
         GameManager.instance.numeroDia = 1;
@@ -122,7 +123,6 @@ public class CheatMenuManager : MonoBehaviour
         BarraManager.Instancia.rageStates.Clear();
         BarraManager.Instancia.sceneLoaded = false;
         BarraManager.Instancia.comingFromGameOver = false;
-        SceneManager.LoadScene("Theend");
     }
 
     // Cheat: Pausar o reanudar la disminución de hambre
@@ -165,16 +165,14 @@ public class CheatMenuManager : MonoBehaviour
         }
 
         // Buscar todos los pandas en escena
-        
 
         foreach (var panda in pandas)
         {
             //  hambre al máximo
             panda.Restaurar(100f);
 
+            //Ira al minimo
             rageSystem = panda.GetComponent<RageSystem>();
-
-
             rageSystem.SetRage(0);
         }
 
