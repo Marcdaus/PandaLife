@@ -81,7 +81,7 @@ public class BarraManager : MonoBehaviour
             }
         }
 
-        // 3️⃣ Si los 3 estaban en ira, restaurar hambre al 25%
+        // 3 Si los 3 estaban en ira, restaurar hambre al 25%
         if (allThreeRaging)
         {
             foreach (var key in hungerValues.Keys.ToList())
