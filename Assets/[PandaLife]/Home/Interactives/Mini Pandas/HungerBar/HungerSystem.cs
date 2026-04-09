@@ -66,6 +66,7 @@ public class HungerSystem : BarSystem
             rageActivated = true;
             Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+            GameManager.instance.miniPandasHambrientos--;
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
         }

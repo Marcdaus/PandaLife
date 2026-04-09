@@ -12,6 +12,7 @@ public class CheatMenuManager : MonoBehaviour
     HungerSystem[] pandas;
     private Dictionary<HungerSystem, float> originalRates = new Dictionary<HungerSystem, float>();
 
+    public HungerSystem minipanda;
     void Start()
     {
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
@@ -105,4 +106,13 @@ public class CheatMenuManager : MonoBehaviour
             Debug.Log(BarraManager.Instancia.hungerPaused ? "CHEAT: Hambre pausada" : "CHEAT: Hambre reanudada");
         }
     }
+    public void Cheat_MiniPandaEnIra()
+    {
+        if (BarraManager.Instancia != null)
+        {
+            minipanda.CurrentValue = 10f;
+            Debug.Log("CHEAT: bajar hambre");
+        }
+    }
+
 }
