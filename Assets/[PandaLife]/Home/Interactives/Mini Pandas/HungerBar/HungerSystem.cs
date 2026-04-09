@@ -37,8 +37,24 @@ public class HungerSystem : BarSystem
             currentValue = manager.hungerValues[pandaID];
             rageActivated = manager.rageStates[pandaID];
         }
+        if (rageActivated && rageSystem != null)
+        {
+            Deactivate(); // hambre OFF
 
-        Activate();
+            rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+
+            if (barraUI != null)
+                barraUI.SetRage(rageSystem);
+        }
+        else
+        {
+            Activate(); // hambre ON si no hay ira
+
+            if (barraUI != null)
+                barraUI.SetHunger(this);
+        }
+
+       // Activate();
         UpdateUI();
     }
 

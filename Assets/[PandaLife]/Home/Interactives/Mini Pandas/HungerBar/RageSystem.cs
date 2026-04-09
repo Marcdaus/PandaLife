@@ -12,7 +12,7 @@ public class RageSystem : BarSystem
 
     void Awake()
     {
-        Deactivate();
+        //Deactivate();
     }
 
     void Start()
@@ -41,10 +41,17 @@ public class RageSystem : BarSystem
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
 
-        if (!BarraManager.Instancia.rageValues.ContainsKey(pandaID))
-        {
-            currentValue = 0f;
-        }
+        if (BarraManager.Instancia != null && pandaID != "")
+    {
+        var manager = BarraManager.Instancia;
+
+        if (manager.rageValues.ContainsKey(pandaID))
+            currentValue = manager.rageValues[pandaID];
+
+        maxValue = manager.rageMaxValue;
+        changeRate = manager.rageChangeRate;
+    }
+    Debug.Log("ACTIVANDO RAGE DE " + pandaID);
 
         lockedFaceColor = currentFaceColor;
         Activate();
@@ -73,6 +80,15 @@ public class RageSystem : BarSystem
             indicatorImage.color = c;
         }
     }
+
+    protected override void Update()
+{
+    if (isActive)
+        {
+        Debug.Log("RAGE UPDATE FUNCIONANDO");
+        UpdateSystem();
+        }
+}
     void LateUpdate()
     {
         if (BarraManager.Instancia != null && pandaID != "")
