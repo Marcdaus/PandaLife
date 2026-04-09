@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mensajeInteraccion: dar plato
+  indicePanda: 0
+  pedidoDeseado: 
 --- !u!136 &5914006132138578943
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -153,10 +155,11 @@ MonoBehaviour:
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 100
-  changeRate: 1
-  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
-  rageSystem: {fileID: 4883566758012373200}
+  changeRate: 0.5
+  pandaID: DarkPanda
   barraUI: {fileID: 0}
+  rageSystem: {fileID: 4883566758012373200}
+  initialCircleColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &4883566758012373200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +177,8 @@ MonoBehaviour:
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 0
-  changeRate: 1
+  changeRate: 0.5
+  pandaID: DarkPanda
 --- !u!1 &5861649734748426955
 GameObject:
   m_ObjectHideFlags: 0

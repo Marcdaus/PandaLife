@@ -1,13 +1,45 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Minipandas : Interactuable
 {
 
     private HungerSystem hungerSystem;
+
+    [SerializeField] private int indicePanda; // 0, 1 o 2
+    [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("Bamboo", "Uchuva", etc.)
+
     void Awake()
     {
         hungerSystem = GetComponent<HungerSystem>();
     }
+
+    private void Start()
+    {
+        // Al arrancar, el panda busca el GameManager y sus pedidos
+        if (GameManager.instance != null)
+        {
+            PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
+
+            if (pandaReq != null)
+            {
+                // Obtenemos la memoria de los pedidos actuales
+                List<string> pedidosActuales = pandaReq.GetCurrentRequests();
+
+                // Comprobamos que la lista tenga suficientes elementos para evitar errores
+                if (pedidosActuales.Count > indicePanda)
+                {
+                    pedidoDeseado = pedidosActuales[indicePanda];
+                    Debug.Log($"Mini panda {indicePanda} configurado. Quiere comer: {pedidoDeseado}");
+                }
+                else
+                {
+                    Debug.LogWarning($"El panda {indicePanda} no encontró un pedido en la lista.");
+                }
+            }
+        }
+    }
+    
 
     public void InteractuarConPlato(Dish dish, Player player)
     {
@@ -16,8 +48,17 @@ public class Minipandas : Interactuable
         if (dish != null)
         {
             int saciedad = dish.GetSaciedad();
-            Debug.Log("saciedad en minipandas al alimentar: " + saciedad);
-
+            // Comprobamos si el plato tiene lo que el panda quiere
+            if (!string.IsNullOrEmpty(pedidoDeseado) && !dish.TieneIngrediente(pedidoDeseado))
+            {
+                // Si NO lo tiene, la saciedad se reduce a la mitad
+                saciedad = saciedad / 2;
+                Debug.Log("El plato no tiene " + pedidoDeseado + ". Penalización aplicada. Saciedad final: " + saciedad);
+            }
+            else
+            {
+                Debug.Log("El plato le gusta. Saciedad completa: " + saciedad);
+            }
             hungerSystem.Restaurar(saciedad);
             hungerSystem.PauseHunger(5f);
             //Debug.Log("minipandas: Dish name: " + dish.name);

@@ -44,5 +44,15 @@ public class Dish : MonoBehaviour
         return texto;
     }
 
+    public bool TieneIngrediente(string nombreIngrediente)
+    {
+        if (nombreIngrediente == "Bamboo" && bambuverde > 0) return true;
+        if (nombreIngrediente == "RedDragon" && bamburojo > 0) return true;
+        if (nombreIngrediente == "Blueberry" && arandano > 0) return true;
+        if (nombreIngrediente == "Uchuva" && bayauchuva > 0) return true;
+
+        return false;
+    }
+
 }
 
