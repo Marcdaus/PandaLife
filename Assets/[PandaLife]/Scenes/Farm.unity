@@ -480,6 +480,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1276883270}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897959}
+    - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: changeRate
       value: 0.5
       objectReference: {fileID: 0}
@@ -559,6 +563,10 @@ PrefabInstance:
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 1276883270}
+    - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897959}
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: changeRate
       value: 0.5
@@ -2596,6 +2604,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1276883262}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897961}
+    - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: changeRate
       value: 0.5
       objectReference: {fileID: 0}
@@ -2635,6 +2647,10 @@ PrefabInstance:
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 1276883262}
+    - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897961}
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: changeRate
       value: 0.5
@@ -3105,6 +3121,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822556186}
   m_CullTransparentMesh: 1
+--- !u!114 &866897959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9108926928136627160, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &866897960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2087164302156368512, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &866897961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1144603045115490380, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &868316977 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6998066308455594606, guid: 529060b65b701d44ab7094fbd7566aca, type: 3}
@@ -6931,6 +6980,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1276883265}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897960}
+    - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: changeRate
       value: 0.5
       objectReference: {fileID: 0}
@@ -7022,6 +7075,10 @@ PrefabInstance:
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 1276883265}
+    - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: valueText
+      value: 
+      objectReference: {fileID: 866897960}
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: changeRate
       value: 0.5
