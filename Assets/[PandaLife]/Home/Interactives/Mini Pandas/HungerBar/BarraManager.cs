@@ -55,35 +55,10 @@ public class BarraManager : MonoBehaviour
 
     public void PrepareRetry()
     {
-        comingFromGameOver = true;
 
-        // Compureba si los tres pandas estan en ira
-        bool allThreeRaging = rageStates.Count == 3 && rageStates.Values.All(s => s);
-
-        // Reduce la ira de todos los pandas al 25% del máximo
-        foreach (var key in rageValues.Keys.ToList())
-        {
-            if (rageValues[key] >= rageMaxValue)
-            {
-                rageValues[key] = rageMaxValue * 0.25f;
-                rageStates[key] = false;
-                foreach (var ey in rageValues.Keys)
-                {
-                    Debug.Log("Panda ID: " + key);
-                }
-            }
-        }
-
-        // 3 Si los 3 estaban en ira, restaurar hambre al 25%
-        if (allThreeRaging)
-        {
-            foreach (var key in hungerValues.Keys.ToList())
-            {
-                hungerValues[key] = hungerMaxValue * 0.25f;
-            }
-        }
-
-        sceneLoaded = false;
+        BarraManager.Instancia.hungerValues.Clear();
+        BarraManager.Instancia.rageValues.Clear();
+        BarraManager.Instancia.rageStates.Clear();
     }
 
     public void CheckRage()
