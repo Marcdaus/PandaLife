@@ -11,11 +11,11 @@ public class BarraManager : MonoBehaviour
 
     //Variables de hambre
     public float hungerMaxValue = 100f;
-    public float hungerChangeRate = 1f;
+    public float hungerChangeRate = 0.5f;
 
     //Variables de ira
     public float rageMaxValue = 100f;
-    public float rageChangeRate = 1f;
+    public float rageChangeRate = 0.5f;
 
     // Diccionarios para almacenar valores de hambre e ira por panda, y estados de ira
     public Dictionary<string, float> hungerValues = new();
@@ -49,12 +49,12 @@ public class BarraManager : MonoBehaviour
     private void Update()
     {
         // Actualización de ira
-        foreach (var key in rageValues.Keys.ToList())
+      /*  foreach (var key in rageValues.Keys.ToList())
         {
             rageValues[key] += rageChangeRate * Time.deltaTime;
             rageValues[key] = Mathf.Clamp(rageValues[key], 0f, rageMaxValue);
             rageStates[key] = rageValues[key] >= rageMaxValue;
-        }
+        }*/
         
         CheckRage();
 
@@ -110,8 +110,6 @@ public class BarraManager : MonoBehaviour
                 
             }
         }
-
-        
 
         // Todos en estado de ira
         if (ragingCount == 3)

@@ -38,8 +38,26 @@ public class HungerSystem : BarSystem
             rageActivated = manager.rageStates[pandaID];
         }
 
-        Activate();
+        if (rageActivated && rageSystem != null)
+        {
+            Deactivate(); // hambre OFF
+
+            rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+
+            if (barraUI != null)
+                barraUI.SetRage(rageSystem);
+        }
+        else
+        {
+            Activate(); // hambre ON si no hay ira
+
+            if (barraUI != null)
+                barraUI.SetHunger(this);
+        }
+
+       // Activate();
         UpdateUI();
+
     }
 
     protected override void Update()
@@ -56,7 +74,7 @@ public class HungerSystem : BarSystem
 
         if (!isPaused && !globalPause)
         {
-            currentValue -= changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
+            currentValue -= changeRate * Time.deltaTime;
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
         }
 
@@ -66,7 +84,7 @@ public class HungerSystem : BarSystem
             rageActivated = true;
             Deactivate();
             rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
-            GameManager.instance.miniPandasHambrientos--;
+          //  GameManager.instance.miniPandasHambrientos--;
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
         }

@@ -165,7 +165,7 @@ public class CheatMenuManager : MonoBehaviour
 
             //Ira al minimo
             rageSystem = panda.GetComponent<RageSystem>();
-            rageSystem.SetRage(0);
+            //rageSystem.SetRage(0);
         }
 
         Debug.Log("CHEAT: hambre a 100 y ira reseteada");
