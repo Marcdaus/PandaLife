@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public abstract class BarSystem : MonoBehaviour, IBarSystem
     [SerializeField] protected float maxValue = 100f;
     [SerializeField] protected float currentValue;
     [SerializeField] protected float changeRate = 1f;
-
+    [SerializeField] protected TMP_Text valueText;
     protected bool isActive = false;
 
     // Propiedades
@@ -40,6 +41,12 @@ public abstract class BarSystem : MonoBehaviour, IBarSystem
             bar.maxValue = maxValue;
             bar.value = currentValue;
         }
+
+        if (valueText != null)
+        {
+            valueText.text = Mathf.RoundToInt(currentValue).ToString() ;
+        }
+
         UpdateColors();
     }
 
