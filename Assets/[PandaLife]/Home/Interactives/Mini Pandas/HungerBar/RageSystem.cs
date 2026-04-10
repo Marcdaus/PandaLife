@@ -121,5 +121,15 @@ public class RageSystem : BarSystem
         }
     }
 
+     public void ReducirIraPorcentaje(float porcentaje)
+    {
+        float reduction = (porcentaje / 100f) * maxValue;
+        currentValue -= reduction;
+        currentValue = Mathf.Clamp(currentValue, 0, maxValue);
+
+        UpdateUI();
+        
+    }
+
 
 }

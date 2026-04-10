@@ -306,10 +306,14 @@ public class Player : MonoBehaviour
                 //Debug.Log("pikedu:" + dishComp);
                 return;
             }
+            else
+            {
+                minipanda.Interactuar(); //panda con ira
+            }
+            return;
         }
         else
         {
-            Debug.Log("esta usando su interactuar normal");
             interactuable.Interactuar();
         }
     }

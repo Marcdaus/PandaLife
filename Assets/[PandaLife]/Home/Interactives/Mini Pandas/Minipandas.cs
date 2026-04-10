@@ -8,6 +8,7 @@ public class Minipandas : Interactuable
 
     [SerializeField] private int indicePanda; // 0, 1 o 2
     [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("Bamboo", "Uchuva", etc.)
+    [SerializeField] private float porcentajecalmado;
 
     void Awake()
     {
@@ -69,10 +70,22 @@ public class Minipandas : Interactuable
         player.SetPickedObject(null);
     }
 
-    public override void Interactuar()
+     public override void Interactuar()
     {
-        //seguramente aqui diferencie entre los estados, si no en otro script
-        //y hago otra funcion que sea pandaEnfadado
-        Debug.Log("el panda: si no me muevo no me ve");
+        if (hungerSystem.IsRageActivated)
+        {
+            RageSystem rage = GetComponent<RageSystem>();
+
+            if (rage != null)
+            {
+                rage.ReducirIraPorcentaje(porcentajecalmado); 
+                Debug.Log("Has calmado al panda ");
+            }
+        }
+        else
+        {
+            Debug.Log("El panda está tranquilo");
+            Debug.Log("el panda: si no me muevo no me ve");
+        }
     }
 }
