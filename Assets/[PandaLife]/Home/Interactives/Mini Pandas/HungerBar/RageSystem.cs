@@ -10,10 +10,6 @@ public class RageSystem : BarSystem
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
     private Color lockedFaceColor = Color.red;
 
-    void Awake()
-    {
-        //Deactivate();
-    }
 
     void Start()
     {
@@ -32,28 +28,6 @@ public class RageSystem : BarSystem
        
          UpdateUI();
     }
-   /* public void SetRage(float value)
-    {
-        currentValue = value;
-         UpdateUI();    
-    }*/
-
-    //Activa el estado de Ira
-   /* public void ActivateRage(Slider sharedBar, Image sharedFill, Image sharedIndicator, Color currentFaceColor)
-    {
-        //Realiza las asignaciones
-        bar = sharedBar;
-        fillImage = sharedFill;
-        indicatorImage = sharedIndicator;
-
-        if (!BarraManager.Instancia.rageValues.ContainsKey(pandaID))
-        {
-            currentValue = 0f;
-        }
-
-        lockedFaceColor = currentFaceColor;
-        Activate();
-    }*/
 
     public void ActivateRage(Slider sharedBar, Image sharedFill, Image sharedIndicator, Color currentFaceColor)
     {
@@ -82,7 +56,6 @@ public class RageSystem : BarSystem
     //Actualiza el valor de ira
     protected override void UpdateValue()
     {
-        //Debug.Log("Ira actual: " + currentValue + " | Active: " + isActive);
         currentValue += changeRate * Time.deltaTime;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
@@ -108,7 +81,7 @@ public class RageSystem : BarSystem
     {
         if (isActive)
             {
-            Debug.Log("RAGE UPDATE FUNCIONANDO");
+            //Debug.Log("RAGE UPDATE FUNCIONANDO");
             UpdateSystem();
             }
     }

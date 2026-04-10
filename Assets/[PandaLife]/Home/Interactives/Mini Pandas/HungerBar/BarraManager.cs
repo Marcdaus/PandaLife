@@ -48,13 +48,6 @@ public class BarraManager : MonoBehaviour
 
     private void Update()
     {
-        // Actualización de ira
-      /*  foreach (var key in rageValues.Keys.ToList())
-        {
-            rageValues[key] += rageChangeRate * Time.deltaTime;
-            rageValues[key] = Mathf.Clamp(rageValues[key], 0f, rageMaxValue);
-            rageStates[key] = rageValues[key] >= rageMaxValue;
-        }*/
         
         CheckRage();
 

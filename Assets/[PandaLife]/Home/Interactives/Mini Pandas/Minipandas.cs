@@ -48,6 +48,11 @@ public class Minipandas : Interactuable
         
         if (dish != null)
         {
+            if (hungerSystem.IsRageActivated)
+            {
+                Debug.Log("Esta enfadado y no quiere comer");
+                return;
+            }
             int saciedad = dish.GetSaciedad();
             // Comprobamos si el plato tiene lo que el panda quiere
             if (!string.IsNullOrEmpty(pedidoDeseado) && !dish.TieneIngrediente(pedidoDeseado))

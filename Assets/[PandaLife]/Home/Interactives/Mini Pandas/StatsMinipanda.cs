@@ -9,14 +9,6 @@ public class StatsMinipanda : MonoBehaviour
 
         void Start()
     {
-   /* if (hungerSystem == null)
-        hungerSystem = GetComponent<HungerSystem>();
-
-    if (barraUI != null)
-        barraUI.SetHunger(hungerSystem);
-    else
-        Debug.LogError("barraUI no asignada en " + gameObject.name);
-*/
 
     if (hungerSystem == null)
         hungerSystem = GetComponent<HungerSystem>();
