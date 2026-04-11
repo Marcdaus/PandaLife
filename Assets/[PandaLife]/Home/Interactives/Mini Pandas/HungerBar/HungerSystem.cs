@@ -125,8 +125,8 @@ public class HungerSystem : BarSystem
     //Genera los diferentes colores de cada carita
     void GenerateDerivedColors()
     {
-        normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.5f);
-        hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.7f);
+        normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.2f);
+        hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.2f);
     }
 
     //Restaura un porcentaje de la barra, considerando el valor máximo
@@ -181,9 +181,6 @@ public class HungerSystem : BarSystem
             bar.value = currentValue; 
         }
     }
-
-
-
     public void ResetParaNuevoDia()
     {
         if (rageActivated)

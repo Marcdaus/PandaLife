@@ -26,4 +26,20 @@ public class RequestManager : MonoBehaviour
             }
         }
     }
+
+    public void ActualizarTextosManual()
+    {
+        PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
+        if (pandaReq != null)
+        {
+            List<string> pedidosDeHoy = pandaReq.GetCurrentRequests();
+            if (pedidosDeHoy.Count >= 3)
+            {
+                if (pin1Text != null) pin1Text.text = pedidosDeHoy[0];
+                if (pin2Text != null) pin2Text.text = pedidosDeHoy[1];
+                if (pin3Text != null) pin3Text.text = pedidosDeHoy[2];
+            }
+        }
+    }
+
 }

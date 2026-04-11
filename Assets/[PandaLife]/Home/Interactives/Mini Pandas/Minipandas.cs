@@ -93,4 +93,14 @@ public class Minipandas : Interactuable
             Debug.Log("el panda: si no me muevo no me ve");
         }
     }
+
+    public void ActualizarPedidoDebug()
+    {
+        PandaRequest pReq = GameManager.instance.GetComponent<PandaRequest>();
+        List<string> pedidos = pReq.GetCurrentRequests();
+        if (pedidos.Count > indicePanda)
+        {
+            pedidoDeseado = pedidos[indicePanda];
+        }
+    }
 }
