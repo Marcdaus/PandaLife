@@ -10,7 +10,7 @@ public class CheatMenuManager : MonoBehaviour
     private GameObject cheatPanel;
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
-    [SerializeField] PinUIElement pinUIElement;
+
 
     HungerSystem[] pandas;
 
@@ -20,7 +20,7 @@ public class CheatMenuManager : MonoBehaviour
     void Start()
     {
         // Ira al minimo
-        pinUIElement.gameObject.SetActive(false);
+ 
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
         // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
         if (CheatMenuPersistent.instance != null)
@@ -98,15 +98,6 @@ public class CheatMenuManager : MonoBehaviour
             GameManager.instance.quitarBambu();
             SceneManager.LoadScene("Main");
         }
-        StartCoroutine(MostrarTemporal(2f));
-    }
-    public IEnumerator MostrarTemporal(float duracion)
-    {
-        pinUIElement.Show();
-
-        yield return new WaitForSeconds(duracion);
-
-        pinUIElement.Hide();
     }
 
     // Cheat: Llevar directamente al Game Over
