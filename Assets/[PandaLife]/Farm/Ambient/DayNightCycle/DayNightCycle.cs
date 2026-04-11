@@ -46,8 +46,8 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI percentage3;
 
     [Header("soltar cosas entre cambio de escena")]
-    private Player player;
-    private PickupDrop pickupobject;
+
+
 
 
 
@@ -132,6 +132,7 @@ public class DayNightCycle : MonoBehaviour
         }
         if (GameManager.instance.numday == 4)
         {
+            GameManager.instance.miniPandasHambrientos = 3;
             GameManager.instance.valuepercentage = 0;
             GameManager.instance.tedypersistente = false;
             GameManager.instance.notepersistente = false;
@@ -228,12 +229,7 @@ public class DayNightCycle : MonoBehaviour
             float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
             if (horaActualDecimal > efecthour && GameManager.instance.numday < 3)
             {
-            if (player.IsHoldingBucket() || player.IsHoldingDish())
-            {
-                Debug.Log($"Deja el {pickupobject.name} antes de entrar en casa");
-                // Suelta el objeto que tenga en la mano
-                pickupobject.Drop();
-            }
+            
             if (isInto) menucauldron.CloseCauldron();
 
             daytext.text = "Día " + (GameManager.instance.numday + 1);

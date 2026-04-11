@@ -634,7 +634,7 @@ PrefabInstance:
     - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: pinUIElement
       value: 
-      objectReference: {fileID: 2052715477}
+      objectReference: {fileID: 0}
     - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: daynightcycle
       value: 
@@ -6992,17 +6992,6 @@ MonoBehaviour:
   worldPosition: {fileID: 548786845}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786846}
---- !u!114 &2052715477 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2716571439090160010, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
-  m_PrefabInstance: {fileID: 1031373939891894897}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &2080929969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7554,7 +7543,8 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1421722094}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8771247712967119606, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3821132063143566846, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       insertIndex: 11

@@ -35,6 +35,7 @@ public class RageSystem : BarSystem
         bar = sharedBar;
         fillImage = sharedFill;
         indicatorImage = sharedIndicator;
+        GameManager.instance.miniPandasHambrientos--;
 
         if (BarraManager.Instancia != null && pandaID != "")
     {
