@@ -56,7 +56,7 @@ public class RageSystem : BarSystem
     //Actualiza el valor de ira
     protected override void UpdateValue()
     {
-        currentValue += changeRate * Time.deltaTime;
+        currentValue += changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
     }

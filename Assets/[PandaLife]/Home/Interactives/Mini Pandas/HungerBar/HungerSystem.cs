@@ -76,7 +76,7 @@ public class HungerSystem : BarSystem
 
         if (!isPaused && !globalPause)
         {
-            currentValue -= changeRate * Time.deltaTime;
+            currentValue -= changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
         }
 
