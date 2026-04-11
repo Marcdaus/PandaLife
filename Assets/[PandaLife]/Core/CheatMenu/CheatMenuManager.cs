@@ -137,39 +137,49 @@ public class CheatMenuManager : MonoBehaviour
         pandaRequest.UnlockCropsForDay(2);
     }
 
-
     public void Cheat_MiniPandaEnIra()
     {
-        
-        if (BarraManager.Instancia != null)
-        {
-            minipanda.CurrentValue = 10f;
 
-            Debug.Log("CHEAT: bajar hambre");
+        HungerSystem[] todosLosPandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+
+        if (todosLosPandas.Length > 0)
+        {
+
+            HungerSystem pandaAFectar = todosLosPandas[0];
+
+            pandaAFectar.CurrentValue = 5f;
+            Debug.Log("CHEAT: Forzando ira en " + pandaAFectar.name);
+        }
+        else
+        {
+            Debug.LogWarning("CHEAT: No se encontró ningún HungerSystem en esta escena.");
         }
     }
+
     public void Cheat_ResetHambreEira()
     {
-        // Reset global de hambre si existe sistema global
         if (BarraManager.Instancia != null)
         {
             BarraManager.Instancia.hungerPaused = false;
+            BarraManager.Instancia.isResetting = false;
         }
 
-        // Buscar todos los pandas en escena
+        // Buscamos los pandas actuales en la escena
+        HungerSystem[] pandasEnEscena = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
 
-        foreach (var panda in pandas)
+        foreach (var panda in pandasEnEscena)
         {
-            //  hambre al máximo
+   
             panda.Restaurar(100f);
 
-            //Ira al minimo
-            rageSystem = panda.GetComponent<RageSystem>();
-            //rageSystem.SetRage(0);
-            rageSystem.CurrentValue = 0;
+
+            panda.ResetSystem();
+
+
+            panda.UpdateUI();
         }
 
-        Debug.Log("CHEAT: hambre a 100 y ira reseteada");
+        Debug.Log("CHEAT: Todas las barras al 100% y estados de ira limpiados.");
     }
 
 }

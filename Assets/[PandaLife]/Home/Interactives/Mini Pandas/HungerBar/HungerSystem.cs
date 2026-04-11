@@ -208,4 +208,16 @@ public class HungerSystem : BarSystem
         UpdateColors();
         if (bar != null) bar.value = currentValue;
     }
+
+    public void ForceFullReset()
+    {
+        rageActivated = false; 
+        currentValue = maxValue; 
+        Activate(); 
+
+        if (rageSystem != null)
+            rageSystem.ResetSystem();
+
+        UpdateUI();
+    }
 }
