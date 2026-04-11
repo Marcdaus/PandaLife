@@ -13,7 +13,6 @@ public class CheatMenuManager : MonoBehaviour
     [SerializeField] PinUIElement pinUIElement;
 
     HungerSystem[] pandas;
-    [SerializeField] private PandaRequest pandaRequest;
 
     public HungerSystem minipanda;
     RageSystem rageSystem;
@@ -129,12 +128,33 @@ public class CheatMenuManager : MonoBehaviour
 
     public void RerollPedidos()
     {
-        pandaRequest.GenerateRandomRequests();
+        PandaRequest pReq = GameManager.instance.GetComponent<PandaRequest>();
+
+        if (pReq != null)
+        {
+            pReq.GenerateRandomRequests();
+
+            RequestManager ui = Object.FindFirstObjectByType<RequestManager>();
+            if (ui != null)
+            {
+                ui.ActualizarTextosManual();
+            }
+
+            Minipandas[] todosLosPandas = Object.FindObjectsByType<Minipandas>(FindObjectsSortMode.None);
+            foreach (var panda in todosLosPandas) panda.ActualizarPedidoDebug();
+
+            Debug.Log("Reroll de pedidos completado.");
+        }
     }
 
-    public void DesbloquearPedidos() 
+    public void DesbloquearPedidos()
     {
-        pandaRequest.UnlockCropsForDay(2);
+        PandaRequest pReq = GameManager.instance.GetComponent<PandaRequest>();
+        if (pReq != null)
+        {
+            pReq.UnlockCropsForDay(2);
+            Debug.Log("Cultivos del Día 2 desbloqueados.");
+        }
     }
 
     public void Cheat_MiniPandaEnIra()
