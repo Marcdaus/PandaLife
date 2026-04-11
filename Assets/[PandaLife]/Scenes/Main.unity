@@ -2031,57 +2031,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1932578477}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: teddy
-      value: 
-      objectReference: {fileID: 1932578477}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: textoDia
+      propertyPath: daytext
       value: 
       objectReference: {fileID: 220561783}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: clocktext
+      value: 
+      objectReference: {fileID: 220561785}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: fadeImage
       value: 
       objectReference: {fileID: 220561784}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: textoReloj
+      propertyPath: percentage1
       value: 
-      objectReference: {fileID: 220561785}
+      objectReference: {fileID: 2072309786}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: percentage2
+      value: 
+      objectReference: {fileID: 1810047776}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: percentage3
+      value: 
+      objectReference: {fileID: 1650870855}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: menucauldron
       value: 
       objectReference: {fileID: 8018199601868414255}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: pandaRequest
-      value: 
-      objectReference: {fileID: 1553955994}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: elementslist.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: elementlistbag.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: 'elementslist.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: 'elementslist.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1631425543}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: elementlistcollectable.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: 'elementlistcollectable.Array.data[0]'
-      value: 
-      objectReference: {fileID: 1932578477}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: 'elementlistcollectable.Array.data[1]'
-      value: 
-      objectReference: {fileID: 1631425543}
     - target: {fileID: 8597119396594009098, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5010,17 +4986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f31b79c4ccbcbb40894d06c7511ebb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1553955994 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2889715848130647437, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
-  m_PrefabInstance: {fileID: 1553955991}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cfe81cafa8d2b149be8ccf925c919fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1557504007
 GameObject:
   m_ObjectHideFlags: 0
@@ -5280,6 +5245,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa77e125f6c321e4a8549c8d0bec0e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1650870855 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4354713742406574955, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1657581879
@@ -5713,6 +5689,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7648257999352670433, guid: f0733ac5d57eba2419aa12791ae5abee, type: 3}
   m_PrefabInstance: {fileID: 1799537390}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1810047776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3684402064077279432, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1856458187
 GameObject:
   m_ObjectHideFlags: 0
@@ -6551,6 +6538,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a564409017b3b6488e077c1264e9cfe, type: 3}
+--- !u!114 &2072309786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3050551624655424051, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2079370593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7648257999352670433, guid: f0733ac5d57eba2419aa12791ae5abee, type: 3}

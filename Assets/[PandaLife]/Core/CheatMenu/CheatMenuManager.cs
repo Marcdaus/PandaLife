@@ -91,11 +91,11 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_Volver_dia1()
     {
-        if (!GameManager.instance.numeroDia.Equals(1))
+        if (!GameManager.instance.numday.Equals(1))
         {
             GameManager.instance.tedypersistente = false;
             GameManager.instance.notepersistente = false;
-            GameManager.instance.numeroDia = 1;
+            GameManager.instance.numday = 1;
             GameManager.instance.quitarBambu();
             SceneManager.LoadScene("Main");
         }

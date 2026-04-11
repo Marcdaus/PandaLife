@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     [Header("Variables de Sistema de dia")]
     public float tiempoTranscurrido = 0f;
     public float minutosActualesTotales;
-    public int numeroDia = 1;
+    public int numday = 1;
     public float multiplicadorvelocidaddia = 1f;
 
     [Header("Recompensas")]
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         // Día
         tiempoTranscurrido = 0f;
         minutosActualesTotales = 0f;
-        numeroDia = 1;
+        numday = 1;
         multiplicadorvelocidaddia = 1f;
 
         // Recompensas

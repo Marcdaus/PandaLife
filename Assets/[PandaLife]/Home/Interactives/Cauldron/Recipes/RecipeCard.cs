@@ -71,9 +71,9 @@ public class RecipeCard : MonoBehaviour
 
     public void CheckUnblock()
     {
-        Debug.Log($"{receta.nombrereceta} - DiaDesbloqueo: {receta.diadesbloqueado} - DiaActual: {GameManager.instance.numeroDia}");
+        Debug.Log($"{receta.nombrereceta} - DiaDesbloqueo: {receta.diadesbloqueado} - DiaActual: {GameManager.instance.numday}");
 
-        if (GameManager.instance.numeroDia < receta.diadesbloqueado)
+        if (GameManager.instance.numday < receta.diadesbloqueado)
         {
             BlockedByDay();
             return;

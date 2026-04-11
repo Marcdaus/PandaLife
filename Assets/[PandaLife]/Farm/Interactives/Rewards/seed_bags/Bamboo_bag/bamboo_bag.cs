@@ -7,7 +7,7 @@ public class Bamboo_bag : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia >= 1)
+        if (GameManager.instance.numday >= 1)
         {
            
             return true;

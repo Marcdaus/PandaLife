@@ -10,7 +10,7 @@ public class TheEndActions : MonoBehaviour
     {
         GameManager.instance.tedypersistente = false;
         GameManager.instance.notepersistente = false;
-        GameManager.instance.numeroDia = 1;
+        GameManager.instance.numday = 1;
         GameManager.instance.quitarBambu();
         BarraManager.Instancia.hungerValues.Clear();
         BarraManager.Instancia.rageValues.Clear();

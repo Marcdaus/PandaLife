@@ -7,7 +7,7 @@ public class UchuvaBerryBag : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia >= 3)
+        if (GameManager.instance.numday >= 3)
         {
             return true;
         }

@@ -7,7 +7,7 @@ public class RedDragonBag : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia >= 2)
+        if (GameManager.instance.numday >= 2)
         {
             return true;
         }

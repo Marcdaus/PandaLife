@@ -7,7 +7,7 @@ public class TeddyBear : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia == 3 && GameManager.instance.miniPandasHambrientos == 3)
+        if (GameManager.instance.numday == 3 && GameManager.instance.miniPandasHambrientos == 3)
         {
             GameManager.instance.tedypersistente = true;
             return true;

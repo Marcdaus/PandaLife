@@ -7,7 +7,7 @@ public class Note : RewardElement
     {
         if (GameManager.instance == null) return false;
 
-        if (GameManager.instance.numeroDia == 2 && GameManager.instance.miniPandasHambrientos == 3)
+        if (GameManager.instance.numday == 2 && GameManager.instance.miniPandasHambrientos == 3)
         {
             GameManager.instance.notepersistente = true;
             return true;
