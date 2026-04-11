@@ -44,7 +44,13 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI percentage1;
     [SerializeField] private TextMeshProUGUI percentage2;
     [SerializeField] private TextMeshProUGUI percentage3;
-    private int valuepercentage = 5;
+
+
+
+
+    //HungerSystem[] pandas;
+    //RageSystem rageSystem;
+
 
     private RectTransform rectTextoDia;
 
@@ -105,23 +111,21 @@ public class DayNightCycle : MonoBehaviour
             {
                 Debug.LogError("El GameManager no tiene el script PandaRequest");
             }
-            
-            GameManager.instance.barmultiplicator += 0.05f; 
-            valuepercentage += valuepercentage;
+            GameManager.instance.valuepercentage += 5;
+            resetbars();
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
-
         }
         if(GameManager.instance.numday > 1)
         {
-            percentage1.text = "+" + valuepercentage.ToString() + "%";
-            percentage2.text = "+" + valuepercentage.ToString() + "%";
-            percentage3.text = "+" + valuepercentage.ToString() + "%";
+            percentage1.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
+            percentage2.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
+            percentage3.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
         }
         if (GameManager.instance.numday == 4)
         {
-            valuepercentage = 5;
+            GameManager.instance.valuepercentage = 0;
             GameManager.instance.tedypersistente = false;
             GameManager.instance.notepersistente = false;
             GameManager.instance.numday = 1;
@@ -237,4 +241,22 @@ public class DayNightCycle : MonoBehaviour
             }
 
         }
+    void resetbars()
+    {
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.isResetting = true;
+        }
+
+        HungerSystem[] todosLosPandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+
+        foreach (HungerSystem panda in todosLosPandas)
+        {
+            panda.ResetParaNuevoDia();
+        }
+
+    }
+
 }
+                
+       

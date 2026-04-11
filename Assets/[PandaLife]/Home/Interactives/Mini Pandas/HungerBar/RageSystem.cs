@@ -103,6 +103,12 @@ public class RageSystem : BarSystem
         UpdateUI();
         
     }
+    public void ResetSystem()
+    {
+        currentValue = 0f;
+        UpdateColors();
+        if (bar != null) bar.value = 0f;
+    }
 
 
 }

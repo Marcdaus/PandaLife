@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     public int miniPandasHambrientos = 3;
     [Header("Barras")]
     public float barmultiplicator = 1f;
+    public int valuepercentage = 0;
 
     void Start()
     {

@@ -27,15 +27,19 @@ public class HungerSystem : BarSystem
         if (BarraManager.Instancia != null && pandaID != "")
         {
             var manager = BarraManager.Instancia;
-            if (!manager.hungerValues.ContainsKey(pandaID))
-                manager.hungerValues[pandaID] = maxValue;
-            if (!manager.rageValues.ContainsKey(pandaID))
-                manager.rageValues[pandaID] = 0f;
-            if (!manager.rageStates.ContainsKey(pandaID))
-                manager.rageStates[pandaID] = false;
 
-            currentValue = manager.hungerValues[pandaID];
-            rageActivated = manager.rageStates[pandaID];
+            if (manager.hungerValues.ContainsKey(pandaID))
+            {
+                currentValue = manager.hungerValues[pandaID];
+                rageActivated = manager.rageStates[pandaID];
+            }
+            else
+            {
+                currentValue = maxValue;
+                rageActivated = false;
+                manager.hungerValues[pandaID] = currentValue;
+                manager.rageStates[pandaID] = rageActivated;
+            }
         }
 
         if (rageActivated && rageSystem != null)
@@ -55,9 +59,7 @@ public class HungerSystem : BarSystem
                 barraUI.SetHunger(this);
         }
 
-       // Activate();
         UpdateUI();
-
     }
 
     protected override void Update()
@@ -96,6 +98,7 @@ public class HungerSystem : BarSystem
     {
         if (BarraManager.Instancia != null && pandaID != "")
         {
+            if (BarraManager.Instancia.isResetting) return;
             BarraManager.Instancia.hungerValues[pandaID] = currentValue;
             BarraManager.Instancia.rageStates[pandaID] = rageActivated;
         }
@@ -147,5 +150,62 @@ public class HungerSystem : BarSystem
         yield return new WaitForSeconds(seconds);
         isPaused = false;
     }
+    public void ResetSystem()
+    {
+        if (rageActivated)
+        {
+            currentValue = 0f;
 
+            if (rageSystem != null)
+            {
+                rageSystem.ResetSystem();
+            }
+        }
+        else
+        {
+            currentValue = maxValue;
+
+            if (rageSystem != null)
+            {
+                rageSystem.ResetSystem();
+            }
+        }
+        RefreshVisuals();
+    }
+
+    private void RefreshVisuals()
+    {
+        UpdateColors();
+        if (bar != null)
+        {
+            bar.value = currentValue; 
+        }
+    }
+
+
+
+    public void ResetParaNuevoDia()
+    {
+        if (rageActivated)
+        {
+            currentValue = 0f;
+            if (rageSystem != null)
+            {
+                rageSystem.ResetSystem();
+            }
+        }
+        else
+        {
+            currentValue = maxValue;
+        }
+
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.hungerValues[pandaID] = currentValue;
+            BarraManager.Instancia.rageStates[pandaID] = rageActivated;
+        }
+
+        UpdateColors();
+        if (bar != null) bar.value = currentValue;
+    }
 }

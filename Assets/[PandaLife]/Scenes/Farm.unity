@@ -319,6 +319,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
+--- !u!114 &66822358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4354713742406574955, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &66822359 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3050551624655424051, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &66822360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3684402064077279432, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &72196834
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +631,10 @@ PrefabInstance:
       propertyPath: minipanda
       value: 
       objectReference: {fileID: 887701530}
+    - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: pinUIElement
+      value: 
+      objectReference: {fileID: 2052715477}
     - target: {fileID: 1687261246731974107, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: daynightcycle
       value: 
@@ -6955,6 +6992,17 @@ MonoBehaviour:
   worldPosition: {fileID: 548786845}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786846}
+--- !u!114 &2052715477 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2716571439090160010, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+  m_PrefabInstance: {fileID: 1031373939891894897}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2080929969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8433,9 +8481,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: daytext
+      value: 
+      objectReference: {fileID: 868316977}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: textoDia
       value: 
       objectReference: {fileID: 868316977}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: clocktext
+      value: 
+      objectReference: {fileID: 1052306877}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: fadeImage
       value: 
@@ -8444,6 +8500,18 @@ PrefabInstance:
       propertyPath: textoReloj
       value: 
       objectReference: {fileID: 1052306877}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: percentage1
+      value: 
+      objectReference: {fileID: 66822359}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: percentage2
+      value: 
+      objectReference: {fileID: 66822360}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: percentage3
+      value: 
+      objectReference: {fileID: 66822358}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: elementslist.Array.size
       value: 4

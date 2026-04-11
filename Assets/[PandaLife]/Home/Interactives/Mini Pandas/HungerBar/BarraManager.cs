@@ -27,6 +27,8 @@ public class BarraManager : MonoBehaviour
     public bool comingFromGameOver = false; // Flag para reinicio
     public bool hungerPaused = false; // Flag global para pausar hambre
 
+    public bool isResetting = false;
+
     private void Awake()
     {
         if (_instancia == null)
@@ -55,12 +57,13 @@ public class BarraManager : MonoBehaviour
 
     public void PrepareRetry()
     {
-
+        isResetting = true;
         BarraManager.Instancia.hungerValues.Clear();
         BarraManager.Instancia.rageValues.Clear();
         BarraManager.Instancia.rageStates.Clear();
+        Invoke("EndReset", 0.5f);
     }
-
+    private void EndReset() { isResetting = false; }
     public void CheckRage()
     {
         if (sceneLoaded) return;
