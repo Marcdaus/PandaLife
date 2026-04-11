@@ -11,8 +11,8 @@ public class Dish : MonoBehaviour
     private int arandano;
     private int bayauchuva;
 
-
-      public void Initialize(RecipesData data)
+    public RecipesData GetReceta() => receta;
+    public void Initialize(RecipesData data)
     {
         receta = data;
 

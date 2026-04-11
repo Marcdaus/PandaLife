@@ -21,6 +21,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject handpoint;
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
+
+    private Cauldron cauldronRef;
+
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -28,6 +31,11 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
         }
+    }
+
+    private void Start()  
+    {
+        cauldronRef = FindFirstObjectByType<Cauldron>();
     }
 
     void Update()
@@ -218,6 +226,14 @@ public class Player : MonoBehaviour
             bucket.SetHandpoint(handpoint.transform);
             bucket.PickUp();
             pickedobject = bucket;
+
+            // Si era un plato en el suelo, ya no está suelto
+            Dish dish = bucket.GetComponentInChildren<Dish>();
+            if (dish != null)
+            {
+                CauldronPersistenceManager.instance?.ClearDishState();
+                cauldronRef?.NotificarPlatoRecogido();
+            }
         }
         else if (currentTarget is Harvest harvest)
         {
@@ -278,17 +294,21 @@ public class Player : MonoBehaviour
         if (interactuable is PickupDrop cube && pickedobject == null)
         {
             cube.SetHandpoint(handpoint.transform);
-
             pickedobject = cube;
+
+            // Si era un plato en el suelo, ya no está suelto
+            Dish dish = cube.GetComponentInChildren<Dish>();
+            if (dish != null)
+            {
+                CauldronPersistenceManager.instance?.ClearDishState();
+                cauldronRef?.NotificarPlatoRecogido();
+            }
 
             Dish dishComp = pickedobject.GetComponentInParent<Dish>();
             if (dishComp != null)
             {
                 Debug.Log("Plato recogido con saciedad: " + dishComp.GetSaciedad());
                 Debug.Log(dishComp.GetIngredientesTexto());
-                //Debug.Log("ANTES de darlo:");
-                //Debug.Log("Dish name: " + pickedobject.name);
-                //Debug.Log("Dish instance ID: " + pickedobject.GetInstanceID());
             }
 
             cube.PickUp();
@@ -318,14 +338,28 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Drop()
+void Drop()
+{
+    if (pickedobject != null)
     {
-        if (pickedobject != null)
+        Dish dish = pickedobject.GetComponentInChildren<Dish>();
+        Debug.Log($"[Player] Drop - dish encontrado: {dish}");
+        if (dish != null && CauldronPersistenceManager.instance != null)
         {
-            pickedobject.Drop();
-            pickedobject = null;
+            Debug.Log($"[Player] Guardando posición plato: {pickedobject.transform.position}");
+            CauldronPersistenceManager.instance.SaveDishState(
+                dish.GetReceta(),
+                pickedobject.transform.position,
+                inHand: false
+            );
+            cauldronRef?.NotificarPlatoSuelto(pickedobject.gameObject, dish.GetReceta());
+            Debug.Log($"[Player] NotificarPlatoSuelto llamado en cauldronRef: {cauldronRef}");
         }
+
+        pickedobject.Drop();
+        pickedobject = null;
     }
+}
 
     public PickupDrop GetBucket()
     {

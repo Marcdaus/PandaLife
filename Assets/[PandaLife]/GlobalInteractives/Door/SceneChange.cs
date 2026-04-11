@@ -13,7 +13,7 @@ public class SceneChange : Interactuable
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
-        pickupobject = FindFirstObjectByType<PickupDrop>();
+        //pickupobject = FindFirstObjectByType<PickupDrop>();
     }
 
     // Función interactuar que comprueba si tiene el cubo o un plato en la mano.
@@ -21,26 +21,63 @@ public class SceneChange : Interactuable
     {
         if (player.IsHoldingBucket() || player.IsHoldingDish())
         {
-            Debug.Log($"Deja el {pickupobject.name} antes de entrar en casa");
-            // Suelta el cubo
-            pickupobject.Drop();
-            // Llama a la corutina
+            PickupDrop pickupobject = player.pickedobject;
+
+            if (pickupobject != null)
+            {
+                Dish dish = pickupobject.GetComponentInChildren<Dish>();
+                if (dish != null && CauldronPersistenceManager.instance != null)
+                {
+                    CauldronPersistenceManager.instance.SaveDishState(
+                        dish.GetReceta(),
+                        pickupobject.transform.position,
+                        inHand: false
+                    );
+                }
+                pickupobject.Drop();
+            }
+
             StartCoroutine(EsperarParaCargar());
         }
-        else 
+        else
         {
+            // Aunque no lleves nada en mano, buscar si hay un plato suelto en la escena
+            GuardarPlatoSueltoSiExiste();
             SceneManager.LoadScene(scenename.Value);
         }
-
-
     }
 
-    // Corutina que dará un pequeño tiempo para ver cómo cae el cubo. 
     IEnumerator EsperarParaCargar()
     {
-        // Pausa de 0.5 segundos
+        // Guardar plato suelto antes de cambiar
+        GuardarPlatoSueltoSiExiste();
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(scenename.Value);
+    }
+
+    private void GuardarPlatoSueltoSiExiste()
+    {
+        if (CauldronPersistenceManager.instance == null) return;
+
+        Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
+        Debug.Log($"[SceneChange] Buscando platos sueltos: {platos.Length} encontrados");
+
+        foreach (Dish dish in platos)
+        {
+            GameObject raiz = dish.transform.root.gameObject;
+
+            // Ignorar el que lleva el jugador en mano
+            if (player.pickedobject != null &&
+                raiz == player.pickedobject.transform.root.gameObject) continue;
+
+            Debug.Log($"[SceneChange] Guardando plato suelto: {raiz.name} en {raiz.transform.position}");
+            CauldronPersistenceManager.instance.SaveDishState(
+                dish.GetReceta(),
+                raiz.transform.position,
+                inHand: false
+            );
+            break;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

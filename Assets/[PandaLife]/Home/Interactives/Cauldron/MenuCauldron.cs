@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -31,7 +32,40 @@ public class MenuCauldron : MonoBehaviour
         worldpanelbar.SetActive(false);
         panelcauldron.SetActive(false);
 
+        StartCoroutine(RestoreOnStart());
     }
+
+    IEnumerator RestoreOnStart()
+    {
+        // Esperar un frame para que todos los Awake/Start del caldero terminen
+        yield return null;
+
+        var mgr = CauldronPersistenceManager.instance;
+        if (mgr == null) yield break;
+
+        if (mgr.isCooking)
+        {
+            float elapsed = mgr.GetElapsedCookingTime();
+            float total = mgr.cookingRecipe.tiempopreparacion;
+            RecipesData receta = mgr.cookingRecipe;
+            mgr.ClearCookingState();
+
+            if (elapsed >= total)
+            {
+                FinishCookingInstant(receta);
+            }
+            else
+            {
+                StartCoroutine(Cooking(receta, elapsed));
+            }
+        }
+
+        // Restaurar plato DESPUÉS de resolver cocción
+        // (FinishCookingInstant puede haber creado uno ya)
+        if (mgr.hasPendingDish)
+            cauldron.RestoreFromPersistence();
+    }
+
 
     private void Update()
     {
@@ -76,26 +110,27 @@ public class MenuCauldron : MonoBehaviour
         GameManager.instance.sumarBambu(-recipe.arandano, 3);
         GameManager.instance.sumarBambu(-recipe.bayauchuva, 4);
 
-        StartCoroutine(Cooking(recipe));
+        StartCoroutine(Cooking(recipe, 0f));
     }
 
-    IEnumerator Cooking(RecipesData receta)
+    IEnumerator Cooking(RecipesData receta, float tiempoinicial)
     {
         cooking = true;
         panelcooking.SetActive(true);
-        worldpanelbar.SetActive(true); 
+        worldpanelbar.SetActive(true);
 
-        progressbar.value = 0f;
-        worldprogressbar.value = 0f; 
+        float tiempoTranscurrido = tiempoinicial;
+        float tiempoTotal = receta.tiempopreparacion;
 
+        // Guardar en el manager desde el principio con el tiempo ya transcurrido
+        CauldronPersistenceManager.instance?.SaveCookingState(receta, tiempoTranscurrido);
+
+        progressbar.value = tiempoTranscurrido / tiempoTotal;
+        worldprogressbar.value = tiempoTranscurrido / tiempoTotal;
         cookingtext.text = "Cocinando " + receta.nombrereceta + "...";
 
         // Bloquear todas las tarjetas
-        foreach (RecipeCard card in tarjetas)
-            card.Block();
-
-        float tiempoTranscurrido = 0f;
-        float tiempoTotal = receta.tiempopreparacion;
+        foreach (RecipeCard card in tarjetas) card.Block();
 
         while (tiempoTranscurrido < tiempoTotal)
         {
@@ -106,22 +141,31 @@ public class MenuCauldron : MonoBehaviour
         }
 
         progressbar.value = 1f;
-        cookingtext.text = "�" + receta.nombrereceta + " listo!";
+        cookingtext.text = "¡" + receta.nombrereceta + " listo!";
         cooking = false;
+        CauldronPersistenceManager.instance?.ClearCookingState();
 
         // Spawn del plato
         if (receta.prefabResultado != null) {
             cauldron.SpawnDish(receta.prefabResultado, receta, panelcauldron.activeSelf);
         }
-        foreach (RecipeCard tarjeta in tarjetas)
-            tarjeta.CheckUnblock();
 
+        foreach (RecipeCard tarjeta in tarjetas) tarjeta.CheckUnblock();
         worldpanelbar.SetActive(false);
 
         yield return new WaitForSeconds(2f);
         panelcooking.SetActive(false);
-        worldpanelbar.SetActive(false);
+        //worldpanelbar.SetActive(false);
 
+    }
+
+    private void FinishCookingInstant(RecipesData receta)
+    {
+        // Terminó mientras estábamos fuera: spawnear plato directamente en el suelo del caldero
+        if (receta.prefabResultado != null)
+            cauldron.SpawnDish(receta.prefabResultado, receta, menuabierto: false);
+
+        foreach (RecipeCard t in tarjetas) t.CheckUnblock();
     }
 
     public bool HasIngredients(RecipesData recipe)

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Cauldron : Interactuable
 {
@@ -10,11 +12,52 @@ public class Cauldron : Interactuable
     private GameObject platopendiente = null;
     private RecipesData recetaPendiente;
 
+    // Plato suelto en el suelo (no es platopendiente, está libre en la escena)
+    private GameObject platoEnSuelo = null;
+    private RecipesData recetaEnSuelo = null;
+
     public bool tieneplatopendiente => platopendiente != null;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
+        Debug.Log($"[Cauldron] OnSceneUnloaded disparado. Platos encontrados: {platos.Length}");
+        Debug.Log($"[Cauldron] platopendiente: {platopendiente} | jugador.pickedobject: {jugador.pickedobject}");
+
+        foreach (Dish dish in platos)
+        {
+            GameObject raiz = dish.transform.root.gameObject;
+            Debug.Log($"[Cauldron] Plato encontrado: {raiz.name} | root == platopendiente: {raiz == platopendiente} | root == pickedobject root: {jugador.pickedobject != null && raiz == jugador.pickedobject.transform.root.gameObject}");
+
+            if (platopendiente != null && raiz == platopendiente) continue;
+            if (jugador.pickedobject != null && raiz == jugador.pickedobject.transform.root.gameObject) continue;
+
+            if (CauldronPersistenceManager.instance != null)
+            {
+                Debug.Log($"[Cauldron] GUARDANDO plato: {raiz.name} en pos: {raiz.transform.position}");
+                CauldronPersistenceManager.instance.SaveDishState(
+                    dish.GetReceta(),
+                    raiz.transform.position,
+                    inHand: false
+                );
+            }
+            break;
+        }
+    }
 
     public override void Interactuar()
     {
-        // Si hay un plato pendiente de recoger, d�rselo al jugador
+        // Si hay un plato pendiente de recoger, dárselo al jugador
         if (platopendiente != null)
         {
             GiveDish();
@@ -34,10 +77,7 @@ public class Cauldron : Interactuable
             GameObject plato = Instantiate(prefab, handpoint.position, Quaternion.identity);
 
             Dish dish = plato.GetComponentInChildren<Dish>();
-            if (dish != null)
-            {
-                dish.Initialize(receta);
-            }
+            if (dish != null) dish.Initialize(receta);
 
             PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>();
             if (pickup != null)
@@ -53,7 +93,7 @@ public class Cauldron : Interactuable
         {
             GameObject plato = Instantiate(prefab);
             Dish dish = plato.GetComponentInChildren<Dish>();
-            dish.Initialize(receta);
+            if(dish!=null)dish.Initialize(receta);
             platopendiente = plato;
         
             recetaPendiente = receta;
@@ -63,11 +103,67 @@ public class Cauldron : Interactuable
         }
     }
 
+    public void RestoreFromPersistence()
+    {
+        var mgr = CauldronPersistenceManager.instance;
+        if (mgr == null || !mgr.hasPendingDish) return;
+
+        Debug.Log($"[Cauldron] RestoreFromPersistence - dishWasInHand: {mgr.dishWasInHand} | pos: {mgr.pendingDishPosition}");
+
+        RecipesData receta = mgr.pendingDishRecipe;
+        if (receta?.prefabResultado == null) return;
+
+        Vector3 spawnPos = mgr.dishWasInHand
+            ? handpoint.position
+            : mgr.pendingDishPosition;
+
+        GameObject plato = Instantiate(receta.prefabResultado, spawnPos, Quaternion.identity);
+        Dish dish = plato.GetComponentInChildren<Dish>();
+        if (dish != null) dish.Initialize(receta);
+
+        if (mgr.dishWasInHand)
+        {
+            platopendiente = plato;
+            recetaPendiente = receta;
+            mensajeInteraccion = "recoger plato";
+        }
+        else
+        {
+            // Trackear el plato suelto en suelo
+            platoEnSuelo = plato;
+            recetaEnSuelo = receta;
+
+            // Dejar el rigidbody dormido un momento para que no caiga antes de que
+            // el suelo cargue sus colliders
+            Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+                // Reactivar física tras un frame
+                StartCoroutine(ActivarFisicaTrasFrame(rb));
+            }
+        }
+
+        mgr.ClearDishState();
+
+    }
+
+    // Llamar esto desde Player cuando recoge el plato del suelo
+    public void NotificarPlatoRecogido()
+    {
+        platoEnSuelo = null;
+        recetaEnSuelo = null;
+    }
+
+    private IEnumerator ActivarFisicaTrasFrame(Rigidbody rb)
+    {
+        yield return new WaitForSeconds(0.1f); // pequeña espera para que carguen colliders
+        if (rb != null) rb.isKinematic = false;
+    }
+
     private void GiveDish()
     {
-        GameObject plato = platopendiente;
-        Dish dish = plato.GetComponentInChildren<Dish>();
-       
+        GameObject plato = platopendiente;       
         plato.transform.position = handpoint.position;
         plato.transform.rotation = Quaternion.identity;
 
@@ -84,5 +180,12 @@ public class Cauldron : Interactuable
        
       
       
+    }
+
+    public void NotificarPlatoSuelto(GameObject plato, RecipesData receta)
+    {
+        platoEnSuelo = plato;
+        recetaEnSuelo = receta;
+        Debug.Log($"[Cauldron] NotificarPlatoSuelto - plato: {plato.name} en {plato.transform.position}");
     }
 }
