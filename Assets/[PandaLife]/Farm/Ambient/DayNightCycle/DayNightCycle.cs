@@ -127,17 +127,7 @@ public class DayNightCycle : MonoBehaviour
         }
         if (GameManager.instance.numday == 4)
         {
-            GameManager.instance.miniPandasHambrientos = 3;
-            GameManager.instance.valuepercentage = 0;
-            GameManager.instance.tedypersistente = false;
-            GameManager.instance.notepersistente = false;
-            GameManager.instance.numday = 1;
-            GameManager.instance.quitarBambu();
-            BarraManager.Instancia.hungerValues.Clear();
-            BarraManager.Instancia.rageValues.Clear();
-            BarraManager.Instancia.rageStates.Clear();
-            BarraManager.Instancia.sceneLoaded = false;
-            BarraManager.Instancia.comingFromGameOver = false;
+            Resetplay();
             SceneManager.LoadScene(theEnd.Value);
         }
 
@@ -274,6 +264,21 @@ public class DayNightCycle : MonoBehaviour
         }
 
     }
+    public void Resetplay()
+    {
+        GameManager.instance.miniPandasHambrientos = 3;
+        GameManager.instance.valuepercentage = 0;
+        GameManager.instance.tedypersistente = false;
+        GameManager.instance.notepersistente = false;
+        GameManager.instance.numday = 1;
+        GameManager.instance.quitarBambu();
+        BarraManager.Instancia.hungerValues.Clear();
+        BarraManager.Instancia.rageValues.Clear();
+        BarraManager.Instancia.rageStates.Clear();
+        BarraManager.Instancia.sceneLoaded = false;
+        BarraManager.Instancia.comingFromGameOver = false;
+    }
+
 
 }
                 
