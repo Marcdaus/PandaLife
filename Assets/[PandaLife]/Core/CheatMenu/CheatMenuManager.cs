@@ -144,6 +144,7 @@ public class CheatMenuManager : MonoBehaviour
         if (pReq != null)
         {
             pReq.UnlockCropsForDay(2);
+            pReq.UnlockCropsForDay(3);
             Debug.Log("Cultivos del Día 2 desbloqueados.");
         }
     }
