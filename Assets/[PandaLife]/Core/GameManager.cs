@@ -218,6 +218,7 @@ public class GameManager : MonoBehaviour
         ActualizarInventarioUI();
         CropDatabase.instance.allCropPrefabs.Clear();
         CauldronPersistenceManager.instance.ClearAllDishStates();
+        FarmDataManager.instance.farmData.Clear();
     }
 
 }
