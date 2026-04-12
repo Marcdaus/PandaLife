@@ -8,7 +8,7 @@ public class FarmingArea : MonoBehaviour
     public Transform spawnpoint; // Lugar donde aparecera (tierra de cultivo)
     private bool thereissomething;
     //una property que te dice si hay o no crops en el farmingArea
-    public bool ThereIsSomething { get { return thereissomething; } set { thereissomething = value; } }
+    public bool ThereIsSomething { get; private set; }
 
     private Crop currentCrop;
     public void SetCropPrefab(GameObject prefab)
@@ -78,4 +78,18 @@ public class FarmingArea : MonoBehaviour
         }
 
     }
+    public void VaciarParcela()
+    {
+        ThereIsSomething = false;
+
+        
+        if (FarmDataManager.instance != null)
+        {
+            CropSaveData emptyData = new CropSaveData { isPlanted = false };
+            FarmDataManager.instance.SaveArea(areaID, emptyData);
+        }
+
+        Debug.Log($"Parcela {areaID} ahora está vacía.");
+    }
+
 }
