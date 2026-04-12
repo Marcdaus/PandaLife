@@ -1,9 +1,13 @@
 using TMPro;
 using UnityEngine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+
+
 
     [Header ("bambuVerde")]
     public int bambuverde = 0;
@@ -15,10 +19,33 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoBayaArandanos;
     public TextMeshProUGUI textoBayaUchuva;
 
+    [Header("Variables de Tutorial")]
+    public bool tutorialCuboCompletado = false;
+    public bool tutorialRioCompletado = false;
+
+    [Header("Variables de Sistema de dia")]
+    public float tiempoTranscurrido = 0f;
+    public float minutosActualesTotales;
+    public int numday = 1;
+    public float multiplicadorvelocidaddia = 1f;
+
+    [Header("Recompensas")]
+    public TextMeshProUGUI messageRewardSacks;
+    public TextMeshProUGUI messageRewardCollectable;
+    public bool tedypersistente = false;
+    public bool notepersistente = false;
+
+    [Header("Mini pandas")]
+    public int miniPandasHambrientos = 3;
+    [Header("Barras")]
+    public float barmultiplicator = 1f;
+    public int valuepercentage = 0;
+
     void Start()
     {
        //bambuverde = 0;
         ActualizarInventarioUI();
+
     }
 
     void Awake()
@@ -40,6 +67,7 @@ public class GameManager : MonoBehaviour
 
     public void sumarBambu(int cantidad, int tipo)
     {
+        
         if (tipo == 1)
         {
             bambuverde += cantidad;
@@ -66,6 +94,14 @@ public class GameManager : MonoBehaviour
         }
         
     }
+    public void quitarBambu()
+    {
+       bambuverde = 0;
+       bamburojo = 0;
+       bayaarandanos = 0;
+       bayauchuva = 0;
+       ActualizarInventarioUI();
+    }
 
 
     public void ActualizarUIManual()
@@ -91,14 +127,68 @@ public class GameManager : MonoBehaviour
 
     void ActualizarInventarioUI() //actualiza el texto segun los recursos que tenemos
     {
-        if(textoBambuVerde != null)
+        if (textoBambuVerde != null)
             textoBambuVerde.text = "x " + bambuverde.ToString();
-        if(textoBambuRojo != null)
+        if (textoBambuRojo != null)
             textoBambuRojo.text = "x " + bamburojo.ToString();
-        if(textoBayaArandanos != null)
+        if (textoBayaArandanos != null)
             textoBayaArandanos.text = "x " + bayaarandanos.ToString();
-        if(textoBayaUchuva != null)
+        if (textoBayaUchuva != null)
             textoBayaUchuva.text = "x " + bayauchuva.ToString();
+    }
+    public void MostrarMensajeTemporal(string mensaje, float duracion, string type)
+    {
+        StartCoroutine(MensajeRoutine(mensaje, duracion, type));
+    }
+    //Recompensas textos temporales
+    private IEnumerator MensajeRoutine(string mensaje, float duracion, string type)
+    {
+        if (type == "Bags")
+        {            messageRewardSacks.text = mensaje;
+            messageRewardSacks.gameObject.SetActive(true);
+            yield return new WaitForSeconds(duracion);
+            messageRewardSacks.text = "";
+            messageRewardSacks.gameObject.SetActive(false);
+        }
+        else if (type == "Collectables")
+        {
+            messageRewardCollectable.text = mensaje;
+            messageRewardCollectable.gameObject.SetActive(true);
+            yield return new WaitForSeconds(duracion);
+            messageRewardCollectable.text = "";
+            messageRewardCollectable.gameObject.SetActive(false);
+        }
+    }
+    public void ResetearJuego()
+    {
+        // Recursos
+        bambuverde = 0;
+        bamburojo = 0;
+        bayaarandanos = 0;
+        bayauchuva = 0;
+
+        // Tutorial
+        tutorialCuboCompletado = false;
+        tutorialRioCompletado = false;
+
+        // Día
+        tiempoTranscurrido = 0f;
+        minutosActualesTotales = 0f;
+        numday = 1;
+        multiplicadorvelocidaddia = 1f;
+
+        // Recompensas
+        tedypersistente = false;
+        notepersistente = false;
+
+        // Mini pandas
+        miniPandasHambrientos = 3;
+
+        // Barras
+        barmultiplicator = 1f;
+
+        // UI
+        ActualizarInventarioUI();
     }
 
 }
