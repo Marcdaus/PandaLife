@@ -168,40 +168,5 @@ public class HungerSystem : BarSystem
             bar.value = currentValue; 
         }
     }
-    public void ResetParaNuevoDia()
-    {
-        if (rageActivated)
-        {
-            currentValue = 0f;
-            if (rageSystem != null)
-            {
-                rageSystem.ResetSystem();
-            }
-        }
-        else
-        {
-            currentValue = maxValue;
-        }
-
-        if (BarraManager.Instancia != null)
-        {
-            BarraManager.Instancia.hungerValues[pandaID] = currentValue;
-            BarraManager.Instancia.rageStates[pandaID] = rageActivated;
-        }
-
-        UpdateColors();
-        if (bar != null) bar.value = currentValue;
-    }
-
-    public void ForceFullReset()
-    {
-        rageActivated = false; 
-        currentValue = maxValue; 
-        Activate(); 
-
-        if (rageSystem != null)
-            rageSystem.ResetSystem();
-
-        UpdateUI();
-    }
+   
 }
