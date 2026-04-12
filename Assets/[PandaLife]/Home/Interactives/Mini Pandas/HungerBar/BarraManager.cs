@@ -54,16 +54,6 @@ public class BarraManager : MonoBehaviour
         CheckRage();
 
     }
-
-    public void PrepareRetry()
-    {
-        isResetting = true;
-        BarraManager.Instancia.hungerValues.Clear();
-        BarraManager.Instancia.rageValues.Clear();
-        BarraManager.Instancia.rageStates.Clear();
-        Invoke("EndReset", 0.5f);
-    }
-    private void EndReset() { isResetting = false; }
     public void CheckRage()
     {
         if (sceneLoaded) return;
