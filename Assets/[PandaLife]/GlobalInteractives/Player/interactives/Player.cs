@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
-    private Cauldron cauldronRef;
-
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -31,11 +29,6 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
         }
-    }
-
-    private void Start()  
-    {
-        cauldronRef = FindFirstObjectByType<Cauldron>();
     }
 
     void Update()
@@ -230,23 +223,14 @@ public class Player : MonoBehaviour
             // Si era un plato en el suelo, ya no está suelto
             Dish dish = bucket.GetComponentInChildren<Dish>();
             if (dish != null)
-            {
-                CauldronPersistenceManager.instance?.ClearDishState();
-                cauldronRef?.NotificarPlatoRecogido();
-            }
+                CauldronPersistenceManager.instance?.ClearDishState();            
         }
         else if (currentTarget is Harvest harvest)
-        {
             harvest.Interactuar();
-        }
         else if (currentTarget is WaterCrop water)
-        {
             water.Interactuar();
-        }
         else if (currentTarget is IInteractuable other)
-        {
             HandleOtherInteraction(other);
-        }
     }
 
     public bool IsHoldingBucket()
@@ -299,10 +283,7 @@ public class Player : MonoBehaviour
             // Si era un plato en el suelo, ya no está suelto
             Dish dish = cube.GetComponentInChildren<Dish>();
             if (dish != null)
-            {
                 CauldronPersistenceManager.instance?.ClearDishState();
-                cauldronRef?.NotificarPlatoRecogido();
-            }
 
             Dish dishComp = pickedobject.GetComponentInParent<Dish>();
             if (dishComp != null)
@@ -352,8 +333,6 @@ void Drop()
                 pickedobject.transform.position,
                 inHand: false
             );
-            cauldronRef?.NotificarPlatoSuelto(pickedobject.gameObject, dish.GetReceta());
-            Debug.Log($"[Player] NotificarPlatoSuelto llamado en cauldronRef: {cauldronRef}");
         }
 
         pickedobject.Drop();

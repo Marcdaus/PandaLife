@@ -7,7 +7,6 @@ public class SceneChange : Interactuable
     // Campos
     [SerializeField] private GameString scenename; // Variable que contendrá el nombre de la escena a cargar
     private Player player;
-    private PickupDrop pickupobject;
 
     // Función donde se encuentran los objetos
     private void Start()

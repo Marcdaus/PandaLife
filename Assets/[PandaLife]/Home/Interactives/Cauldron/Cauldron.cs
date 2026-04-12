@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class Cauldron : Interactuable
@@ -12,48 +11,7 @@ public class Cauldron : Interactuable
     private GameObject platopendiente = null;
     private RecipesData recetaPendiente;
 
-    // Plato suelto en el suelo (no es platopendiente, está libre en la escena)
-    private GameObject platoEnSuelo = null;
-    private RecipesData recetaEnSuelo = null;
-
     public bool tieneplatopendiente => platopendiente != null;
-
-    private void OnEnable()
-    {
-        SceneManager.sceneUnloaded += OnSceneUnloaded;
-    }
-
-    private void OnDisable()
-    {
-        SceneManager.sceneUnloaded -= OnSceneUnloaded;
-    }
-
-    private void OnSceneUnloaded(Scene scene)
-    {
-        Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
-        Debug.Log($"[Cauldron] OnSceneUnloaded disparado. Platos encontrados: {platos.Length}");
-        Debug.Log($"[Cauldron] platopendiente: {platopendiente} | jugador.pickedobject: {jugador.pickedobject}");
-
-        foreach (Dish dish in platos)
-        {
-            GameObject raiz = dish.transform.root.gameObject;
-            Debug.Log($"[Cauldron] Plato encontrado: {raiz.name} | root == platopendiente: {raiz == platopendiente} | root == pickedobject root: {jugador.pickedobject != null && raiz == jugador.pickedobject.transform.root.gameObject}");
-
-            if (platopendiente != null && raiz == platopendiente) continue;
-            if (jugador.pickedobject != null && raiz == jugador.pickedobject.transform.root.gameObject) continue;
-
-            if (CauldronPersistenceManager.instance != null)
-            {
-                Debug.Log($"[Cauldron] GUARDANDO plato: {raiz.name} en pos: {raiz.transform.position}");
-                CauldronPersistenceManager.instance.SaveDishState(
-                    dish.GetReceta(),
-                    raiz.transform.position,
-                    inHand: false
-                );
-            }
-            break;
-        }
-    }
 
     public override void Interactuar()
     {
@@ -129,10 +87,6 @@ public class Cauldron : Interactuable
         }
         else
         {
-            // Trackear el plato suelto en suelo
-            platoEnSuelo = plato;
-            recetaEnSuelo = receta;
-
             // Dejar el rigidbody dormido un momento para que no caiga antes de que
             // el suelo cargue sus colliders
             Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
@@ -148,12 +102,6 @@ public class Cauldron : Interactuable
 
     }
 
-    // Llamar esto desde Player cuando recoge el plato del suelo
-    public void NotificarPlatoRecogido()
-    {
-        platoEnSuelo = null;
-        recetaEnSuelo = null;
-    }
 
     private IEnumerator ActivarFisicaTrasFrame(Rigidbody rb)
     {
@@ -182,10 +130,4 @@ public class Cauldron : Interactuable
       
     }
 
-    public void NotificarPlatoSuelto(GameObject plato, RecipesData receta)
-    {
-        platoEnSuelo = plato;
-        recetaEnSuelo = receta;
-        Debug.Log($"[Cauldron] NotificarPlatoSuelto - plato: {plato.name} en {plato.transform.position}");
-    }
 }
