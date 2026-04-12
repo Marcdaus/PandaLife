@@ -17,9 +17,9 @@ public class MainMenuActions : MonoBehaviour
     public void Exit()
     {//para simular que sales del juego
 
-        UnityEditor.EditorApplication.isPlaying = false; // Para salir del modo Play en el Editor 
+        //UnityEditor.EditorApplication.isPlaying = false; // Para salir del modo Play en el Editor 
 
-        //Application.Quit(); // Para compilaciones finales
+        Application.Quit(); // Para compilaciones finales
 
     }
     public void back()
