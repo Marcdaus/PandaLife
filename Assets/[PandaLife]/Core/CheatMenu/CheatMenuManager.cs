@@ -100,12 +100,7 @@ public class CheatMenuManager : MonoBehaviour
         }
     }
 
-    // Cheat: Llevar directamente al Game Over
-    public void Cheat_GameOver()
-    {
-        SceneManager.LoadScene("Theend");
-
-    }
+    
 
     // Cheat: Pausar o reanudar la disminución de hambre
     public void Cheat_PausarOReanudarHambre()

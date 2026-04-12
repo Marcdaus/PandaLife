@@ -114,7 +114,7 @@ public class DayNightCycle : MonoBehaviour
             GameManager.instance.barmultiplicator += 0.05f;
 
 
-            resetbars();
+            ResetBars();
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
@@ -127,7 +127,7 @@ public class DayNightCycle : MonoBehaviour
         }
         if (GameManager.instance.numday == 4)
         {
-            Resetplay();
+            GameManager.instance.Resetplay();
             SceneManager.LoadScene(theEnd.Value);
         }
 
@@ -249,7 +249,7 @@ public class DayNightCycle : MonoBehaviour
             }
 
         }
-    void resetbars()
+    void ResetBars()
     {
         if (BarraManager.Instancia != null)
         {
@@ -264,21 +264,6 @@ public class DayNightCycle : MonoBehaviour
         }
 
     }
-    public void Resetplay()
-    {
-        GameManager.instance.miniPandasHambrientos = 3;
-        GameManager.instance.valuepercentage = 0;
-        GameManager.instance.tedypersistente = false;
-        GameManager.instance.notepersistente = false;
-        GameManager.instance.numday = 1;
-        GameManager.instance.quitarBambu();
-        BarraManager.Instancia.hungerValues.Clear();
-        BarraManager.Instancia.rageValues.Clear();
-        BarraManager.Instancia.rageStates.Clear();
-        BarraManager.Instancia.sceneLoaded = false;
-        BarraManager.Instancia.comingFromGameOver = false;
-    }
-
 
 }
                 
