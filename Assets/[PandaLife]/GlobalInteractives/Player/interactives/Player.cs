@@ -319,7 +319,7 @@ public class Player : MonoBehaviour
         }
     }
 
-void Drop()
+public void Drop()
 {
     if (pickedobject != null)
     {

@@ -46,14 +46,8 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI percentage3;
 
     [Header("soltar cosas entre cambio de escena")]
-
-
-
-
-
-
-    //HungerSystem[] pandas;
-    //RageSystem rageSystem;
+    private Player player;
+    private PickupDrop pickupobject;
 
 
     private RectTransform rectTextoDia;
@@ -65,12 +59,13 @@ public class DayNightCycle : MonoBehaviour
         duracionEnSegundos = durationinminuts * 60f;
         rectTextoDia = daytext.GetComponent<RectTransform>();
 
-            RewardManager.EvaluatelElement(note);
-        
-
+            RewardManager.EvaluatelElement(note);  
             RewardManager.EvaluatelElement(tedy);
-        
+     
         RewardManager.EvaluateAllElements(elementlistbag);
+
+        player = FindFirstObjectByType<Player>();
+        pickupobject = FindFirstObjectByType<PickupDrop>();
     }
 
     void Update()
@@ -193,7 +188,10 @@ public class DayNightCycle : MonoBehaviour
 
             // Actualizamos el texto con formato de dos dígitos (00:00)
             clocktext.text = string.Format("{0:00}:{1:00}", horas, minutos);
+      
+            
         }
+
         void ActualizarFundido()
         {
             if (fadeImage == null) return;
@@ -229,7 +227,18 @@ public class DayNightCycle : MonoBehaviour
             float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
             if (horaActualDecimal > efecthour && GameManager.instance.numday < 3)
             {
-            
+
+            if (player != null && player.pickedobject != null)
+            {
+                // Verificamos si lo que tiene es un plato (no tiene BucketWater)
+                if (player.IsHoldingDish())
+                {
+                    Debug.Log("¡Es tarde! El jugador suelta el plato automáticamente.");
+                    player.Drop(); // Usamos el método Drop del Player que ya limpia todo
+                }
+            }
+
+
             if (isInto) menucauldron.CloseCauldron();
 
             daytext.text = "Día " + (GameManager.instance.numday + 1);
