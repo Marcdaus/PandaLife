@@ -21,6 +21,9 @@ public class SceneChange : Interactuable
             PickupDrop pickupobject = player.pickedobject;
             if (pickupobject != null)
             {
+                // Limpiar y guardar todo desde cero
+                CauldronPersistenceManager.instance.ClearAllDishStates();
+
                 Dish dish = pickupobject.GetComponentInChildren<Dish>();
                 if (dish != null && CauldronPersistenceManager.instance != null)
                 {
@@ -43,7 +46,7 @@ public class SceneChange : Interactuable
 
     IEnumerator EsperarParaCargar()
     {
-        // Guardar sueltos SIN limpiar, porque el plato en mano ya está en la lista
+        // Añadir los sueltos sin limpiar, el plato en mano ya está en la lista
         GuardarPlatoSueltoSiExiste(limpiarAntes: false);
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(scenename.Value);
