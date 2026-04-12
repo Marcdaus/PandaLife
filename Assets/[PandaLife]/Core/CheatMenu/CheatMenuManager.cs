@@ -5,7 +5,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CheatMenuManager : MonoBehaviour 
+public class CheatMenuManager : MonoBehaviour
 {
     private GameObject cheatPanel;
     [SerializeField] private MenuCauldron menucauldron;
@@ -16,11 +16,11 @@ public class CheatMenuManager : MonoBehaviour
 
     public HungerSystem minipanda;
     RageSystem rageSystem;
-    
+
     void Start()
     {
         // Ira al minimo
- 
+
         pandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
         // Buscamos el Canvas persistente usando su Singleton, y obtenemos el primer hijo (el Panel)
         if (CheatMenuPersistent.instance != null)
@@ -37,7 +37,7 @@ public class CheatMenuManager : MonoBehaviour
             cheatPanel.SetActive(false); // cierra el menú si estaba abierto
             return;
         }
-            
+
 
         if (Input.GetButtonDown("CheatMenu")) // He puesto en el input manager la tecla K
         {
@@ -104,7 +104,7 @@ public class CheatMenuManager : MonoBehaviour
     public void Cheat_GameOver()
     {
         SceneManager.LoadScene("Theend");
-       
+
     }
 
     // Cheat: Pausar o reanudar la disminución de hambre
@@ -180,7 +180,7 @@ public class CheatMenuManager : MonoBehaviour
 
         foreach (var panda in pandasEnEscena)
         {
-   
+
             panda.Restaurar(100f);
 
 
@@ -214,6 +214,36 @@ public class CheatMenuManager : MonoBehaviour
         foreach (var panda in todosLosPandas)
         {
             panda.ChangeRate = nuevoRate;
+        }
+    }
+    public void Cheat_acelerarPandaIra()
+    {
+        HungerSystem[] todosLosPandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+
+        if (todosLosPandas.Length == 0)
+        {
+            Debug.LogWarning("No hay pandas");
+            return;
+        }
+
+        HungerSystem panda = todosLosPandas[0];
+        RageSystem rage = panda.GetComponent<RageSystem>();
+
+        // Siempre aceleramos el hambre
+        panda.ChangeRate = 20f;
+
+        if (rage != null)
+        {
+            if (panda.IsRageActivated)
+            {
+                rage.ChangeRate = 40f; // Ira más rápida
+                Debug.Log("CHEAT: Panda en IRA → todo acelerado");
+            }
+            else
+            {
+                rage.ChangeRate = 1f; // Ira normal
+                Debug.Log("CHEAT: Panda acelerado (sin ira)");
+            }
         }
     }
 }
