@@ -58,9 +58,14 @@ public class MenuCauldron : MonoBehaviour
                 StartCoroutine(Cooking(receta, elapsed));
             }
         }
-
-        // Restaurar plato DESPUÉS de resolver cocción
-        // (FinishCookingInstant puede haber creado uno ya)
+        else
+        {
+            // Solo si NO está cocinando, refrescar tarjetas
+            Debug.Log("[MenuCauldron] RestoreOnStart - sin cocción, llamando CheckUnblock en todas");
+            foreach (RecipeCard tarjeta in tarjetas)
+                tarjeta.CheckUnblock();
+        }
+       
         if (mgr.hasPendingDish)
             cauldron.RestoreFromPersistence();
     }

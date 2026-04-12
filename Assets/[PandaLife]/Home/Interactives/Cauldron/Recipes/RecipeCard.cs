@@ -23,10 +23,23 @@ public class RecipeCard : MonoBehaviour
     {
         cookingbutton = GetComponent<Button>();
         colorOriginal = GetComponent<Button>().image.color;
-        if (iconocandado != null) iconocandado.SetActive(false);
         ShowRecipe();
         cookingbutton.onClick.AddListener(OnClick);
 
+    }
+
+    private void Start()
+    {
+        // Si está cocinando, bloquear en gris directamente
+        if (CauldronPersistenceManager.instance != null && CauldronPersistenceManager.instance.isCooking)
+        {
+            if (GameManager.instance.numday < receta.diadesbloqueado)
+                BlockedByDay();
+            else
+                Block();
+            return;
+        }
+        CheckUnblock();
     }
 
     private void OnClick()
