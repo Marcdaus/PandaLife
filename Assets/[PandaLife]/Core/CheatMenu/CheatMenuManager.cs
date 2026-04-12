@@ -193,4 +193,27 @@ public class CheatMenuManager : MonoBehaviour
         Debug.Log("CHEAT: Todas las barras al 100% y estados de ira limpiados.");
     }
 
+    public void Cheat_acelerarbarras()
+    {
+        HungerSystem[] todosLosPandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+
+        float nuevoRate;
+
+        // Toggle simple
+        if (todosLosPandas.Length > 0 && todosLosPandas[0].ChangeRate < 1f)
+        {
+            nuevoRate = 20f;
+            Debug.Log("CHEAT: Barras aceleradas");
+        }
+        else
+        {
+            nuevoRate = 0.5f;
+            Debug.Log("CHEAT: Barras normales");
+        }
+
+        foreach (var panda in todosLosPandas)
+        {
+            panda.ChangeRate = nuevoRate;
+        }
+    }
 }
