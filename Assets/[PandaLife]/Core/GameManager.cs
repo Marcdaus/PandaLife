@@ -77,14 +77,15 @@ public class GameManager : MonoBehaviour
         }
         else if (tipo == 2)
         {
+                bayaarandanos += cantidad;
+                ActualizarInventarioUI();
+        }
+        else if (tipo == 3)
+        {
             bamburojo += cantidad;
             ActualizarInventarioUI();
         }
-        else if(tipo == 3)
-        {
-            bayaarandanos += cantidad;
-            ActualizarInventarioUI();
-        }
+        
         else if(tipo == 4)
         {
             bayauchuva += cantidad;
