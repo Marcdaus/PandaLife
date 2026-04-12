@@ -258,4 +258,18 @@ public class CheatMenuManager : MonoBehaviour
             }
         }
     }
+    public void Cheat_cambiarporcentaje()
+    {
+        if (GameManager.instance.valuepercentage == 25)
+        {
+            GameManager.instance.valuepercentage = 15;
+            GameManager.instance.barmultiplicator = 1.15f;
+        }
+        else
+        {
+            GameManager.instance.valuepercentage = 25;
+            GameManager.instance.barmultiplicator = 1.25f;
+
+        }
+    }
 }

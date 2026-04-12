@@ -110,9 +110,15 @@ public class DayNightCycle : MonoBehaviour
             {
                 Debug.LogError("El GameManager no tiene el script PandaRequest");
             }
-            GameManager.instance.valuepercentage += 5;
-            GameManager.instance.barmultiplicator += 0.05f;
-
+            if(GameManager.instance.numday == 2) { 
+                GameManager.instance.valuepercentage = 15;
+                GameManager.instance.barmultiplicator = 0.15f;
+            }
+            if (GameManager.instance.numday == 3)
+            {
+                GameManager.instance.valuepercentage = 25;
+                GameManager.instance.barmultiplicator = 0.25f;
+            }
 
             ResetBars();
             Rewards("Bags");
