@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         IInteractuable othertarget = null;
 
         // 1. Prioridad m�xima: coger cubo si hay uno y no est�s sosteniendo nada
-        if (pickedobject == null)
+        if (IsHandEmpty())
         {
             foreach (Collider col in detected)
             {
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             }
 
             // Prioridad 2: plato en el suelo
-            if (othertarget == null && pickedobject == null)
+            if (othertarget == null && IsHandEmpty())
             {
                 foreach (Collider col in detected)
                 {
@@ -237,6 +237,11 @@ public class Player : MonoBehaviour
         // Miramos de qu� tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funci�n
         if (currentTarget is PickupDrop bucket)
         {
+            if (!IsHandEmpty())
+            {
+                Debug.Log("Ya tienes algo en la mano, no puedes coger esto.");
+                return;
+            }
             bucket.SetHandpoint(handpoint.transform);
             bucket.PickUp();
             pickedobject = bucket;
@@ -296,8 +301,13 @@ public class Player : MonoBehaviour
             Debug.Log("No puedes plantar mientras sostienes el cubo");
             return;
         }
-        if (interactuable is PickupDrop cube && pickedobject == null)
+        if (interactuable is PickupDrop cube && IsHandEmpty())
         {
+            if (!IsHandEmpty())
+            {
+                Debug.Log("La mano está ocupada.");
+                return;
+            }
             cube.SetHandpoint(handpoint.transform);
             pickedobject = cube;
 
@@ -376,7 +386,7 @@ public void Drop()
     bool CanInteractWithMiniPanda()
     {
         // Tiene objeto en mano
-        if (pickedobject == null)
+        if (IsHandEmpty())
             return false;
 
         // Es un plato 
@@ -384,5 +394,10 @@ public void Drop()
             return false;
 
         return true;
+    }
+    public bool IsHandEmpty()
+    {
+        // Devuelve true SOLO si la variable es nula Y el handpoint no tiene ningún objeto emparentado
+        return pickedobject == null && handpoint.transform.childCount == 0;
     }
 }
