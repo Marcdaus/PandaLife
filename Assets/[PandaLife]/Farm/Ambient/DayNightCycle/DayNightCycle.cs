@@ -74,8 +74,8 @@ public class DayNightCycle : MonoBehaviour
 
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
-            float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
+            if (!GameManager.instance.stopTime)GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
+                float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
             // 1. Control de Rotación
             float anguloActual = Mathf.Lerp(startangle, endangle, porcentaje);

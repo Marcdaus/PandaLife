@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public float minutosActualesTotales;
     public int numday = 1;
     public float multiplicadorvelocidaddia = 1f;
+    public bool stopTime = false;
 
     [Header("Recompensas")]
     public TextMeshProUGUI messageRewardSacks;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Mini pandas")]
     public int miniPandasHambrientos = 3;
+
     [Header("Barras")]
     public float barmultiplicator = 1f;
     public int valuepercentage = 0;

@@ -87,6 +87,23 @@ public class CheatMenuManager : MonoBehaviour
     {
         GameManager.instance.tiempoTranscurrido = 280.0f;
     }
+    public void Cheat_retrasardia()
+    {
+        GameManager.instance.tiempoTranscurrido = 0f;
+    }
+    public void Cheat_parartimepo()
+    {
+       if(GameManager.instance.stopTime == false)
+        {
+            GameManager.instance.stopTime = true;
+            Debug.Log("CHEAT: Tiempo detenido");
+        }
+       else
+        {
+            GameManager.instance.stopTime = false;
+            Debug.Log("CHEAT: Tiempo reanudado");
+        }
+    }
 
     public void Cheat_Volver_dia1()
     {
