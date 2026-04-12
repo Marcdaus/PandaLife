@@ -56,6 +56,6 @@ public class Path : MonoBehaviour
         currentPlace = PlacesManager.GetNextFreePlace();
         agent.SetDestination(currentPlace.position.position);
 
-        Debug.Log($"{agent.name} va a {currentPlace.position.name}");
+       // Debug.Log($"{agent.name} va a {currentPlace.position.name}");
     }
 }
