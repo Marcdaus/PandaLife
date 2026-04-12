@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class Cauldron : Interactuable
 {
@@ -61,46 +62,49 @@ public class Cauldron : Interactuable
         }
     }
 
-    public void RestoreFromPersistence()
+public void RestoreFromPersistence()
+{
+    var mgr = CauldronPersistenceManager.instance;
+    if (mgr == null || !mgr.hasPendingDish) return;
+
+    // Copiar la lista antes de limpiarla
+    var dishes = new List<CauldronPersistenceManager.DishState>(mgr.PendingDishes);
+    mgr.ClearAllDishStates();
+
+    foreach (var state in dishes)
     {
-        var mgr = CauldronPersistenceManager.instance;
-        if (mgr == null || !mgr.hasPendingDish) return;
+        RecipesData receta = state.recipe;
+        if (receta?.prefabResultado == null) continue;
 
-        Debug.Log($"[Cauldron] RestoreFromPersistence - dishWasInHand: {mgr.dishWasInHand} | pos: {mgr.pendingDishPosition}");
-
-        RecipesData receta = mgr.pendingDishRecipe;
-        if (receta?.prefabResultado == null) return;
-
-        Vector3 spawnPos = mgr.dishWasInHand
-            ? handpoint.position
-            : mgr.pendingDishPosition;
+        Vector3 spawnPos = state.wasInHand ? handpoint.position : state.position;
 
         GameObject plato = Instantiate(receta.prefabResultado, spawnPos, Quaternion.identity);
         Dish dish = plato.GetComponentInChildren<Dish>();
         if (dish != null) dish.Initialize(receta);
 
-        if (mgr.dishWasInHand)
+        if (state.wasInHand)
         {
-            platopendiente = plato;
-            recetaPendiente = receta;
-            mensajeInteraccion = "recoger plato";
+            // Solo el primero "en mano" se convierte en plato pendiente del caldero
+            if (platopendiente == null)
+            {
+                platopendiente = plato;
+                recetaPendiente = receta;
+                mensajeInteraccion = "recoger plato";
+            }
         }
         else
         {
-            // Dejar el rigidbody dormido un momento para que no caiga antes de que
-            // el suelo cargue sus colliders
             Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
             if (rb != null)
             {
                 rb.isKinematic = true;
-                // Reactivar física tras un frame
                 StartCoroutine(ActivarFisicaTrasFrame(rb));
             }
         }
 
-        mgr.ClearDishState();
-
+        Debug.Log($"[Cauldron] Restaurado plato: {receta.nombrereceta} en {spawnPos}");
     }
+}
 
 
     private IEnumerator ActivarFisicaTrasFrame(Rigidbody rb)

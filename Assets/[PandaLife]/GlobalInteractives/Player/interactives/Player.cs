@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
 
     public bool IsHoldingDish()
     {
-        return pickedobject != null && pickedobject.GetComponent<PickupDrop>() != null;
+        return pickedobject != null && pickedobject.GetComponentInChildren<Dish>() != null;
     }
 
     bool CanWater(WaterCrop watercrop)
