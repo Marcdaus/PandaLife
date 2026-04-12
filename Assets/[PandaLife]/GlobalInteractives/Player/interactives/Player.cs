@@ -187,16 +187,37 @@ public class Player : MonoBehaviour
         {
             currentTarget = othertarget;
 
-
-            // Si es un objeto gen�rico, leemos el texto de su Inspector
-            Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
-            if (interactuableRef != null)
+            // Minipandas
+            if (currentTarget is Minipandas panda)
             {
-                currentActionText = interactuableRef.mensajeInteraccion;
+                // Obtenemos el HungerSystem para comprobar el estado de ira
+                HungerSystem hunger = (panda as MonoBehaviour).GetComponent<HungerSystem>();
+
+                if (hunger != null && hunger.IsRageActivated)
+                {
+                    currentActionText = "Acariciar";
+                }
+                else if (CanInteractWithMiniPanda())
+                {
+                    currentActionText = "alimentar";
+                }
+                else
+                {
+                    currentActionText = "interactuar";
+                }
             }
+            // Los demás
             else
             {
-                currentActionText = "interactuar"; // Texto por defecto
+                Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
+                if (interactuableRef != null)
+                {
+                    currentActionText = interactuableRef.mensajeInteraccion;
+                }
+                else
+                {
+                    currentActionText = "interactuar";
+                }
             }
         }
 

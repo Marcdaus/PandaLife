@@ -23,6 +23,9 @@ public class PandaRequest : MonoBehaviour
         if (dayNumber == 2)
         {
             if (!UnlockedCrops.Contains("RedDragon")) UnlockedCrops.Add("RedDragon");
+        }
+        if (dayNumber == 3)
+        {
             if (!UnlockedCrops.Contains("Uchuva")) UnlockedCrops.Add("Uchuva");
         }
     }

@@ -22,7 +22,7 @@ public class Harvest : Interactuable
             crop.Harvest(); // llama a la función de cosechar del Crop
 
             if (area != null)
-                area.ThereIsSomething = false; // libera la parcela
+                area.VaciarParcela(); // libera la parcela
             Debug.Log("Terreno libre para plantar");
         }
         else
