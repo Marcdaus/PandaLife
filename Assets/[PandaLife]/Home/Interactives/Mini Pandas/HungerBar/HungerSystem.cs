@@ -14,16 +14,13 @@ public class HungerSystem : BarSystem
     private Color hungryBarColor = Color.red;
 
     [SerializeField] Color initialCircleColor;
-    private Color normalCircleColor;
-    private Color hungryCircleColor;
+    
 
     private bool isPaused = false;
 
     public bool IsRageActivated => rageActivated;
     void Start()
     {
-        GenerateDerivedColors();
-
         if (BarraManager.Instancia != null && pandaID != "")
         {
             var manager = BarraManager.Instancia;
@@ -32,6 +29,7 @@ public class HungerSystem : BarSystem
             {
                 currentValue = manager.hungerValues[pandaID];
                 rageActivated = manager.rageStates[pandaID];
+
             }
             else
             {
@@ -46,7 +44,7 @@ public class HungerSystem : BarSystem
         {
             Deactivate(); // hambre OFF
 
-            rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+            rageSystem.ActivateRage(bar, fillImage);
 
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
@@ -85,7 +83,7 @@ public class HungerSystem : BarSystem
         {
             rageActivated = true;
             Deactivate();
-            rageSystem.ActivateRage(bar, fillImage, indicatorImage, indicatorImage.color);
+            rageSystem.ActivateRage(bar, fillImage);
           //  GameManager.instance.miniPandasHambrientos--;
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
@@ -112,22 +110,11 @@ public class HungerSystem : BarSystem
             float percentage = (currentValue / maxValue) * 100f;
             if (fillImage != null)
                 fillImage.color = (percentage >= 80f) ? satisfiedBarColor : (percentage >= 41f) ? normalBarColor : hungryBarColor;
-
-            if (indicatorImage != null)
-            {
-                Color faceColor = (percentage >= 80f) ? initialCircleColor : (percentage >= 41f) ? normalCircleColor : hungryCircleColor;
-                faceColor.a = 1f;
-                indicatorImage.color = faceColor;
-            }
         }
+        if (indicatorImage != null)
+            indicatorImage.color = initialCircleColor;
     }
 
-    //Genera los diferentes colores de cada carita
-    void GenerateDerivedColors()
-    {
-        normalCircleColor = Color.Lerp(initialCircleColor, Color.yellow, 0.2f);
-        hungryCircleColor = Color.Lerp(initialCircleColor, Color.red, 0.2f);
-    }
 
     //Restaura un porcentaje de la barra, considerando el valor máximo
     public void Restaurar(float cantidad)

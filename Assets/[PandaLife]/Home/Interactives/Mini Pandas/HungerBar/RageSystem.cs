@@ -8,7 +8,7 @@ public class RageSystem : BarSystem
 
     private Color calmColor = new Color(1f, 0f, 0f); // Rojo claro
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
-    private Color lockedFaceColor = Color.red;
+
 
 
     void Start()
@@ -29,12 +29,11 @@ public class RageSystem : BarSystem
          UpdateUI();
     }
 
-    public void ActivateRage(Slider sharedBar, Image sharedFill, Image sharedIndicator, Color currentFaceColor)
+    public void ActivateRage(Slider sharedBar, Image sharedFill)
     {
         //Realiza las asignaciones
         bar = sharedBar;
         fillImage = sharedFill;
-        indicatorImage = sharedIndicator;
         GameManager.instance.miniPandasHambrientos--;
 
         if (BarraManager.Instancia != null && pandaID != "")
@@ -49,7 +48,6 @@ public class RageSystem : BarSystem
     }
     Debug.Log("ACTIVANDO RAGE DE " + pandaID);
 
-        lockedFaceColor = currentFaceColor;
         Activate();
     }
 
@@ -69,13 +67,6 @@ public class RageSystem : BarSystem
 
         if (fillImage != null)
             fillImage.color = (percentage < 50f) ? calmColor : rageColor;
-
-        if (indicatorImage != null)
-        {
-            Color c = lockedFaceColor;
-            c.a = 1f;
-            indicatorImage.color = c;
-        }
     }
     
     protected override void Update()
