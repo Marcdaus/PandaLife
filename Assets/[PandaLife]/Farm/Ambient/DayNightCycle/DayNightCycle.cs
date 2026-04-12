@@ -74,8 +74,8 @@ public class DayNightCycle : MonoBehaviour
 
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
-            float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
+            if (!GameManager.instance.stopTime)GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
+                float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
             // 1. Control de Rotación
             float anguloActual = Mathf.Lerp(startangle, endangle, porcentaje);
@@ -110,11 +110,17 @@ public class DayNightCycle : MonoBehaviour
             {
                 Debug.LogError("El GameManager no tiene el script PandaRequest");
             }
-            GameManager.instance.valuepercentage += 5;
-            GameManager.instance.barmultiplicator += 0.05f;
+            if(GameManager.instance.numday == 2) { 
+                GameManager.instance.valuepercentage = 15;
+                GameManager.instance.barmultiplicator = 0.15f;
+            }
+            if (GameManager.instance.numday == 3)
+            {
+                GameManager.instance.valuepercentage = 25;
+                GameManager.instance.barmultiplicator = 0.25f;
+            }
 
-
-            resetbars();
+            ResetBars();
             Rewards("Bags");
             Rewards("Collectables");
             SceneManager.LoadScene(homeScene.Value);
@@ -127,17 +133,7 @@ public class DayNightCycle : MonoBehaviour
         }
         if (GameManager.instance.numday == 4)
         {
-            GameManager.instance.miniPandasHambrientos = 3;
-            GameManager.instance.valuepercentage = 0;
-            GameManager.instance.tedypersistente = false;
-            GameManager.instance.notepersistente = false;
-            GameManager.instance.numday = 1;
-            GameManager.instance.quitarBambu();
-            BarraManager.Instancia.hungerValues.Clear();
-            BarraManager.Instancia.rageValues.Clear();
-            BarraManager.Instancia.rageStates.Clear();
-            BarraManager.Instancia.sceneLoaded = false;
-            BarraManager.Instancia.comingFromGameOver = false;
+            GameManager.instance.Resetplay();
             SceneManager.LoadScene(theEnd.Value);
         }
 
@@ -259,7 +255,7 @@ public class DayNightCycle : MonoBehaviour
             }
 
         }
-    void resetbars()
+    void ResetBars()
     {
         if (BarraManager.Instancia != null)
         {

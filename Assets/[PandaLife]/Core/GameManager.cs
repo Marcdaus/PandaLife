@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public float minutosActualesTotales;
     public int numday = 1;
     public float multiplicadorvelocidaddia = 1f;
+    public bool stopTime = false;
 
     [Header("Recompensas")]
     public TextMeshProUGUI messageRewardSacks;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Mini pandas")]
     public int miniPandasHambrientos = 3;
+
     [Header("Barras")]
     public float barmultiplicator = 1f;
     public int valuepercentage = 0;
@@ -159,36 +161,22 @@ public class GameManager : MonoBehaviour
             messageRewardCollectable.gameObject.SetActive(false);
         }
     }
-    public void ResetearJuego()
+    public void Resetplay()
     {
-        // Recursos
-        bambuverde = 0;
-        bamburojo = 0;
-        bayaarandanos = 0;
-        bayauchuva = 0;
 
-        // Tutorial
-        tutorialCuboCompletado = false;
-        tutorialRioCompletado = false;
-
-        // Día
-        tiempoTranscurrido = 0f;
-        minutosActualesTotales = 0f;
-        numday = 1;
-        multiplicadorvelocidaddia = 1f;
-
-        // Recompensas
-        tedypersistente = false;
-        notepersistente = false;
-
-        // Mini pandas
-        miniPandasHambrientos = 3;
-
-        // Barras
-        barmultiplicator = 1f;
-
-        // UI
-        ActualizarInventarioUI();
+        GameManager.instance.tiempoTranscurrido = 0f;
+        GameManager.instance.minutosActualesTotales = 0f;
+        GameManager.instance.miniPandasHambrientos = 3;
+        GameManager.instance.valuepercentage = 0;
+        GameManager.instance.tedypersistente = false;
+        GameManager.instance.notepersistente = false;
+        GameManager.instance.numday = 1;
+        GameManager.instance.quitarBambu();
+        BarraManager.Instancia.hungerValues.Clear();
+        BarraManager.Instancia.rageValues.Clear();
+        BarraManager.Instancia.rageStates.Clear();
+        BarraManager.Instancia.sceneLoaded = false;
+        BarraManager.Instancia.comingFromGameOver = false;
     }
 
 }

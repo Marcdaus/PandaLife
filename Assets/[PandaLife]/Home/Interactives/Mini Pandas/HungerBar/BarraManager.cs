@@ -35,7 +35,7 @@ public class BarraManager : MonoBehaviour
         {
             _instancia = this;
             DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += OnSceneLoaded;
+           
         }
         else
         {
@@ -43,10 +43,6 @@ public class BarraManager : MonoBehaviour
         }
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // No poner nada más aqui, las barras chequearán hungerPaused individualmente
-    }
 
     private void Update()
     {
@@ -54,16 +50,6 @@ public class BarraManager : MonoBehaviour
         CheckRage();
 
     }
-
-    public void PrepareRetry()
-    {
-        isResetting = true;
-        BarraManager.Instancia.hungerValues.Clear();
-        BarraManager.Instancia.rageValues.Clear();
-        BarraManager.Instancia.rageStates.Clear();
-        Invoke("EndReset", 0.5f);
-    }
-    private void EndReset() { isResetting = false; }
     public void CheckRage()
     {
         if (sceneLoaded) return;

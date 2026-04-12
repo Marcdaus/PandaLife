@@ -87,6 +87,23 @@ public class CheatMenuManager : MonoBehaviour
     {
         GameManager.instance.tiempoTranscurrido = 280.0f;
     }
+    public void Cheat_retrasardia()
+    {
+        GameManager.instance.tiempoTranscurrido = 0f;
+    }
+    public void Cheat_parartimepo()
+    {
+       if(GameManager.instance.stopTime == false)
+        {
+            GameManager.instance.stopTime = true;
+            Debug.Log("CHEAT: Tiempo detenido");
+        }
+       else
+        {
+            GameManager.instance.stopTime = false;
+            Debug.Log("CHEAT: Tiempo reanudado");
+        }
+    }
 
     public void Cheat_Volver_dia1()
     {
@@ -100,12 +117,7 @@ public class CheatMenuManager : MonoBehaviour
         }
     }
 
-    // Cheat: Llevar directamente al Game Over
-    public void Cheat_GameOver()
-    {
-        SceneManager.LoadScene("Theend");
-
-    }
+    
 
     // Cheat: Pausar o reanudar la disminución de hambre
     public void Cheat_PausarOReanudarHambre()
@@ -245,6 +257,20 @@ public class CheatMenuManager : MonoBehaviour
                 rage.ChangeRate = 1f; // Ira normal
                 Debug.Log("CHEAT: Panda acelerado (sin ira)");
             }
+        }
+    }
+    public void Cheat_cambiarporcentaje()
+    {
+        if (GameManager.instance.valuepercentage == 25)
+        {
+            GameManager.instance.valuepercentage = 15;
+            GameManager.instance.barmultiplicator = 1.15f;
+        }
+        else
+        {
+            GameManager.instance.valuepercentage = 25;
+            GameManager.instance.barmultiplicator = 1.25f;
+
         }
     }
 }
