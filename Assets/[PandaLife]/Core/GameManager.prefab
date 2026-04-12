@@ -627,6 +627,8 @@ GameObject:
   - component: {fileID: 1687261246731974107}
   - component: {fileID: 3160739717008820012}
   - component: {fileID: 2889715848130647437}
+  - component: {fileID: 2626485880552058091}
+  - component: {fileID: 3326780279596987329}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -675,14 +677,16 @@ MonoBehaviour:
   tutorialRioCompletado: 0
   tiempoTranscurrido: 0
   minutosActualesTotales: 0
-  numeroDia: 1
+  numday: 1
   multiplicadorvelocidaddia: 1
+  stopTime: 0
   messageRewardSacks: {fileID: 5575639054432991157}
   messageRewardCollectable: {fileID: 850184530770280005}
   tedypersistente: 0
   notepersistente: 0
   miniPandasHambrientos: 3
   barmultiplicator: 1
+  valuepercentage: 0
 --- !u!114 &1687261246731974107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,7 +701,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menucauldron: {fileID: 0}
   daynightcycle: {fileID: 0}
-  pandaRequest: {fileID: 2889715848130647437}
   minipanda: {fileID: 0}
 --- !u!114 &3160739717008820012
 MonoBehaviour:
@@ -718,6 +721,7 @@ MonoBehaviour:
   sceneLoaded: 0
   comingFromGameOver: 0
   hungerPaused: 0
+  isResetting: 0
 --- !u!114 &2889715848130647437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +735,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnlockedCrops: []
+--- !u!114 &2626485880552058091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096898177279698985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1aef077254c3c4cb570c9bc23eac37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3326780279596987329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096898177279698985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ce2eef5f9576c409fe6e06fcecf737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allCropPrefabs: []
 --- !u!1 &6232961565616963001
 GameObject:
   m_ObjectHideFlags: 0
