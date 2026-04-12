@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
     [Header("Barras")]
     public float barmultiplicator = 1f;
     public int valuepercentage = 0;
-
+    
     void Start()
     {
        //bambuverde = 0;
@@ -214,7 +215,8 @@ public class GameManager : MonoBehaviour
             BarraManager.Instancia.sceneLoaded = false;
             BarraManager.Instancia.comingFromGameOver = false;
         }
-
+        PandaRequest resetrequest = GameManager.instance.GetComponent<PandaRequest>();
+        resetrequest.ClearList();
         // --- UI final ---
         ActualizarInventarioUI();
         CropDatabase.instance.allCropPrefabs.Clear();

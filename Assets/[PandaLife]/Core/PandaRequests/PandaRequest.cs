@@ -11,6 +11,7 @@ public class PandaRequest : MonoBehaviour
 
     private void Awake()
     {
+
         if (!UnlockedCrops.Contains("Bamboo")) UnlockedCrops.Add("Bamboo");
         if (!UnlockedCrops.Contains("Blueberry")) UnlockedCrops.Add("Blueberry");
 
@@ -49,5 +50,12 @@ public class PandaRequest : MonoBehaviour
         // Si por alguna razón está vacía, generamos unos
         if (currentActiveRequests.Count == 0) GenerateRandomRequests();
         return currentActiveRequests;
+    }
+    public void ClearList()
+    {
+        UnlockedCrops.Clear();
+        if (!UnlockedCrops.Contains("Bamboo")) UnlockedCrops.Add("Bamboo");
+        if (!UnlockedCrops.Contains("Blueberry")) UnlockedCrops.Add("Blueberry");
+        GenerateRandomRequests();
     }
 }

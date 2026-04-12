@@ -109,11 +109,9 @@ public class CheatMenuManager : MonoBehaviour
     {
         if (!GameManager.instance.numday.Equals(1))
         {
-            GameManager.instance.tedypersistente = false;
-            GameManager.instance.notepersistente = false;
-            GameManager.instance.numday = 1;
-            GameManager.instance.quitarBambu();
-            SceneManager.LoadScene("Main");
+            if (GameManager.instance.numday == 1) return;
+            GameManager.instance.Resetplay();
+            SceneManager.LoadScene("House");
         }
     }
 
