@@ -36,7 +36,6 @@ public class MenuCauldron : MonoBehaviour
 
     IEnumerator RestoreOnStart()
     {
-        // Esperar un frame para que todos los Awake/Start del caldero terminen
         yield return null;
 
         var mgr = CauldronPersistenceManager.instance;
@@ -52,6 +51,8 @@ public class MenuCauldron : MonoBehaviour
             if (elapsed >= total)
             {
                 FinishCookingInstant(receta);
+                // No llamar RestoreFromPersistence, FinishCookingInstant ya spawnea el plato
+                yield break;
             }
             else
             {
@@ -60,14 +61,12 @@ public class MenuCauldron : MonoBehaviour
         }
         else
         {
-            // Solo si NO está cocinando, refrescar tarjetas
-            Debug.Log("[MenuCauldron] RestoreOnStart - sin cocción, llamando CheckUnblock en todas");
             foreach (RecipeCard tarjeta in tarjetas)
                 tarjeta.CheckUnblock();
         }
-       
-        
-        cauldron.RestoreFromPersistence();
+
+        if (mgr.hasPendingDish)
+            cauldron.RestoreFromPersistence();
     }
 
 
