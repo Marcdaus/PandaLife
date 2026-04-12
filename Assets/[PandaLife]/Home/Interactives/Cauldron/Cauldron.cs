@@ -65,51 +65,49 @@ public class Cauldron : Interactuable
         }
     }
 
-public void RestoreFromPersistence()
-{
-    var mgr = CauldronPersistenceManager.instance;
-    if (mgr == null || !mgr.hasPendingDish) return;
-
-    // Copiar la lista antes de limpiarla
-    var dishes = new List<CauldronPersistenceManager.DishState>(mgr.PendingDishes);
-    mgr.ClearAllDishStates();
-
-    foreach (var state in dishes)
+    public void RestoreFromPersistence()
     {
-        RecipesData receta = state.recipe;
-        if (receta?.prefabResultado == null) continue;
+        var mgr = CauldronPersistenceManager.instance;
+        if (mgr == null || !mgr.hasPendingDish) return;
 
-            Vector3 spawnPos = state.wasInHand ? displayPoint.position : state.position;
-            Quaternion spawnRot = state.wasInHand ? displayPoint.rotation : Quaternion.identity;
-            GameObject plato = Instantiate(receta.prefabResultado, spawnPos, Quaternion.identity);
-        Dish dish = plato.GetComponentInChildren<Dish>();
-        if (dish != null) dish.Initialize(receta);
+        var dishes = new List<CauldronPersistenceManager.DishState>(mgr.PendingDishes);
+        mgr.ClearAllDishStates();
 
-        if (state.wasInHand)
+        foreach (var state in dishes)
         {
-            // Solo el primero "en mano" se convierte en plato pendiente del caldero
-            if (platopendiente == null)
+            RecipesData receta = state.recipe;
+            if (receta?.prefabResultado == null) continue;
+
+            if (state.wasInHand)
             {
-                platopendiente = plato;
-                recetaPendiente = receta;
-                mensajeInteraccion = "recoger plato";
+                if (platopendiente == null)
+                {
+                    GameObject plato = Instantiate(receta.prefabResultado, displayPoint.position, displayPoint.rotation);
+                    Dish dish = plato.GetComponentInChildren<Dish>();
+                    if (dish != null) dish.Initialize(receta);
+                    Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
+                    if (rb != null) rb.isKinematic = true;
+                    platopendiente = plato;
+                    recetaPendiente = receta;
+                    mensajeInteraccion = "recoger plato";
+                    Debug.Log($"[Cauldron] Restaurado plato caldero: {receta.nombrereceta}");
+                }
+            }
+            else
+            {
+                GameObject plato = Instantiate(receta.prefabResultado, state.position, Quaternion.identity);
+                Dish dish = plato.GetComponentInChildren<Dish>();
+                if (dish != null) dish.Initialize(receta);
                 Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
-                if (rb != null) rb.isKinematic = true;
+                if (rb != null)
+                {
+                    rb.isKinematic = true;
+                    StartCoroutine(ActivarFisicaTrasFrame(rb));
+                }
+                Debug.Log($"[Cauldron] Restaurado plato suelto: {receta.nombrereceta} en {state.position}");
             }
         }
-        else
-        {
-            Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
-            if (rb != null)
-            {
-                rb.isKinematic = true;
-                StartCoroutine(ActivarFisicaTrasFrame(rb));
-            }
-        }
-
-        Debug.Log($"[Cauldron] Restaurado plato: {receta.nombrereceta} en {spawnPos}");
     }
-}
 
 
     private IEnumerator ActivarFisicaTrasFrame(Rigidbody rb)

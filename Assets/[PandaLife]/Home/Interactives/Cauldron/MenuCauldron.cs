@@ -66,8 +66,8 @@ public class MenuCauldron : MonoBehaviour
                 tarjeta.CheckUnblock();
         }
        
-        if (mgr.hasPendingDish)
-            cauldron.RestoreFromPersistence();
+        
+        cauldron.RestoreFromPersistence();
     }
 
 
