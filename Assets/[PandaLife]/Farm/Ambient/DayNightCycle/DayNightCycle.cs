@@ -143,9 +143,9 @@ public class DayNightCycle : MonoBehaviour
         }
         if(GameManager.instance.numday > 1)
         {
-            percentage1.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
-            percentage2.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
-            percentage3.text = "+" + GameManager.instance.valuepercentage.ToString() + "%";
+            percentage1.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
+            percentage2.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
+            percentage3.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
         }
         if (GameManager.instance.numday == 4)
         {
@@ -275,14 +275,23 @@ public class DayNightCycle : MonoBehaviour
     {
         if (BarraManager.Instancia != null)
         {
-            BarraManager.Instancia.isResetting = true;
+            BarraManager.Instancia.hungerPaused = false;
+            BarraManager.Instancia.isResetting = false;
         }
 
-        HungerSystem[] todosLosPandas = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+        // Buscamos los pandas actuales en la escena
+        HungerSystem[] pandasEnEscena = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
 
-        foreach (HungerSystem panda in todosLosPandas)
+        foreach (var panda in pandasEnEscena)
         {
-            panda.ResetParaNuevoDia();
+
+            panda.Restaurar(100f);
+
+
+            panda.ResetSystem();
+
+
+            panda.UpdateUI();
         }
 
     }
