@@ -163,21 +163,61 @@ public class GameManager : MonoBehaviour
     }
     public void Resetplay()
     {
-        GameManager.instance.barmultiplicator = 1f;
-        GameManager.instance.valuepercentage = 0;
-        GameManager.instance.tiempoTranscurrido = 0f;
-        GameManager.instance.minutosActualesTotales = 0f;
-        GameManager.instance.miniPandasHambrientos = 3;
-        GameManager.instance.valuepercentage = 0;
-        GameManager.instance.tedypersistente = false;
-        GameManager.instance.notepersistente = false;
-        GameManager.instance.numday = 1;
-        GameManager.instance.quitarBambu();
-        BarraManager.Instancia.hungerValues.Clear();
-        BarraManager.Instancia.rageValues.Clear();
-        BarraManager.Instancia.rageStates.Clear();
-        BarraManager.Instancia.sceneLoaded = false;
-        BarraManager.Instancia.comingFromGameOver = false;
+        // --- Sistema de día ---
+        tiempoTranscurrido = 0f;
+        minutosActualesTotales = 0f;
+        numday = 1;
+        multiplicadorvelocidaddia = 1f;
+        stopTime = false;
+
+        // --- Recursos ---
+        quitarBambu();
+
+        // --- Tutorial ---
+        tutorialCuboCompletado = false;
+        tutorialRioCompletado = false;
+
+        // --- Recompensas ---
+        tedypersistente = false;
+        notepersistente = false;
+
+        // Limpiar mensajes UI
+        if (messageRewardSacks != null)
+        {
+            messageRewardSacks.text = "";
+            messageRewardSacks.gameObject.SetActive(false);
+        }
+
+        if (messageRewardCollectable != null)
+        {
+            messageRewardCollectable.text = "";
+            messageRewardCollectable.gameObject.SetActive(false);
+        }
+
+        // Parar coroutines activas
+        StopAllCoroutines();
+
+        // --- Mini pandas ---
+        miniPandasHambrientos = 3;
+
+        // --- Barras ---
+        barmultiplicator = 1f;
+        valuepercentage = 0;
+
+        // --- BarraManager ---
+        if (BarraManager.Instancia != null)
+        {
+            BarraManager.Instancia.hungerValues.Clear();
+            BarraManager.Instancia.rageValues.Clear();
+            BarraManager.Instancia.rageStates.Clear();
+            BarraManager.Instancia.sceneLoaded = false;
+            BarraManager.Instancia.comingFromGameOver = false;
+        }
+
+        // --- UI final ---
+        ActualizarInventarioUI();
+        CropDatabase.instance.allCropPrefabs.Clear();
+        CauldronPersistenceManager.instance.ClearAllDishStates();
     }
 
 }
