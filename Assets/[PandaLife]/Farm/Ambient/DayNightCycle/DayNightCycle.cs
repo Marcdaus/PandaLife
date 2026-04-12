@@ -123,6 +123,22 @@ public class DayNightCycle : MonoBehaviour
             ResetBars();
             Rewards("Bags");
             Rewards("Collectables");
+            // Guardar todos los platos sueltos antes de cambiar de día
+            if (CauldronPersistenceManager.instance != null)
+            {
+                CauldronPersistenceManager.instance.ClearAllDishStates();
+                Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
+                foreach (Dish dish in platos)
+                {
+                    GameObject raiz = dish.transform.root.gameObject;
+                    CauldronPersistenceManager.instance.SaveDishState(
+                        dish.GetReceta(),
+                        raiz.transform.position,
+                        inHand: false
+                    );
+                    Debug.Log($"[DayNightCycle] Guardando plato: {raiz.name} en {raiz.transform.position}");
+                }
+            }
             SceneManager.LoadScene(homeScene.Value);
         }
         if(GameManager.instance.numday > 1)
