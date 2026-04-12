@@ -163,7 +163,8 @@ public class GameManager : MonoBehaviour
     }
     public void Resetplay()
     {
-
+        GameManager.instance.barmultiplicator = 1f;
+        GameManager.instance.valuepercentage = 0;
         GameManager.instance.tiempoTranscurrido = 0f;
         GameManager.instance.minutosActualesTotales = 0f;
         GameManager.instance.miniPandasHambrientos = 3;

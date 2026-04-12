@@ -261,6 +261,7 @@ public class CheatMenuManager : MonoBehaviour
     }
     public void Cheat_cambiarporcentaje()
     {
+        if(GameManager.instance.numday == 1)return;
         if (GameManager.instance.valuepercentage == 25)
         {
             GameManager.instance.valuepercentage = 15;

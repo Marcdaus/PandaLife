@@ -112,12 +112,12 @@ public class DayNightCycle : MonoBehaviour
             }
             if(GameManager.instance.numday == 2) { 
                 GameManager.instance.valuepercentage = 15;
-                GameManager.instance.barmultiplicator = 0.15f;
+                GameManager.instance.barmultiplicator = 1.15f;
             }
             if (GameManager.instance.numday == 3)
             {
                 GameManager.instance.valuepercentage = 25;
-                GameManager.instance.barmultiplicator = 0.25f;
+                GameManager.instance.barmultiplicator = 1.25f;
             }
 
             ResetBars();
