@@ -54,13 +54,16 @@ public class SceneChange : Interactuable
         if (CauldronPersistenceManager.instance == null) return;
 
         Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
+        Cauldron cauldron = FindFirstObjectByType<Cauldron>();
 
+        
         List<Dish> platosSueltos = new List<Dish>();
         foreach (Dish dish in platos)
         {
             GameObject raiz = dish.transform.root.gameObject;
             if (player.pickedobject != null &&
                 raiz == player.pickedobject.transform.root.gameObject) continue;
+
             platosSueltos.Add(dish);
         }
 
@@ -69,14 +72,28 @@ public class SceneChange : Interactuable
         if (limpiarAntes)
             CauldronPersistenceManager.instance.ClearAllDishStates();
 
+        
         foreach (Dish dish in platosSueltos)
         {
             GameObject raiz = dish.transform.root.gameObject;
-            Debug.Log($"[SceneChange] Guardando plato suelto: {raiz.name} en {raiz.transform.position}");
+
+           
+            bool esPlatoDelCaldero = false;
+            if (cauldron != null && cauldron.PlatoPendienteGameObject != null)
+            {
+               
+                if (raiz == cauldron.PlatoPendienteGameObject.transform.root.gameObject)
+                {
+                    esPlatoDelCaldero = true;
+                }
+            }
+
+            Debug.Log($"[SceneChange] Guardando plato: {raiz.name}. ¿Es del caldero?: {esPlatoDelCaldero}");
+
             CauldronPersistenceManager.instance.SaveDishState(
                 dish.GetReceta(),
                 raiz.transform.position,
-                inHand: false
+                inHand: esPlatoDelCaldero 
             );
         }
     }

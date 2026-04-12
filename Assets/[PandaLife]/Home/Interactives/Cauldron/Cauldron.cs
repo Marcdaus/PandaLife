@@ -8,9 +8,10 @@ public class Cauldron : Interactuable
 
     [SerializeField] private Transform handpoint;
     [SerializeField] private Player jugador;
-
+    [SerializeField] private Transform displayPoint;
     private GameObject platopendiente = null;
     private RecipesData recetaPendiente;
+    public GameObject PlatoPendienteGameObject => platopendiente;
 
     public bool tieneplatopendiente => platopendiente != null;
 
@@ -50,12 +51,14 @@ public class Cauldron : Interactuable
         }
         else
         {
-            GameObject plato = Instantiate(prefab);
+            GameObject plato = Instantiate(prefab, displayPoint.position, displayPoint.rotation);
             Dish dish = plato.GetComponentInChildren<Dish>();
             if(dish!=null)dish.Initialize(receta);
             platopendiente = plato;
         
             recetaPendiente = receta;
+            Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
+            if (rb != null) rb.isKinematic = true;
             Debug.Log("saciedad de plato:" + dish.GetSaciedad());
 
             mensajeInteraccion = "recoger plato";
@@ -76,9 +79,9 @@ public void RestoreFromPersistence()
         RecipesData receta = state.recipe;
         if (receta?.prefabResultado == null) continue;
 
-        Vector3 spawnPos = state.wasInHand ? handpoint.position : state.position;
-
-        GameObject plato = Instantiate(receta.prefabResultado, spawnPos, Quaternion.identity);
+            Vector3 spawnPos = state.wasInHand ? displayPoint.position : state.position;
+            Quaternion spawnRot = state.wasInHand ? displayPoint.rotation : Quaternion.identity;
+            GameObject plato = Instantiate(receta.prefabResultado, spawnPos, Quaternion.identity);
         Dish dish = plato.GetComponentInChildren<Dish>();
         if (dish != null) dish.Initialize(receta);
 
@@ -90,6 +93,8 @@ public void RestoreFromPersistence()
                 platopendiente = plato;
                 recetaPendiente = receta;
                 mensajeInteraccion = "recoger plato";
+                Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
+                if (rb != null) rb.isKinematic = true;
             }
         }
         else
@@ -118,6 +123,9 @@ public void RestoreFromPersistence()
         GameObject plato = platopendiente;       
         plato.transform.position = handpoint.position;
         plato.transform.rotation = Quaternion.identity;
+
+        Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();
+        if (rb != null) rb.isKinematic = false;
 
         PickupDrop pickup = plato.GetComponentInChildren<PickupDrop>(); 
         if (pickup != null)
