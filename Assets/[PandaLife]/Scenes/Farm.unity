@@ -701,7 +701,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2626485880552058091, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+    - {fileID: 3326780279596987329, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -6688,8 +6690,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1962436886}
-  - component: {fileID: 1962436885}
   - component: {fileID: 1962436887}
+  - component: {fileID: 1962436888}
   m_Layer: 0
   m_Name: FarmDataManager
   m_TagString: Untagged
@@ -6697,18 +6699,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1962436885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962436884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f1aef077254c3c4cb570c9bc23eac37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1962436886
 Transform:
   m_ObjectHideFlags: 0
@@ -6741,6 +6731,18 @@ MonoBehaviour:
   - {fileID: 2431665166018270156, guid: 1cb3b1f77fcd4c64989999c6d577fa59, type: 3}
   - {fileID: 2431665166018270156, guid: fe2e42c8faa5c914481ab253ee79c27f, type: 3}
   - {fileID: 2431665166018270156, guid: faa3fba0fb520b741b4d609b37a29128, type: 3}
+--- !u!114 &1962436888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962436884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f1aef077254c3c4cb570c9bc23eac37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1987760733
 GameObject:
   m_ObjectHideFlags: 0
