@@ -24,7 +24,7 @@ public class MainMenuActions : MonoBehaviour
     }
     public void back()
     {
-        SceneManager.LoadScene(MainmenuScene.Value); 
+        SceneManager.LoadScene("Mainmenu"); 
     }
 }
 
