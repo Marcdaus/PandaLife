@@ -772,6 +772,10 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5325448653611733010, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_Name
+      value: Full_Bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 5325448653611733010, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
@@ -832,12 +836,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1122386923}
     - target: {fileID: 8367481790754045628, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: fullbucketobject
+      value: 
+      objectReference: {fileID: 1122386923}
+    - target: {fileID: 8367481790754045628, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: emptyBucketObject
+      value: 
+      objectReference: {fileID: 305740872}
+    - target: {fileID: 8367481790754045628, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: emptybucketobject
       value: 
       objectReference: {fileID: 305740872}
     - target: {fileID: 8647309555698740069, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8683006317691870293, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_Name
+      value: Empty_Bucket
       objectReference: {fileID: 0}
     - target: {fileID: 8683006317691870293, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_Layer
