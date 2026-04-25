@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class BucketWater : MonoBehaviour
 {
-    [SerializeField] private Renderer bucketrenderer;
-
-    [SerializeField] private Material emptybucket;
-    [SerializeField] private Material fullbucket;
+    [SerializeField] private GameObject emptybucketobject;
+    [SerializeField] private GameObject fullbucketobject;
 
     public bool haswater = false;
+
+    private void Start()
+    {
+        UpdateVisual();
+    }
 
     public void Fill()
     {
@@ -18,9 +21,10 @@ public class BucketWater : MonoBehaviour
         }
 
         haswater = true;
-        bucketrenderer.material = fullbucket;
+        UpdateVisual();
+
         Debug.Log("Cubo lleno");
-        // Completar el tutorial de llenar la cubeta y no mostrar más el pin
+
         if (!GameManager.instance.tutorialRioCompletado)
         {
             GameManager.instance.tutorialRioCompletado = true;
@@ -31,6 +35,12 @@ public class BucketWater : MonoBehaviour
     public void Empty()
     {
         haswater = false;
-        bucketrenderer.material = emptybucket;
+        UpdateVisual();
+    }
+
+    private void UpdateVisual()
+    {
+        emptybucketobject.SetActive(!haswater);
+        fullbucketobject.SetActive(haswater);
     }
 }
