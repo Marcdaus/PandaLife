@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5593828259048265856}
   - component: {fileID: 6678586896100264572}
   m_Layer: 9
-  m_Name: Bamboo
+  m_Name: Red_Dragon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   stage2: {fileID: 5231756378937756163}
   stage3: {fileID: 0}
   growtime: 10
-  type: 1
+  type: 3
   maxStages: 2
   areaID: 
 --- !u!114 &295671738845752416
@@ -137,7 +137,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5756175967767709608}
+  - {fileID: 570514462881349062}
   m_Father: {fileID: 6840026963562278110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8101133190524558882
@@ -169,10 +169,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7845341650200674522}
+  - {fileID: 8863712332429771331}
   m_Father: {fileID: 6840026963562278110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5217616941997498435
+--- !u!1001 &27134421823822381
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: f0b3c900cd4cfad41ab0f026b3698025, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 510fd84ce32b2064691bdc5ae3bf5d0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ba5a2773828d2b4eb1b7984aeca78f5, type: 2}
     - target: {fileID: 919132149155446097, guid: f0b3c900cd4cfad41ab0f026b3698025, type: 3}
       propertyPath: m_Name
       value: BambuFinal
@@ -233,12 +233,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0b3c900cd4cfad41ab0f026b3698025, type: 3}
---- !u!4 &5756175967767709608 stripped
+--- !u!4 &570514462881349062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f0b3c900cd4cfad41ab0f026b3698025, type: 3}
-  m_PrefabInstance: {fileID: 5217616941997498435}
+  m_PrefabInstance: {fileID: 27134421823822381}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &7740273613138601777
+--- !u!1001 &8973565309927859624
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -289,7 +289,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 04b6e9a8aacf77947a4e99937a4ee2f4, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 510fd84ce32b2064691bdc5ae3bf5d0b, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ba5a2773828d2b4eb1b7984aeca78f5, type: 2}
     - target: {fileID: 919132149155446097, guid: 04b6e9a8aacf77947a4e99937a4ee2f4, type: 3}
       propertyPath: m_Name
       value: CogolloBambu_02
@@ -299,8 +299,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 04b6e9a8aacf77947a4e99937a4ee2f4, type: 3}
---- !u!4 &7845341650200674522 stripped
+--- !u!4 &8863712332429771331 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 04b6e9a8aacf77947a4e99937a4ee2f4, type: 3}
-  m_PrefabInstance: {fileID: 7740273613138601777}
+  m_PrefabInstance: {fileID: 8973565309927859624}
   m_PrefabAsset: {fileID: 0}
