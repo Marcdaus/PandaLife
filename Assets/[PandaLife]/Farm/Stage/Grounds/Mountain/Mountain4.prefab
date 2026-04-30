@@ -55,13 +55,14 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5309687160577457250, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
+    - {fileID: 6577436935107252269, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6176778941987127049, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 616960473403702555}
+      addedObject: {fileID: 1686137128414965412}
     - targetCorrespondingSourceObject: {fileID: 6176778941987127049, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1686137128414965412}
+      addedObject: {fileID: 1880473578392902287}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
 --- !u!4 &6324272398832497768 stripped
@@ -69,7 +70,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6176778941987127049, guid: 7ee5a3c2d4843814a9859801ab357489, type: 3}
   m_PrefabInstance: {fileID: 179026355255937889}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1082371570238905072
+--- !u!1001 &2130890629710921060
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -117,19 +118,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: cf42a7d1b14dc474880e67454116d5cf, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 18c3fa55d86ee3a41b52bc6809121770, type: 2}
     - target: {fileID: 919132149155446097, guid: cf42a7d1b14dc474880e67454116d5cf, type: 3}
       propertyPath: m_Name
-      value: Montana4
+      value: Mountain_03
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf42a7d1b14dc474880e67454116d5cf, type: 3}
---- !u!4 &616960473403702555 stripped
+--- !u!4 &1880473578392902287 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf42a7d1b14dc474880e67454116d5cf, type: 3}
-  m_PrefabInstance: {fileID: 1082371570238905072}
+  m_PrefabInstance: {fileID: 2130890629710921060}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3356638903834700676
 PrefabInstance:
