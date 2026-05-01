@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3756240575758891311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4808787806810295535}
+  m_Layer: 9
+  m_Name: espuma
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4808787806810295535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3756240575758891311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -5.4, z: 26.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4812059519917124268}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4993761765743332679
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4808787806810295535}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.32111168
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.8489158
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.500719
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.47570282
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.52317005
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4959885
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.50397956
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -93.901
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -54.587006
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -35.475006
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+      propertyPath: m_Name
+      value: espumacascada
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+--- !u!4 &4812059519917124268 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 727a588ce365146d8afa0f5c4834c033, type: 3}
+  m_PrefabInstance: {fileID: 4993761765743332679}
+  m_PrefabAsset: {fileID: 0}
