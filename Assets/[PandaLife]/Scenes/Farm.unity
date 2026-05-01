@@ -1253,7 +1253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477516}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477517}
 --- !u!4 &253100231 stripped
@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786847}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786840}
 --- !u!95 &437085493
@@ -2176,6 +2176,10 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_03_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1062744390}
     - target: {fileID: 2071733374936540932, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -2234,7 +2238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.76
+      value: 27.379997
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2242,7 +2246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.7
+      value: -7.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2284,6 +2288,10 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_01_02
       objectReference: {fileID: 0}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1955421751}
     - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -2348,10 +2356,18 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_02_02
       objectReference: {fileID: 0}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1513305931}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00_02
       objectReference: {fileID: 0}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1896185124}
     - target: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -2372,11 +2388,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &548786841 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6456804872012800375, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 548786839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &548786842 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -2388,11 +2399,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &548786843 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5425715079145838178, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 548786839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &548786844 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -2404,11 +2410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &548786845 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6147422459532578382, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 548786839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &548786846 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -2420,11 +2421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &548786847 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1947935956988800777, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 548786839}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550811146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2874,6 +2870,10 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_03_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1522278912}
     - target: {fileID: 2071733374936540932, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -2932,7 +2932,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.07
+      value: -8.31
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2940,7 +2940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.29
+      value: -11.09
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2976,12 +2976,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3508154619868669698, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_01_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 837240013}
     - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -3046,10 +3050,18 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_02_01
       objectReference: {fileID: 0}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1325378387}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00_01
       objectReference: {fileID: 0}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 2107154560}
     - target: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -3070,11 +3082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &663477516 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6456804872012800375, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 663477514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &663477517 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -3086,11 +3093,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &663477518 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5425715079145838178, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 663477514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &663477519 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -3102,11 +3104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &663477520 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6147422459532578382, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 663477514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &663477521 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -3118,11 +3115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &663477522 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1947935956988800777, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 663477514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &675096330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,7 +3227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786847}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786840}
 --- !u!4 &675802343 stripped
@@ -4064,7 +4056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786841}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786842}
 --- !u!1001 &799778711
@@ -4380,6 +4372,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822556186}
   m_CullTransparentMesh: 1
+--- !u!4 &837240013 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3508154619868669698, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &866897959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9108926928136627160, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
@@ -4541,7 +4538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477522}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477515}
 --- !u!114 &887701530 stripped
@@ -4861,6 +4858,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1062744390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1076694409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5141,7 +5143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477516}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477517}
 --- !u!1 &1122386923 stripped
@@ -5372,7 +5374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477520}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477521}
 --- !u!1 &1200372573 stripped
@@ -5873,6 +5875,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1557766857554461327, guid: 3bda5f66edf8240dab658df557d9118c, type: 3}
+--- !u!4 &1325378387 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2483830604152999959, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1359491632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 984422206878576370, guid: 8cca88ca754904fbcb4c877ea2417aa7, type: 3}
@@ -6230,6 +6237,10 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 2079508406}
     - target: {fileID: 2071733374936540932, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -6288,7 +6299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.38504
+      value: -12.96
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6296,7 +6307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.815363
+      value: -5.09
       objectReference: {fileID: 0}
     - target: {fileID: 2866165077525738809, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6338,6 +6349,10 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_01
       objectReference: {fileID: 0}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1720417850}
     - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -6402,10 +6417,18 @@ PrefabInstance:
       propertyPath: areaID
       value: Farming_area_02
       objectReference: {fileID: 0}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1549070192}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00
       objectReference: {fileID: 0}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: spawnpoint
+      value: 
+      objectReference: {fileID: 1421722101}
     - target: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -6426,11 +6449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1421722094 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6456804872012800375, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 1421722092}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1421722095 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -6442,11 +6460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1421722096 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5425715079145838178, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 1421722092}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1421722097 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -6458,11 +6471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1421722098 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6147422459532578382, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
-  m_PrefabInstance: {fileID: 1421722092}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1421722099 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
@@ -6474,9 +6482,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598e7067b90548eba0251d35fd9f2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1421722100 stripped
+--- !u!4 &1421722101 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1947935956988800777, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3365160048483352366, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
   m_PrefabInstance: {fileID: 1421722092}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422372488
@@ -6883,7 +6891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786845}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786846}
 --- !u!1 &1462372823
@@ -7232,7 +7240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477520}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477521}
 --- !u!1 &1506388748
@@ -7371,6 +7379,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506388748}
   m_CullTransparentMesh: 1
+--- !u!4 &1513305931 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2483830604152999959, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1513481576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7484,6 +7497,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1557766857554461327, guid: 3bda5f66edf8240dab658df557d9118c, type: 3}
+--- !u!4 &1522278912 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1545887770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4198668764136497310, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
@@ -7510,6 +7528,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5000002, y: 0.7011095, z: 0.62756866}
   m_Center: {x: 0, y: 0.34261566, z: 0}
+--- !u!4 &1549070192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2483830604152999959, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1561002565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7831,7 +7854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786843}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786844}
 --- !u!1 &1589462308 stripped
@@ -8424,9 +8447,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477518}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477519}
+--- !u!4 &1720417850 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3508154619868669698, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1748448839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8746,7 +8774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477522}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477515}
 --- !u!1 &1807511814 stripped
@@ -9119,7 +9147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786843}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786844}
 --- !u!1 &1894382280 stripped
@@ -9175,6 +9203,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.10039925, y: 1.5047889, z: 0.50866807}
   m_Center: {x: -0.000000011760848, y: 0.049328588, z: 0.20164332}
+--- !u!4 &1896185124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3365160048483352366, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912821048 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4634752391397092175, guid: 8cca88ca754904fbcb4c877ea2417aa7, type: 3}
@@ -9314,7 +9347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786841}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786842}
 --- !u!1 &1923385019
@@ -9429,9 +9462,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 663477518}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 663477519}
+--- !u!4 &1955421751 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3508154619868669698, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1960276434 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6203202031947817109, guid: 8cca88ca754904fbcb4c877ea2417aa7, type: 3}
@@ -9780,7 +9818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f90c95bdcfd734eab9c2d1fb2c87d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldPosition: {fileID: 548786845}
+  worldPosition: {fileID: 0}
   camera: {fileID: 0}
   farmingArea: {fileID: 548786846}
 --- !u!1 &2012196818 stripped
@@ -9837,6 +9875,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3959313752243341936, guid: f4d027db14b0d43cfb9f4e51bf36a751, type: 3}
+--- !u!4 &2079508406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2080929969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10009,6 +10052,11 @@ MeshCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4393243063098544268, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
   m_PrefabInstance: {fileID: 63604862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2107154560 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3365160048483352366, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2136591841
 GameObject:
@@ -10233,7 +10281,7 @@ PrefabInstance:
     - target: {fileID: 990493897916614005, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722098}
+      objectReference: {fileID: 0}
     - target: {fileID: 1057846709359566852, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: m_Name
       value: CanvasPinsUI
@@ -10245,7 +10293,7 @@ PrefabInstance:
     - target: {fileID: 1383463758942514496, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722098}
+      objectReference: {fileID: 0}
     - target: {fileID: 3088564838267191460, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: farmingArea
       value: 
@@ -10253,7 +10301,7 @@ PrefabInstance:
     - target: {fileID: 3088564838267191460, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722096}
+      objectReference: {fileID: 0}
     - target: {fileID: 3121657470735509662, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -10345,7 +10393,7 @@ PrefabInstance:
     - target: {fileID: 4121463943228971801, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722100}
+      objectReference: {fileID: 0}
     - target: {fileID: 4810586985739746630, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: farmingArea
       value: 
@@ -10353,7 +10401,7 @@ PrefabInstance:
     - target: {fileID: 4810586985739746630, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722100}
+      objectReference: {fileID: 0}
     - target: {fileID: 4834298790322390074, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: farmingArea
       value: 
@@ -10361,7 +10409,7 @@ PrefabInstance:
     - target: {fileID: 4834298790322390074, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722094}
+      objectReference: {fileID: 0}
     - target: {fileID: 5326574809276033094, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
@@ -10381,7 +10429,7 @@ PrefabInstance:
     - target: {fileID: 7787127802793709056, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722096}
+      objectReference: {fileID: 0}
     - target: {fileID: 8106447813517010073, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: m_SizeDelta.x
       value: 100
@@ -10397,7 +10445,7 @@ PrefabInstance:
     - target: {fileID: 8835379514226832870, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: worldPosition
       value: 
-      objectReference: {fileID: 1421722094}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8771247712967119606, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
