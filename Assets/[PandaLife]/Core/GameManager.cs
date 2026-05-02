@@ -132,13 +132,13 @@ public class GameManager : MonoBehaviour
     void ActualizarInventarioUI() //actualiza el texto segun los recursos que tenemos
     {
         if (textoBambuVerde != null)
-            textoBambuVerde.text = "x " + bambuverde.ToString();
+            textoBambuVerde.text = bambuverde.ToString();
         if (textoBambuRojo != null)
-            textoBambuRojo.text = "x " + bamburojo.ToString();
+            textoBambuRojo.text = bamburojo.ToString();
         if (textoBayaArandanos != null)
-            textoBayaArandanos.text = "x " + bayaarandanos.ToString();
+            textoBayaArandanos.text = bayaarandanos.ToString();
         if (textoBayaUchuva != null)
-            textoBayaUchuva.text = "x " + bayauchuva.ToString();
+            textoBayaUchuva.text = bayauchuva.ToString();
     }
     public void MostrarMensajeTemporal(string mensaje, float duracion, string type)
     {
