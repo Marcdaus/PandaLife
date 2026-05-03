@@ -19,7 +19,7 @@ public class SceneChange : Interactuable
         if (player.IsHoldingBucket() || player.IsHoldingDish())
         {
             PickupDrop pickupobject = player.pickedobject;
-            if (pickupobject != null)
+            if (pickupobject != null && player.IsHoldingDish())
             {
                 // Limpiar y guardar todo desde cero
                 CauldronPersistenceManager.instance.ClearAllDishStates();
