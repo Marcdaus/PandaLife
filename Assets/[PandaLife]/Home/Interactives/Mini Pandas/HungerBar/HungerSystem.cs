@@ -17,7 +17,6 @@ public class HungerSystem : BarSystem
     private Color normalBarColor = Color.yellow;
     private Color hungryBarColor = Color.red;
 
-    [SerializeField] Color initialCircleColor;
     
 
     private bool isPaused = false;

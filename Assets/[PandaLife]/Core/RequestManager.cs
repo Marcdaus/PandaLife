@@ -1,13 +1,44 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RequestManager : MonoBehaviour
 {
     [Header("UI Pines")]
-    [SerializeField] private TMP_Text pin1Text;
-    [SerializeField] private TMP_Text pin2Text;
-    [SerializeField] private TMP_Text pin3Text;
+
+    [SerializeField] private Image pin1Image;
+    [SerializeField] private Image pin2Image;
+    [SerializeField] private Image pin3Image;
+    [SerializeField] private List<RequestSpritePair> requestSprites;
+
+    [System.Serializable]
+    public class RequestSpritePair
+    {
+        public string requestName;
+        public Sprite sprite;
+    }
+
+    private Dictionary<string, Sprite> spriteDict;
+
+    private void Awake()
+    {
+        spriteDict = new Dictionary<string, Sprite>();
+
+        foreach (var pair in requestSprites)
+        {
+            spriteDict[pair.requestName] = pair.sprite;
+        }
+    }
+
+    private Sprite GetSpriteFromRequest(string request)
+    {
+
+        if (spriteDict.ContainsKey(request))
+            return spriteDict[request];
+
+        Debug.LogWarning("No sprite found for request: " + request);
+        return null;
+    }
 
     private void Start()
     {
@@ -15,14 +46,13 @@ public class RequestManager : MonoBehaviour
 
         if (pandaReq != null)
         {
-            // IMPORTANTE: Usamos GetCurrentRequests() en lugar de Generate
             List<string> pedidosDeHoy = pandaReq.GetCurrentRequests();
 
             if (pedidosDeHoy.Count >= 3)
             {
-                if (pin1Text != null) pin1Text.text = pedidosDeHoy[0];
-                if (pin2Text != null) pin2Text.text = pedidosDeHoy[1];
-                if (pin3Text != null) pin3Text.text = pedidosDeHoy[2];
+                if (pin1Image != null) pin1Image.sprite = GetSpriteFromRequest(pedidosDeHoy[0]);
+                if (pin2Image != null) pin2Image.sprite = GetSpriteFromRequest(pedidosDeHoy[1]);
+                if (pin3Image != null) pin3Image.sprite = GetSpriteFromRequest(pedidosDeHoy[2]);
             }
         }
     }
@@ -35,11 +65,12 @@ public class RequestManager : MonoBehaviour
             List<string> pedidosDeHoy = pandaReq.GetCurrentRequests();
             if (pedidosDeHoy.Count >= 3)
             {
-                if (pin1Text != null) pin1Text.text = pedidosDeHoy[0];
-                if (pin2Text != null) pin2Text.text = pedidosDeHoy[1];
-                if (pin3Text != null) pin3Text.text = pedidosDeHoy[2];
+                if (pin1Image != null) pin1Image.sprite = GetSpriteFromRequest(pedidosDeHoy[0]);
+                if (pin2Image != null) pin2Image.sprite = GetSpriteFromRequest(pedidosDeHoy[1]);
+                if (pin3Image != null) pin3Image.sprite = GetSpriteFromRequest(pedidosDeHoy[2]);
             }
         }
     }
+    
 
 }
