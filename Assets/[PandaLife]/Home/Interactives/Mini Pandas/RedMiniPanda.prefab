@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 4060880759531892577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 10.68, y: 0, z: -13.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -169,6 +169,9 @@ MonoBehaviour:
   pandaID: RedPanda
   barraUI: {fileID: 0}
   rageSystem: {fileID: 6072292591135846536}
+  happyFace: {fileID: 21300000, guid: b76192ab1a4aa454b93e18c429aa8054, type: 3}
+  normalFace: {fileID: 21300000, guid: 4805b311d0e384fe69a220557cee9330, type: 3}
+  angryFace: {fileID: 21300000, guid: 2e2e6a0c82b01448baaa5f7d953c2f2f, type: 3}
   initialCircleColor: {r: 0.85660374, g: 0.44661587, b: 0.3087006, a: 1}
 --- !u!114 &6072292591135846536
 MonoBehaviour:
@@ -190,6 +193,8 @@ MonoBehaviour:
   changeRate: 0.5
   valueText: {fileID: 0}
   pandaID: RedPanda
+  calmFace: {fileID: 21300000, guid: 6267c40bee9e042a7ae4fb3e107f7ba9, type: 3}
+  rageFace: {fileID: 21300000, guid: 1375a147e77624371b7f857d9aebe06c, type: 3}
 --- !u!65 &3045734630366819736
 BoxCollider:
   m_ObjectHideFlags: 0

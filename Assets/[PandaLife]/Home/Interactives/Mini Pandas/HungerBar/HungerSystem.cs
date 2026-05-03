@@ -9,6 +9,10 @@ public class HungerSystem : BarSystem
     [SerializeField] private RageSystem rageSystem;
     private bool rageActivated = false;
 
+    [SerializeField] private Sprite happyFace;
+    [SerializeField] private Sprite normalFace;
+    [SerializeField] private Sprite angryFace;
+
     private Color satisfiedBarColor = Color.green;
     private Color normalBarColor = Color.yellow;
     private Color hungryBarColor = Color.red;
@@ -110,9 +114,17 @@ public class HungerSystem : BarSystem
             float percentage = (currentValue / maxValue) * 100f;
             if (fillImage != null)
                 fillImage.color = (percentage >= 80f) ? satisfiedBarColor : (percentage >= 41f) ? normalBarColor : hungryBarColor;
-        }
+        
         if (indicatorImage != null)
-            indicatorImage.color = initialCircleColor;
+        {
+            if (percentage >= 80f)
+                indicatorImage.sprite = happyFace;
+            else if (percentage >= 41f)
+                indicatorImage.sprite = normalFace;
+            else
+                indicatorImage.sprite = angryFace;
+        }
+        }
     }
 
 

@@ -9,6 +9,9 @@ public class RageSystem : BarSystem
     private Color calmColor = new Color(1f, 0f, 0f); // Rojo claro
     private Color rageColor = new Color(0.6f, 0f, 0f); // Rojo oscuro
 
+    [SerializeField] private Sprite calmFace;
+    [SerializeField] private Sprite rageFace;
+
 
 
     void Start()
@@ -67,6 +70,9 @@ public class RageSystem : BarSystem
 
         if (fillImage != null)
             fillImage.color = (percentage < 50f) ? calmColor : rageColor;
+            
+        if (indicatorImage != null)
+                indicatorImage.sprite = (percentage < 50f) ? calmFace : rageFace;
     }
     
     protected override void Update()
