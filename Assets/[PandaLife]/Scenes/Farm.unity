@@ -892,10 +892,20 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe3e02c32b09d574a83ee4b3ab0be4a0, type: 3}
+--- !u!23 &127392001 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5109087923040533249, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &143226778 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1309386199193088549, guid: 986cf21f387882d44a010e8387a95e01, type: 3}
   m_PrefabInstance: {fileID: 75076627}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &173697251 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 630324878333188678, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &190362284
 PrefabInstance:
@@ -1260,6 +1270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &258471386 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5109087923040533249, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &260130080
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2162,6 +2177,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 451444643}
     - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 672046316}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_03_02
       objectReference: {fileID: 0}
@@ -2370,6 +2389,10 @@ PrefabInstance:
       value: -0.536
       objectReference: {fileID: 0}
     - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1869687273}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_01_02
       objectReference: {fileID: 0}
@@ -2438,6 +2461,10 @@ PrefabInstance:
       value: Parcel_02
       objectReference: {fileID: 0}
     - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1445001116}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_02_02
       objectReference: {fileID: 0}
@@ -2445,6 +2472,10 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 1513305931}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 173697251}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00_02
@@ -3052,6 +3083,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 451444643}
     - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 258471386}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_03_01
       objectReference: {fileID: 0}
@@ -3059,6 +3094,14 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 1522278912}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: dryMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: wateredMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a3786f88738e4e56b6f8ba41ce990f8, type: 2}
     - target: {fileID: 2071733374936540932, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -3200,6 +3243,10 @@ PrefabInstance:
       value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1237814601}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_01_01
       objectReference: {fileID: 0}
@@ -3207,6 +3254,14 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 837240013}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: dryMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: wateredMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a3786f88738e4e56b6f8ba41ce990f8, type: 2}
     - target: {fileID: 5513585684093935215, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: player
       value: 
@@ -3268,6 +3323,10 @@ PrefabInstance:
       value: Parcel_01
       objectReference: {fileID: 0}
     - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1253330701}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_02_01
       objectReference: {fileID: 0}
@@ -3275,6 +3334,18 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 1325378387}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: dryMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: wateredMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a3786f88738e4e56b6f8ba41ce990f8, type: 2}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1205008833}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00_01
@@ -3283,6 +3354,14 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 2107154560}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: dryMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: wateredMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a3786f88738e4e56b6f8ba41ce990f8, type: 2}
     - target: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -3393,6 +3472,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b81cf1f52f424d04c923ab5680f3d1ef, type: 3}
+--- !u!23 &672046316 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5109087923040533249, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &675096335 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1706210966735158595, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
@@ -4403,6 +4487,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64cc55e2296236945b1bbec6c439571e, type: 3}
+--- !u!23 &952749105 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 630324878333188678, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &962703665 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
@@ -4710,10 +4799,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8154377666706512502, guid: 07226fc303340fe4784aaa8c320a65d0, type: 3}
   m_PrefabInstance: {fileID: 5336142308852462376}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1205008833 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 630324878333188678, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1237256059 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3144905417419177736, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
   m_PrefabInstance: {fileID: 63604862}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1237814601 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1631242138675135082, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1253330701 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 321014348980106623, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 663477514}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1257676260 stripped
 Transform:
@@ -5814,6 +5918,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 451444643}
     - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 127392001}
+    - target: {fileID: 1159902355256125590, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_03
       objectReference: {fileID: 0}
@@ -5942,6 +6050,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1500879850}
+    - target: {fileID: 4637787855158956541, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_01
       objectReference: {fileID: 0}
@@ -6010,6 +6122,10 @@ PrefabInstance:
       value: Parcel_00
       objectReference: {fileID: 0}
     - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 1427831619}
+    - target: {fileID: 5948012346470082280, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_02
       objectReference: {fileID: 0}
@@ -6018,6 +6134,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1549070192}
     - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: rend
+      value: 
+      objectReference: {fileID: 952749105}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: areaID
       value: Farming_area_00
       objectReference: {fileID: 0}
@@ -6025,6 +6145,10 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 1421722101}
+    - target: {fileID: 6791622084076997073, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+      propertyPath: dryMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
     - target: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.02
@@ -6103,6 +6227,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3365160048483352366, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
   m_PrefabInstance: {fileID: 1421722092}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1427831619 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 321014348980106623, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1428588431 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5457804689602230389, guid: 080800e0aabb67a44af7bc49757d1dbf, type: 3}
@@ -6171,6 +6300,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1d5fae4cfb9bf5468107ae2466b7e12, type: 3}
+--- !u!23 &1445001116 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 321014348980106623, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1445493818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6348,6 +6482,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71637324737583d428e16e2df9ad2d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &1500879850 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1631242138675135082, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 1421722092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1510408706
 GameObject:
   m_ObjectHideFlags: 0
@@ -7246,6 +7385,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4075785497312229246, guid: 0193bf6b848d88842b9fa2299e0ad4cb, type: 3}
   m_PrefabInstance: {fileID: 1835783620}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1869687273 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1631242138675135082, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
+  m_PrefabInstance: {fileID: 548786839}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1874800021
 GameObject:
   m_ObjectHideFlags: 0
@@ -8063,6 +8207,10 @@ PrefabInstance:
       propertyPath: farmingArea
       value: 
       objectReference: {fileID: 1421722099}
+    - target: {fileID: 1383463758942514496, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+      propertyPath: worldPosition
+      value: 
+      objectReference: {fileID: 1421722101}
     - target: {fileID: 1401336244696611610, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: farmingArea
       value: 
