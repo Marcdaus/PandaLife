@@ -255,6 +255,7 @@ public class DayNightCycle : MonoBehaviour
 
             daytext.text = "Día " + (GameManager.instance.numday + 1);
 
+                daytext.color = Color.white;
                 // Centrar instantáneamente
                 rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
                 rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
