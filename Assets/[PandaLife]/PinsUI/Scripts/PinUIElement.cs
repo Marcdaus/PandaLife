@@ -5,7 +5,7 @@ public abstract class PinUIElement : MonoBehaviour
 {
 
     [SerializeField] private Transform worldPosition;
-    [SerializeField] new private Camera camera;
+    [SerializeField] private Camera ccamera;
 
     RectTransform rect;
     Animator animator;
@@ -14,7 +14,7 @@ public abstract class PinUIElement : MonoBehaviour
     void Awake()
     {
         rect = GetComponent<RectTransform>();
-        if (camera == null) camera = Camera.main;
+        if (ccamera == null) ccamera = Camera.main;
 
         animator = GetComponent<Animator>();
 
@@ -26,7 +26,7 @@ public abstract class PinUIElement : MonoBehaviour
     {
         if (worldPosition)
         {
-            Vector3 viewportPos = camera.WorldToViewportPoint(worldPosition.position);
+            Vector3 viewportPos = ccamera.WorldToViewportPoint(worldPosition.position);
 
             if (viewportPos.z < 0)
             {
