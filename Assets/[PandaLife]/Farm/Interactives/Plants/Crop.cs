@@ -11,22 +11,30 @@ public class Crop : MonoBehaviour
     [SerializeField] private GameObject stage3;
     
     [SerializeField] private float growtime = 10f;
+    [SerializeField] private FarmingArea farmingArea;
     public int type;
 
     public int maxStages = 3;
 
     private bool watered = false;
 
-    public string areaID;
-    public bool IsWatered { get { return watered; } }
-    public int Valor
+    [SerializeField] private string areaID;
+    public string AreaID => areaID;
+
+    public void SetAreaID(string id)
     {
-        get { return valor; }
+        areaID = id;
     }
+   public bool IsWatered => watered;
+    public int Valor => valor;
 
     public bool IsHarvestable()
     {
         return growthstage >= maxStages;
+    }
+    public void SetFarmingArea(FarmingArea area)
+    {
+        farmingArea = area;
     }
 
     // ========================
@@ -40,13 +48,17 @@ public class Crop : MonoBehaviour
             return;
         }
 
-        if (growthstage >= 3)
+        if (growthstage >= maxStages)
         {
             Debug.Log("Ya está completamente crecida");
             return;
         }
 
         watered = true;
+        if (farmingArea != null)
+        {
+            farmingArea.SetWatered(true);
+        }
         UpdateSingletonData();
         StartCoroutine(Grow());
     }
@@ -58,6 +70,10 @@ public class Crop : MonoBehaviour
         yield return new WaitForSeconds(growtime);
 
         watered = false;
+        if (farmingArea != null)
+        {
+            farmingArea.SetWatered(false);
+        }
 
         if (growthstage == 1)
         {
@@ -71,6 +87,7 @@ public class Crop : MonoBehaviour
             stage3.SetActive(true);
             growthstage = 3;
         }
+
         UpdateSingletonData();
         Debug.Log("Nueva fase: " + growthstage);
 
@@ -97,7 +114,10 @@ public class Crop : MonoBehaviour
         stage2.SetActive(growthstage == 2);
         if (stage3 != null)stage3.SetActive(growthstage == 3);
 
-
+        if (farmingArea != null)
+        {
+            farmingArea.SetWatered(watered);
+        }
         // Si estaba regado y no ha terminado de crecer, retomamos la corrutina
         if (watered && growthstage < maxStages)
         {
