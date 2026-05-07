@@ -86,7 +86,7 @@ public class BarraManager : MonoBehaviour
                 sceneLoaded = true;
                 comingFromGameOver = false;
                 Debug.Log("GAME OVER: Un panda llegó a ira máxima");
-                SceneManager.LoadScene("Theend");
+                SceneManager.LoadScene("GameOver");
                 return; 
             }
         }
