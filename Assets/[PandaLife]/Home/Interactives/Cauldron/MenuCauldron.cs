@@ -109,8 +109,8 @@ public class MenuCauldron : MonoBehaviour
 
         // Consumir ingredientes
         GameManager.instance.sumarBambu(-recipe.bambuverde, 1);
-        GameManager.instance.sumarBambu(-recipe.bamburojo, 2);
-        GameManager.instance.sumarBambu(-recipe.arandano, 3);
+        GameManager.instance.sumarBambu(-recipe.bamburojo, 3);
+        GameManager.instance.sumarBambu(-recipe.arandano, 2);
         GameManager.instance.sumarBambu(-recipe.bayauchuva, 4);
 
         StartCoroutine(Cooking(recipe, 0f));
