@@ -74,7 +74,7 @@ public class BarraManager : MonoBehaviour
             sceneLoaded = true;
             comingFromGameOver = false;
             Debug.Log("GAME OVER: Los 3 pandas están en ira");
-            SceneManager.LoadScene("Theend");
+            SceneManager.LoadScene("GameOver");
             return;
         }
 
