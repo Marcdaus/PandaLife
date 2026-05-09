@@ -49,6 +49,20 @@ public class DayNightCycle : MonoBehaviour
     private Player player;
     private PickupDrop pickupobject;
 
+    [Header("Configuración de Color de la luz")]
+    [SerializeField] private Light luzDireccional;
+
+    [Header("Momentos del día en formato de 24h (ej. 10.5 = 10:30)")]
+    [SerializeField] private float horaFinAmanecer = 10f;
+    [SerializeField] private float horaInicioAtardecer = 17f;
+    [SerializeField] private float horaInicioNoche = 20f;
+
+    [Header("Colores de cada fase")]
+    [SerializeField] private Color colorAmanecer = new Color(1f, 0.4f, 0f); // Anaranjado amanecer
+    [SerializeField] private Color colorDia = new Color(1f, 0.957f, 0.839f);
+    [SerializeField] private Color colorAtardecer = new Color(1f, 0.4f, 0f);  // Anaranjado anochecer
+    [SerializeField] private Color colorNoche = new Color(0.1f, 0.1f, 0.2f);  // Azul oscuro/negro para la noche
+
 
     private RectTransform rectTextoDia;
 
@@ -89,6 +103,9 @@ public class DayNightCycle : MonoBehaviour
 
             // 4. Control del texto dia
             ActualizarTexto();
+
+            // 5. Control del color de la cámara
+            ActualizarColorCamara();
 
         }
         else
@@ -272,6 +289,37 @@ public class DayNightCycle : MonoBehaviour
             }
 
         }
+
+    void ActualizarColorCamara()
+    {
+
+        float horaActual = GameManager.instance.minutosActualesTotales / 60f;
+
+        // Amanecer a Día
+        if (horaActual >= starthour && horaActual < horaFinAmanecer)
+        {
+            float progreso = (horaActual - starthour) / (horaFinAmanecer - starthour);
+            // Transicion desde el naranja al amarillo
+            luzDireccional.color = Color.Lerp(colorAmanecer, colorDia, progreso);
+        }
+        // Pleno Día
+        else if (horaActual >= horaFinAmanecer && horaActual < horaInicioAtardecer)
+        {
+            luzDireccional.color = colorDia;
+        }
+        // Día a Atardecer
+        else if (horaActual >= horaInicioAtardecer && horaActual < horaInicioNoche)
+        {
+            float progreso = (horaActual - horaInicioAtardecer) / (horaInicioNoche - horaInicioAtardecer);
+            luzDireccional.color = Color.Lerp(colorDia, colorAtardecer, progreso);
+        }
+        // Atardecer a Noche
+        else if (horaActual >= horaInicioNoche && horaActual <= endhour)
+        {
+            float progreso = (horaActual - horaInicioNoche) / (endhour - horaInicioNoche);
+            luzDireccional.color = Color.Lerp(colorAtardecer, colorNoche, progreso);
+        }
+    }
     void ResetBars()
     {
         if (BarraManager.Instancia != null)
@@ -294,7 +342,7 @@ public class DayNightCycle : MonoBehaviour
 
             panda.UpdateUI();
         }
-
+        
     }
 
 }

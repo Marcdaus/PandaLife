@@ -136,16 +136,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   homeScene: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
   theEnd: {fileID: 11400000, guid: a811c6c329786e04486c3c413df129a3, type: 2}
-  isInto: 1
-  anguloInicial: 0
-  anguloFinal: 200
-  horaInicio: 8
-  horaFin: 21
-  duracionEnMinutos: 5
+  isInto: 0
+  startangle: -10
+  endangle: 200
+  starthour: 8
+  endhour: 21
+  durationinminuts: 5
   clocktext: {fileID: 0}
   daytext: {fileID: 0}
   fadeImage: {fileID: 0}
   elementlistbag:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   tedy: {fileID: 0}
   note: {fileID: 0}
@@ -153,3 +156,11 @@ MonoBehaviour:
   percentage1: {fileID: 0}
   percentage2: {fileID: 0}
   percentage3: {fileID: 0}
+  luzDireccional: {fileID: 5073458281472842211}
+  horaFinAmanecer: 10
+  horaInicioAtardecer: 17
+  horaInicioNoche: 20
+  colorAmanecer: {r: 1, g: 0.6, b: 0.2, a: 1}
+  colorDia: {r: 1, g: 0.957, b: 0.839, a: 1}
+  colorAtardecer: {r: 1, g: 0.4, b: 0, a: 1}
+  colorNoche: {r: 0.1, g: 0.1, b: 0.2, a: 1}
