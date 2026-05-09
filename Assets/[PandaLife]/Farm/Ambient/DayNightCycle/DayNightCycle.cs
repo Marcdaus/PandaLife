@@ -13,11 +13,12 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private GameString homeScene;
     [SerializeField] private GameString theEnd;
     [SerializeField] private bool isInto = false;
+    [SerializeField] private bool inGameover = false ;
 
     [Header("Configuración de Rotación")]
     [SerializeField] private float startangle = -10f;
     [SerializeField] private float endangle = 200f;
-
+    
 
 
     [Header("Configuración de Tiempo")]
@@ -71,7 +72,7 @@ public class DayNightCycle : MonoBehaviour
     void Start()
     {
         duracionEnSegundos = durationinminuts * 60f;
-        rectTextoDia = daytext.GetComponent<RectTransform>();
+        if(!inGameover)rectTextoDia = daytext.GetComponent<RectTransform>();
 
             RewardManager.EvaluatelElement(note);  
             RewardManager.EvaluatelElement(tedy);
@@ -88,24 +89,36 @@ public class DayNightCycle : MonoBehaviour
 
         if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
         {
-            if (!GameManager.instance.stopTime)GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
-                float porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
-            // 1. Control de Rotación
-            float anguloActual = Mathf.Lerp(startangle, endangle, porcentaje);
-            if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
 
-            // 2. Control de Reloj
-            ActualizarReloj(porcentaje);
 
-            // 3. Control de obscurezers
-            ActualizarFundido();
+            if (!inGameover) {
+                if (!GameManager.instance.stopTime) GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
+                GameManager.instance.porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
 
-            // 4. Control del texto dia
-            ActualizarTexto();
+                // 1. Control de Rotación
+                float anguloActual = Mathf.Lerp(startangle, endangle, GameManager.instance.porcentaje);
 
-            // 5. Control del color de la cámara
-            ActualizarColorCamara();
+                if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
+                // 2. Control de Reloj
+                ActualizarReloj(GameManager.instance.porcentaje);
+
+                // 3. Control de obscurezers
+                ActualizarFundido();
+
+                // 4. Control del texto dia
+                ActualizarTexto();
+
+                // 5. Control del color de la cámara
+            }
+            else
+            {
+                // 1. Control de Rotación
+                float anguloActual = Mathf.Lerp(startangle, endangle, GameManager.instance.porcentaje);
+                transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
+            }
+
+                ActualizarColorCamara();
 
         }
         else

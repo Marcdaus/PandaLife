@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public int numday = 1;
     public float multiplicadorvelocidaddia = 1f;
     public bool stopTime = false;
+    public float porcentaje = 0f;
 
     [Header("Recompensas")]
     public TextMeshProUGUI messageRewardSacks;
