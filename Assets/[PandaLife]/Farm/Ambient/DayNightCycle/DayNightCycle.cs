@@ -1,26 +1,27 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections;
+using Debug = UnityEngine.Debug;
 
 public class DayNightCycle : MonoBehaviour
 {
     [Header("Configuración Escenas")]
-    [SerializeField] private GameString homeScene;
-    [SerializeField] private GameString theEnd;
-    [SerializeField] private bool isInto = false;
-    [SerializeField] private bool inGameover = false ;
+    [SerializeField] private GameString homescene;
+    [SerializeField] private GameString theend;
+    [SerializeField] private bool isinto = false;
+    [SerializeField] private bool ingameover = false ;
 
     [Header("Configuración de Rotación")]
     [SerializeField] private float startangle = -10f;
     [SerializeField] private float endangle = 200f;
     
-
-
     [Header("Configuración de Tiempo")]
     [SerializeField] private int starthour = 8;
     [SerializeField] private int endhour = 21;
@@ -29,7 +30,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI daytext;
 
     [Header("Efecto de Oscurecimiento y texto")]
-    [SerializeField] private Image fadeImage;
+    [SerializeField] private Image fadeimage;
     private static float darkeningstarttime = 20.0f;
     private float efecthour = 20.8333f;
 
@@ -50,29 +51,51 @@ public class DayNightCycle : MonoBehaviour
     private Player player;
     private PickupDrop pickupobject;
 
-    [Header("Configuración de Color de la luz")]
-    [SerializeField] private Light luzDireccional;
+    [Header("Configuración de Color de la luces")]
+    [SerializeField] private Light directionallight;
+    private Light leftwindowlight;
+    private Light rightwindowlight;
+    private Light doorwindowlight;
 
     [Header("Momentos del día en formato de 24h (ej. 10.5 = 10:30)")]
-    [SerializeField] private float horaFinAmanecer = 10f;
-    [SerializeField] private float horaInicioAtardecer = 17f;
-    [SerializeField] private float horaInicioNoche = 20f;
+    [SerializeField] private float timefindawn = 10f;
+    [SerializeField] private float timeendsunset = 17f;
+    [SerializeField] private float timeendnight = 20f;
 
     [Header("Colores de cada fase")]
-    [SerializeField] private Color colorAmanecer = new Color(1f, 0.4f, 0f); // Anaranjado amanecer
-    [SerializeField] private Color colorDia = new Color(1f, 0.957f, 0.839f);
-    [SerializeField] private Color colorAtardecer = new Color(1f, 0.4f, 0f);  // Anaranjado anochecer
-    [SerializeField] private Color colorNoche = new Color(0.1f, 0.1f, 0.2f);  // Azul oscuro/negro para la noche
+    [SerializeField] private Color colordawn = new Color(1f, 0.4f, 0f); // Anaranjado amanecer
+    [SerializeField] private Color colorday = new Color(1f, 0.957f, 0.839f);
+    [SerializeField] private Color colorsunset = new Color(1f, 0.4f, 0f);  // Anaranjado anochecer
+    [SerializeField] private Color colornight = new Color(0.1f, 0.1f, 0.2f);  // Azul oscuro/negro para la noche
 
 
-    private RectTransform rectTextoDia;
+    private RectTransform recttextday;
 
-    private float duracionEnSegundos;
+    private float durationsinseconds;
+    private void Awake()
+    {
+        GameObject left = GameObject.Find("LeftWindowLight");
+        if (left != null)
+        {
+            leftwindowlight = left.GetComponent<Light>();
+        }
 
+        GameObject right = GameObject.Find("RightWindowLight");
+        if (right != null)
+        {
+            rightwindowlight = right.GetComponent<Light>();
+        }
+
+        GameObject door = GameObject.Find("DoorLight");
+        if (door != null)
+        {
+            doorwindowlight = door.GetComponent<Light>();
+        }
+    }
     void Start()
     {
-        duracionEnSegundos = durationinminuts * 60f;
-        if(!inGameover)rectTextoDia = daytext.GetComponent<RectTransform>();
+        durationsinseconds = durationinminuts * 60f;
+        if(!ingameover)recttextday = daytext.GetComponent<RectTransform>();
 
             RewardManager.EvaluatelElement(note);  
             RewardManager.EvaluatelElement(tedy);
@@ -81,25 +104,26 @@ public class DayNightCycle : MonoBehaviour
 
         player = FindFirstObjectByType<Player>();
         pickupobject = FindFirstObjectByType<PickupDrop>();
+
     }
 
     void Update()
     {
 
 
-        if (GameManager.instance.tiempoTranscurrido < duracionEnSegundos)
+        if (GameManager.instance.tiempoTranscurrido < durationsinseconds)
         {
 
 
 
-            if (!inGameover) {
+            if (!ingameover) {
                 if (!GameManager.instance.stopTime) GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
-                GameManager.instance.porcentaje = GameManager.instance.tiempoTranscurrido / duracionEnSegundos;
+                GameManager.instance.porcentaje = GameManager.instance.tiempoTranscurrido / durationsinseconds;
 
                 // 1. Control de Rotación
                 float anguloActual = Mathf.Lerp(startangle, endangle, GameManager.instance.porcentaje);
 
-                if (!isInto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
+                if (!isinto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
                 // 2. Control de Reloj
                 ActualizarReloj(GameManager.instance.porcentaje);
 
@@ -128,12 +152,12 @@ public class DayNightCycle : MonoBehaviour
             GameManager.instance.numday++;
 
             // Buscamos el PandaRequest que va a sobrevivir al cambio de escena
-            PandaRequest persistenteReq = GameManager.instance.GetComponent<PandaRequest>();
+            PandaRequest persistentereq = GameManager.instance.GetComponent<PandaRequest>();
 
-            if (persistenteReq != null)
+            if (persistentereq != null)
             {
-                persistenteReq.UnlockCropsForDay(GameManager.instance.numday);
-                persistenteReq.GenerateRandomRequests();
+                persistentereq.UnlockCropsForDay(GameManager.instance.numday);
+                persistentereq.GenerateRandomRequests();
                 Debug.Log("Nuevos pedidos generados para el día: " + GameManager.instance.numday);
             }
             else
@@ -169,7 +193,7 @@ public class DayNightCycle : MonoBehaviour
                     Debug.Log($"[DayNightCycle] Guardando plato: {raiz.name} en {raiz.transform.position}");
                 }
             }
-            SceneManager.LoadScene(homeScene.Value);
+            SceneManager.LoadScene(homescene.Value);
         }
         if(GameManager.instance.numday > 1)
         {
@@ -180,7 +204,7 @@ public class DayNightCycle : MonoBehaviour
         if (GameManager.instance.numday == 4)
         {
             GameManager.instance.Resetplay();
-            SceneManager.LoadScene(theEnd.Value);
+            SceneManager.LoadScene(theend.Value);
         }
 
     }
@@ -218,56 +242,56 @@ public class DayNightCycle : MonoBehaviour
             if (clocktext == null) return;
 
             // Calculamos el total de minutos entre las 8:00 y las 21:00
-            float minutosInicio = starthour * 60;
-            float minutosFin = endhour * 60;
+            float startminutes = starthour * 60;
+            float endminutes = endhour * 60;
 
             // Calculamos cuántos minutos han pasado según el porcentaje del ciclo
-            GameManager.instance.minutosActualesTotales = Mathf.Lerp(minutosInicio, minutosFin, pct);
+            GameManager.instance.minutosActualesTotales = Mathf.Lerp(startminutes, endminutes, pct);
 
             // Convertimos esos minutos totales a formato HH:mm
-            int horas = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales / 60);
-            int minutos = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales % 60);
+            int hours = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales / 60);
+            int minutes = Mathf.FloorToInt(GameManager.instance.minutosActualesTotales % 60);
 
             // Actualizamos el texto con formato de dos dígitos (00:00)
-            clocktext.text = string.Format("{0:00}:{1:00}", horas, minutos);
+            clocktext.text = string.Format("{0:00}:{1:00}", hours, minutes);
       
             
         }
 
         void ActualizarFundido()
         {
-            if (fadeImage == null) return;
+            if (fadeimage == null) return;
 
             // Convertimos la hora actual de minutos totales a formato 24h decimal
-            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
+            float timeactualdecimal = GameManager.instance.minutosActualesTotales / 60f;
 
 
-            if (horaActualDecimal > darkeningstarttime)
+            if (timeactualdecimal > darkeningstarttime)
             {
                 // Calculamos el progreso entre la hora de inicio (20:00) y el final (21:00)
                 // Esto nos da un valor entre 0 y 1
-                float progresoOscurecimiento = (horaActualDecimal - darkeningstarttime) / (endhour - darkeningstarttime);
+                float progressdarkening = (timeactualdecimal - darkeningstarttime) / (endhour - darkeningstarttime);
 
                 // Aplicamos ese progreso al Alpha de la imagen
-                Color c = fadeImage.color;
-                c.a = Mathf.Clamp01(progresoOscurecimiento);
-                fadeImage.color = c;
+                Color c = fadeimage.color;
+                c.a = Mathf.Clamp01(progressdarkening);
+                fadeimage.color = c;
             }
             else
             {
 
                 // Si aún no son las 20:00, aseguramos que sea invisible
-                Color c = fadeImage.color;
+                Color c = fadeimage.color;
                 c.a = 0f;
-                fadeImage.color = c;
+                fadeimage.color = c;
             }
 
 
         }
         void ActualizarTexto()
         {
-            float horaActualDecimal = GameManager.instance.minutosActualesTotales / 60f;
-            if (horaActualDecimal > efecthour && GameManager.instance.numday < 3)
+            float timeactualdecimal = GameManager.instance.minutosActualesTotales / 60f;
+            if (timeactualdecimal > efecthour && GameManager.instance.numday < 3)
             {
 
             if (player != null && player.pickedobject != null)
@@ -281,16 +305,16 @@ public class DayNightCycle : MonoBehaviour
             }
 
 
-            if (isInto) menucauldron.CloseCauldron();
+            if (isinto) menucauldron.CloseCauldron();
 
             daytext.text = "Día " + (GameManager.instance.numday + 1);
 
                 daytext.color = Color.white;
                 // Centrar instantáneamente
-                rectTextoDia.anchorMin = new Vector2(0.5f, 0.5f);
-                rectTextoDia.anchorMax = new Vector2(0.5f, 0.5f);
-                rectTextoDia.pivot = new Vector2(0.5f, 0.5f);
-                rectTextoDia.anchoredPosition = Vector2.zero;
+                recttextday.anchorMin = new Vector2(0.5f, 0.5f);
+                recttextday.anchorMax = new Vector2(0.5f, 0.5f);
+                recttextday.pivot = new Vector2(0.5f, 0.5f);
+                recttextday.anchoredPosition = Vector2.zero;
 
                 // Tamaño grande y alineación
                 daytext.fontSize = 80f;
@@ -306,31 +330,56 @@ public class DayNightCycle : MonoBehaviour
     void ActualizarColorCamara()
     {
 
-        float horaActual = GameManager.instance.minutosActualesTotales / 60f;
+        float currenttime = GameManager.instance.minutosActualesTotales / 60f;
 
         // Amanecer a Día
-        if (horaActual >= starthour && horaActual < horaFinAmanecer)
+        if (currenttime >= starthour && currenttime < timefindawn)
         {
-            float progreso = (horaActual - starthour) / (horaFinAmanecer - starthour);
+            float progress = (currenttime - starthour) / (timefindawn - starthour);
             // Transicion desde el naranja al amarillo
-            luzDireccional.color = Color.Lerp(colorAmanecer, colorDia, progreso);
+            directionallight.color = Color.Lerp(colordawn, colorday, progress);
+
+            if (doorwindowlight != null)
+                doorwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (leftwindowlight != null)
+                leftwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (rightwindowlight != null)
+                rightwindowlight.color = Color.Lerp(colordawn, colorday, progress);
         }
         // Pleno Día
-        else if (horaActual >= horaFinAmanecer && horaActual < horaInicioAtardecer)
+        else if (currenttime >= timefindawn && currenttime < timeendsunset)
         {
-            luzDireccional.color = colorDia;
+            directionallight.color = colorday;
+            if (doorwindowlight != null)
+                doorwindowlight.color = colorday;
+            if (leftwindowlight != null)
+                leftwindowlight.color = colorday;
+            if (rightwindowlight != null)
+                rightwindowlight.color = colorday;
         }
         // Día a Atardecer
-        else if (horaActual >= horaInicioAtardecer && horaActual < horaInicioNoche)
+        else if (currenttime >= timeendsunset && currenttime < timeendnight)
         {
-            float progreso = (horaActual - horaInicioAtardecer) / (horaInicioNoche - horaInicioAtardecer);
-            luzDireccional.color = Color.Lerp(colorDia, colorAtardecer, progreso);
+            float progress = (currenttime - timeendsunset) / (timeendnight - timeendsunset);
+            directionallight.color = Color.Lerp(colorday, colorsunset, progress);
+            if (doorwindowlight != null)
+                doorwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (leftwindowlight != null)
+                leftwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (rightwindowlight != null)
+                rightwindowlight.color = Color.Lerp(colordawn, colorday, progress);
         }
         // Atardecer a Noche
-        else if (horaActual >= horaInicioNoche && horaActual <= endhour)
+        else if (currenttime >= timeendnight && currenttime <= endhour)
         {
-            float progreso = (horaActual - horaInicioNoche) / (endhour - horaInicioNoche);
-            luzDireccional.color = Color.Lerp(colorAtardecer, colorNoche, progreso);
+            float progress = (currenttime - timeendnight) / (endhour - timeendnight);
+            directionallight.color = Color.Lerp(colorsunset, colornight, progress);
+            if (doorwindowlight != null)
+                doorwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (leftwindowlight != null)
+                leftwindowlight.color = Color.Lerp(colordawn, colorday, progress);
+            if (rightwindowlight != null)
+                rightwindowlight.color = Color.Lerp(colordawn, colorday, progress);
         }
     }
     void ResetBars()
@@ -342,9 +391,9 @@ public class DayNightCycle : MonoBehaviour
         }
 
         // Buscamos los pandas actuales en la escena
-        HungerSystem[] pandasEnEscena = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
+        HungerSystem[] pandasonscene = FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
 
-        foreach (var panda in pandasEnEscena)
+        foreach (var panda in pandasonscene)
         {
 
             panda.Restaurar(100f);
@@ -357,6 +406,7 @@ public class DayNightCycle : MonoBehaviour
         }
         
     }
+    
 
 }
                 
