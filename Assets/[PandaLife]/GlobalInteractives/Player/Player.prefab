@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 1854719733215657051}
   - component: {fileID: 3616915390034747270}
   - component: {fileID: 4263464508149938470}
+  - component: {fileID: 379477399344224697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -219,6 +220,28 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &379477399344224697
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962232415491356993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b6166ad3730993a459370898d57f0c97, type: 3}
+  m_Controller: {fileID: 9100000, guid: e11b912a094e123499310649a34178c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &3770169230343967560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -279,7 +302,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e11b912a094e123499310649a34178c0, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: b6166ad3730993a459370898d57f0c97, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
