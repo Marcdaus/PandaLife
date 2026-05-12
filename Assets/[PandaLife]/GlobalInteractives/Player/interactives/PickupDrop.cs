@@ -23,8 +23,25 @@ public class PickupDrop : Interactuable
         rb.useGravity = false;
         rb.isKinematic = true;
 
-        transform.position = handpoint.position;
-        transform.SetParent(handpoint);
+
+        Transform pickPoint = transform.Find("PickPoint");
+        if (pickPoint != null)
+        {
+
+            transform.SetParent(handpoint);
+
+            transform.localRotation = Quaternion.Inverse(pickPoint.localRotation);
+            transform.localPosition = -pickPoint.localPosition;
+
+            transform.rotation = handpoint.rotation * Quaternion.Inverse(pickPoint.localRotation);
+            transform.position = handpoint.position - transform.rotation * (pickPoint.localPosition);
+        }
+        else
+        {
+            transform.position = handpoint.position;
+            transform.SetParent(handpoint);
+        }
+
 
         picked = true;
         Mensaje($"{rb.name} recogido");
