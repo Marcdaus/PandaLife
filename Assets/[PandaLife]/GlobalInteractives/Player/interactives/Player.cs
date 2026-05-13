@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform interactionarea;
     [SerializeField] private float detectionradius = 1f;
     public LayerMask interactlayer;
+    [SerializeField] private Animator anim;
+    private bool collectWater=false;
 
     [SerializeField] private RecipesData receta;
 
@@ -29,10 +31,13 @@ public class Player : MonoBehaviour
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
         }
+
     }
 
     void Update()
     {
+        if (collectWater) return;
+
         ScanInteractables();
 
         // Interactuar con E (cultivos, parcelas, cubo)
@@ -235,6 +240,11 @@ public class Player : MonoBehaviour
     void Interact()
     {
         // Miramos de qu� tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funci�n
+        if(currentTarget is River && IsHoldingBucket())
+        {
+            CollectWater();
+            return;
+        }
         if (currentTarget is PickupDrop bucket)
         {
             if (!IsHandEmpty())
@@ -257,6 +267,39 @@ public class Player : MonoBehaviour
             water.Interactuar();
         else if (currentTarget is IInteractuable other)
             HandleOtherInteraction(other);
+    }
+
+    public void CollectWater()
+    {
+        collectWater = true;
+
+        // Desactivamos temporalmente el script de movimiento si está en otro componente
+        if (GetComponent<movement>() != null) GetComponent<movement>().enabled = false;
+
+        // Disparamos la animación en el Animator
+        if (anim != null)
+        {
+            anim.SetTrigger("CollectWater");
+        }
+
+        Invoke("FinishWaterCollection", 2f);
+    }
+
+    public void FinishWaterCollection()
+    {
+        // 1. Rellenar el cubo físicamente/visualmente
+        if (pickedobject != null)
+        {
+            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
+            if (cubo != null)
+            {
+                cubo.Fill();
+            }
+        }
+
+        // 2. Devolver el control al jugador
+        collectWater = false;
+        if (GetComponent<movement>() != null) GetComponent<movement>().enabled = true;
     }
 
     public bool IsHoldingBucket()
