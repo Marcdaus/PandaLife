@@ -24,12 +24,6 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
-    public Animator animador;
-    void Start()
-    {
-        animador = GetComponent<Animator>();
-    }
-
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -42,21 +36,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (collectWater) return;
-
         ScanInteractables();
 
+        if (collectWater) return; // Solo bloqueamos la interacción/drop
+
         // Interactuar con E (cultivos, parcelas, cubo)
-        if (Input.GetButtonDown("Interactuar") && currentTarget != null)
-        {
-            animador.SetTrigger("PickUp");
-        }
+        if (Input.GetButtonDown("Interactuar") && currentTarget != null) Interact();
 
         // Soltar objetos con Q
-        if (Input.GetButtonDown("Soltar"))
-        {
-            animador.SetTrigger("Drop");
-        }
+        if (Input.GetButtonDown("Soltar")) Drop();
     }
 
     // Buscar objetos
@@ -101,7 +89,7 @@ public class Player : MonoBehaviour
 
         // 3. Buscar riego solo si no hay cubo ni cosecha
         if(isinto == false) {
-            if (bucketTarget == null && harvesttarget == null && handpoint.transform.Find(bucket.name))
+            if (bucketTarget == null && harvesttarget == null && IsHoldingBucket())
             {
                 foreach (Collider col in detected)
                 {
@@ -243,9 +231,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Interact()
+    void Interact()
     {
-        // Miramos de qu� tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funci�n
+        // Miramos de que tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funcion
         if(currentTarget is River && IsHoldingBucket())
         {
             CollectWater();
@@ -304,8 +292,8 @@ public class Player : MonoBehaviour
         }
 
         // 2. Devolver el control al jugador
-        collectWater = false;
         if (GetComponent<movement>() != null) GetComponent<movement>().enabled = true;
+        collectWater = false;
     }
 
     public bool IsHoldingBucket()
