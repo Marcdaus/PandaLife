@@ -41,10 +41,10 @@ public class Player : MonoBehaviour
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
         // Interactuar con E (cultivos, parcelas, cubo)
-        if (Input.GetButtonDown("Interactuar") && currentTarget != null) Interact();
+        if (Input.GetButtonDown("Interactuar") && currentTarget != null) anim.SetTrigger("PickUp");
 
         // Soltar objetos con Q
-        if (Input.GetButtonDown("Soltar")) Drop();
+        if (Input.GetButtonDown("Soltar")) anim.SetTrigger("Drop");
     }
 
     // Buscar objetos
