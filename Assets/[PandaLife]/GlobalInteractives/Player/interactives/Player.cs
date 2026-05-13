@@ -24,6 +24,12 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
+    public Animator animador;
+    void Start()
+    {
+        animador = GetComponent<Animator>();
+    }
+
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -43,13 +49,13 @@ public class Player : MonoBehaviour
         // Interactuar con E (cultivos, parcelas, cubo)
         if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
-            Interact();
+            animador.SetTrigger("PickUp");
         }
 
         // Soltar objetos con Q
         if (Input.GetButtonDown("Soltar"))
         {
-            Drop();
+            animador.SetTrigger("Drop");
         }
     }
 
@@ -237,7 +243,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Interact()
+    public void Interact()
     {
         // Miramos de qu� tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funci�n
         if(currentTarget is River && IsHoldingBucket())
