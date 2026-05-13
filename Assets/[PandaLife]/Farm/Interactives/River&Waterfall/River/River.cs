@@ -9,15 +9,14 @@ public class River : Interactuable
     }
     public override void Interactuar()
     {
-        PickupDrop bucket = player.GetBucket();
-
-        if (bucket == null) return;
-
-        BucketWater water = bucket.GetComponent<BucketWater>();
-
-        if (water != null)
+        if (player != null && player.IsHoldingBucket())
         {
-            water.Fill();
+            // 2. Le ordenamos al jugador que empiece la secuencia de animación
+            player.CollectWater();
+        }
+        else
+        {
+            Debug.Log("Necesitas tener el cubo en la mano para recoger agua.");
         }
     }
 }
