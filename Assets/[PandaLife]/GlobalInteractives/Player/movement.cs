@@ -4,10 +4,12 @@ public class movement : MonoBehaviour
 {
     private CharacterController controller;
     [SerializeField] private float playerSpeed = 7.0f;
+    [SerializeField] private Animator anim;
 
     void Start()
     {
       controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -32,8 +34,13 @@ public class movement : MonoBehaviour
         if (moveDir != Vector3.zero)
         {
             transform.forward = moveDir;
+            if (anim != null) anim.SetFloat("Walking", playerSpeed);
+        }
+        else
+        {
+            if(anim!=null) anim.SetFloat("Walking", 0.0f);
         }
 
-        controller.SimpleMove(moveDir * playerSpeed);
+            controller.SimpleMove(moveDir * playerSpeed);
     }
 }
