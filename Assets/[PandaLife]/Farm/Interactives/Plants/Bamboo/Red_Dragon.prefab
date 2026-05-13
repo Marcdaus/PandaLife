@@ -55,6 +55,7 @@ MonoBehaviour:
   stage2: {fileID: 5231756378937756163}
   stage3: {fileID: 0}
   growtime: 10
+  farmingArea: {fileID: 0}
   type: 3
   maxStages: 2
   areaID: 
@@ -224,15 +225,61 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 3f7cee95dfc464f4e8a98404152889fb, type: 2}
+    - target: {fileID: -816778010025586925, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f7cee95dfc464f4e8a98404152889fb, type: 2}
+    - target: {fileID: 447636702132203224, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f7cee95dfc464f4e8a98404152889fb, type: 2}
     - target: {fileID: 919132149155446097, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
       propertyPath: m_Name
       value: RedDragon
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7868981580462028479, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3f7cee95dfc464f4e8a98404152889fb, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9079500280213312862}
   m_SourcePrefab: {fileID: 100100000, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+--- !u!1 &514584641919091631 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
+  m_PrefabInstance: {fileID: 857168065894858494}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9079500280213312862
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514584641919091631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3cd807bed6286cd459517e2dba489c37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &896212675103938837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 34e88fea48b118c4a838d88e7bc0f995, type: 3}
