@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 261854664}
   - component: {fileID: 261854665}
   m_Layer: 0
-  m_Name: DirectorCinematica
+  m_Name: CinematicManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1507,9 +1507,18 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: -7266850214512989357, guid: 74e54e2a03b66b8459925f15dd1a17f7, type: 2}
+    value: {fileID: 1553628451}
+  - key: {fileID: -2030733503026125276, guid: 74e54e2a03b66b8459925f15dd1a17f7, type: 2}
+    value: {fileID: 1314330638}
+  - key: {fileID: 8262728252521229199, guid: 74e54e2a03b66b8459925f15dd1a17f7, type: 2}
+    value: {fileID: 1184440421}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 017894f4d41812248be651e9ae9a66a8: {fileID: 1314330636}
+    - a5813fcbf11e9c04f8e3c652104941b5: {fileID: 1553628450}
+    - e10e3ef80ba85df45812d5b338688a56: {fileID: 1553628450}
 --- !u!1001 &262005090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4639,6 +4648,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6983691567254609513, guid: 690c2ba2a2c2e436bb10e8c37678b919, type: 3}
   m_PrefabInstance: {fileID: 189992045}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1184440421 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4509342535924137471, guid: aa7ab342880b27b468351552bb83ac4c, type: 3}
+  m_PrefabInstance: {fileID: 5571839628100318403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1187848401 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2334279052658639096, guid: 4b6c632587daf104aac84aa4f97e80df, type: 3}
@@ -5191,7 +5205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314330633}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0069927974, y: 0.015103452, z: -0.00010563002, w: 0.99986154}
+  m_LocalRotation: {x: 0.006992839, y: 0.015103454, z: -0.00010562469, w: 0.99986154}
   m_LocalPosition: {x: 1.6892581, y: 2.5558684, z: 0.55273294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5573,10 +5587,10 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: 0.12276183
-          y: 0
-          z: 0.27893665
-          w: 0.9524305
+          x: 0.12276186
+          y: -0.0000000019556756
+          z: 0.27893662
+          w: 0.95243055
     m_MetaData:
     - Mode: 2
       Tension: 0.5
