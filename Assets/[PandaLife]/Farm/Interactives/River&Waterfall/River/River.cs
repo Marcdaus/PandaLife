@@ -11,8 +11,7 @@ public class River : Interactuable
     {
         if (player != null && player.IsHoldingBucket())
         {
-            // 2. Le ordenamos al jugador que empiece la secuencia de animación
-            player.CollectWater();
+            Debug.Log("El jugador está recogiendo agua del río...");
         }
         else
         {
