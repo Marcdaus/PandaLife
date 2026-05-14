@@ -276,7 +276,6 @@ public class Player : MonoBehaviour
             anim.SetTrigger("CollectWater");
         }
 
-        Invoke("FinishWaterCollection", 2f);
     }
 
     public void FinishWaterCollection()
