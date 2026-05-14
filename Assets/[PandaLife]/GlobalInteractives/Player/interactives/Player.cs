@@ -79,9 +79,9 @@ public class Player : MonoBehaviour
         else if (currentTarget is Minipandas panda)
         {
             HungerSystem hunger = panda.GetComponent<HungerSystem>();
-            if (hunger != null && hunger.IsRageActivated) anim.SetTrigger("PickUp");  // Acariciar
+            if (hunger != null && hunger.IsRageActivated) anim.SetTrigger("Pet");  // Acariciar
             else if (CanInteractWithMiniPanda()) anim.SetTrigger("PickUp"); // Alimentar
-            else anim.SetTrigger("Interact"); // Animación genérica
+            else anim.SetTrigger("PickUp"); // Animación genérica
         }
         else
         {
