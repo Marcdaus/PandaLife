@@ -52,6 +52,12 @@ public class Cauldron : Interactuable
         else
         {
             GameObject plato = Instantiate(prefab, displayPoint.position, displayPoint.rotation);
+
+            Animator animPlato = plato.GetComponentInChildren<Animator>();
+            if (animPlato != null)
+            {
+                animPlato.Play("Rodar");
+            }
             Dish dish = plato.GetComponentInChildren<Dish>();
             if(dish!=null)dish.Initialize(receta);
             platopendiente = plato;
