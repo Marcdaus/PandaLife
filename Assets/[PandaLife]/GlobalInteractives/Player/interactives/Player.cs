@@ -40,11 +40,51 @@ public class Player : MonoBehaviour
 
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
-        // Interactuar con E (cultivos, parcelas, cubo)
-        if (Input.GetButtonDown("Interactuar") && currentTarget != null) anim.SetTrigger("PickUp");
+        // Interactuar con E
+        if (Input.GetButtonDown("Interactuar") && currentTarget != null)
+        {
+            // Decidimos que animacion toca
+            TriggerInteractionAnimation();
+        }
 
         // Soltar objetos con Q
         if (Input.GetButtonDown("Soltar")) anim.SetTrigger("Drop");
+    }
+
+    // Elegir animacion dependiendo del current target
+    void TriggerInteractionAnimation()
+    {
+        if (currentTarget is River && IsHoldingBucket())
+        {
+            collectWater = true;
+            if (GetComponent<movement>() != null) GetComponent<movement>().enabled = false;
+
+            anim.SetTrigger("CollectWater"); // Llenar cubo
+        }
+        else if (currentTarget is Harvest)
+        {
+            anim.SetTrigger("PickUp"); // Cosechar 
+        }
+        else if (currentTarget is WaterCrop)
+        {
+            anim.SetTrigger("Water"); // Regar
+        }
+        else if (currentTarget is PickupDrop)
+        {
+            anim.SetTrigger("PickUp"); // Recoger objetos
+        }
+        else if (currentTarget is Minipandas panda)
+        {
+            HungerSystem hunger = panda.GetComponent<HungerSystem>();
+            if (hunger != null && hunger.IsRageActivated) anim.SetTrigger("PickUp");  // Acariciar
+            else if (CanInteractWithMiniPanda()) anim.SetTrigger("PickUp"); // Alimentar
+            else anim.SetTrigger("Interact"); // Animación genérica
+        }
+        else
+        {
+            // Demás objetos interactuables
+            anim.SetTrigger("PickUp");
+        }
     }
 
     // Buscar objetos
@@ -231,14 +271,16 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Interact()
+    // Asegúrate de que esta función sea public si la llamas desde un Animation Event
+    public void Interact()
     {
-        // Miramos de que tipo es el objeto que guardamos en "currentTarget" y ejecutamos su funcion
-        if(currentTarget is River && IsHoldingBucket())
+        // Si estamos recogiendo agua, la animación ya se disparó y el movimiento está bloqueado.
+        // Aquí no hacemos nada, porque la lógica real de llenado sucederá en FinishWaterCollection().
+        if (currentTarget is River && IsHoldingBucket())
         {
-            CollectWater();
             return;
         }
+
         if (currentTarget is PickupDrop bucket)
         {
             if (!IsHandEmpty())
@@ -253,31 +295,23 @@ public class Player : MonoBehaviour
             // Si era un plato en el suelo, ya no está suelto
             Dish dish = bucket.GetComponentInChildren<Dish>();
             if (dish != null)
-                CauldronPersistenceManager.instance?.ClearDishState();            
+                CauldronPersistenceManager.instance?.ClearDishState();
         }
         else if (currentTarget is Harvest harvest)
-            harvest.Interactuar();
-        else if (currentTarget is WaterCrop water)
-            water.Interactuar();
-        else if (currentTarget is IInteractuable other)
-            HandleOtherInteraction(other);
-    }
-
-    public void CollectWater()
-    {
-        collectWater = true;
-
-        // Desactivamos temporalmente el script de movimiento si está en otro componente
-        if (GetComponent<movement>() != null) GetComponent<movement>().enabled = false;
-
-        // Disparamos la animación en el Animator
-        if (anim != null)
         {
-            anim.SetTrigger("CollectWater");
+            harvest.Interactuar();
         }
-
+        else if (currentTarget is WaterCrop water)
+        {
+            water.Interactuar();
+        }
+        else if (currentTarget is IInteractuable other)
+        {
+            HandleOtherInteraction(other);
+        }
     }
 
+    // Esta función se mantiene para ser llamada al FINAL de la animación de recoger agua
     public void FinishWaterCollection()
     {
         // 1. Rellenar el cubo físicamente/visualmente
@@ -294,6 +328,7 @@ public class Player : MonoBehaviour
         if (GetComponent<movement>() != null) GetComponent<movement>().enabled = true;
         collectWater = false;
     }
+
 
     public bool IsHoldingBucket()
     {
