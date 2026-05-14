@@ -54,10 +54,13 @@ public class Player : MonoBehaviour
     // Elegir animacion dependiendo del current target
     void TriggerInteractionAnimation()
     {
+        // Recuerden poner el evento al final de cada animacion
+        // para que se pueda mover el jugador.
+        DisableMovement();
+
         if (currentTarget is River && IsHoldingBucket())
         {
             collectWater = true;
-            if (GetComponent<movement>() != null) GetComponent<movement>().enabled = false;
 
             anim.SetTrigger("CollectWater"); // Llenar cubo
         }
@@ -324,8 +327,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 2. Devolver el control al jugador
-        if (GetComponent<movement>() != null) GetComponent<movement>().enabled = true;
         collectWater = false;
     }
 
@@ -470,5 +471,23 @@ public void Drop()
     {
         // Devuelve true SOLO si la variable es nula Y el handpoint no tiene ningún objeto emparentado
         return pickedobject == null && handpoint.transform.childCount == 0;
+    }
+
+    // Función para detener al jugador
+    public void DisableMovement()
+    {
+        if (GetComponent<movement>() != null)
+        {
+            GetComponent<movement>().enabled = false;
+        }
+    }
+
+    // Función para que vuelva a moverse (Mi gente llamad esto en un evento al final de cada animación)
+    public void EnableMovement()
+    {
+        if (GetComponent<movement>() != null)
+        {
+            GetComponent<movement>().enabled = true;
+        }
     }
 }
