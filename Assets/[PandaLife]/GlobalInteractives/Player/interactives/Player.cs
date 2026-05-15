@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
+    [SerializeField] private ParticleSystem waterParticles;
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -488,6 +489,28 @@ public void Drop()
         if (GetComponent<movement>() != null)
         {
             GetComponent<movement>().enabled = true;
+        }
+    }
+    public void PlayWaterParticles()
+    {
+        if (waterParticles != null)
+        {
+            waterParticles.Play();
+        }
+        else
+        {
+            Debug.LogWarning("No has asignado el ParticleSystem en el Inspector de Player.");
+        }
+    }
+
+    /// <summary>
+    /// Detiene la reproducción del sistema de partículas de agua externo.
+    /// </summary>
+    public void StopWaterParticles()
+    {
+        if (waterParticles != null)
+        {
+            waterParticles.Stop();
         }
     }
 }

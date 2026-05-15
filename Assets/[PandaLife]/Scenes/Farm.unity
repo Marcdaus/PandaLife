@@ -242,6 +242,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
+      propertyPath: waterParticles
+      value: 
+      objectReference: {fileID: 871509986}
+    - target: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
       propertyPath: detectionradius
       value: 1.2
       objectReference: {fileID: 0}
@@ -1107,6 +1111,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4783549738226643654, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5251613183380319920, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: handpoint
       value: 
@@ -1122,6 +1130,10 @@ PrefabInstance:
     - target: {fileID: 5325448653611733010, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5604633269393443836, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: handpoint
@@ -4417,6 +4429,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &871509986 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+  m_PrefabInstance: {fileID: 233826724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &872886077
 PrefabInstance:
   m_ObjectHideFlags: 0
