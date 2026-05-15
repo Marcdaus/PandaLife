@@ -14,6 +14,8 @@ public class FarmingArea : MonoBehaviour
     [SerializeField] private Renderer rend;
     [SerializeField] private Material dryMaterial;
     [SerializeField] private Material wateredMaterial;
+    [SerializeField] private ParticleSystem littleParticles;
+    private ParticleSystem littleParticlesInstance;
 
     public void SetWatered(bool watered)
     {
@@ -56,6 +58,7 @@ public class FarmingArea : MonoBehaviour
         if (!ThereIsSomething)
         {
             SpawnObject();
+            SpawFarmingParticles();
             if (currentCrop != null)
             {
                 ThereIsSomething = true;
@@ -67,7 +70,9 @@ public class FarmingArea : MonoBehaviour
                     cropType = currentCrop.type, 
                     isWatered = currentCrop.IsWatered
                 };
+
                 FarmDataManager.instance.SaveArea(areaID, newData);
+            
                 
             }
         }
@@ -89,13 +94,14 @@ public class FarmingArea : MonoBehaviour
             {
                 h.area = this;
             }
+
         }
 
     }
     public void VaciarParcela()
     {
         ThereIsSomething = false;
-
+        SpawFarmingParticles();
         
         if (FarmDataManager.instance != null)
         {
@@ -104,6 +110,13 @@ public class FarmingArea : MonoBehaviour
         }
 
         Debug.Log($"Parcela {areaID} ahora est� vac�a.");
+    }
+
+    //para spawnear las particulas de tierra
+
+    private void SpawFarmingParticles()
+    {
+        littleParticlesInstance = Instantiate(littleParticles, spawnpoint.position, Quaternion.identity);
     }
 
 }
