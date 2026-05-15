@@ -5042,8 +5042,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5199561, y: 0.7855709, z: 0.52841216}
-  m_Center: {x: 0.0077741146, y: 0.37888703, z: -0.005738348}
+  m_Size: {x: 0.37319183, y: 0.581875, z: 0.36129045}
+  m_Center: {x: 0.006795883, y: 0.27703908, z: 0.0046007037}
 --- !u!114 &5251613183380319920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5093,22 +5093,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6157236845774057936}
     m_Modifications:
-    - target: {fileID: -4089039179138967263, guid: c7f71a5ee986a2446ad606cb3079e204, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -8340596323376854431, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: -2120981650685260330, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1644164387973911580, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -8916329515303617939, guid: b71c351ffd017dc43ba237728066be3c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -5188,6 +5172,22 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b71c351ffd017dc43ba237728066be3c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4089039179138967263, guid: c7f71a5ee986a2446ad606cb3079e204, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -8340596323376854431, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: -2120981650685260330, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1644164387973911580, guid: 9ff8f9dac55dcde4a9514ad6e1ef54ef, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5273,5 +5273,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5989394, y: 0.97569036, z: 0.51982933}
-  m_Center: {x: -0.0004003048, y: 0.38871932, z: 0.0099668205}
+  m_Size: {x: 0.3920312, y: 0.59407926, z: 0.39002296}
+  m_Center: {x: 0.0069782734, y: 0.28307974, z: 0.009588614}
