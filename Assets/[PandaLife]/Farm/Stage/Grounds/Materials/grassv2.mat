@@ -107,7 +107,7 @@ Material:
     m_Floats:
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
-    - _AlphaThreshold: 0.5
+    - _AlphaThreshold: 0.1
     - _AlphaToMask: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
@@ -142,10 +142,12 @@ Material:
     - _BaseColor: {r: 0.6544589, g: 0.7264151, b: 0.6705768, a: 0}
     - _Color: {r: 0.24750803, g: 0.509434, b: 0.30571383, a: 0.15686275}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FarColor: {r: 0.0039215647, g: 0.022721853, b: 0.12156863, a: 1}
+    - _FarColor: {r: 0.0039215647, g: 0.12156863, b: 0.01979351, a: 1}
     - _NearColor: {r: 0.4056604, g: 0.4056604, b: 0.26214847, a: 1}
-    - _NearFarRange: {r: 10, g: 25, b: 0, a: 0}
+    - _NearFarRange: {r: 5, g: 15, b: 0, a: 0}
     - _ScrollVelocitie: {r: 0.01, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _farawaycoor: {r: 0.11774654, g: 0.2141619, b: 0.509434, a: 1}
+    - _fartofaraway: {r: 15, g: 25, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
