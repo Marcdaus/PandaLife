@@ -89,6 +89,13 @@ public class Cauldron : Interactuable
                 if (platopendiente == null)
                 {
                     GameObject plato = Instantiate(receta.prefabResultado, displayPoint.position, displayPoint.rotation);
+
+                    Animator animPlato = plato.GetComponentInChildren<Animator>();
+                    if (animPlato != null)
+                    {
+                        animPlato.Play("Rodar"); // Que siga rodando al volver a entrar en la escena si sigue encima del caldero
+                    }
+
                     Dish dish = plato.GetComponentInChildren<Dish>();
                     if (dish != null) dish.Initialize(receta);
                     Rigidbody rb = plato.GetComponentInChildren<Rigidbody>();

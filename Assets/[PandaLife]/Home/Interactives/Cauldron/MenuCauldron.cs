@@ -52,7 +52,6 @@ public class MenuCauldron : MonoBehaviour
             {
                 FinishCookingInstant(receta);
                 // No llamar RestoreFromPersistence, FinishCookingInstant ya spawnea el plato
-                yield break;
             }
             else
             {
