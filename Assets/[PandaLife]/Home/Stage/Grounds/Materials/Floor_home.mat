@@ -40,11 +40,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: a15e1982aad822a459bf73ec8db8299c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60d9ca2c4ecd749c5a7bd7613427313b, type: 3}
         m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 41be0b0ef1020ef4ab07d2598bfa0e0a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9336e5c1620a1443d83e416b6efcd680, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -52,11 +52,17 @@ Material:
         m_Scale: {x: 5, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a15e1982aad822a459bf73ec8db8299c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60d9ca2c4ecd749c5a7bd7613427313b, type: 3}
         m_Scale: {x: 10, y: 10}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 2800000, guid: 41be0b0ef1020ef4ab07d2598bfa0e0a, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Metallic: 0.102
+    - _Parallax: 0.0279
     - _Smoothness: 0.24
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
