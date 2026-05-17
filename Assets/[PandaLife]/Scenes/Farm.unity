@@ -1403,6 +1403,22 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: VelocityModule.inWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5369142157958951564, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5604633269393443836, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: handpoint
       value: 
@@ -1450,6 +1466,26 @@ PrefabInstance:
     - target: {fileID: 6157236845774057936, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629118405068618570, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629118405068618570, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.18301266
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629118405068618570, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.6830127
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629118405068618570, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.18301266
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629118405068618570, guid: db8644c362f43704395ccd5304831113, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 7102294399995507992, guid: db8644c362f43704395ccd5304831113, type: 3}
       propertyPath: m_Layer
