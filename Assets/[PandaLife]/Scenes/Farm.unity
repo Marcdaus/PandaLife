@@ -608,11 +608,11 @@ PrefabInstance:
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: angryModelFace
       value: 
-      objectReference: {fileID: 76487230}
+      objectReference: {fileID: 0}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: happyModelFace
       value: 
-      objectReference: {fileID: 76487231}
+      objectReference: {fileID: 0}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -620,7 +620,7 @@ PrefabInstance:
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: normalModelFace
       value: 
-      objectReference: {fileID: 76487231}
+      objectReference: {fileID: 0}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: initialCircleColor.b
       value: 0.10980392
@@ -704,11 +704,11 @@ PrefabInstance:
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: calmModelFace
       value: 
-      objectReference: {fileID: 76487231}
+      objectReference: {fileID: 0}
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: rageModelFace
       value: 
-      objectReference: {fileID: 76487231}
+      objectReference: {fileID: 0}
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -724,19 +724,10 @@ PrefabInstance:
     - {fileID: 5861649734748426955, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
     - {fileID: 8520420815149586482, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
     - {fileID: 148898751886773857, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+    - {fileID: 8328005716236317695, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
---- !u!1 &76487230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8687599151766684899, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
-  m_PrefabInstance: {fileID: 76487229}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &76487231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4103422347982310968, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
-  m_PrefabInstance: {fileID: 76487229}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &80174473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4012,11 +4003,11 @@ PrefabInstance:
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: angryModelFace
       value: 
-      objectReference: {fileID: 777538271}
+      objectReference: {fileID: 0}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: happyModelFace
       value: 
-      objectReference: {fileID: 777538271}
+      objectReference: {fileID: 0}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -4024,7 +4015,7 @@ PrefabInstance:
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: normalModelFace
       value: 
-      objectReference: {fileID: 777538271}
+      objectReference: {fileID: 0}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: initialCircleColor.b
       value: 0.30980393
@@ -4068,11 +4059,11 @@ PrefabInstance:
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: calmModelFace
       value: 
-      objectReference: {fileID: 777538271}
+      objectReference: {fileID: 0}
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: rageModelFace
       value: 
-      objectReference: {fileID: 777538271}
+      objectReference: {fileID: 0}
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -4085,14 +4076,10 @@ PrefabInstance:
     - {fileID: 7484869657950561849, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
     - {fileID: 4663978491511483584, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
     - {fileID: 4243059207300009945, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+    - {fileID: 5052615669134492709, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
---- !u!1 &777538271 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 972551979304172002, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
-  m_PrefabInstance: {fileID: 777538270}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &785094171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4118262872239957199, guid: 64cc55e2296236945b1bbec6c439571e, type: 3}
@@ -8868,11 +8855,11 @@ PrefabInstance:
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: angryModelFace
       value: 
-      objectReference: {fileID: 2080929970}
+      objectReference: {fileID: 0}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: happyModelFace
       value: 
-      objectReference: {fileID: 2080929970}
+      objectReference: {fileID: 0}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -8880,7 +8867,7 @@ PrefabInstance:
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: normalModelFace
       value: 
-      objectReference: {fileID: 2080929970}
+      objectReference: {fileID: 0}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: initialCircleColor.b
       value: 0.7259451
@@ -8976,11 +8963,11 @@ PrefabInstance:
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: calmModelFace
       value: 
-      objectReference: {fileID: 2080929970}
+      objectReference: {fileID: 0}
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: rageModelFace
       value: 
-      objectReference: {fileID: 2080929970}
+      objectReference: {fileID: 0}
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: indicatorImage
       value: 
@@ -8992,14 +8979,10 @@ PrefabInstance:
     - {fileID: 3576111103750607791, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
     - {fileID: 1641202438424107350, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
     - {fileID: 631750127505537193, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+    - {fileID: 79812762041739216, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
---- !u!1 &2080929970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 727337102889685196, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
-  m_PrefabInstance: {fileID: 2080929969}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2084049719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8154377666706512502, guid: 07226fc303340fe4784aaa8c320a65d0, type: 3}
