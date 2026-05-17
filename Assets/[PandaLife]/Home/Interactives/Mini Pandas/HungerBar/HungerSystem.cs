@@ -17,11 +17,15 @@ public class HungerSystem : BarSystem
     private Color normalBarColor = Color.yellow;
     private Color hungryBarColor = Color.red;
 
-    
+    [Header("Model Faces")]
+    [SerializeField] private GameObject happyModelFace;
+    [SerializeField] private GameObject normalModelFace;
+    [SerializeField] private GameObject angryModelFace;
 
     private bool isPaused = false;
 
     public bool IsRageActivated => rageActivated;
+
     void Start()
     {
         if (BarraManager.Instancia != null && pandaID != "")
@@ -32,12 +36,12 @@ public class HungerSystem : BarSystem
             {
                 currentValue = manager.hungerValues[pandaID];
                 rageActivated = manager.rageStates[pandaID];
-
             }
             else
             {
                 currentValue = maxValue;
                 rageActivated = false;
+
                 manager.hungerValues[pandaID] = currentValue;
                 manager.rageStates[pandaID] = rageActivated;
             }
@@ -45,7 +49,8 @@ public class HungerSystem : BarSystem
 
         if (rageActivated && rageSystem != null)
         {
-            Deactivate(); // hambre OFF
+            ClearHungerFaces();
+            Deactivate();
 
             rageSystem.ActivateRage(bar, fillImage);
 
@@ -54,7 +59,7 @@ public class HungerSystem : BarSystem
         }
         else
         {
-            Activate(); // hambre ON si no hay ira
+            Activate();
 
             if (barraUI != null)
                 barraUI.SetHunger(this);
@@ -66,13 +71,11 @@ public class HungerSystem : BarSystem
     protected override void Update()
     {
         if (isActive)
-            UpdateSystem(); //Actualiza solo si esta activa en barra de hambre
+            UpdateSystem();
     }
 
-    //Recalcula el valor de hambre, considerando pausas y el cheat global
     protected override void UpdateValue()
     {
-        // Pausar hambre si está activo el cheat global
         bool globalPause = BarraManager.Instancia != null && BarraManager.Instancia.hungerPaused;
 
         if (!isPaused && !globalPause)
@@ -81,18 +84,19 @@ public class HungerSystem : BarSystem
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
         }
 
-        //Si el sistema de ira está asignado, no se ha activado aún y el hambre llegó a 0, activamos la ira
         if (rageSystem != null && !rageActivated && currentValue <= 0)
         {
             rageActivated = true;
             Deactivate();
+
+            // 🔥 APAGAR ÚLTIMA CARA ANTES DEL CAMBIO
+            ClearHungerFaces();
+
             rageSystem.ActivateRage(bar, fillImage);
-          //  GameManager.instance.miniPandasHambrientos--;
+
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
         }
-
-        //Debug.Log("Hambre en Update: " + currentValue);
     }
 
     void LateUpdate()
@@ -100,34 +104,77 @@ public class HungerSystem : BarSystem
         if (BarraManager.Instancia != null && pandaID != "")
         {
             if (BarraManager.Instancia.isResetting) return;
+
             BarraManager.Instancia.hungerValues[pandaID] = currentValue;
             BarraManager.Instancia.rageStates[pandaID] = rageActivated;
         }
     }
 
-    //Cambia el color segun el estado
     protected override void UpdateColors()
     {
-        if (!rageActivated)
+        if (rageActivated) return;
+
+        float percentage = (currentValue / maxValue) * 100f;
+
+        if (percentage < 50f)
         {
-            float percentage = (currentValue / maxValue) * 100f;
             if (fillImage != null)
-                fillImage.color = (percentage >= 80f) ? satisfiedBarColor : (percentage >= 41f) ? normalBarColor : hungryBarColor;
-        
-        if (indicatorImage != null)
-        {
-            if (percentage >= 80f)
-                indicatorImage.sprite = happyFace;
-            else if (percentage >= 41f)
-                indicatorImage.sprite = normalFace;
-            else
+                fillImage.color = hungryBarColor;
+
+            if (indicatorImage != null)
                 indicatorImage.sprite = angryFace;
+
+            SetModelFace(angryModelFace);
         }
+        else if (percentage < 80f)
+        {
+            if (fillImage != null)
+                fillImage.color = normalBarColor;
+
+            if (indicatorImage != null)
+                indicatorImage.sprite = normalFace;
+
+            SetModelFace(normalModelFace);
+        }
+        else
+        {
+            if (fillImage != null)
+                fillImage.color = satisfiedBarColor;
+
+            if (indicatorImage != null)
+                indicatorImage.sprite = happyFace;
+
+            SetModelFace(happyModelFace);
         }
     }
 
+    private void SetModelFace(GameObject activeFace)
+    {
+        if (happyModelFace != null)
+            happyModelFace.SetActive(false);
 
-    //Restaura un porcentaje de la barra, considerando el valor máximo
+        if (normalModelFace != null)
+            normalModelFace.SetActive(false);
+
+        if (angryModelFace != null)
+            angryModelFace.SetActive(false);
+
+        if (activeFace != null)
+            activeFace.SetActive(true);
+    }
+
+    private void ClearHungerFaces()
+    {
+        if (happyModelFace != null)
+            happyModelFace.SetActive(false);
+
+        if (normalModelFace != null)
+            normalModelFace.SetActive(false);
+
+        if (angryModelFace != null)
+            angryModelFace.SetActive(false);
+    }
+
     public void Restaurar(float cantidad)
     {
         float amount = (cantidad / 100f) * maxValue;
@@ -136,7 +183,6 @@ public class HungerSystem : BarSystem
         UpdateUI();
     }
 
-    //Pausa el hambre
     public void PauseHunger(float seconds)
     {
         StartCoroutine(PauseRoutine(seconds));
@@ -148,6 +194,7 @@ public class HungerSystem : BarSystem
         yield return new WaitForSeconds(seconds);
         isPaused = false;
     }
+
     public void ResetSystem()
     {
         if (rageActivated)
@@ -155,29 +202,24 @@ public class HungerSystem : BarSystem
             currentValue = 0f;
 
             if (rageSystem != null)
-            {
                 rageSystem.ResetSystem();
-            }
         }
         else
         {
             currentValue = maxValue;
 
             if (rageSystem != null)
-            {
                 rageSystem.ResetSystem();
-            }
         }
+
         RefreshVisuals();
     }
 
     private void RefreshVisuals()
     {
         UpdateColors();
+
         if (bar != null)
-        {
-            bar.value = currentValue; 
-        }
+            bar.value = currentValue;
     }
-   
 }
