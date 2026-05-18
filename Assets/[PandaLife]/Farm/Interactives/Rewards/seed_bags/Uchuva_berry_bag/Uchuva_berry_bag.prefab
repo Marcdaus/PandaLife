@@ -32,8 +32,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3628378185052868285}
   - {fileID: 5217995485434280751}
-  - {fileID: 2693860023091461832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3023999735797928790
@@ -212,7 +212,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.50000006, y: 0.7011095, z: 0.6275685}
   m_Center: {x: 0, y: 0.34261566, z: 0}
---- !u!1 &6572434015737184368
+--- !u!1 &5133650126842680559
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -220,24 +220,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2693860023091461832}
-  m_Layer: 0
+  - component: {fileID: 3628378185052868285}
+  m_Layer: 9
   m_Name: PickPoint
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2693860023091461832
+--- !u!4 &3628378185052868285
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6572434015737184368}
+  m_GameObject: {fileID: 5133650126842680559}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 3.644, y: 0.413, z: -0.095999986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
