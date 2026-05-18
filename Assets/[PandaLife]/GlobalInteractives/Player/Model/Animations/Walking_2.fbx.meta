@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f44788fc60c31fb449528f3f206c4471
+guid: 94da1b8188c8cfb4089d5d2461dfaa82
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,20 +17,12 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Armature|Drop' has import animation warnings
-      that might lower retargeting quality:\n\t'mixamorig:RightArm' has scale animation
-      that will be discarded.\n\t'mixamorig:RightForeArm' has scale animation that
-      will be discarded.\n\nClip 'Armature|Water' has import animation warnings that
-      might lower retargeting quality:\n\t'mixamorig:LeftArm' has scale animation
-      that will be discarded.\n\t'mixamorig:LeftForeArm' has scale animation that
-      will be discarded.\n\t'mixamorig:RightArm' has scale animation that will be
-      discarded.\n\t'mixamorig:RightForeArm' has scale animation that will be discarded.\n\t'mixamorig:RightHand'
-      has scale animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -39,18 +31,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Pet
-      takeName: Armature|Acariciar
-      internalID: 6964465842176849696
-      firstFrame: 0
-      lastFrame: 60
+      name: Walking
+      takeName: Scene
+      internalID: -623603649343465320
+      firstFrame: 1
+      lastFrame: 32
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -62,25 +54,11 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0.084745735
-        functionName: Interact
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: EnableMovement
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 0.9
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -356,13 +334,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Panda_Principal(Clone)
+    - name: Panda_Idle(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Armature
-      parentName: Panda_Principal(Clone)
+      parentName: Panda_Idle(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: -0.000000037748947, y: 0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -373,9 +351,9 @@ ModelImporter:
       scale: {x: 1.0000002, y: 1, z: 1.0000002}
     - name: PandaColita
       parentName: mixamorig:Hips
-      position: {x: 0.060382433, y: -0.6249872, z: 0.024896113}
-      rotation: {x: -0.0077343816, y: -0.036511853, z: 0.03359856, w: 0.9987383}
-      scale: {x: 1, y: 1, z: 1}
+      position: {x: 0.06038244, y: -0.6249874, z: 0.02489611}
+      rotation: {x: -0.007734382, y: -0.03651185, z: 0.033598553, w: 0.9987383}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
     - name: mixamorig:Spine
       parentName: mixamorig:Hips
       position: {x: 0.013395827, y: 0.12724157, z: -0.0000000012479722}
@@ -414,43 +392,43 @@ ModelImporter:
     - name: mixamorig:LeftShoulder
       parentName: mixamorig:Spine2
       position: {x: 0.002229812, y: 0.16976508, z: -0.122786604}
-      rotation: {x: -0.006458235, y: -0.65276027, z: 0.7575257, w: -0.004160901}
-      scale: {x: 1.0000001, y: 1, z: 1}
+      rotation: {x: -0.006458235, y: -0.65276027, z: 0.7575257, w: -0.004160905}
+      scale: {x: 1, y: 1, z: 0.9999999}
     - name: mixamorig:LeftArm
       parentName: mixamorig:LeftShoulder
       position: {x: 0.0000000023841857, y: 0.2489127, z: 0.000000057220458}
-      rotation: {x: -0.041432656, y: 0.0011310083, z: 0.008160361, w: 0.99910736}
-      scale: {x: 0.9999996, y: 0.99999946, z: 1.0000007}
+      rotation: {x: -0.041432567, y: 0.0011309491, z: 0.00816039, w: 0.99910736}
+      scale: {x: 0.99999994, y: 0.99999946, z: 1.0000007}
     - name: mixamorig:LeftForeArm
       parentName: mixamorig:LeftArm
       position: {x: 0.000000022649765, y: 0.22200157, z: 0.00000006198883}
-      rotation: {x: -0.046559136, y: 0.0057604276, z: -0.051261883, w: 0.9975828}
-      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000001}
+      rotation: {x: -0.046559345, y: 0.0057604047, z: -0.051261965, w: 0.9975828}
+      scale: {x: 0.9999997, y: 0.99999994, z: 1.0000002}
     - name: mixamorig:LeftHand
       parentName: mixamorig:LeftForeArm
       position: {x: 0.0000000023841857, y: 0.20158699, z: 0.000000074505806}
-      rotation: {x: 0.02485957, y: -0.00039221626, z: -0.015770659, w: 0.99956656}
-      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+      rotation: {x: 0.0248596, y: -0.00039221387, z: -0.015770685, w: 0.99956656}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1}
     - name: mixamorig:LeftHandIndex1
       parentName: mixamorig:LeftHand
       position: {x: 0.000000030994414, y: 0.045352466, z: 0.0000000032782554}
-      rotation: {x: -0.056522224, y: -0.012351101, z: 0.055734064, w: 0.996768}
-      scale: {x: 1.0000002, y: 0.99999994, z: 1}
+      rotation: {x: -0.056521617, y: -0.012351253, z: 0.055733856, w: 0.9967681}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: mixamorig:LeftHandIndex2
       parentName: mixamorig:LeftHandIndex1
       position: {x: -0.000000052452087, y: 0.05709488, z: -0.000000016825506}
-      rotation: {x: -0.056848377, y: 0.000000047497412, z: 0.0026064566, w: 0.99837947}
-      scale: {x: 0.9999998, y: 0.99999994, z: 0.99999994}
+      rotation: {x: -0.056849163, y: 0.00000005215402, z: 0.0026062166, w: 0.9983794}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1}
     - name: mixamorig:LeftHandIndex3
       parentName: mixamorig:LeftHandIndex2
       position: {x: 0.0005994057, y: 0.067494474, z: 0.013075509}
-      rotation: {x: 0.005039584, y: -0.00197752, z: 0.009975934, w: 0.9999356}
-      scale: {x: 1.0000002, y: 1.0000007, z: 1.0000005}
+      rotation: {x: 0.0050397534, y: -0.00197759, z: 0.00997652, w: 0.99993557}
+      scale: {x: 1.0000001, y: 1.0000006, z: 1.0000005}
     - name: mixamorig:LeftHandIndex4
       parentName: mixamorig:LeftHandIndex3
       position: {x: 0.005266032, y: 0.05065081, z: 0.0073793563}
-      rotation: {x: 0.000000059604623, y: 0.00000010430809, z: -0.000000010593789, w: 1}
-      scale: {x: 1, y: 1.0000001, z: 1}
+      rotation: {x: 0.000000007450579, y: 0.000000093132236, z: -0.000000004773029, w: 1}
+      scale: {x: 1.0000001, y: 1, z: 0.9999998}
     - name: mixamorig:LeftHandIndex4_end
       parentName: mixamorig:LeftHandIndex4
       position: {x: -0, y: 0.05145578, z: 0}
@@ -562,7 +540,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: PandaCuerpo
-      parentName: Panda_Principal(Clone)
+      parentName: Panda_Idle(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
       scale: {x: 0.01, y: 0.01, z: 0.01}
@@ -575,10 +553,10 @@ ModelImporter:
     feetSpacing: 0
     globalScale: 1
     rootMotionBoneName: 
-    hasTranslationDoF: 1
+    hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: b6166ad3730993a459370898d57f0c97, type: 3}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 09a3d134023520041b857d5eafc3d1eb, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
