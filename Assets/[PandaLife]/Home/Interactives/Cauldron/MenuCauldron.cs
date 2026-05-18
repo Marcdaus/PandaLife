@@ -23,9 +23,16 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private Slider worldprogressbar;
     [SerializeField] private GameObject worldpanelbar;
 
+    [Header("Smoke")]
     [SerializeField] private ParticleSystem smokeparticles;
-    [SerializeField] private float normalSmokeSize = 0.5f;   // Tamaño del humo en reposo
-    [SerializeField] private float cookingSmokeSize = 2.5f;  // Tamaño del humo al cocinar
+    [SerializeField] private float normalsmokesize;  // Tamaño del humo en reposo
+    [SerializeField] private float cookingsmokesize;// Tamaño del humo al cocinar
+
+    [Header("Bubbles")]
+    [SerializeField] private ParticleSystem bubbleparticles;
+    [SerializeField] private float normalbubbleemission;  // Emisión de las burbujas en reposo
+    [SerializeField] private float cookingbubbleemission; // Emisión de las burbujas al cocinar
+   
     private void Start()
     {
         panelcauldron.SetActive(true);
@@ -35,6 +42,8 @@ public class MenuCauldron : MonoBehaviour
         panelcauldron.SetActive(false);
 
         ResetSmokeSize();
+        ResetBubbleEmission();
+
         StartCoroutine(RestoreOnStart());
     }
 
@@ -139,6 +148,7 @@ public class MenuCauldron : MonoBehaviour
         foreach (RecipeCard card in tarjetas) card.Block();
 
         var mainModule = smokeparticles.main;
+        var bubbleEmission = bubbleparticles.emission;
 
         while (tiempoTranscurrido < tiempoTotal)
         {
@@ -150,7 +160,12 @@ public class MenuCauldron : MonoBehaviour
 
             if (smokeparticles != null)
             {
-                mainModule.startSize = Mathf.Lerp(normalSmokeSize, cookingSmokeSize, progreso);
+                mainModule.startSize = Mathf.Lerp(normalsmokesize, cookingsmokesize, progreso);
+            }
+
+            if (bubbleparticles != null)
+            {
+                bubbleEmission.rateOverTime = Mathf.Lerp(normalbubbleemission, cookingbubbleemission, progreso);
             }
 
             yield return null;
@@ -162,6 +177,7 @@ public class MenuCauldron : MonoBehaviour
         CauldronPersistenceManager.instance?.ClearCookingState();
 
         ResetSmokeSize();
+        ResetBubbleEmission();
 
         // Spawn del plato
         if (receta.prefabResultado != null) {
@@ -186,6 +202,8 @@ public class MenuCauldron : MonoBehaviour
         foreach (RecipeCard t in tarjetas) t.CheckUnblock();
 
         ResetSmokeSize();
+        ResetBubbleEmission();
+
     }
 
     private void ResetSmokeSize()
@@ -193,7 +211,17 @@ public class MenuCauldron : MonoBehaviour
         if (smokeparticles != null)
         {
             var mainModule = smokeparticles.main;
-            mainModule.startSize = normalSmokeSize;
+            mainModule.startSize = normalsmokesize;
+        }
+    }
+
+    private void ResetBubbleEmission()
+    {
+        if (bubbleparticles != null)
+        {
+            var bubbleEmission = bubbleparticles.emission;
+
+            bubbleEmission.rateOverTime = normalbubbleemission;
         }
     }
 
