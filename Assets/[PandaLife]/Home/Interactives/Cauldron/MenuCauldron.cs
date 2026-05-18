@@ -23,6 +23,9 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private Slider worldprogressbar;
     [SerializeField] private GameObject worldpanelbar;
 
+    [SerializeField] private ParticleSystem smokeparticles;
+    [SerializeField] private float normalSmokeSize = 0.5f;   // Tamaño del humo en reposo
+    [SerializeField] private float cookingSmokeSize = 2.5f;  // Tamaño del humo al cocinar
     private void Start()
     {
         panelcauldron.SetActive(true);
@@ -31,6 +34,7 @@ public class MenuCauldron : MonoBehaviour
         worldpanelbar.SetActive(false);
         panelcauldron.SetActive(false);
 
+        ResetSmokeSize();
         StartCoroutine(RestoreOnStart());
     }
 
@@ -134,11 +138,21 @@ public class MenuCauldron : MonoBehaviour
         // Bloquear todas las tarjetas
         foreach (RecipeCard card in tarjetas) card.Block();
 
+        var mainModule = smokeparticles.main;
+
         while (tiempoTranscurrido < tiempoTotal)
         {
             tiempoTranscurrido += Time.deltaTime;
-            progressbar.value = tiempoTranscurrido / tiempoTotal;
-            worldprogressbar.value = tiempoTranscurrido / tiempoTotal;
+
+            float progreso = tiempoTranscurrido / tiempoTotal;
+            progressbar.value = progreso;
+            worldprogressbar.value = progreso;
+
+            if (smokeparticles != null)
+            {
+                mainModule.startSize = Mathf.Lerp(normalSmokeSize, cookingSmokeSize, progreso);
+            }
+
             yield return null;
         }
 
@@ -146,6 +160,8 @@ public class MenuCauldron : MonoBehaviour
         cookingtext.text = "¡" + receta.nombrereceta + " listo!";
         cooking = false;
         CauldronPersistenceManager.instance?.ClearCookingState();
+
+        ResetSmokeSize();
 
         // Spawn del plato
         if (receta.prefabResultado != null) {
@@ -168,6 +184,17 @@ public class MenuCauldron : MonoBehaviour
             cauldron.SpawnDish(receta.prefabResultado, receta, menuabierto: false);
 
         foreach (RecipeCard t in tarjetas) t.CheckUnblock();
+
+        ResetSmokeSize();
+    }
+
+    private void ResetSmokeSize()
+    {
+        if (smokeparticles != null)
+        {
+            var mainModule = smokeparticles.main;
+            mainModule.startSize = normalSmokeSize;
+        }
     }
 
     public bool HasIngredients(RecipesData recipe)
