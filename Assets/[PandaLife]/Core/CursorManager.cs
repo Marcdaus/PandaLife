@@ -19,11 +19,12 @@ public class CursorManager : MonoBehaviour
             }
 
             // clic en la pantalla, volver a ocultarlo
-            if (Input.GetMouseButtonDown(0) && !Cursor.visible)
+            if (Input.GetMouseButtonDown(0) && Cursor.visible)
             {
                 OcultarCursor();
             }
         }
+
     }
 
     public void OcultarCursor()
