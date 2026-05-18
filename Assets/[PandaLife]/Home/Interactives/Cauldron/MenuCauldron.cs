@@ -33,9 +33,13 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private float normalbubbleemission;  // Emisión de las burbujas en reposo
     [SerializeField] private float cookingbubbleemission; // Emisión de las burbujas al cocinar
 
-    [Header("Cursor")]
-    [SerializeField] private CursorManager CursorManager;
+    [Header("cursor")]
+    private CursorManager cursorManager;
 
+    private void Awake()
+    {
+        cursorManager = Object.FindFirstObjectByType<CursorManager>();
+    }
     private void Start()
     {
         panelcauldron.SetActive(true);
@@ -95,8 +99,8 @@ public class MenuCauldron : MonoBehaviour
 
     public void OpenCauldron()
     {
-        CursorManager.cursorblock = true;
-        CursorManager.MostrarCursor();
+        cursorManager.cursorblock = true;
+        cursorManager.MostrarCursor();
 
         panelcauldron.SetActive(true);
         worldpanelbar.SetActive(false);
@@ -109,8 +113,8 @@ public class MenuCauldron : MonoBehaviour
 
     public void CloseCauldron()
     {
-        CursorManager.cursorblock = false;
-        CursorManager.OcultarCursor();
+        cursorManager.cursorblock = false;
+        cursorManager.OcultarCursor();
         panelcauldron.SetActive(false);
         if (cooking) worldpanelbar.SetActive(true);
         else panelcooking.SetActive(false);

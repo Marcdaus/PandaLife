@@ -1,15 +1,33 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursorManager : MonoBehaviour
 {
     public bool cursorblock = false;
+    public static CursorManager Instancia { get; private set; }
+
     void Awake()
     {
-        OcultarCursor();
+        if (Instancia == null)
+        {
+            Instancia = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
     }
 
     void Update()
     {
+        if (SceneManager.GetActiveScene().name == "GameOver" || SceneManager.GetActiveScene().name == "Theend")
+        {
+            MostrarCursor();
+            cursorblock = true;
+        }
         if (!cursorblock)
         {
             // mostrar cursor si se selecciona la tecla escape

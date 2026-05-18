@@ -10,13 +10,17 @@ public class CheatMenuManager : MonoBehaviour
     private GameObject cheatPanel;
     [SerializeField] private MenuCauldron menucauldron;
     [SerializeField] private DayNightCycle daynightcycle;
-    [SerializeField] private CursorManager CursorManager;
+    private CursorManager cursorManager;
 
 
     HungerSystem[] pandas;
 
     public HungerSystem minipanda;
     RageSystem rageSystem;
+    private void Awake()
+    {
+        cursorManager = Object.FindFirstObjectByType<CursorManager>();
+    }
 
     void Start()
     {
@@ -52,11 +56,11 @@ public class CheatMenuManager : MonoBehaviour
         {
             bool isMenuOpen = !cheatPanel.activeSelf;
             if (isMenuOpen) { 
-                CursorManager.cursorblock = true;
-                CursorManager.MostrarCursor();
+                cursorManager.cursorblock = true;
+                cursorManager.MostrarCursor();
             }
-            else { CursorManager.cursorblock = false;
-                CursorManager.OcultarCursor();
+            else { cursorManager.cursorblock = false;
+                cursorManager.OcultarCursor();
             }
             cheatPanel.SetActive(isMenuOpen);
         }
