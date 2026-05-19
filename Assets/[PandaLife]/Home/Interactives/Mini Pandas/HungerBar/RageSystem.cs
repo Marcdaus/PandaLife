@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class RageSystem : BarSystem
 {
+    private enum RageState { None, Calm, Angry }
+    private RageState currentState = RageState.None;
+
     [SerializeField] private string pandaID;
 
     private Color calmColor = new Color(1f, 0f, 0f);
@@ -11,9 +14,10 @@ public class RageSystem : BarSystem
     [SerializeField] private Sprite calmFace;
     [SerializeField] private Sprite rageFace;
 
-    [Header("Rage Model Faces")]
     [SerializeField] private GameObject calmModelFace;
     [SerializeField] private GameObject rageModelFace;
+
+    [SerializeField] private ParticleStateController particlecontroller;
 
     void Start()
     {
@@ -30,6 +34,7 @@ public class RageSystem : BarSystem
         }
 
         UpdateUI();
+        UpdateColors();
     }
 
     public void ActivateRage(Slider sharedBar, Image sharedFill)
@@ -50,7 +55,9 @@ public class RageSystem : BarSystem
             changeRate = manager.rageChangeRate;
         }
 
+        currentState = RageState.None; // Forzar actualización de partículas al activar la ira
         Activate();
+        UpdateColors();
     }
 
     protected override void UpdateValue()
@@ -72,6 +79,13 @@ public class RageSystem : BarSystem
                 indicatorImage.sprite = calmFace;
 
             SetModelFace(calmModelFace);
+
+            if (currentState != RageState.Calm)
+            {
+                currentState = RageState.Calm;
+                if (particlecontroller != null)
+                    particlecontroller.Sad();
+            }
         }
         else
         {
@@ -82,19 +96,24 @@ public class RageSystem : BarSystem
                 indicatorImage.sprite = rageFace;
 
             SetModelFace(rageModelFace);
+
+            if (currentState != RageState.Angry)
+            {
+                currentState = RageState.Angry;
+                if (particlecontroller != null)
+                    particlecontroller.Angry();
+            }
         }
     }
 
     private void SetModelFace(GameObject activeFace)
     {
-        // 🔥 SIEMPRE apagar todo primero
         if (calmModelFace != null)
             calmModelFace.SetActive(false);
 
         if (rageModelFace != null)
             rageModelFace.SetActive(false);
 
-        // activar solo la correcta
         if (activeFace != null)
             activeFace.SetActive(true);
     }
@@ -118,11 +137,13 @@ public class RageSystem : BarSystem
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
         UpdateUI();
+        UpdateColors();
     }
 
     public void ResetSystem()
     {
         currentValue = 0f;
+        currentState = RageState.None;
 
         UpdateColors();
 

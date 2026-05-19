@@ -25244,6 +25244,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!198 &298310474 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7357617625400958575, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+  m_PrefabInstance: {fileID: 1603166151}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &326899369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69415,6 +69420,10 @@ PrefabInstance:
       propertyPath: normalModelFace
       value: 
       objectReference: {fileID: 634885668}
+    - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 1413066100}
     - target: {fileID: 2066868754207065064, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_Size.x
       value: 0.6194134
@@ -69475,6 +69484,42 @@ PrefabInstance:
       propertyPath: 'pathPoints.Array.data[8]'
       value: 
       objectReference: {fileID: 1163692516}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: sadsize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: angrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: happysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: hungrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: sadmaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 892d4eb8c25e70c4db519e4954bd0c58, type: 2}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: angrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d86e1ed90378ccd46b6d67e59b9b2a20, type: 2}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: happymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d95afd70a563a894a9e86b596d8195f0, type: 2}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: hungrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 163395b722953f84d89579b20d7e9675, type: 2}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: particlesystemref
+      value: 
+      objectReference: {fileID: 1807054164}
     - target: {fileID: 5278786288208957454, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_Name
       value: LightMiniPanda
@@ -69555,6 +69600,10 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1860897837}
+    - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 1413066100}
     m_RemovedComponents:
     - {fileID: 6216347222530658997, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
     m_RemovedGameObjects: []
@@ -128864,6 +128913,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990614629}
   m_CullTransparentMesh: 1
+--- !u!198 &991145406 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1282965842143677210, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1028667297
 GameObject:
   m_ObjectHideFlags: 0
@@ -154407,6 +154461,10 @@ PrefabInstance:
       propertyPath: normalModelFace
       value: 
       objectReference: {fileID: 1364624481}
+    - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 1382341813}
     - target: {fileID: 918611884013585434, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.11
@@ -154507,6 +154565,42 @@ PrefabInstance:
       propertyPath: 'pathPoints.Array.data[8]'
       value: 
       objectReference: {fileID: 1163692516}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: sadsize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: angrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: sadmaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 892d4eb8c25e70c4db519e4954bd0c58, type: 2}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: angrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d86e1ed90378ccd46b6d67e59b9b2a20, type: 2}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d95afd70a563a894a9e86b596d8195f0, type: 2}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 163395b722953f84d89579b20d7e9675, type: 2}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: particlesystemref
+      value: 
+      objectReference: {fileID: 991145406}
     - target: {fileID: 3006752344759472490, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_Name
       value: DarkMiniPanda
@@ -154543,6 +154637,10 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1860897841}
+    - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 1382341813}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -159424,6 +159522,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1382341813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5806edeb62346a84f964fd4da62fbf76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1391790715
@@ -169112,6 +169221,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1413066100 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+  m_PrefabInstance: {fileID: 634885664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5806edeb62346a84f964fd4da62fbf76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1424732213
@@ -198829,6 +198949,10 @@ PrefabInstance:
       propertyPath: normalModelFace
       value: 
       objectReference: {fileID: 1603166156}
+    - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 2070676497}
     - target: {fileID: 4060880759531892577, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_Name
       value: RedMiniPanda
@@ -198861,6 +198985,46 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1860897842}
+    - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: particlecontroller
+      value: 
+      objectReference: {fileID: 2070676497}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: sadsize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: angrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: happysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: hungrysize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: sadmaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 163395b722953f84d89579b20d7e9675, type: 2}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: angrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d86e1ed90378ccd46b6d67e59b9b2a20, type: 2}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: happymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d95afd70a563a894a9e86b596d8195f0, type: 2}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: hungrymaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 892d4eb8c25e70c4db519e4954bd0c58, type: 2}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: particlesystemref
+      value: 
+      objectReference: {fileID: 298310474}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -223596,6 +223760,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3846769111249113122, guid: 07eda36c2cb28de44a873130f37775cc, type: 3}
   m_PrefabInstance: {fileID: 1779632497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1807054164 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3534589209575833293, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+  m_PrefabInstance: {fileID: 634885664}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1810047776 stripped
 MonoBehaviour:
@@ -253490,6 +253659,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.01, y: 0.006720608, z: 0.0042758957}
   m_Center: {x: -0.0000000013969839, y: 0.003338107, z: 0.0013901731}
+--- !u!114 &2070676497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+  m_PrefabInstance: {fileID: 1603166151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5806edeb62346a84f964fd4da62fbf76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2072309786 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3050551624655424051, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
