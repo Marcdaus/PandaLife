@@ -23,6 +23,23 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private Slider worldprogressbar;
     [SerializeField] private GameObject worldpanelbar;
 
+    [Header("Smoke")]
+    [SerializeField] private ParticleSystem smokeparticles;
+    [SerializeField] private float normalsmokesize;  // Tamaño del humo en reposo
+    [SerializeField] private float cookingsmokesize;// Tamaño del humo al cocinar
+
+    [Header("Bubbles")]
+    [SerializeField] private ParticleSystem bubbleparticles;
+    [SerializeField] private float normalbubbleemission;  // Emisión de las burbujas en reposo
+    [SerializeField] private float cookingbubbleemission; // Emisión de las burbujas al cocinar
+
+    [Header("cursor")]
+    private CursorManager cursorManager;
+
+    private void Awake()
+    {
+        cursorManager = Object.FindFirstObjectByType<CursorManager>();
+    }
     private void Start()
     {
         panelcauldron.SetActive(true);
@@ -30,6 +47,9 @@ public class MenuCauldron : MonoBehaviour
 
         worldpanelbar.SetActive(false);
         panelcauldron.SetActive(false);
+
+        ResetSmokeSize();
+        ResetBubbleEmission();
 
         StartCoroutine(RestoreOnStart());
     }
@@ -79,6 +99,9 @@ public class MenuCauldron : MonoBehaviour
 
     public void OpenCauldron()
     {
+        cursorManager.cursorblock = true;
+        cursorManager.MostrarCursor();
+
         panelcauldron.SetActive(true);
         worldpanelbar.SetActive(false);
         if (!cooking)
@@ -90,6 +113,8 @@ public class MenuCauldron : MonoBehaviour
 
     public void CloseCauldron()
     {
+        cursorManager.cursorblock = false;
+        cursorManager.OcultarCursor();
         panelcauldron.SetActive(false);
         if (cooking) worldpanelbar.SetActive(true);
         else panelcooking.SetActive(false);
@@ -134,11 +159,27 @@ public class MenuCauldron : MonoBehaviour
         // Bloquear todas las tarjetas
         foreach (RecipeCard card in tarjetas) card.Block();
 
+        var mainModule = smokeparticles.main;
+        var bubbleEmission = bubbleparticles.emission;
+
         while (tiempoTranscurrido < tiempoTotal)
         {
             tiempoTranscurrido += Time.deltaTime;
-            progressbar.value = tiempoTranscurrido / tiempoTotal;
-            worldprogressbar.value = tiempoTranscurrido / tiempoTotal;
+
+            float progreso = tiempoTranscurrido / tiempoTotal;
+            progressbar.value = progreso;
+            worldprogressbar.value = progreso;
+
+            if (smokeparticles != null)
+            {
+                mainModule.startSize = Mathf.Lerp(normalsmokesize, cookingsmokesize, progreso);
+            }
+
+            if (bubbleparticles != null)
+            {
+                bubbleEmission.rateOverTime = Mathf.Lerp(normalbubbleemission, cookingbubbleemission, progreso);
+            }
+
             yield return null;
         }
 
@@ -146,6 +187,9 @@ public class MenuCauldron : MonoBehaviour
         cookingtext.text = "¡" + receta.nombrereceta + " listo!";
         cooking = false;
         CauldronPersistenceManager.instance?.ClearCookingState();
+
+        ResetSmokeSize();
+        ResetBubbleEmission();
 
         // Spawn del plato
         if (receta.prefabResultado != null) {
@@ -168,6 +212,29 @@ public class MenuCauldron : MonoBehaviour
             cauldron.SpawnDish(receta.prefabResultado, receta, menuabierto: false);
 
         foreach (RecipeCard t in tarjetas) t.CheckUnblock();
+
+        ResetSmokeSize();
+        ResetBubbleEmission();
+
+    }
+
+    private void ResetSmokeSize()
+    {
+        if (smokeparticles != null)
+        {
+            var mainModule = smokeparticles.main;
+            mainModule.startSize = normalsmokesize;
+        }
+    }
+
+    private void ResetBubbleEmission()
+    {
+        if (bubbleparticles != null)
+        {
+            var bubbleEmission = bubbleparticles.emission;
+
+            bubbleEmission.rateOverTime = normalbubbleemission;
+        }
     }
 
     public bool HasIngredients(RecipesData recipe)
