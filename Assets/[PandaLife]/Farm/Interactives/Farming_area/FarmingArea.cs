@@ -11,7 +11,9 @@ public class FarmingArea : MonoBehaviour
     //una property que te dice si hay o no crops en el farmingArea
     public bool ThereIsSomething { get; private set; }
 
-    [SerializeField] private Renderer rend;
+    [SerializeField] private Renderer rend; //malla del trozo de parcela (plano)
+     [SerializeField] private Renderer rend2; //malla del trozo de parcela (surco)
+
     [SerializeField] private Material dryMaterial;
     [SerializeField] private Material wateredMaterial;
     [SerializeField] private ParticleSystem littleParticles;
@@ -20,8 +22,10 @@ public class FarmingArea : MonoBehaviour
     public void SetWatered(bool watered)
     {
         if (rend == null) return;
+        if (rend2 == null) return;
 
         rend.material = watered ? wateredMaterial : dryMaterial;
+        rend2.material = watered ? wateredMaterial : dryMaterial;
     }
 
     private Crop currentCrop;
