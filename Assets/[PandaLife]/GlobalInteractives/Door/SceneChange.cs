@@ -100,12 +100,13 @@ public class SceneChange : Interactuable
             );
         }
     }
-    private void OnTriggerEnter(Collider other)
+    //Ahora se entra con la E
+   /* private void OnTriggerEnter(Collider other)
     {
         // Si es el player llama a interactuar
         if (other.CompareTag("Player"))
         {
             Interactuar();
         }
-    }
+    }*/
 }
