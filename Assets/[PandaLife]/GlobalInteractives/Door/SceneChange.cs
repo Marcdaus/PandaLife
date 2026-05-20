@@ -59,7 +59,7 @@ public class SceneChange : Interactuable
         Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
         Cauldron cauldron = FindFirstObjectByType<Cauldron>();
 
-        
+
         List<Dish> platosSueltos = new List<Dish>();
         foreach (Dish dish in platos)
         {
@@ -75,16 +75,16 @@ public class SceneChange : Interactuable
         if (limpiarAntes)
             CauldronPersistenceManager.instance.ClearAllDishStates();
 
-        
+
         foreach (Dish dish in platosSueltos)
         {
             GameObject raiz = dish.transform.root.gameObject;
 
-           
+
             bool esPlatoDelCaldero = false;
             if (cauldron != null && cauldron.PlatoPendienteGameObject != null)
             {
-               
+
                 if (raiz == cauldron.PlatoPendienteGameObject.transform.root.gameObject)
                 {
                     esPlatoDelCaldero = true;
@@ -96,10 +96,12 @@ public class SceneChange : Interactuable
             CauldronPersistenceManager.instance.SaveDishState(
                 dish.GetReceta(),
                 raiz.transform.position,
-                inHand: esPlatoDelCaldero 
+                inHand: esPlatoDelCaldero
             );
         }
     }
+    //ahora funciona con la E
+    /*
     private void OnTriggerEnter(Collider other)
     {
         // Si es el player llama a interactuar
@@ -108,4 +110,5 @@ public class SceneChange : Interactuable
             Interactuar();
         }
     }
+    */
 }
