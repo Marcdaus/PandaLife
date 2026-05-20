@@ -2512,7 +2512,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -7277,7 +7277,7 @@ Transform:
   m_GameObject: {fileID: 858987900}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 16.902, y: 0.787, z: 2.22}
+  m_LocalPosition: {x: 16.902, y: 0.645, z: 2.22}
   m_LocalScale: {x: 0.14, y: 0.14, z: 0.14}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8523,7 +8523,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.9169811, g: 0.40890914, b: 0.12976135, a: 1}
-  m_Intensity: 2.57
+  m_Intensity: 0.6
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26404,7 +26404,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_RenderMode: 4
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -26413,7 +26413,7 @@ ParticleSystemRenderer:
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
-  m_SortingFudge: 0
+  m_SortingFudge: -10
   m_NormalDirection: 1
   m_ShadowBias: 0
   m_RenderAlignment: 2
@@ -26424,8 +26424,8 @@ ParticleSystemRenderer:
   m_AllowRoll: 1
   m_FreeformStretching: 0
   m_RotateWithStretchDirection: 1
-  m_UseCustomVertexStreams: 0
-  m_VertexStreams: 00010304
+  m_UseCustomVertexStreams: 1
+  m_VertexStreams: 00030409
   m_UseCustomTrailVertexStreams: 0
   m_TrailVertexStreams: 00010304
   m_Mesh: {fileID: 4711208715938537054, guid: ec5c62d6b96c18947a536fdfa6cbe924, type: 3}
@@ -26627,7 +26627,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.49777848, g: 0.55180305, b: 0.5698112, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -31169,8 +31169,8 @@ Transform:
   m_GameObject: {fileID: 1990255678}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 16.909, y: 1.013, z: 2.16}
-  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
+  m_LocalPosition: {x: 16.902, y: 1.004, z: 2.18}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -32746,6 +32746,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -75
       objectReference: {fileID: 0}
+    - target: {fileID: 5001625009726263114, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 661005815092c8f4eb77c436d480bf57, type: 2}
     - target: {fileID: 5010569404909415243, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.064
@@ -32874,6 +32878,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -227
       objectReference: {fileID: 0}
+    - target: {fileID: 7760421031610719272, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760421031610719272, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760421031610719272, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760421031610719272, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.034
+      objectReference: {fileID: 0}
+    - target: {fileID: 7760421031610719272, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8422849181901586158, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -32909,6 +32933,10 @@ PrefabInstance:
     - target: {fileID: 8858939310290777072, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 9127348950950984182, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.009
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
