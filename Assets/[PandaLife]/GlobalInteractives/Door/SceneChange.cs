@@ -39,6 +39,12 @@ public class SceneChange : Interactuable
         }
         else
         {
+            // Completar el tutorial de puerta y no mostrar más el pin
+            if (!GameManager.instance.tutorialPuertaCompletado)
+            {
+                GameManager.instance.tutorialPuertaCompletado = true;
+                Debug.Log("Tutorial de la puerta completado para esta partida.");
+            }
             GuardarPlatoSueltoSiExiste(limpiarAntes: true);
             SceneManager.LoadScene(scenename.Value);
         }
@@ -46,6 +52,12 @@ public class SceneChange : Interactuable
 
     IEnumerator EsperarParaCargar()
     {
+        // Completar el tutorial de la puerta y no mostrar más el pin
+        if (!GameManager.instance.tutorialPuertaCompletado)
+        {
+            GameManager.instance.tutorialPuertaCompletado = true;
+            Debug.Log("Tutorial de la puerta completado para esta partida.");
+        }
         // Añadir los sueltos sin limpiar, el plato en mano ya está en la lista
         GuardarPlatoSueltoSiExiste(limpiarAntes: false);
         yield return new WaitForSeconds(0.5f);

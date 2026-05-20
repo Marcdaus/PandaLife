@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [Header("Variables de Tutorial")]
     public bool tutorialCuboCompletado = false;
     public bool tutorialRioCompletado = false;
+    public bool tutorialPuertaCompletado = false;
 
     [Header("Variables de Sistema de dia")]
     public float tiempoTranscurrido = 0f;
@@ -179,6 +180,7 @@ public class GameManager : MonoBehaviour
         // --- Tutorial ---
         tutorialCuboCompletado = false;
         tutorialRioCompletado = false;
+        tutorialPuertaCompletado = false;
 
         // --- Recompensas ---
         tedypersistente = false;
