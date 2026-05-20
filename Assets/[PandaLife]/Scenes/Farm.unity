@@ -7919,11 +7919,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07226fc303340fe4784aaa8c320a65d0, type: 3}
---- !u!108 &2035243766 stripped
-Light:
-  m_CorrespondingSourceObject: {fileID: 5073458281472842211, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-  m_PrefabInstance: {fileID: 7259457366179964471}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2041420711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9679,10 +9674,6 @@ PrefabInstance:
       value: Directional Light
       objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: theend
-      value: 
-      objectReference: {fileID: 11400000, guid: a811c6c329786e04486c3c413df129a3, type: 2}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: daytext
       value: 
       objectReference: {fileID: 868316977}
@@ -9691,33 +9682,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1052306877}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: fadeImage
-      value: 
-      objectReference: {fileID: 265086566}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: fadeimage
       value: 
       objectReference: {fileID: 265086566}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: homescene
-      value: 
-      objectReference: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: startangle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: colordawn.b
-      value: 0.28324133
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: colordawn.g
-      value: 0.5284354
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: colordawn.r
-      value: 0.8962264
-      objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: percentage1
       value: 
@@ -9730,10 +9697,6 @@ PrefabInstance:
       propertyPath: percentage3
       value: 
       objectReference: {fileID: 66822358}
-    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
-      propertyPath: directionallight
-      value: 
-      objectReference: {fileID: 2035243766}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: 'elementlistbag.Array.data[0]'
       value: 
