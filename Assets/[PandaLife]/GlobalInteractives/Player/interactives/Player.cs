@@ -39,7 +39,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         ScanInteractables();
-        Debug.Log($"currentTarget: {currentTarget?.GetType().Name ?? "null"}");
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
         // Interactuar con E

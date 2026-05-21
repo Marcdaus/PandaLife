@@ -67,7 +67,8 @@ MonoBehaviour:
   areaID: 
   objecttospawn: {fileID: 2431665166018270156, guid: fcd7b246f80b653459e930b33b9cdb14, type: 3}
   spawnpoint: {fileID: 3466026984341036353}
-  rend: {fileID: 7607851872468640780}
+  rend: {fileID: 0}
+  rend2: {fileID: 0}
   dryMaterial: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
   wateredMaterial: {fileID: 2100000, guid: 0a3786f88738e4e56b6f8ba41ce990f8, type: 2}
   littleParticles: {fileID: 889082442736526860, guid: 19475405bdbe94228978d2f5b23f58f7, type: 3}
@@ -165,6 +166,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 916868dc4df787b44812cf7331b5991a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bcae1cbbc6efadb47af98fe160ef4d0c, type: 2}
     - target: {fileID: 919132149155446097, guid: 916868dc4df787b44812cf7331b5991a, type: 3}
       propertyPath: m_Name
       value: Farming_Area
@@ -181,10 +186,5 @@ PrefabInstance:
 --- !u!4 &895278784192000886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 916868dc4df787b44812cf7331b5991a, type: 3}
-  m_PrefabInstance: {fileID: 857392788978291869}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &7607851872468640780 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7093898160178786449, guid: 916868dc4df787b44812cf7331b5991a, type: 3}
   m_PrefabInstance: {fileID: 857392788978291869}
   m_PrefabAsset: {fileID: 0}
