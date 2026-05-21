@@ -39,6 +39,12 @@ public class SceneChange : Interactuable
         }
         else
         {
+            // Completar el tutorial de puerta y no mostrar más el pin
+            if (!GameManager.instance.tutorialPuertaCompletado)
+            {
+                GameManager.instance.tutorialPuertaCompletado = true;
+                Debug.Log("Tutorial de la puerta completado para esta partida.");
+            }
             GuardarPlatoSueltoSiExiste(limpiarAntes: true);
             SceneManager.LoadScene(scenename.Value);
         }
@@ -46,6 +52,12 @@ public class SceneChange : Interactuable
 
     IEnumerator EsperarParaCargar()
     {
+        // Completar el tutorial de la puerta y no mostrar más el pin
+        if (!GameManager.instance.tutorialPuertaCompletado)
+        {
+            GameManager.instance.tutorialPuertaCompletado = true;
+            Debug.Log("Tutorial de la puerta completado para esta partida.");
+        }
         // Añadir los sueltos sin limpiar, el plato en mano ya está en la lista
         GuardarPlatoSueltoSiExiste(limpiarAntes: false);
         yield return new WaitForSeconds(0.5f);
@@ -59,7 +71,7 @@ public class SceneChange : Interactuable
         Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
         Cauldron cauldron = FindFirstObjectByType<Cauldron>();
 
-        
+
         List<Dish> platosSueltos = new List<Dish>();
         foreach (Dish dish in platos)
         {
@@ -75,16 +87,16 @@ public class SceneChange : Interactuable
         if (limpiarAntes)
             CauldronPersistenceManager.instance.ClearAllDishStates();
 
-        
+
         foreach (Dish dish in platosSueltos)
         {
             GameObject raiz = dish.transform.root.gameObject;
 
-           
+
             bool esPlatoDelCaldero = false;
             if (cauldron != null && cauldron.PlatoPendienteGameObject != null)
             {
-               
+
                 if (raiz == cauldron.PlatoPendienteGameObject.transform.root.gameObject)
                 {
                     esPlatoDelCaldero = true;
@@ -96,17 +108,19 @@ public class SceneChange : Interactuable
             CauldronPersistenceManager.instance.SaveDishState(
                 dish.GetReceta(),
                 raiz.transform.position,
-                inHand: esPlatoDelCaldero 
+                inHand: esPlatoDelCaldero
             );
         }
     }
-    //Ahora se entra con la E
-   /* private void OnTriggerEnter(Collider other)
+    //ahora funciona con la E
+    /*
+    private void OnTriggerEnter(Collider other)
     {
         // Si es el player llama a interactuar
         if (other.CompareTag("Player"))
         {
             Interactuar();
         }
-    }*/
+    }
+    */
 }

@@ -3,12 +3,11 @@ using UnityEngine.AI;
 
 public class Path : MonoBehaviour
 {
-    // Variables
     [SerializeField] Transform[] pathPoints;
 
     NavMeshAgent agent;
 
-    [SerializeField] float waitTime;
+    [SerializeField] float waitTime = 2f;
 
     private float timer = 0f;
 
@@ -16,35 +15,56 @@ public class Path : MonoBehaviour
 
     private Places currentPlace;
 
+    // Animator
+    private Animator animator;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        // Obtener Animator
+        animator = GetComponent<Animator>();
+
         PlacesManager.Initialize(pathPoints);
-        MoveToNextPlace(); // primer movimiento
+
+        MoveToNextPlace();
     }
 
     void Update()
     {
-        // Si llegó al destino y aún no está esperando
-        if (!waiting && !agent.pathPending && agent.remainingDistance <= 0.1f)
+        // Velocidad actual del NavMeshAgent
+        float speed = agent.velocity.magnitude;
+
+        // Enviar velocidad al Animator
+        animator.SetFloat("distance", speed);
+
+        // Si llegó al destino
+        if (!waiting && !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {
-            waiting = true;
-            timer = waitTime; // iniciar temporizador
+            // Comprobar que realmente se ha parado
+            if (agent.velocity.magnitude < 0.1f)
+            {
+                waiting = true;
+                timer = waitTime;
+
+                // Idle
+                animator.SetFloat("distance", 0f);
+            }
         }
 
-        // Si está esperando, descontar tiempo
+        // Espera
         if (waiting)
         {
             timer -= Time.deltaTime;
+
             if (timer <= 0f)
             {
                 waiting = false;
 
-                // Liberar el lugar anterior
+                // Liberar lugar anterior
                 if (currentPlace != null)
                     PlacesManager.FreePlace(currentPlace);
 
-                // Va al siguiente lugar
                 MoveToNextPlace();
             }
         }
@@ -52,10 +72,8 @@ public class Path : MonoBehaviour
 
     void MoveToNextPlace()
     {
-        //Coge y va al siguiente lugar
         currentPlace = PlacesManager.GetNextFreePlace();
-        agent.SetDestination(currentPlace.position.position);
 
-       // Debug.Log($"{agent.name} va a {currentPlace.position.name}");
+        agent.SetDestination(currentPlace.position.position);
     }
 }

@@ -54,7 +54,7 @@ Light:
     m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.4
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -134,17 +134,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89bc6301325ea84db26befc14487875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  homeScene: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
-  theEnd: {fileID: 11400000, guid: a811c6c329786e04486c3c413df129a3, type: 2}
-  isInto: 0
-  startangle: -10
-  endangle: 200
+  homescene: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
+  theend: {fileID: 11400000, guid: a811c6c329786e04486c3c413df129a3, type: 2}
+  isinto: 0
+  ingameover: 0
+  startangle: 30
+  endangle: 180
   starthour: 8
   endhour: 21
   durationinminuts: 5
   clocktext: {fileID: 0}
   daytext: {fileID: 0}
-  fadeImage: {fileID: 0}
+  fadeimage: {fileID: 0}
   elementlistbag:
   - {fileID: 0}
   - {fileID: 0}
@@ -156,11 +157,11 @@ MonoBehaviour:
   percentage1: {fileID: 0}
   percentage2: {fileID: 0}
   percentage3: {fileID: 0}
-  luzDireccional: {fileID: 5073458281472842211}
-  horaFinAmanecer: 10
-  horaInicioAtardecer: 17
-  horaInicioNoche: 20
-  colorAmanecer: {r: 1, g: 0.6, b: 0.2, a: 1}
-  colorDia: {r: 1, g: 0.957, b: 0.839, a: 1}
-  colorAtardecer: {r: 1, g: 0.4, b: 0, a: 1}
-  colorNoche: {r: 0.1, g: 0.1, b: 0.2, a: 1}
+  directionallight: {fileID: 5073458281472842211}
+  timefindawn: 10
+  timeendsunset: 17
+  timeendnight: 20
+  colordawn: {r: 0.8962264, g: 0.5284354, b: 0.28324133, a: 1}
+  colorday: {r: 1, g: 0.957, b: 0.839, a: 1}
+  colorsunset: {r: 1, g: 0.4, b: 0, a: 1}
+  colornight: {r: 0.1, g: 0.1, b: 0.2, a: 1}
