@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Radio : MonoBehaviour, IInteractuable
+public class Radio : Interactuable
 {
-   public void Interactuar(){}
+   public override void Interactuar(){}
 }
