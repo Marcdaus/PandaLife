@@ -102,8 +102,9 @@ public class Player : MonoBehaviour
             else if (CanInteractWithMiniPanda()) anim.SetTrigger("PickUp"); // Alimentar
             else anim.SetTrigger("PickUp"); // Animación genérica
         }
-        else if (currentTarget is Radio)
+        else if (currentTarget is Radio radio)
         {
+            radio.PlayNotas();
             anim.SetTrigger("Macarena");
         }
         else
