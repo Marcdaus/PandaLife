@@ -9,6 +9,9 @@ public class Minipandas : Interactuable
     [SerializeField] private int indicePanda; // 0, 1 o 2
     [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("Bamboo", "Uchuva", etc.)
     [SerializeField] private float porcentajecalmado;
+    [SerializeField] Transform spawnpoint; 
+    [SerializeField] private ParticleSystem eatingParticles;
+    private ParticleSystem eatingParticlesInstance;
     private Animator animator;
 
     void Awake()
@@ -57,6 +60,7 @@ public class Minipandas : Interactuable
             }
             int saciedad = dish.GetSaciedad();
             animator.SetTrigger("eating");
+            SpawEatingParticles();
 
             // Comprobamos si el plato tiene lo que el panda quiere
             if (!string.IsNullOrEmpty(pedidoDeseado) && !dish.TieneIngrediente(pedidoDeseado))
@@ -106,5 +110,10 @@ public class Minipandas : Interactuable
         {
             pedidoDeseado = pedidos[indicePanda];
         }
+    }
+
+    private void SpawEatingParticles()
+    {
+        eatingParticlesInstance = Instantiate(eatingParticles, spawnpoint.position, Quaternion.identity);
     }
 }
