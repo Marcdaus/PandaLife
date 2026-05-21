@@ -9,10 +9,10 @@ public class Minipandas : Interactuable
     [SerializeField] private int indicePanda; // 0, 1 o 2
     [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("Bamboo", "Uchuva", etc.)
     [SerializeField] private float porcentajecalmado;
-    [SerializeField] Transform spawnpoint; 
+   [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private ParticleSystem eatingParticles;
     private ParticleSystem eatingParticlesInstance;
-    private Animator animator;
+     private Animator animator;
 
     void Awake()
     {
@@ -115,8 +115,13 @@ public class Minipandas : Interactuable
 
     private void SpawEatingParticles(Color color)
     {
-        eatingParticlesInstance = Instantiate(eatingParticles, spawnpoint.position, Quaternion.identity);
-        var main = eatingParticlesInstance.main;
+    foreach (Transform point in spawnPoints)
+    {
+        ParticleSystem instance =
+            Instantiate(eatingParticles, point.position, Quaternion.identity, point);
+
+        var main = instance.main;
         main.startColor = color;
+    }
     }
 }
