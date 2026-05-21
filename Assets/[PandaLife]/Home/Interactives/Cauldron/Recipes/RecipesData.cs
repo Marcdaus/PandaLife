@@ -16,4 +16,5 @@ public class RecipesData : ScriptableObject
     public int saciedad;
     public int tiempopreparacion;
     public GameObject prefabResultado;
+    public Color colormigajas;
 }

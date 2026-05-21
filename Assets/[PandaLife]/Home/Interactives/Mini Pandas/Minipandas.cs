@@ -60,7 +60,8 @@ public class Minipandas : Interactuable
             }
             int saciedad = dish.GetSaciedad();
             animator.SetTrigger("eating");
-            SpawEatingParticles();
+            SpawEatingParticles(dish.GetColor());
+            Debug.Log(dish.GetColor());
 
             // Comprobamos si el plato tiene lo que el panda quiere
             if (!string.IsNullOrEmpty(pedidoDeseado) && !dish.TieneIngrediente(pedidoDeseado))
@@ -112,8 +113,10 @@ public class Minipandas : Interactuable
         }
     }
 
-    private void SpawEatingParticles()
+    private void SpawEatingParticles(Color color)
     {
         eatingParticlesInstance = Instantiate(eatingParticles, spawnpoint.position, Quaternion.identity);
+        var main = eatingParticlesInstance.main;
+        main.startColor = color;
     }
 }

@@ -10,12 +10,13 @@ public class Dish : MonoBehaviour
     private int bamburojo;
     private int arandano;
     private int bayauchuva;
+    private Color colormigajas;
 
     public RecipesData GetReceta() => receta;
     public void Initialize(RecipesData data)
     {
         receta = data;
-
+        colormigajas = data.colormigajas;
         saciedad = data.saciedad;
 
         bambuverde = data.bambuverde;
@@ -52,6 +53,11 @@ public class Dish : MonoBehaviour
         if (nombreIngrediente == "Uchuva" && bayauchuva > 0) return true;
 
         return false;
+    }
+
+    public Color GetColor()
+    {
+        return colormigajas;
     }
 
 }
