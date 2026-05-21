@@ -15267,6 +15267,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8141857047674934764, guid: 28009ed4add65cc429702a10cb302399, type: 3}
   m_PrefabInstance: {fileID: 1483126789}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1490010795 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5001625009726263114, guid: 5e38ad902722c0e4a87e762df70af55c, type: 3}
+  m_PrefabInstance: {fileID: 4235124895629241780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1503270492
 GameObject:
   m_ObjectHideFlags: 0
@@ -32377,6 +32382,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 522538937}
     - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
+      propertyPath: waterRenderer
+      value: 
+      objectReference: {fileID: 1490010795}
+    - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
       propertyPath: worldbarpanel
       value: 
       objectReference: {fileID: 0}
@@ -32384,6 +32393,18 @@ PrefabInstance:
       propertyPath: worldpanelbar
       value: 
       objectReference: {fileID: 1513834332}
+    - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
+      propertyPath: defaultWater.b
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
+      propertyPath: defaultWater.g
+      value: 0.41568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
+      propertyPath: defaultWater.r
+      value: 0.3254902
+      objectReference: {fileID: 0}
     - target: {fileID: 7742452174653540030, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
       propertyPath: smokeparticles
       value: 
