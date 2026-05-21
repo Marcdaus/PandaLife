@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         else
         {
             // Demás objetos interactuables
-            anim.SetTrigger("PickUp");
+            anim.SetTrigger("Interactuar");
         }
     }
 
