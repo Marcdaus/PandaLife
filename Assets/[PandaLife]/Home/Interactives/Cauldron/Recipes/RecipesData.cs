@@ -5,6 +5,7 @@ public class RecipesData : ScriptableObject
 {
     public string nombrereceta;
     public int diadesbloqueado;
+    [SerializeField] public Color colorAgua;
 
     [Header("Ingredientes")]
     public int bambuverde;
