@@ -1,32 +1,25 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
-using System.Linq;
 
 public class BarraManager : MonoBehaviour
 {
-    //Variables de Singleton
     private static BarraManager _instancia;
     public static BarraManager Instancia => _instancia;
 
-    //Variables de hambre
     public float hungerMaxValue = 100f;
     public float hungerChangeRate = 0.5f;
 
-    //Variables de ira
     public float rageMaxValue = 100f;
     public float rageChangeRate = 0.5f;
 
-    // Diccionarios para almacenar valores de hambre e ira por panda, y estados de ira
     public Dictionary<string, float> hungerValues = new();
     public Dictionary<string, float> rageValues = new();
     public Dictionary<string, bool> rageStates = new();
 
-    // Flags de control
-    public bool sceneLoaded = false; // Evita recargas múltiples
-    public bool comingFromGameOver = false; // Flag para reinicio
-    public bool hungerPaused = false; // Flag global para pausar hambre
-
+    public bool sceneLoaded = false;
+    public bool comingFromGameOver = false;
+    public bool hungerPaused = false;
     public bool isResetting = false;
 
     private void Awake()
@@ -35,7 +28,6 @@ public class BarraManager : MonoBehaviour
         {
             _instancia = this;
             DontDestroyOnLoad(gameObject);
-           
         }
         else
         {
@@ -43,13 +35,25 @@ public class BarraManager : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
-        
         CheckRage();
-
     }
+
+    public void ResetSceneState()
+    {
+        sceneLoaded = false;
+        isResetting = true;
+
+        // 🔥 IMPORTANTE: reset visual indirecto
+        Invoke(nameof(EndResetFlag), 0.2f);
+    }
+
+    private void EndResetFlag()
+    {
+        isResetting = false;
+    }
+
     public void CheckRage()
     {
         if (sceneLoaded) return;
@@ -62,37 +66,24 @@ public class BarraManager : MonoBehaviour
         foreach (var panda in pandas)
         {
             if (panda.IsRageActivated)
-            {
                 ragingCount++;
-                
-            }
         }
 
-        // Todos en estado de ira
         if (ragingCount == 3)
         {
             sceneLoaded = true;
-            comingFromGameOver = false;
-            Debug.Log("GAME OVER: Los 3 pandas están en ira");
             SceneManager.LoadScene("GameOver");
             return;
         }
 
-      //Uno en ira la máximo
         foreach (var value in rageValues.Values)
         {
             if (value >= rageMaxValue)
             {
                 sceneLoaded = true;
-                comingFromGameOver = false;
-                Debug.Log("GAME OVER: Un panda llegó a ira máxima");
                 SceneManager.LoadScene("GameOver");
-                return; 
+                return;
             }
         }
     }
 }
-
-
-
-

@@ -14,10 +14,11 @@ public class RageSystem : BarSystem
     [SerializeField] private Sprite calmFace;
     [SerializeField] private Sprite rageFace;
 
-    [SerializeField] private GameObject calmModelFace;
-    [SerializeField] private GameObject rageModelFace;
-
     [SerializeField] private ParticleStateController particlecontroller;
+
+    // =========================
+    // START (FIX CLAVE)
+    // =========================
 
     void Start()
     {
@@ -33,12 +34,22 @@ public class RageSystem : BarSystem
             }
         }
 
-        UpdateUI();
-        UpdateColors();
+        currentState = RageState.None;
+
+        if (isActive)
+        {
+            UpdateUI();
+            UpdateColors();
+        }
     }
+
+    // =========================
+    // ACTIVATE
+    // =========================
 
     public void ActivateRage(Slider sharedBar, Image sharedFill)
     {
+      
         bar = sharedBar;
         fillImage = sharedFill;
 
@@ -55,21 +66,47 @@ public class RageSystem : BarSystem
             changeRate = manager.rageChangeRate;
         }
 
-        currentState = RageState.None; // Forzar actualización de partículas al activar la ira
+        currentState = RageState.None;
+
         Activate();
+
+        UpdateUI();
         UpdateColors();
     }
 
+    // =========================
+    // UPDATE VALUE
+    // =========================
+
     protected override void UpdateValue()
     {
-        currentValue += changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
+        currentValue +=
+            changeRate *
+            Time.deltaTime *
+            GameManager.instance.barmultiplicator;
+
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
     }
+
+    // =========================
+    // UPDATE
+    // =========================
+
+    protected override void Update()
+    {
+        if (isActive)
+            UpdateSystem();
+    }
+
+    // =========================
+    // VISUAL LOGIC
+    // =========================
 
     protected override void UpdateColors()
     {
         float percentage = (currentValue / maxValue) * 100f;
 
+        // CALM
         if (percentage < 50f)
         {
             if (fillImage != null)
@@ -78,15 +115,15 @@ public class RageSystem : BarSystem
             if (indicatorImage != null)
                 indicatorImage.sprite = calmFace;
 
-            SetModelFace(calmModelFace);
-
             if (currentState != RageState.Calm)
             {
                 currentState = RageState.Calm;
+
                 if (particlecontroller != null)
                     particlecontroller.Sad();
             }
         }
+        // ANGRY
         else
         {
             if (fillImage != null)
@@ -95,45 +132,38 @@ public class RageSystem : BarSystem
             if (indicatorImage != null)
                 indicatorImage.sprite = rageFace;
 
-            SetModelFace(rageModelFace);
-
             if (currentState != RageState.Angry)
             {
                 currentState = RageState.Angry;
+
                 if (particlecontroller != null)
                     particlecontroller.Angry();
             }
         }
     }
 
-    private void SetModelFace(GameObject activeFace)
-    {
-        if (calmModelFace != null)
-            calmModelFace.SetActive(false);
-
-        if (rageModelFace != null)
-            rageModelFace.SetActive(false);
-
-        if (activeFace != null)
-            activeFace.SetActive(true);
-    }
-
-    protected override void Update()
-    {
-        if (isActive)
-            UpdateSystem();
-    }
+    // =========================
+    // SAVE
+    // =========================
 
     void LateUpdate()
     {
         if (BarraManager.Instancia != null && pandaID != "")
+        {
             BarraManager.Instancia.rageValues[pandaID] = currentValue;
+        }
     }
+
+    // =========================
+    // ACTIONS
+    // =========================
 
     public void ReducirIraPorcentaje(float porcentaje)
     {
         float reduction = (porcentaje / 100f) * maxValue;
+
         currentValue -= reduction;
+
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
         UpdateUI();
@@ -149,5 +179,8 @@ public class RageSystem : BarSystem
 
         if (bar != null)
             bar.value = 0f;
+
+        if (particlecontroller != null)
+            particlecontroller.ResetVisuals(); // 🔥 IMPORTANTE
     }
 }

@@ -659,6 +659,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6105317062622485261, guid: d6f47a7b6f219124196274f7187ba035, type: 3}
   m_PrefabInstance: {fileID: 177911868}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179191975 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2546767604786421743, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182823807
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,6 +1833,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e1dddd77990b3e4186925e4ed2f7ced, type: 3}
+--- !u!1 &604475620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6044236065548244319, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &609768539 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2978422852756290379, guid: 33d6aa435caa3274ebe39029285d3d30, type: 3}
@@ -1967,19 +1977,19 @@ PrefabInstance:
       objectReference: {fileID: 1163692516}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: sadsize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: angrysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: happysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: hungrysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: sadmaterial
@@ -1990,13 +2000,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d86e1ed90378ccd46b6d67e59b9b2a20, type: 2}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: calmmodelface
+      value: 
+      objectReference: {fileID: 1264301652}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: happymaterial
       value: 
       objectReference: {fileID: 2100000, guid: d95afd70a563a894a9e86b596d8195f0, type: 2}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: ragemodelface
+      value: 
+      objectReference: {fileID: 921254744}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: happymodelface
+      value: 
+      objectReference: {fileID: 1618367658}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: hungrymaterial
       value: 
       objectReference: {fileID: 2100000, guid: 163395b722953f84d89579b20d7e9675, type: 2}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: hungrymodelface
+      value: 
+      objectReference: {fileID: 2084564923}
+    - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: normalmodelface
+      value: 
+      objectReference: {fileID: 236657238}
     - target: {fileID: 5026451646859272243, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: particlesystemref
       value: 
@@ -2321,6 +2351,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+--- !u!1 &729316917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3433775814892985798, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &735032889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2978422852756290379, guid: 33d6aa435caa3274ebe39029285d3d30, type: 3}
@@ -2524,6 +2559,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8519967859235286640, guid: d96fd226bbb8ec04d87dde5918994295, type: 3}
   m_PrefabInstance: {fileID: 3306383955225848754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &836697235 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5714390843602333898, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &836824811
 GameObject:
@@ -9432,6 +9472,11 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1288838917 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1522129146087048461, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1294485015
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14935,6 +14980,42 @@ PrefabInstance:
       propertyPath: 'pathPoints.Array.data[8]'
       value: 
       objectReference: {fileID: 1163692516}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: sadsize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: angrysize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happysize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungrysize
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: calmmodelface
+      value: 
+      objectReference: {fileID: 604475620}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: ragemodelface
+      value: 
+      objectReference: {fileID: 1288838917}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happymodelface
+      value: 
+      objectReference: {fileID: 179191975}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungrymodelface
+      value: 
+      objectReference: {fileID: 729316917}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: normalmodelface
+      value: 
+      objectReference: {fileID: 836697235}
     - target: {fileID: 3006752344759472490, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_Name
       value: DarkMiniPanda
@@ -20755,19 +20836,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: sadsize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: angrysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: happysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: hungrysize
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: sadmaterial
@@ -20778,13 +20859,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: d86e1ed90378ccd46b6d67e59b9b2a20, type: 2}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: calmmodelface
+      value: 
+      objectReference: {fileID: 1168653662}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: happymaterial
       value: 
       objectReference: {fileID: 2100000, guid: d95afd70a563a894a9e86b596d8195f0, type: 2}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: ragemodelface
+      value: 
+      objectReference: {fileID: 1481057288}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: happymodelface
+      value: 
+      objectReference: {fileID: 219022103}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: hungrymaterial
       value: 
       objectReference: {fileID: 2100000, guid: 163395b722953f84d89579b20d7e9675, type: 2}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: hungrymodelface
+      value: 
+      objectReference: {fileID: 659497170}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: normalmodelface
+      value: 
+      objectReference: {fileID: 902564372}
     - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: particlesystemref
       value: 

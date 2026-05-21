@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ParticleStateController : MonoBehaviour
 {
+    [Header("Particles")]
     [SerializeField] private ParticleSystem particlesystemref;
 
     [SerializeField] private Material happymaterial;
@@ -14,78 +15,122 @@ public class ParticleStateController : MonoBehaviour
     [SerializeField] private float angrysize = 0.8f;
     [SerializeField] private float sadsize = 0.4f;
 
+    [Header("Faces")]
+    [SerializeField] private GameObject happymodelface;
+    [SerializeField] private GameObject normalmodelface;
+    [SerializeField] private GameObject hungrymodelface;
+    [SerializeField] private GameObject calmmodelface;
+    [SerializeField] private GameObject ragemodelface;
+
     private ParticleSystemRenderer particlerenderer;
 
     private void Awake()
     {
         if (particlesystemref == null)
-        {
             particlesystemref = GetComponent<ParticleSystem>();
-        }
 
         if (particlesystemref != null)
-        {
             particlerenderer = particlesystemref.GetComponent<ParticleSystemRenderer>();
-        }
+
+        ResetVisuals(); // 🔥 CLAVE REAL
     }
+
+    // =========================
+    // STATES
+    // =========================
 
     public void Happy()
     {
-        ApplyState(happymaterial, happysize);
+        DisableAllFaces();
+        if (happymodelface) happymodelface.SetActive(true);
+        Apply(happymaterial, happysize);
+    }
+
+    public void Normal()
+    {
+        DisableAllFaces();
+        if (normalmodelface) normalmodelface.SetActive(true);
+        StopParticles();
     }
 
     public void Hungry()
     {
-        ApplyState(hungrymaterial, hungrysize);
-    }
-
-    public void Angry()
-    {
-        ApplyState(angrymaterial, angrysize);
+        DisableAllFaces();
+        if (hungrymodelface) hungrymodelface.SetActive(true);
+        Apply(hungrymaterial, hungrysize);
     }
 
     public void Sad()
     {
-        ApplyState(sadmaterial, sadsize);
+        DisableAllFaces();
+        if (calmmodelface) calmmodelface.SetActive(true);
+        Apply(sadmaterial, sadsize);
     }
 
-    private void ApplyState(Material material, float size)
+    public void Angry()
     {
-        if (particlesystemref == null || particlerenderer == null)
-        {
-            Debug.LogWarning("No hay ParticleSystem asignado.");
-            return;
-        }
+        DisableAllFaces();
+        if (ragemodelface) ragemodelface.SetActive(true);
+        Apply(angrymaterial, angrysize);
+    }
 
-        // Detener de forma limpia antes de cambiar propiedades visuales
+    // =========================
+    // CORE
+    // =========================
+
+    private void Apply(Material mat, float size)
+    {
+        if (!particlesystemref || !particlerenderer) return;
+
         particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
 
-        // Cambiar material
-        particlerenderer.material = material;
+        particlerenderer.material = mat;
 
-        // Cambiar tamaño de partículas
         var main = particlesystemref.main;
         main.startSize = size;
 
-        // Volver a reproducir el nuevo estado
         particlesystemref.Play();
     }
 
-    public void PauseParticles()
+    private void DisableAllFaces()
     {
-        if (particlesystemref == null) return;
-        particlesystemref.Pause();
-    }
-
-    public void ResumeParticles()
-    {
-        if (particlesystemref == null) return;
-        particlesystemref.Play();
+        if (happymodelface) happymodelface.SetActive(false);
+        if (normalmodelface) normalmodelface.SetActive(false);
+        if (hungrymodelface) hungrymodelface.SetActive(false);
+        if (calmmodelface) calmmodelface.SetActive(false);
+        if (ragemodelface) ragemodelface.SetActive(false);
     }
 
     public void StopParticles()
     {
         if (particlesystemref == null) return;
+
         particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    }
+
+    public void ClearAll()
+    {
+        DisableAllFaces();
+        StopParticles();
+        particlesystemref.Clear(true);
+    }
+
+    public void ResetVisuals()
+    {
+        if (!particlesystemref) return;
+
+        particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        particlesystemref.Clear(true);
+
+        var main = particlesystemref.main;
+        main.startSize = 0.3f;
+
+        if (particlerenderer)
+        {
+            particlerenderer.material = null;
+            particlerenderer.trailMaterial = null;
+        }
+
+        DisableAllFaces();
     }
 }

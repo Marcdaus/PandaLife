@@ -20,10 +20,6 @@ public class HungerSystem : BarSystem
     private Color normalbarcolor = Color.yellow;
     private Color hungrybarcolor = Color.red;
 
-    [SerializeField] private GameObject happyModelFace;
-    [SerializeField] private GameObject normalModelFace;
-    [SerializeField] private GameObject angryModelFace;
-
     [SerializeField] private ParticleStateController particlecontroller;
 
     private bool ispaused = false;
@@ -32,6 +28,8 @@ public class HungerSystem : BarSystem
 
     void Start()
     {
+        currentState = PandaState.None;
+
         if (BarraManager.Instancia != null && pandaID != "")
         {
             var manager = BarraManager.Instancia;
@@ -54,7 +52,9 @@ public class HungerSystem : BarSystem
         if (rageactivated && rageSystem != null)
         {
             currentState = PandaState.Rage;
-            ClearHungerFaces();
+
+            particlecontroller?.ClearAll();
+
             Deactivate();
 
             rageSystem.ActivateRage(bar, fillImage);
@@ -68,10 +68,11 @@ public class HungerSystem : BarSystem
 
             if (barraUI != null)
                 barraUI.SetHunger(this);
+
+            RefreshVisuals();
         }
 
         UpdateUI();
-        RefreshVisuals();
     }
 
     protected override void Update()
@@ -82,24 +83,31 @@ public class HungerSystem : BarSystem
 
     protected override void UpdateValue()
     {
-        bool globalPause = BarraManager.Instancia != null && BarraManager.Instancia.hungerPaused;
+        bool globalPause =
+            BarraManager.Instancia != null &&
+            BarraManager.Instancia.hungerPaused;
 
         if (!ispaused && !globalPause)
         {
-            currentValue -= changeRate * Time.deltaTime * GameManager.instance.barmultiplicator;
+            currentValue -=
+                changeRate *
+                Time.deltaTime *
+                GameManager.instance.barmultiplicator;
+
             currentValue = Mathf.Clamp(currentValue, 0, maxValue);
         }
 
+        // ENTRAR EN RAGE
         if (rageSystem != null && !rageactivated && currentValue <= 0)
         {
             rageactivated = true;
+
             currentState = PandaState.Rage;
+
             Deactivate();
 
-            ClearHungerFaces();
-
             if (particlecontroller != null)
-                particlecontroller.StopParticles();
+                particlecontroller.ClearAll();
 
             rageSystem.ActivateRage(bar, fillImage);
 
@@ -121,68 +129,70 @@ public class HungerSystem : BarSystem
 
     protected override void UpdateColors()
     {
+        // RAGE CONTROLA TODO
         if (rageactivated) return;
 
         float percentage = (currentValue / maxValue) * 100f;
 
+        // HAMBRIENTO
         if (percentage < 50f)
         {
-            if (fillImage != null) fillImage.color = hungrybarcolor;
-            if (indicatorImage != null) indicatorImage.sprite = angryFace;
-            SetModelFace(angryModelFace);
+            if (fillImage != null)
+                fillImage.color = hungrybarcolor;
+
+            if (indicatorImage != null)
+                indicatorImage.sprite = angryFace;
 
             if (currentState != PandaState.Hungry)
             {
                 currentState = PandaState.Hungry;
-                if (particlecontroller != null) particlecontroller.Hungry();
+
+                if (particlecontroller != null)
+                    particlecontroller.Hungry();
             }
         }
+        // NORMAL
         else if (percentage < 80f)
         {
-            if (fillImage != null) fillImage.color = normalbarcolor;
-            if (indicatorImage != null) indicatorImage.sprite = normalFace;
-            SetModelFace(normalModelFace);
+            if (fillImage != null)
+                fillImage.color = normalbarcolor;
+
+            if (indicatorImage != null)
+                indicatorImage.sprite = normalFace;
 
             if (currentState != PandaState.Normal)
             {
                 currentState = PandaState.Normal;
-                if (particlecontroller != null) particlecontroller.StopParticles();
+
+                if (particlecontroller != null)
+                    particlecontroller.Normal();
             }
         }
+        // FELIZ
         else
         {
-            if (fillImage != null) fillImage.color = satisfiedbarcolor;
-            if (indicatorImage != null) indicatorImage.sprite = happyFace;
-            SetModelFace(happyModelFace);
+            if (fillImage != null)
+                fillImage.color = satisfiedbarcolor;
+
+            if (indicatorImage != null)
+                indicatorImage.sprite = happyFace;
 
             if (currentState != PandaState.Happy)
             {
                 currentState = PandaState.Happy;
-                if (particlecontroller != null) particlecontroller.Happy();
+
+                if (particlecontroller != null)
+                    particlecontroller.Happy();
             }
         }
-    }
-
-    private void SetModelFace(GameObject activeFace)
-    {
-        if (happyModelFace != null) happyModelFace.SetActive(false);
-        if (normalModelFace != null) normalModelFace.SetActive(false);
-        if (angryModelFace != null) angryModelFace.SetActive(false);
-
-        if (activeFace != null) activeFace.SetActive(true);
-    }
-
-    private void ClearHungerFaces()
-    {
-        if (happyModelFace != null) happyModelFace.SetActive(false);
-        if (normalModelFace != null) normalModelFace.SetActive(false);
-        if (angryModelFace != null) angryModelFace.SetActive(false);
     }
 
     public void Restaurar(float cantidad)
     {
         float amount = (cantidad / 100f) * maxValue;
+
         currentValue += amount;
+
         currentValue = Mathf.Clamp(currentValue, 0, maxValue);
 
         RefreshVisuals();
@@ -196,7 +206,9 @@ public class HungerSystem : BarSystem
     private System.Collections.IEnumerator PauseRoutine(float seconds)
     {
         ispaused = true;
+
         yield return new WaitForSeconds(seconds);
+
         ispaused = false;
     }
 
@@ -205,15 +217,20 @@ public class HungerSystem : BarSystem
         if (rageactivated)
         {
             currentValue = 0f;
-            if (rageSystem != null) rageSystem.ResetSystem();
+
+            if (rageSystem != null)
+                rageSystem.ResetSystem();
         }
         else
         {
             currentValue = maxValue;
-            if (rageSystem != null) rageSystem.ResetSystem();
+
+            if (rageSystem != null)
+                rageSystem.ResetSystem();
         }
 
         currentState = PandaState.None;
+
         RefreshVisuals();
     }
 
