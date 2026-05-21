@@ -36,6 +36,11 @@ public class MenuCauldron : MonoBehaviour
     [Header("cursor")]
     private CursorManager cursorManager;
 
+    [Header("Water Shader")]
+    [SerializeField] private Renderer waterRenderer;
+    private string colorPropertyName = "_MainColor";
+    [SerializeField] private Color defaultWater;
+
     private void Awake()
     {
         cursorManager = Object.FindFirstObjectByType<CursorManager>();
@@ -137,6 +142,7 @@ public class MenuCauldron : MonoBehaviour
         GameManager.instance.sumarBambu(-recipe.arandano, 2);
         GameManager.instance.sumarBambu(-recipe.bayauchuva, 4);
 
+        SetWaterColor(recipe.colorAgua);
         StartCoroutine(Cooking(recipe, 0f));
     }
 
@@ -170,6 +176,9 @@ public class MenuCauldron : MonoBehaviour
             progressbar.value = progreso;
             worldprogressbar.value = progreso;
 
+            Color colorActual = Color.Lerp(defaultWater, receta.colorAgua, progreso);
+            SetWaterColor(colorActual);
+
             if (smokeparticles != null)
             {
                 mainModule.startSize = Mathf.Lerp(normalsmokesize, cookingsmokesize, progreso);
@@ -199,10 +208,26 @@ public class MenuCauldron : MonoBehaviour
         foreach (RecipeCard tarjeta in tarjetas) tarjeta.CheckUnblock();
         worldpanelbar.SetActive(false);
 
-        yield return new WaitForSeconds(2f);
-        panelcooking.SetActive(false);
-        //worldpanelbar.SetActive(false);
+        //desvanecer suavemete el color del agua de vuelta al default
+        float tiempoDesvanecer = 0f;
+        float duracionDesvanecer = 2f; // Coincide con el tiempo del WaitForSeconds anterior
+        Color colorFinalCoccion = receta.colorAgua;
 
+        while (tiempoDesvanecer < duracionDesvanecer)
+        {
+            tiempoDesvanecer += Time.deltaTime;
+            float progresoDesvanecer = tiempoDesvanecer / duracionDesvanecer;
+
+            Color colorHaciaDefecto = Color.Lerp(colorFinalCoccion, defaultWater, progresoDesvanecer);
+            SetWaterColor(colorHaciaDefecto);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2f);
+
+        SetWaterColor(defaultWater);
+        panelcooking.SetActive(false);
     }
 
     private void FinishCookingInstant(RecipesData receta)
@@ -215,7 +240,7 @@ public class MenuCauldron : MonoBehaviour
 
         ResetSmokeSize();
         ResetBubbleEmission();
-
+        SetWaterColor(defaultWater);
     }
 
     private void ResetSmokeSize()
@@ -250,5 +275,11 @@ public class MenuCauldron : MonoBehaviour
     {
         foreach (RecipeCard tarjeta in tarjetas)
             tarjeta.CheckUnblock();
+    }
+
+    private void SetWaterColor(Color color)
+    {
+        if (waterRenderer != null)
+            waterRenderer.material.SetColor(colorPropertyName, color);
     }
 }

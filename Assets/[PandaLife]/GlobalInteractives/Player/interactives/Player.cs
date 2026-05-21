@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
+
     [SerializeField] private ParticleSystem waterParticles;
     private void OnDrawGizmos()
     {
@@ -38,12 +39,16 @@ public class Player : MonoBehaviour
     void Update()
     {
         ScanInteractables();
-
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
         // Interactuar con E
         if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
+            if (ShouldShakeHead())
+            {
+                ShakeHead();
+                return;
+            }
             // Decidimos que animacion toca
             TriggerInteractionAnimation();
         }
@@ -61,8 +66,15 @@ public class Player : MonoBehaviour
 
         if (currentTarget is River && IsHoldingBucket())
         {
-            collectWater = true;
+            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
+            if (cubo != null && cubo.haswater)
+            {
+                EnableMovement(); // no bloqueamos el movimiento
+                ShakeHead();
+                return;
+            }
 
+            collectWater = true;
             anim.SetTrigger("CollectWater"); // Llenar cubo
         }
         else if (currentTarget is Harvest)
@@ -75,6 +87,12 @@ public class Player : MonoBehaviour
         }
         else if (currentTarget is PickupDrop)
         {
+            if (!IsHandEmpty())
+            {
+                EnableMovement();
+                ShakeHead();
+                return;
+            }
             anim.SetTrigger("PickUp"); // Recoger objetos
         }
         else if (currentTarget is Minipandas panda)
@@ -87,7 +105,7 @@ public class Player : MonoBehaviour
         else
         {
             // Demás objetos interactuables
-            anim.SetTrigger("PickUp");
+            anim.SetTrigger("Interactuar");
         }
     }
 
@@ -132,13 +150,14 @@ public class Player : MonoBehaviour
         }
 
         // 3. Buscar riego solo si no hay cubo ni cosecha
-        if(isinto == false) {
-            if (bucketTarget == null && harvesttarget == null && IsHoldingBucket())
+        if (isinto == false)
+        {
+            if (bucketTarget == null && harvesttarget == null) // quitamos el IsHoldingBucket()
             {
                 foreach (Collider col in detected)
                 {
                     WaterCrop watercrop = col.GetComponentInParent<WaterCrop>();
-                    if (watercrop != null && CanWater(watercrop))
+                    if (watercrop != null) // quitamos el CanWater()
                     {
                         watertarget = watercrop;
                         break;
@@ -162,12 +181,12 @@ public class Player : MonoBehaviour
             }
 
             // Prioridad 2: plato en el suelo
-            if (othertarget == null && IsHandEmpty())
+            if (othertarget == null)
             {
                 foreach (Collider col in detected)
                 {
                     PickupDrop pickup = col.GetComponentInParent<PickupDrop>();
-                    if (pickup != null && pickup.GetComponent<BucketWater>() == null)
+                    if (pickup != null && pickup.GetComponent<BucketWater>() == null && pickup != pickedobject)
                     {
                         othertarget = pickup;
                         break;
@@ -189,7 +208,15 @@ public class Player : MonoBehaviour
                         if (IsHoldingBucket() && !(interactuable is River))
                             continue;
                         if (interactuable is River && !IsHoldingBucket())
+                        {
+                            { }
+                            if (interactuable is PickupDrop)
+                            {
+                                othertarget = interactuable;
+                                break;
+                            }
                             continue;
+                        }
                         if (interactuableComp != null)
                         {
                             FarmingArea area = interactuableComp.GetComponent<FarmingArea>();
@@ -224,7 +251,13 @@ public class Player : MonoBehaviour
         else if (watertarget != null)
         {
             currentTarget = watertarget;
-            currentActionText = "regar";
+            // Mostrar texto según si puedes o no regar
+            if (!IsHoldingBucket())
+                currentActionText = "necesitas el cubo";
+            else if (!pickedobject.GetComponent<BucketWater>().haswater)
+                currentActionText = "el cubo está vacío";
+            else
+                currentActionText = "regar";
         }
         else if (othertarget != null)
         {
@@ -486,6 +519,8 @@ public void Drop()
     // Función para que vuelva a moverse (Mi gente llamad esto en un evento al final de cada animación)
     public void EnableMovement()
     {
+        
+    Debug.Log("EnableMovement llamado");
         if (GetComponent<movement>() != null)
         {
             GetComponent<movement>().enabled = true;
@@ -512,5 +547,65 @@ public void Drop()
         {
             waterParticles.Stop();
         }
+    }
+
+    //-----------------------------
+    public void ShakeHead()
+    {
+        Debug.Log("ShakeHead llamado");
+        DisableMovement();
+        anim.SetTrigger("ShakeHead");
+    }
+
+    bool ShouldShakeHead()
+    {
+        // Intentar coger algo con mano llena
+        if (!IsHandEmpty() && (currentTarget is BucketWater || currentTarget is PickupDrop))
+            return true;
+
+        // Intentar rellenar cubo ya lleno
+        if (currentTarget is River && IsHoldingBucket())
+        {
+            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
+            if (cubo != null && cubo.haswater) return true;
+        }
+
+        // Intentar regar sin cubo, o con cubo vacío, o planta ya regada
+        if (currentTarget is WaterCrop watercrop)
+        {
+            if (!IsHoldingBucket()) return true;
+            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
+            if (cubo == null || !cubo.haswater) return true;
+
+            // Planta ya regada o lista para cosechar
+            Crop crop = watercrop.GetComponent<Crop>();
+            if (crop != null && crop.IsWatered) return true;
+            if (crop != null && crop.IsHarvestable()) return true;
+
+        }
+
+        if (currentTarget is Plant) {
+            if (IsHandEmpty()) return true;
+        }
+
+        if(currentTarget is Harvest && !IsHandEmpty()) return true;
+
+        if (currentTarget is Cauldron && !IsHandEmpty()) return true;
+
+        if(currentTarget is Minipandas panda)
+        {
+            HungerSystem hunger= panda.GetComponent<HungerSystem>();
+            if(hunger!=null && !hunger.IsRageActivated)
+            {
+                if (IsHandEmpty()) return true;
+            }
+
+            if(hunger!=null && hunger.IsRageActivated)
+            {
+                if(!IsHandEmpty()) return true;
+            }
+        }
+
+        return false;
     }
 }

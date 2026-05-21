@@ -10,6 +10,10 @@ public class movement : MonoBehaviour
     {
       controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.keepAnimatorStateOnDisable = false;
+        }
     }
     void Update()
     {
