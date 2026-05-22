@@ -6,7 +6,7 @@ public class CanvaRewardManager : MonoBehaviour
     [SerializeField] private Animator anim;
 
     [Header("Tiempos de Espera (Duración de la animación)")]
-    [SerializeField] private float tiempoEsperaAnimacion = 3.0f;
+    [SerializeField] private float tiempoEsperaAnimacion = 4.0f;
 
     private void Start()
     {
