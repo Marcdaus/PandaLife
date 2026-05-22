@@ -26,6 +26,15 @@
         },
         {
             "m_Id": "9e68295c0a77484991acd525a7816ef8"
+        },
+        {
+            "m_Id": "26af06681abd4da1b4ccd050ddc4cb56"
+        },
+        {
+            "m_Id": "379571d379f94de3b7f799127c03ca7b"
+        },
+        {
+            "m_Id": "8453eafd1d2d4459885ec2e5cdc38a9c"
         }
     ],
     "m_Keywords": [],
@@ -973,6 +982,34 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "26af06681abd4da1b4ccd050ddc4cb56",
+    "m_Guid": {
+        "m_GuidSerialized": "d702ad0d-e2f1-4c43-8cb5-03f4c0552a11"
+    },
+    "m_Name": "speed",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "speed",
+    "m_DefaultReferenceName": "_speed",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "x": 0.5,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "285a094bb1284b3ebfdffae478d94346",
@@ -1264,6 +1301,34 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
+}
+
+{
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
+    "m_ObjectId": "379571d379f94de3b7f799127c03ca7b",
+    "m_Guid": {
+        "m_GuidSerialized": "7e7e6f41-162d-4087-b5e0-2b3a3be1483f"
+    },
+    "m_Name": "Intensity",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Intensity",
+    "m_DefaultReferenceName": "_Intensity",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": 1.0,
+    "m_FloatType": 1,
+    "m_RangeValues": {
+        "x": 0.0,
+        "y": 1.0
+    }
 }
 
 {
@@ -1720,6 +1785,15 @@
         },
         {
             "m_Id": "9e68295c0a77484991acd525a7816ef8"
+        },
+        {
+            "m_Id": "26af06681abd4da1b4ccd050ddc4cb56"
+        },
+        {
+            "m_Id": "379571d379f94de3b7f799127c03ca7b"
+        },
+        {
+            "m_Id": "8453eafd1d2d4459885ec2e5cdc38a9c"
         }
     ]
 }
@@ -2236,6 +2310,36 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Texture2DShaderProperty",
+    "m_ObjectId": "8453eafd1d2d4459885ec2e5cdc38a9c",
+    "m_Guid": {
+        "m_GuidSerialized": "103bd8f4-984a-4153-8b71-2dbe0fe5af60"
+    },
+    "m_Name": "CloudTexture",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "CloudTexture",
+    "m_DefaultReferenceName": "_CloudTexture",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "m_SerializedTexture": "",
+        "m_Guid": ""
+    },
+    "isMainTexture": false,
+    "useTilingAndOffset": false,
+    "m_Modifiable": true,
+    "m_DefaultType": 0
 }
 
 {
