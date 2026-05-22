@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Cauldron : Interactuable
@@ -9,14 +10,24 @@ public class Cauldron : Interactuable
     [SerializeField] private Transform handpoint;
     [SerializeField] private Player jugador;
     [SerializeField] private Transform displayPoint;
+
     private GameObject platopendiente = null;
     private RecipesData recetaPendiente;
+
+    [Header("Recursos insuficientes")]
+    [SerializeField]private TextMeshProUGUI Text;
+    [SerializeField] private string message;
+    [SerializeField] private float tiempoMensaje = 3.0f;
+    private Coroutine mensajeCoroutine;
+    [SerializeField] private Animator anim;
+
     public GameObject PlatoPendienteGameObject => platopendiente;
 
     public bool tieneplatopendiente => platopendiente != null;
 
     public override void Interactuar()
     {
+        if (!Checkresources(message, Text)) return;
         // Si hay un plato pendiente de recoger, dárselo al jugador
         if (platopendiente != null)
         {
@@ -147,10 +158,34 @@ public class Cauldron : Interactuable
         }
 
         platopendiente = null;
-        mensajeInteraccion = "abrir menú";
-       
-      
-      
+        mensajeInteraccion = "abrir menú";      
     }
+    public bool Checkresources(string message, TextMeshProUGUI text)
+    {
+        if (GameManager.instance.bambuverde <= 0 && GameManager.instance.bamburojo <= 0 && GameManager.instance.bayaarandanos <= 0 && GameManager.instance.bayauchuva <= 0)
+        {
+            text.text = message;
+            anim.SetTrigger("ShakeHead");
+
+            //reiniciar corrutina
+            if (mensajeCoroutine != null)
+            {
+                StopCoroutine(mensajeCoroutine);
+            }
+            //iniciar corrutina 
+            mensajeCoroutine = StartCoroutine(OcultarTextoTrasTiempo(text, tiempoMensaje));
+            return false;
+        }
+        return true;
+    }
+    private IEnumerator OcultarTextoTrasTiempo(TextMeshProUGUI textComponent, float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        if (textComponent != null)
+        {
+            textComponent.text = string.Empty; // Borra el texto de la pantalla
+        }
+    }
+
 
 }
