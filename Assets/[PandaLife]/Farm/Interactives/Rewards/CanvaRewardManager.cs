@@ -21,37 +21,37 @@ public class CanvaRewardManager : MonoBehaviour
         // Esperamos un frame para que la escena cargue por completo
         yield return null;
 
-        // =================================================================
-        // LOGICÁ DEL DÍA 2 (Red Dragon y opcionalmente Nota)
-        // =================================================================
+     
+        //  DÍA 2 (Red Dragon y opcionalmente Nota)
+
         if (GameManager.instance.numday == 2)
         {
-            // 1. Ejecutar Saco Red Dragon (Si no se ha mostrado ya)
+            //  Ejecutar Saco Red Dragon (Si no se ha mostrado ya)
             if (!GameManager.instance.animacionRedDragonMostrada)
             {
                 GameManager.instance.animacionRedDragonMostrada = true;
 
                 if (anim != null)
                 {
-                    anim.SetTrigger("Reddragon"); // Trigger exacto de tu imagen
+                    anim.SetTrigger("Reddragon"); 
                     Debug.Log("[Recompensas] Mostrando Saco Red Dragon");
                 }
 
                 // Esperamos a que la animación del saco termine en pantalla
                 yield return new WaitForSeconds(tiempoEsperaAnimacion);
 
-                // RESET MANUAL: Forzamos al Animator a volver a 'nothing' para limpiar la cola
+                
                 ResetearAEstadoReposo();
             }
 
-            // 2. Si tiene los 3 pandas con hambre, ejecutamos la Nota inmediatamente después
+            //  3 pandas con hambre, ejecutamos la Nota inmediatamente después
             if (GameManager.instance.miniPandasHambrientos == 3 && !GameManager.instance.animacionNoteMostrada)
             {
                 GameManager.instance.animacionNoteMostrada = true;
 
                 if (anim != null)
                 {
-                    anim.SetTrigger("Note"); // Trigger exacto de tu imagen
+                    anim.SetTrigger("Note"); 
                     Debug.Log("[Recompensas] Condición cumplida: Mostrando Nota");
                 }
 
@@ -60,19 +60,19 @@ public class CanvaRewardManager : MonoBehaviour
             }
         }
 
-        // =================================================================
-        // LOGICÁ DEL DÍA 3 (Uchuva y opcionalmente Teddy)
-        // =================================================================
+     
+        //  DÍA 3 (Uchuva y opcionalmente Teddy)
+    
         else if (GameManager.instance.numday == 3)
         {
-            // 1. Ejecutar Saco Uchuva (Si no se ha mostrado ya)
+            //  Ejecutar Saco Uchuva (Si no se ha mostrado ya)
             if (!GameManager.instance.animacionUchuva)
             {
                 GameManager.instance.animacionUchuva = true;
 
                 if (anim != null)
                 {
-                    anim.SetTrigger("Uchuva"); // Trigger exacto de tu imagen
+                    anim.SetTrigger("Uchuva"); 
                     Debug.Log("[Recompensas] Mostrando Saco Uchuva");
                 }
 
@@ -80,14 +80,14 @@ public class CanvaRewardManager : MonoBehaviour
                 ResetearAEstadoReposo();
             }
 
-            // 2. Si tiene los 3 pandas con hambre, ejecutamos el Teddy inmediatamente después
+            //   3 pandas con hambre, ejecutamos el Teddy inmediatamente después
             if (GameManager.instance.miniPandasHambrientos == 3 && !GameManager.instance.animacionTeddyMostrada)
             {
                 GameManager.instance.animacionTeddyMostrada = true;
 
                 if (anim != null)
                 {
-                    anim.SetTrigger("Teddy"); // Trigger exacto de tu imagen
+                    anim.SetTrigger("Teddy"); 
                     Debug.Log("[Recompensas] Condición cumplida: Mostrando Teddy");
                 }
 
@@ -97,14 +97,10 @@ public class CanvaRewardManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Fuerza al Animator a regresar instantáneamente al estado base para poder recibir otro Trigger.
-    /// </summary>
     private void ResetearAEstadoReposo()
     {
         if (anim != null)
         {
-            // "nothing" es el nombre exacto de tu estado naranja en el Animator
             anim.Play("nothing", 0, 0f);
         }
     }
