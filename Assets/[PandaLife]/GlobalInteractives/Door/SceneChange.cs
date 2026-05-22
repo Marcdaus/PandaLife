@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SceneChange : Interactuable
 {
+    public LoadScene LoadScene;
     // Campos
     [SerializeField] private GameString scenename; // Variable que contendrá el nombre de la escena a cargar
     private Player player;
@@ -11,11 +12,14 @@ public class SceneChange : Interactuable
     private void Start()
     {
         player = FindFirstObjectByType<Player>();
+        LoadScene = FindFirstObjectByType<LoadScene>();
         //pickupobject = FindFirstObjectByType<PickupDrop>();
     }
     // Función interactuar que comprueba si tiene el cubo o un plato en la mano.
     public override void Interactuar()
     {
+        bool limpiarAntes = true; // Por defecto limpiamos antes de guardar
+
         if (player.IsHoldingBucket() || player.IsHoldingDish())
         {
             PickupDrop pickupobject = player.pickedobject;
@@ -34,34 +38,40 @@ public class SceneChange : Interactuable
                     );
                 }
                 pickupobject.Drop();
+                limpiarAntes = false; // Ya hemos limpiado los platos arriba, no lo hacemos de nuevo
             }
-            StartCoroutine(EsperarParaCargar());
         }
-        else
-        {
-            // Completar el tutorial de puerta y no mostrar más el pin
-            if (!GameManager.instance.tutorialPuertaCompletado)
-            {
-                GameManager.instance.tutorialPuertaCompletado = true;
-                Debug.Log("Tutorial de la puerta completado para esta partida.");
-            }
-            GuardarPlatoSueltoSiExiste(limpiarAntes: true);
-            SceneManager.LoadScene(scenename.Value);
-        }
-    }
 
-    IEnumerator EsperarParaCargar()
-    {
-        // Completar el tutorial de la puerta y no mostrar más el pin
+        // Completar el tutorial de puerta y no mostrar más el pin
         if (!GameManager.instance.tutorialPuertaCompletado)
         {
             GameManager.instance.tutorialPuertaCompletado = true;
             Debug.Log("Tutorial de la puerta completado para esta partida.");
         }
-        // Añadir los sueltos sin limpiar, el plato en mano ya está en la lista
-        GuardarPlatoSueltoSiExiste(limpiarAntes: false);
-        yield return new WaitForSeconds(0.5f);
+
+        // SIEMPRE llamamos a la corrutina para asegurar que la animación se reproduce
+        StartCoroutine(EsperarParaCargar(limpiarAntes));
+    }
+
+
+    IEnumerator EsperarParaCargar(bool limpiarAntes)
+    {
+        // Iniciamos la animación de transición
+        if (LoadScene != null)
+        {
+            LoadScene.StartLoadScene();
+        }
+
+        // Guardamos la persistencia
+        GuardarPlatoSueltoSiExiste(limpiarAntes);
+
+        // Esperamos a que la animación termine
+        yield return new WaitForSeconds(1f);
+
+        // Cargamos la escena
         SceneManager.LoadScene(scenename.Value);
+
+        
     }
 
     private void GuardarPlatoSueltoSiExiste(bool limpiarAntes)
