@@ -34,10 +34,12 @@ public class GameManager : MonoBehaviour
     public float porcentaje = 0f;
 
     [Header("Recompensas")]
-    public TextMeshProUGUI messageRewardSacks;
-    public TextMeshProUGUI messageRewardCollectable;
+    //public TextMeshProUGUI messageRewardSacks;
+    //public TextMeshProUGUI messageRewardCollectable;
     public bool tedypersistente = false;
     public bool notepersistente = false;
+    [HideInInspector] public bool animacionRedDragonMostrada = false;
+    [HideInInspector] public bool animacionUchuva = false;
 
     [Header("Mini pandas")]
     public int miniPandasHambrientos = 3;
@@ -142,11 +144,13 @@ public class GameManager : MonoBehaviour
         if (textoBayaUchuva != null)
             textoBayaUchuva.text = bayauchuva.ToString();
     }
+    /*
     public void MostrarMensajeTemporal(string mensaje, float duracion, string type)
     {
         StartCoroutine(MensajeRoutine(mensaje, duracion, type));
     }
     //Recompensas textos temporales
+    
     private IEnumerator MensajeRoutine(string mensaje, float duracion, string type)
     {
         if (type == "Bags")
@@ -165,6 +169,7 @@ public class GameManager : MonoBehaviour
             messageRewardCollectable.gameObject.SetActive(false);
         }
     }
+    */
     public void Resetplay()
     {
         // --- Sistema de día ---
@@ -173,6 +178,8 @@ public class GameManager : MonoBehaviour
         numday = 1;
         multiplicadorvelocidaddia = 1f;
         stopTime = false;
+        animacionRedDragonMostrada = false;
+        animacionUchuva = false;
 
         // --- Recursos ---
         quitarBambu();
@@ -187,6 +194,7 @@ public class GameManager : MonoBehaviour
         notepersistente = false;
 
         // Limpiar mensajes UI
+        /*
         if (messageRewardSacks != null)
         {
             messageRewardSacks.text = "";
@@ -198,7 +206,7 @@ public class GameManager : MonoBehaviour
             messageRewardCollectable.text = "";
             messageRewardCollectable.gameObject.SetActive(false);
         }
-
+        */
         // Parar coroutines activas
         StopAllCoroutines();
 

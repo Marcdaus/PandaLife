@@ -174,9 +174,7 @@ public class DayNightCycle : MonoBehaviour
                 GameManager.instance.barmultiplicator = 1.25f;
             }
 
-            ResetBars();
-            Rewards("Bags");
-            Rewards("Collectables");
+            
             // Guardar todos los platos sueltos antes de cambiar de día
             if (CauldronPersistenceManager.instance != null)
             {
@@ -193,7 +191,10 @@ public class DayNightCycle : MonoBehaviour
                     Debug.Log($"[DayNightCycle] Guardando plato: {raiz.name} en {raiz.transform.position}");
                 }
             }
+            ResetBars();
             SceneManager.LoadScene(homescene.Value);
+            
+;
         }
         if(GameManager.instance.numday > 1)
         {
@@ -208,33 +209,7 @@ public class DayNightCycle : MonoBehaviour
         }
 
     }
-    public void Rewards(string type)
-    {
-        if (type == "Bags")
-        {
-            
-            if (GameManager.instance.numday == 2)
-            {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numday}! Saco de semillas Red Dragon desbloqueado \n ¡Nueva receta desbloqueada!", 5f, type);
-            }
-            else if (GameManager.instance.numday == 3)
-            {
-                GameManager.instance.MostrarMensajeTemporal($"¡Dia {GameManager.instance.numday}! Saco de semillas Uchuva desbloqueado \n ¡Nuevas recetas desbloqueadas! x2", 5f, type);
-            }
-        }
-        else if (type == "Collectables")
-        {
-            
-            if (GameManager.instance.numday == 2 && GameManager.instance.miniPandasHambrientos == 3)
-            {
-                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable carta desbloqueado", 5f, type);
-            }
-            else if (GameManager.instance.numday == 3 && GameManager.instance.miniPandasHambrientos == 3)
-            {
-                GameManager.instance.MostrarMensajeTemporal($"¡Mini pandas 3/3! Coleccionable muñeco desbloqueado", 5f, type); 
-            }
-        }
-    }
+    
 
 
         void ActualizarReloj(float pct)
