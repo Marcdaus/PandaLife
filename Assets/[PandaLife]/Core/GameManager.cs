@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour
     public bool notepersistente = false;
     [HideInInspector] public bool animacionRedDragonMostrada = false;
     [HideInInspector] public bool animacionUchuva = false;
+    [HideInInspector] public bool animacionNoteMostrada = false;
+    [HideInInspector] public bool animacionTeddyMostrada = false;
 
     [Header("Mini pandas")]
     public int miniPandasHambrientos = 3;
@@ -180,6 +182,8 @@ public class GameManager : MonoBehaviour
         stopTime = false;
         animacionRedDragonMostrada = false;
         animacionUchuva = false;
+        animacionNoteMostrada = false;
+        animacionTeddyMostrada = false;
 
         // --- Recursos ---
         quitarBambu();
@@ -225,6 +229,7 @@ public class GameManager : MonoBehaviour
             BarraManager.Instancia.rageStates.Clear();
             BarraManager.Instancia.sceneLoaded = false;
             BarraManager.Instancia.comingFromGameOver = false;
+
         }
         PandaRequest resetrequest = GameManager.instance.GetComponent<PandaRequest>();
         resetrequest.ClearList();
