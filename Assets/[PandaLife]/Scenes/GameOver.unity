@@ -1316,6 +1316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 261854664}
   - component: {fileID: 261854665}
+  - component: {fileID: 261854666}
   m_Layer: 0
   m_Name: CinematicManager
   m_TagString: Untagged
@@ -1402,6 +1403,20 @@ PlayableDirector:
     - 017894f4d41812248be651e9ae9a66a8: {fileID: 1314330636}
     - a5813fcbf11e9c04f8e3c652104941b5: {fileID: 1553628450}
     - e10e3ef80ba85df45812d5b338688a56: {fileID: 1553628450}
+--- !u!114 &261854666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261854663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a91c3f67fe69240bf373f3927ab81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  director: {fileID: 261854665}
+  velocidadRetroceso: 0.05
 --- !u!4 &264171808 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7055725859020001728, guid: 29ae1964014746a4dae460ffd7a42103, type: 3}
@@ -6764,10 +6779,10 @@ MonoBehaviour:
         z: 0
       Rotation:
         value:
-          x: 0.12276183
-          y: 0
-          z: 0.27893665
-          w: 0.9524305
+          x: 0.12276186
+          y: -0.0000000019556756
+          z: 0.27893662
+          w: 0.95243055
     m_MetaData:
     - Mode: 2
       Tension: 0.5
