@@ -280,11 +280,11 @@ public class Player : MonoBehaviour
                 }
                 else if (CanInteractWithMiniPanda())
                 {
-                    currentActionText = "alimentar";
+                    currentActionText = "Alimentar";
                 }
                 else
                 {
-                    currentActionText = "interactuar";
+                    currentActionText = "Interactuar";
                 }
             }
             // Los demás
@@ -297,7 +297,7 @@ public class Player : MonoBehaviour
                 }
                 else
                 {
-                    currentActionText = "interactuar";
+                    currentActionText = "Interactuar";
                 }
             }
         }
