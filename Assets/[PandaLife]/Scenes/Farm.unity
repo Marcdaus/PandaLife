@@ -9862,6 +9862,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4950185044656401886, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4950185044656401886, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5342462856638962075, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
       propertyPath: m_Name
       value: CanvasLoadScreen
@@ -9944,6 +9952,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5989766354625904172, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502248223769954297, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8502248223769954297, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -11536,6 +11552,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 67b3c086ddbb0c6478f79cf550c75fd8, type: 2}
+    - target: {fileID: 4269129462993619046, guid: 84864725de1aa7848873d28d91676b65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.14
+      objectReference: {fileID: 0}
     - target: {fileID: 5073346147552046697, guid: 84864725de1aa7848873d28d91676b65, type: 3}
       propertyPath: m_Name
       value: River
