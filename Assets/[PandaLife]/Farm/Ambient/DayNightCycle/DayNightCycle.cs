@@ -156,7 +156,7 @@ public class DayNightCycle : MonoBehaviour
 
             if (persistentereq != null)
             {
-                persistentereq.UnlockCropsForDay(GameManager.instance.numday);
+                persistentereq.UnlockDishesForDay(GameManager.instance.numday);
                 persistentereq.GenerateRandomRequests();
                 Debug.Log("Nuevos pedidos generados para el día: " + GameManager.instance.numday);
             }

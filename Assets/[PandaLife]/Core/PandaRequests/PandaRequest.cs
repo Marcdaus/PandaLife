@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PandaRequest : MonoBehaviour
 {
-    [Header("Pedidos")]
-    [SerializeField] private List<string> UnlockedCrops = new List<string>();
+    [Header("Pedidos de platos")]
+    [SerializeField] private List<string> UnlockedDishes = new List<string>();
 
     // Esta será la "memoria" de los pedidos actuales
     private List<string> currentActiveRequests = new List<string>();
@@ -12,22 +12,23 @@ public class PandaRequest : MonoBehaviour
     private void Awake()
     {
 
-        if (!UnlockedCrops.Contains("Bamboo")) UnlockedCrops.Add("Bamboo");
-        if (!UnlockedCrops.Contains("Blueberry")) UnlockedCrops.Add("Blueberry");
+        if (!UnlockedDishes.Contains("Plato_Bamboo")) UnlockedDishes.Add("Plato_Bamboo");
+        if (!UnlockedDishes.Contains("Plato_Blueberry")) UnlockedDishes.Add("Plato_Blueberry");
 
         // Generamos los primeros pedidos al empezar el juego por primera vez
         GenerateRandomRequests();
     }
 
-    public void UnlockCropsForDay(int dayNumber)
+    public void UnlockDishesForDay(int dayNumber)
     {
         if (dayNumber == 2)
         {
-            if (!UnlockedCrops.Contains("RedDragon")) UnlockedCrops.Add("RedDragon");
+            if (!UnlockedDishes.Contains("Plato_RedDragon")) UnlockedDishes.Add("Plato_RedDragon");
         }
         if (dayNumber == 3)
         {
-            if (!UnlockedCrops.Contains("Uchuva")) UnlockedCrops.Add("Uchuva");
+            if (!UnlockedDishes.Contains("Plato_Uchuva")) UnlockedDishes.Add("Plato_Uchuva");
+            if (!UnlockedDishes.Contains("Plato_Uchuva2")) UnlockedDishes.Add("Plato_Uchuva2");
         }
     }
 
@@ -35,12 +36,12 @@ public class PandaRequest : MonoBehaviour
     public void GenerateRandomRequests()
     {
         currentActiveRequests.Clear();
-        if (UnlockedCrops.Count == 0) return;
+        if (UnlockedDishes.Count == 0) return;
 
         for (int i = 0; i < 3; i++)
         {
-            int randomIndex = Random.Range(0, UnlockedCrops.Count);
-            currentActiveRequests.Add(UnlockedCrops[randomIndex]);
+            int randomIndex = Random.Range(0, UnlockedDishes.Count);
+            currentActiveRequests.Add(UnlockedDishes[randomIndex]);
         }
     }
 
@@ -53,9 +54,9 @@ public class PandaRequest : MonoBehaviour
     }
     public void ClearList()
     {
-        UnlockedCrops.Clear();
-        if (!UnlockedCrops.Contains("Bamboo")) UnlockedCrops.Add("Bamboo");
-        if (!UnlockedCrops.Contains("Blueberry")) UnlockedCrops.Add("Blueberry");
+        UnlockedDishes.Clear();
+        if (!UnlockedDishes.Contains("Plato_Bamboo")) UnlockedDishes.Add("Plato_Bamboo");
+        if (!UnlockedDishes.Contains("Plato_Blueberry")) UnlockedDishes.Add("Plato_Blueberry");
         GenerateRandomRequests();
     }
 }

@@ -63,12 +63,14 @@ public class Minipandas : Interactuable
             SpawEatingParticles(dish.GetColor());
             Debug.Log(dish.GetColor());
 
-            // Comprobamos si el plato tiene lo que el panda quiere
-            if (!string.IsNullOrEmpty(pedidoDeseado) && !dish.TieneIngrediente(pedidoDeseado))
+            string nombreDelPlatoEvaluado = dish.GetNombre();
+
+            // Verificamos si el plato que nos dan NO ES el que el panda quiere
+            if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
             {
-                // Si NO lo tiene, la saciedad se reduce a la mitad
+                // Si es un plato distinto, penalizamos reduciendo la saciedad
                 saciedad = saciedad / 2;
-                Debug.Log("El plato no tiene " + pedidoDeseado + ". Penalización aplicada. Saciedad final: " + saciedad);
+                Debug.Log($"El panda quería {pedidoDeseado} pero le diste {nombreDelPlatoEvaluado}. Penalización aplicada. Saciedad final: {saciedad}");
             }
             else
             {

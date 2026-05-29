@@ -5,6 +5,7 @@ public class Dish : MonoBehaviour
     [SerializeField]private RecipesData receta;
 
     private int saciedad;
+    private string nombre;
 
     private int bambuverde;
     private int bamburojo;
@@ -15,6 +16,7 @@ public class Dish : MonoBehaviour
     public RecipesData GetReceta() => receta;
     public void Initialize(RecipesData data)
     {
+        nombre = data.nombrepedido;
         receta = data;
         colormigajas = data.colormigajas;
         saciedad = data.saciedad;
@@ -28,6 +30,10 @@ public class Dish : MonoBehaviour
         Debug.Log(GetIngredientesTexto());
     }
 
+    public string GetNombre()
+    {
+        return nombre;
+    }
     public int GetSaciedad()
     {
         return saciedad;

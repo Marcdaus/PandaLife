@@ -4,6 +4,8 @@ using UnityEngine;
 public class RecipesData : ScriptableObject
 {
     public string nombrereceta;
+    public string nombrepedido;
+
     public int diadesbloqueado;
     [SerializeField] public Color colorAgua;
 

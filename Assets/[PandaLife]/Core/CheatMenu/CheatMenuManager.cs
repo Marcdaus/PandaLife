@@ -165,9 +165,9 @@ public class CheatMenuManager : MonoBehaviour
         PandaRequest pReq = GameManager.instance.GetComponent<PandaRequest>();
         if (pReq != null)
         {
-            pReq.UnlockCropsForDay(2);
-            pReq.UnlockCropsForDay(3);
-            Debug.Log("Cultivos del Día 2 desbloqueados.");
+            pReq.UnlockDishesForDay(2);
+            pReq.UnlockDishesForDay(3);
+            Debug.Log("Platos del Día 2 y 3 desbloqueados.");
         }
     }
 
