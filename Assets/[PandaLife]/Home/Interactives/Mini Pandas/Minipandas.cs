@@ -80,6 +80,26 @@ public class Minipandas : Interactuable
             hungerSystem.PauseHunger(5f);
             //Debug.Log("minipandas: Dish name: " + dish.name);
             //Debug.Log("minipandas: Dish instance ID: " + dish.GetInstanceID());
+
+            if (GameManager.instance != null)
+            {
+                PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
+                if (pandaReq != null)
+                {
+                    // Cambiamos el pedido
+                    pandaReq.ReplaceRequestAtIndex(indicePanda);
+
+                    // Actualizamos pedidoDeseado
+                    ActualizarPedidoDebug();
+
+                    // Buscamos el RequestManager para actualizar los sprites en la UI inmediatamente
+                    RequestManager requestManager = FindAnyObjectByType<RequestManager>();
+                    if (requestManager != null)
+                    {
+                        requestManager.ActualizarTextosManual();
+                    }
+                }
+            }
         }
   
        Destroy(player.pickedobject.gameObject);

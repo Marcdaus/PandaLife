@@ -59,4 +59,18 @@ public class PandaRequest : MonoBehaviour
         if (!UnlockedDishes.Contains("Plato_Blueberry")) UnlockedDishes.Add("Plato_Blueberry");
         GenerateRandomRequests();
     }
+
+    // Genera un nuevo plato cada vez q le damos un plato
+    public void ReplaceRequestAtIndex(int index)
+    {
+        if (UnlockedDishes.Count == 0) return;
+
+        // Comprobamos que el índice sea válido
+        if (index >= 0 && index < currentActiveRequests.Count)
+        {
+            int randomIndex = Random.Range(0, UnlockedDishes.Count);
+            currentActiveRequests[index] = UnlockedDishes[randomIndex];
+            Debug.Log($"El pedido {index} ha sido actualizado a: {currentActiveRequests[index]}");
+        }
+    }
 }
