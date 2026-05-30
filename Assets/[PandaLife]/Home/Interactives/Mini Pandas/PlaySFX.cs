@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlaySFX : MonoBehaviour
 {
-    public AudioClip[] happyclips;
-    public AudioClip[] hungryclips;
-    public AudioClip[] angryclips;
+    [SerializeField] private AudioClip[] happyclips;
+    [SerializeField] private AudioClip[] hungryclips;
+    [SerializeField] private AudioClip[] angryclips;
 
-    AudioSource audiosource;
+    [SerializeField] private AudioSource audiosource;
 
     int happycount = 0;
     int hungrycount = 0;

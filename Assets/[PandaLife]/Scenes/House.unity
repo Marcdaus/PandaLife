@@ -20386,6 +20386,34 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 1364624482}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: angryclips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happyclips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungryclips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'angryclips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'happyclips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a5560ecf09e44a03b7a70057a4e701e, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'hungryclips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c77f954c7d62b954796aaa56ea3d4186, type: 3}
     - target: {fileID: 8548456797623729055, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -20412,6 +20440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d76a90a79fd0e41954961629691598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1364624482 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+  m_PrefabInstance: {fileID: 1364624480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1382341811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
