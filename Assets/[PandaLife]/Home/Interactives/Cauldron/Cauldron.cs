@@ -36,6 +36,7 @@ public class Cauldron : Interactuable
         }
 
         if(jugador.pickedobject == null)
+            cauldronmenuUI.openmenu.Play();
             cauldronmenuUI.OpenCauldron();
     }
 
