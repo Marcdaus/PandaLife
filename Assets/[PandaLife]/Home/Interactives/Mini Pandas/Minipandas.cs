@@ -22,6 +22,8 @@ public class Minipandas : Interactuable
     [SerializeField] private AudioClip soundWrongDish;   // Sonido de error
     [SerializeField] private AudioClip soundNewRequest;  // Sonido al aparecer un nuevo pedido Pop
 
+    [SerializeField] private PlaySFX pandaSFX;
+
     void Awake()
     {
         hungerSystem = GetComponent<HungerSystem>();
@@ -173,11 +175,21 @@ public class Minipandas : Interactuable
     {
     foreach (Transform point in spawnPoints)
     {
-        ParticleSystem instance =
+            audioSource.Play();
+            Eating();
+            ParticleSystem instance =
             Instantiate(eatingParticles, point.position, Quaternion.identity, point);
-
+            
         var main = instance.main;
         main.startColor = color;
     }
+    }
+
+    public void Eating()
+    {
+        if (pandaSFX != null)
+        {
+            pandaSFX.PlayEating();
+        }
     }
 }

@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip splashClip;
     [SerializeField] private AudioClip fillBucketClip;
+
+    [SerializeField] private PlaySFX pandaSFX;
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -636,6 +638,13 @@ public class Player : MonoBehaviour
         if (currentTarget is Radio && !IsHandEmpty()) return true;
 
         return false;
+    }
+    public void PetPanda()
+    {
+        if (pandaSFX != null)
+        {
+            pandaSFX.PlayPetting();
+        }
     }
 }
    

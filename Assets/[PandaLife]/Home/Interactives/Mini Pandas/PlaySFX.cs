@@ -8,6 +8,10 @@ public class PlaySFX : MonoBehaviour
     [SerializeField] private AudioClip[] hungryClips;
     [SerializeField] private AudioClip[] angryClips;
 
+    [SerializeField] private AudioClip[] pettingClips;   // panda acariciado
+    [SerializeField] private AudioClip[] eatingClips;    // panda comiendo
+
+
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
 
@@ -97,5 +101,26 @@ public class PlaySFX : MonoBehaviour
 
             yield return new WaitForSeconds(clip.length);
         }
+    }
+
+    public void PlayPetting()
+    {
+        PlaySingleAction(pettingClips);
+    }
+
+    public void PlayEating()
+    {
+        PlaySingleAction(eatingClips);
+    }
+
+    private void PlaySingleAction(AudioClip[] clips)
+    {
+        if (clips == null || clips.Length == 0)
+            return;
+
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
+
+        // NO coroutine, NO loop
+        audioSource.PlayOneShot(clip);
     }
 }
