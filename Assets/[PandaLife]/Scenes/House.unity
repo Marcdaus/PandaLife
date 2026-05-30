@@ -2032,6 +2032,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2066093931}
     - target: {fileID: 3677090349733741016, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: myRequestPin
+      value: 
+      objectReference: {fileID: 55662558}
+    - target: {fileID: 3677090349733741016, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: eatingParticles
       value: 
       objectReference: {fileID: 4494087675208885891, guid: c95df1c0144514f67832ad7b1c4769c5, type: 3}
@@ -14321,6 +14325,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldPosition: {fileID: 1887358667}
   ccamera: {fileID: 0}
+  isTransitioning: 0
 --- !u!1 &1247139571
 GameObject:
   m_ObjectHideFlags: 0
@@ -20049,6 +20054,10 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 207738150}
+    - target: {fileID: 6052700779871355068, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: myRequestPin
+      value: 
+      objectReference: {fileID: 1402380427}
     - target: {fileID: 6052700779871355068, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: eatingParticles
       value: 
@@ -25789,6 +25798,10 @@ PrefabInstance:
       propertyPath: spawnpoint
       value: 
       objectReference: {fileID: 2070676501}
+    - target: {fileID: 4764394512042540727, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: myRequestPin
+      value: 
+      objectReference: {fileID: 1143668620}
     - target: {fileID: 4764394512042540727, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: eatingParticles
       value: 

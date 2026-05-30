@@ -10,6 +10,8 @@ public abstract class PinUIElement : MonoBehaviour
     RectTransform rect;
     Animator animator;
 
+    
+
     //=========================================================================================================================
     void Awake()
     {
@@ -44,32 +46,39 @@ public abstract class PinUIElement : MonoBehaviour
 
     // Esta función se tiene que hacer override y poner la condición que sea necesaria
     public abstract bool CheckCondition();
+    public bool isTransitioning = false;
 
     // Desde MessageController llamamos a ésta función
     public void Evaluate()
     {
+        if (isTransitioning) return;
+
         bool conditionMet = CheckCondition();
 
-        if (conditionMet)
-        {
-            Show();
-        }
-        else if (!conditionMet)
-        {
-            Hide();
-        }
+
+        if (conditionMet) Show();
+        
+        else Hide();
+        
     }
 
 
     public void Show()
     {
+        if (gameObject.activeSelf && animator.GetCurrentAnimatorStateInfo(0).IsName("Show")) return;
+
         gameObject.SetActive(true);
+        animator.SetTrigger("show");
     }
 
     public void Hide()
     {
+        if (!gameObject.activeSelf) return;
         animator.SetTrigger("hide");
-        //gameObject.SetActive(false);
+    }
+    public void SetTransitionState(bool state)
+    {
+        isTransitioning = state;
     }
     public void Desactivar()
     {
