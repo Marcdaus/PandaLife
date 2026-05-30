@@ -37,17 +37,17 @@ public void ReproducirPaso()
     if(layer == LayerMask.NameToLayer(layerTierra))
     {
         sourceActual = sourceGrass;
-        Debug.Log("GRASS elegido");
+       // Debug.Log("GRASS elegido");
     }
     else if(layer == LayerMask.NameToLayer(layerMadera))
     {
         sourceActual = sourceWood;
-        Debug.Log("WOOD elegido");
+      //  Debug.Log("WOOD elegido");
     }
     else if(layer == LayerMask.NameToLayer(layerPiedra))
     {
         sourceActual = sourceHome;
-       Debug.Log("HOME elegido");
+      // Debug.Log("HOME elegido");
     }
 }
 }
