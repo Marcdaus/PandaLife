@@ -8,7 +8,7 @@ public class Minipandas : Interactuable
     private HungerSystem hungerSystem;
 
     [SerializeField] private int indicePanda; // 0, 1 o 2
-    [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("Bamboo", "Uchuva", etc.)
+    [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("bambu cocido", "sopa de bayas", etc.)
     [SerializeField] private float porcentajecalmado;
    [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private ParticleSystem eatingParticles;
