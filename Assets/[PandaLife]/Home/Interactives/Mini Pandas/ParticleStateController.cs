@@ -3,152 +3,171 @@ using UnityEngine;
 public class ParticleStateController : MonoBehaviour
 {
     [Header("Particles")]
-    [SerializeField] private ParticleSystem particlesystemref;
+    [SerializeField] private ParticleSystem particleSystemRef;
 
-    [SerializeField] private Material happymaterial;
-    [SerializeField] private Material hungrymaterial;
-    [SerializeField] private Material angrymaterial;
-    [SerializeField] private Material sadmaterial;
+    [Header("Audio")]
+    [SerializeField] private PlaySFX playSfx;
 
-    [SerializeField] private float happysize = 0.5f;
-    [SerializeField] private float hungrysize = 0.3f;
-    [SerializeField] private float angrysize = 0.8f;
-    [SerializeField] private float sadsize = 0.4f;
+    [SerializeField] private Material happyMaterial;
+    [SerializeField] private Material hungryMaterial;
+    [SerializeField] private Material angryMaterial;
+    [SerializeField] private Material sadMaterial;
+
+    [SerializeField] private float happySize = 0.5f;
+    [SerializeField] private float hungrySize = 0.3f;
+    [SerializeField] private float angrySize = 0.8f;
+    [SerializeField] private float sadSize = 0.4f;
 
     [Header("Faces")]
-    [SerializeField] private GameObject happymodelface;
-    [SerializeField] private GameObject normalmodelface;
-    [SerializeField] private GameObject hungrymodelface;
-    [SerializeField] private GameObject calmmodelface;
-    [SerializeField] private GameObject ragemodelface;
+    [SerializeField] private GameObject happyModelFace;
+    [SerializeField] private GameObject normalModelFace;
+    [SerializeField] private GameObject hungryModelFace;
+    [SerializeField] private GameObject calmModelFace;
+    [SerializeField] private GameObject rageModelFace;
 
-    [Header("Audio Random Containers")]
-    
-    [SerializeField] private AudioSource happynoisecontainer;
-    [SerializeField] private AudioSource hungrynoisecontainer;
-    [SerializeField] private AudioSource angrynoisecontainer;
-
-    private ParticleSystemRenderer particlerenderer;
+    private ParticleSystemRenderer particleRenderer;
 
     private void Awake()
     {
-        if (particlesystemref == null)
-            particlesystemref = GetComponent<ParticleSystem>();
+        if (particleSystemRef == null)
+            particleSystemRef = GetComponent<ParticleSystem>();
 
-        if (particlesystemref != null)
-            particlerenderer = particlesystemref.GetComponent<ParticleSystemRenderer>();
+        if (particleSystemRef != null)
+            particleRenderer = particleSystemRef.GetComponent<ParticleSystemRenderer>();
 
         ResetVisuals();
     }
 
-    
     // =========================
     // STATES
     // =========================
 
     public void Happy()
     {
+        StopAllAudio();
+
         DisableAllFaces();
-        if (happymodelface) happymodelface.SetActive(true);
-        Apply(happymaterial, happysize);
-        happynoisecontainer.Play();
+        if (happyModelFace) happyModelFace.SetActive(true);
 
+        Apply(happyMaterial, happySize);
 
+        if (playSfx != null)
+            playSfx.PlayHappy();
     }
 
     public void Normal()
     {
-        DisableAllFaces();
-        if (normalmodelface) normalmodelface.SetActive(true);
-        StopParticles();
+        StopAllAudio();
 
-        if(happynoisecontainer) happynoisecontainer.Stop();
-        if(hungrynoisecontainer) hungrynoisecontainer.Stop();
+        DisableAllFaces();
+        if (normalModelFace) normalModelFace.SetActive(true);
+
+        StopParticles();
     }
 
     public void Hungry()
     {
-        DisableAllFaces();
-        if (hungrymodelface) hungrymodelface.SetActive(true);
-        Apply(hungrymaterial, hungrysize);
+        StopAllAudio();
 
-        hungrynoisecontainer.Play();
+        DisableAllFaces();
+        if (hungryModelFace) hungryModelFace.SetActive(true);
+
+        Apply(hungryMaterial, hungrySize);
+
+        if (playSfx != null)
+            playSfx.PlayHungry();
     }
 
     public void Sad()
     {
-        DisableAllFaces();
-        if (calmmodelface) calmmodelface.SetActive(true);
-        Apply(sadmaterial, sadsize);
+        StopAllAudio();
 
-        if (hungrynoisecontainer) hungrynoisecontainer.Stop();
-        if(angrynoisecontainer) angrynoisecontainer.Stop();
+        DisableAllFaces();
+        if (calmModelFace) calmModelFace.SetActive(true);
+
+        Apply(sadMaterial, sadSize);
     }
 
     public void Angry()
     {
-        DisableAllFaces();
-        if (ragemodelface) ragemodelface.SetActive(true);
-        Apply(angrymaterial, angrysize);
+        StopAllAudio();
 
-        angrynoisecontainer.Play();
+        DisableAllFaces();
+        if (rageModelFace) rageModelFace.SetActive(true);
+
+        Apply(angryMaterial, angrySize);
+
+        if (playSfx != null)
+            playSfx.PlayAngry();
     }
 
     // =========================
-    // CORE
+    // AUDIO
     // =========================
 
-    private void Apply(Material mat, float size)
+    private void StopAllAudio()
     {
-        if (!particlesystemref || !particlerenderer) return;
+        if (playSfx != null)
+            playSfx.StopAll();
+    }
 
-        particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+    // =========================
+    // VISUAL CORE
+    // =========================
 
-        particlerenderer.material = mat;
+    private void Apply(Material material, float size)
+    {
+        if (!particleSystemRef || particleRenderer == null) return;
 
-        var main = particlesystemref.main;
+        particleSystemRef.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+        particleRenderer.material = material;
+
+        var main = particleSystemRef.main;
         main.startSize = size;
 
-        particlesystemref.Play();
+        particleSystemRef.Play();
     }
 
     private void DisableAllFaces()
     {
-        if (happymodelface) happymodelface.SetActive(false);
-        if (normalmodelface) normalmodelface.SetActive(false);
-        if (hungrymodelface) hungrymodelface.SetActive(false);
-        if (calmmodelface) calmmodelface.SetActive(false);
-        if (ragemodelface) ragemodelface.SetActive(false);
+        if (happyModelFace) happyModelFace.SetActive(false);
+        if (normalModelFace) normalModelFace.SetActive(false);
+        if (hungryModelFace) hungryModelFace.SetActive(false);
+        if (calmModelFace) calmModelFace.SetActive(false);
+        if (rageModelFace) rageModelFace.SetActive(false);
     }
 
     public void StopParticles()
     {
-        if (particlesystemref == null) return;
+        if (particleSystemRef == null) return;
 
-        particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        particleSystemRef.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
     public void ClearAll()
     {
         DisableAllFaces();
         StopParticles();
-        particlesystemref.Clear(true);
+
+        if (playSfx != null)
+            playSfx.StopAll();
     }
 
     public void ResetVisuals()
     {
-        if (!particlesystemref) return;
+        if (!particleSystemRef) return;
 
-        particlesystemref.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-        particlesystemref.Clear(true);
+        particleSystemRef.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        particleSystemRef.Clear(true);
 
-        var main = particlesystemref.main;
+        var main = particleSystemRef.main;
         main.startSize = 0.3f;
 
-        if (particlerenderer)
+        if (particleRenderer)
         {
-            particlerenderer.material = null;
-            particlerenderer.trailMaterial = null;
+            particleRenderer.material = null;
+            particleRenderer.trailMaterial = null;
         }
 
         DisableAllFaces();
