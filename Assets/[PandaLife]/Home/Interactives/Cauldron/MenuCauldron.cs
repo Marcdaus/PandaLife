@@ -41,12 +41,16 @@ public class MenuCauldron : MonoBehaviour
     private string colorPropertyName = "_MainColor";
     [SerializeField] private Color defaultWater;
 
-   /* private void Awake()
-    {
-        cursorManager = Object.FindFirstObjectByType<CursorManager>();
-    }*/
+    [Header("Sonidos")]
+    public AudioSource openmenu;
+
+    /* private void Awake()
+     {
+         cursorManager = Object.FindFirstObjectByType<CursorManager>();
+     }*/
     private void Start()
     {
+        openmenu = GetComponent<AudioSource>();
         panelcauldron.SetActive(true);
         panelcooking.SetActive(false);
 
@@ -106,9 +110,11 @@ public class MenuCauldron : MonoBehaviour
     {
         //cursorManager.cursorblock = true;
         //cursorManager.MostrarCursor();
+        
 
         panelcauldron.SetActive(true);
         worldpanelbar.SetActive(false);
+        
         if (!cooking)
         {
             foreach (RecipeCard tarjeta in tarjetas)
