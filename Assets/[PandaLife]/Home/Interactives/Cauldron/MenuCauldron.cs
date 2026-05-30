@@ -32,19 +32,19 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private ParticleSystem bubbleparticles;
     [SerializeField] private float normalbubbleemission;  // Emisión de las burbujas en reposo
     [SerializeField] private float cookingbubbleemission; // Emisión de las burbujas al cocinar
-
+    /*
     [Header("cursor")]
     private CursorManager cursorManager;
-
+    */
     [Header("Water Shader")]
     [SerializeField] private Renderer waterRenderer;
     private string colorPropertyName = "_MainColor";
     [SerializeField] private Color defaultWater;
 
-    private void Awake()
+   /* private void Awake()
     {
         cursorManager = Object.FindFirstObjectByType<CursorManager>();
-    }
+    }*/
     private void Start()
     {
         panelcauldron.SetActive(true);
@@ -104,8 +104,8 @@ public class MenuCauldron : MonoBehaviour
 
     public void OpenCauldron()
     {
-        cursorManager.cursorblock = true;
-        cursorManager.MostrarCursor();
+        //cursorManager.cursorblock = true;
+        //cursorManager.MostrarCursor();
 
         panelcauldron.SetActive(true);
         worldpanelbar.SetActive(false);
@@ -118,8 +118,8 @@ public class MenuCauldron : MonoBehaviour
 
     public void CloseCauldron()
     {
-        cursorManager.cursorblock = false;
-        cursorManager.OcultarCursor();
+        //cursorManager.cursorblock = false;
+        //cursorManager.OcultarCursor();
         panelcauldron.SetActive(false);
         if (cooking) worldpanelbar.SetActive(true);
         else panelcooking.SetActive(false);
