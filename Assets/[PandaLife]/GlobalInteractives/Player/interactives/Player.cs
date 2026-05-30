@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Player : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float detectionradius = 1f;
     public LayerMask interactlayer;
     [SerializeField] private Animator anim;
-    private bool collectWater=false;
+    private bool collectWater = false;
 
     [SerializeField] private RecipesData receta;
 
@@ -26,6 +27,10 @@ public class Player : MonoBehaviour
 
 
     [SerializeField] private ParticleSystem waterParticles;
+
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip splashClip;
+    [SerializeField] private AudioClip fillBucketClip;
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -435,7 +440,7 @@ public class Player : MonoBehaviour
             }
 
             cube.PickUp();
-        
+
         }
         if (interactuable is Minipandas minipanda)
         {
@@ -461,26 +466,26 @@ public class Player : MonoBehaviour
         }
     }
 
-public void Drop()
-{
-    if (pickedobject != null)
+    public void Drop()
     {
-        Dish dish = pickedobject.GetComponentInChildren<Dish>();
-        Debug.Log($"[Player] Drop - dish encontrado: {dish}");
-        if (dish != null && CauldronPersistenceManager.instance != null)
+        if (pickedobject != null)
         {
-            Debug.Log($"[Player] Guardando posición plato: {pickedobject.transform.position}");
-            CauldronPersistenceManager.instance.SaveDishState(
-                dish.GetReceta(),
-                pickedobject.transform.position,
-                inHand: false
-            );
-        }
+            Dish dish = pickedobject.GetComponentInChildren<Dish>();
+            Debug.Log($"[Player] Drop - dish encontrado: {dish}");
+            if (dish != null && CauldronPersistenceManager.instance != null)
+            {
+                Debug.Log($"[Player] Guardando posición plato: {pickedobject.transform.position}");
+                CauldronPersistenceManager.instance.SaveDishState(
+                    dish.GetReceta(),
+                    pickedobject.transform.position,
+                    inHand: false
+                );
+            }
 
-        pickedobject.Drop();
-        pickedobject = null;
+            pickedobject.Drop();
+            pickedobject = null;
+        }
     }
-}
 
     public PickupDrop GetBucket()
     {
@@ -524,8 +529,8 @@ public void Drop()
     // Función para que vuelva a moverse (Mi gente llamad esto en un evento al final de cada animación)
     public void EnableMovement()
     {
-        
-    Debug.Log("EnableMovement llamado");
+
+        Debug.Log("EnableMovement llamado");
         if (GetComponent<movement>() != null)
         {
             GetComponent<movement>().enabled = true;
@@ -536,6 +541,7 @@ public void Drop()
         if (waterParticles != null)
         {
             waterParticles.Play();
+            PlaySplashSound();
         }
         else
         {
@@ -543,16 +549,31 @@ public void Drop()
         }
     }
 
-    /// <summary>
-    /// Detiene la reproducción del sistema de partículas de agua externo.
-    /// </summary>
     public void StopWaterParticles()
     {
         if (waterParticles != null)
         {
             waterParticles.Stop();
+            PlaySplashSound();
         }
     }
+
+    public void PlaySplashSound()
+    {
+        audioSource.clip = splashClip;
+        audioSource.Play();
+    }
+
+    public void StopSplashSound()
+    {
+        audioSource.Stop();
+    }
+
+    public void PlayFillBucketSound()
+    {
+        audioSource.PlayOneShot(fillBucketClip);
+    }
+
 
     //-----------------------------
     public void ShakeHead()
@@ -589,30 +610,32 @@ public void Drop()
 
         }
 
-        if (currentTarget is Plant) {
+        if (currentTarget is Plant)
+        {
             if (IsHandEmpty()) return true;
         }
 
-        if(currentTarget is Harvest && !IsHandEmpty()) return true;
+        if (currentTarget is Harvest && !IsHandEmpty()) return true;
 
         if (currentTarget is Cauldron && !IsHandEmpty()) return true;
 
-        if(currentTarget is Minipandas panda)
+        if (currentTarget is Minipandas panda)
         {
-            HungerSystem hunger= panda.GetComponent<HungerSystem>();
-            if(hunger!=null && !hunger.IsRageActivated)
+            HungerSystem hunger = panda.GetComponent<HungerSystem>();
+            if (hunger != null && !hunger.IsRageActivated)
             {
                 if (IsHandEmpty()) return true;
             }
 
-            if(hunger!=null && hunger.IsRageActivated)
+            if (hunger != null && hunger.IsRageActivated)
             {
-                if(!IsHandEmpty()) return true;
+                if (!IsHandEmpty()) return true;
             }
         }
 
-        if(currentTarget is Radio && !IsHandEmpty()) return true;
+        if (currentTarget is Radio && !IsHandEmpty()) return true;
 
         return false;
     }
 }
+   
