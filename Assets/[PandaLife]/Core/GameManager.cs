@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     public float porcentaje = 0f;
 
     [Header("Recompensas")]
-    //public TextMeshProUGUI messageRewardSacks;
-    //public TextMeshProUGUI messageRewardCollectable;
     public bool tedypersistente = false;
     public bool notepersistente = false;
     [HideInInspector] public bool animacionRedDragonMostrada = false;
@@ -146,32 +144,6 @@ public class GameManager : MonoBehaviour
         if (textoBayaUchuva != null)
             textoBayaUchuva.text = bayauchuva.ToString();
     }
-    /*
-    public void MostrarMensajeTemporal(string mensaje, float duracion, string type)
-    {
-        StartCoroutine(MensajeRoutine(mensaje, duracion, type));
-    }
-    //Recompensas textos temporales
-    
-    private IEnumerator MensajeRoutine(string mensaje, float duracion, string type)
-    {
-        if (type == "Bags")
-        {            messageRewardSacks.text = mensaje;
-            messageRewardSacks.gameObject.SetActive(true);
-            yield return new WaitForSeconds(duracion);
-            messageRewardSacks.text = "";
-            messageRewardSacks.gameObject.SetActive(false);
-        }
-        else if (type == "Collectables")
-        {
-            messageRewardCollectable.text = mensaje;
-            messageRewardCollectable.gameObject.SetActive(true);
-            yield return new WaitForSeconds(duracion);
-            messageRewardCollectable.text = "";
-            messageRewardCollectable.gameObject.SetActive(false);
-        }
-    }
-    */
     public void Resetplay()
     {
         // --- Sistema de día ---
@@ -197,20 +169,6 @@ public class GameManager : MonoBehaviour
         tedypersistente = false;
         notepersistente = false;
 
-        // Limpiar mensajes UI
-        /*
-        if (messageRewardSacks != null)
-        {
-            messageRewardSacks.text = "";
-            messageRewardSacks.gameObject.SetActive(false);
-        }
-
-        if (messageRewardCollectable != null)
-        {
-            messageRewardCollectable.text = "";
-            messageRewardCollectable.gameObject.SetActive(false);
-        }
-        */
         // Parar coroutines activas
         StopAllCoroutines();
 
