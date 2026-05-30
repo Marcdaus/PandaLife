@@ -17,9 +17,19 @@ public class Minipandas : Interactuable
     [SerializeField] private PinUIElement myRequestPin;
     [SerializeField] private float transitionTime = 0.5f;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip soundCorrectDish; // Sonido de Ding
+    [SerializeField] private AudioClip soundWrongDish;   // Sonido de error
+    [SerializeField] private AudioClip soundNewRequest;  // Sonido al aparecer un nuevo pedido Pop
+
     void Awake()
     {
         hungerSystem = GetComponent<HungerSystem>();
+
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+        }
     }
 
     private void Start()
@@ -82,6 +92,19 @@ public class Minipandas : Interactuable
         if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
         {
             saciedad /= 2;
+            // Reproducir sonido de Error
+            if (audioSource != null && soundWrongDish != null)
+            {
+                audioSource.PlayOneShot(soundWrongDish);
+            }
+        }
+        else
+        {
+            // Reproducir sonido Ding
+            if (audioSource != null && soundCorrectDish != null)
+            {
+                audioSource.PlayOneShot(soundCorrectDish);
+            }
         }
 
         hungerSystem.Restaurar(saciedad);
@@ -110,6 +133,10 @@ public class Minipandas : Interactuable
         {
             myRequestPin.SetTransitionState(false); // Desbloqueamos
             myRequestPin.Show(); // Forzamos la aparición
+            if (audioSource != null && soundNewRequest != null)
+            {
+                audioSource.PlayOneShot(soundNewRequest);
+            }
         }
     }
 
