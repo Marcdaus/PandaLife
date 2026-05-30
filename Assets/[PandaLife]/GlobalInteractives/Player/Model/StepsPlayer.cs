@@ -21,16 +21,11 @@ public class StepsPlayer : MonoBehaviour
 
 public void ReproducirPaso()
 {
-    Debug.Log("REPRODUCIRPASO LLAMADO");
-
+   
     if(sourceActual == null)
     {
-        Debug.Log("NULL");
         return;
     }
-
-    Debug.Log("VOY A TOCAR WOOD? " + (sourceActual == sourceWood));
-    Debug.Log("VOY A TOCAR GRASS? " + (sourceActual == sourceGrass));
 
     sourceActual.Play();
 }
@@ -52,7 +47,7 @@ public void ReproducirPaso()
     else if(layer == LayerMask.NameToLayer(layerPiedra))
     {
         sourceActual = sourceHome;
-        Debug.Log("HOME elegido");
+       Debug.Log("HOME elegido");
     }
 }
 }

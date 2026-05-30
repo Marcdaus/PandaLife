@@ -10,7 +10,6 @@ public class StepDetector : MonoBehaviour
 
         if (scriptDelPadre != null)
         {
-            Debug.Log("ENTER -> " + other.name);
             scriptDelPadre.ActualizarSueloDesdeHijo(other);
         }
     }
@@ -21,7 +20,6 @@ public class StepDetector : MonoBehaviour
 
         if (scriptDelPadre != null)
         {
-            Debug.Log("STAY -> " + other.name);
             scriptDelPadre.ActualizarSueloDesdeHijo(other);
         }
     }
