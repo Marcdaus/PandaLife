@@ -7,15 +7,21 @@ public class RecipebookActions : MonoBehaviour
     [System.Serializable]
     public class Recipe
     {
-        [Tooltip("El nombre exacto del plato tal cual viene en los pedidos ('bambu cocido', etc.)")]
         public string recipename;
 
-        [Tooltip("Arrastra aquí las imágenes de las caras de los pandas asignadas a ESTA receta en el inspector")]
         public List<Image> pandaFaces;
     }
 
     [SerializeField] private List<Recipe> recipes;
     [SerializeField] private Animator anim;
+
+    [SerializeField] private Image bamboosalad;
+    [SerializeField] private Image bobatea;
+    [SerializeField] private Image berrysoup;
+
+    [SerializeField] private Sprite sbamboosalad;
+    [SerializeField] private Sprite sbobatea;
+    [SerializeField] private Sprite sberrysoup;
 
     public void Open_notebook()
     {
@@ -30,15 +36,26 @@ public class RecipebookActions : MonoBehaviour
 
     public void Updatefaces()
     {
+        if(GameManager.instance.numday == 2)
+        {
+            bamboosalad.sprite = sbamboosalad;
+        }
+        else if(GameManager.instance.numday == 3)
+        {
+            bobatea.sprite = sbobatea;
+            berrysoup.sprite = sberrysoup;
+            bamboosalad.sprite = sbamboosalad;
+
+        }
         if (GameManager.instance == null) return;
 
         PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
         if (pandaReq == null) return;
 
-        // 1. Obtenemos la lista de los pedidos que tienen los pandas hoy
+        //Obtenemos la lista de los pedidos que tienen los pandas hoy
         List<string> pedidosActuales = pandaReq.GetCurrentRequests();
 
-        // 2. Primero, apagamos TODAS las caritas de todas las recetas para resetear la UI
+        //Primero, apagamos TODAS las caritas de todas las recetas para resetear la UI
         foreach (var r in recipes)
         {
             foreach (var faceImage in r.pandaFaces)
@@ -47,7 +64,7 @@ public class RecipebookActions : MonoBehaviour
             }
         }
 
-        // 3. Recorremos los pedidos de los pandas (máximo 3 pandas basándonos en tu RequestManager)
+        //Recorremos los pedidos de los pandas (máximo 3 pandas basándonos en tu RequestManager)
         for (int iPanda = 0; iPanda < pedidosActuales.Count; iPanda++)
         {
             string pedidoDelPanda = pedidosActuales[iPanda];
