@@ -12,8 +12,8 @@ public class PandaRequest : MonoBehaviour
     private void Awake()
     {
 
-        if (!UnlockedDishes.Contains("Plato_Bamboo")) UnlockedDishes.Add("Plato_Bamboo");
-        if (!UnlockedDishes.Contains("Plato_Blueberry")) UnlockedDishes.Add("Plato_Blueberry");
+        if (!UnlockedDishes.Contains("Plato_BambuCocido")) UnlockedDishes.Add("Plato_BambuCocido");
+        if (!UnlockedDishes.Contains("Plato_BambuRelleno")) UnlockedDishes.Add("Plato_BambuRelleno");
 
         // Generamos los primeros pedidos al empezar el juego por primera vez
         GenerateRandomRequests();
@@ -23,12 +23,12 @@ public class PandaRequest : MonoBehaviour
     {
         if (dayNumber == 2)
         {
-            if (!UnlockedDishes.Contains("Plato_RedDragon")) UnlockedDishes.Add("Plato_RedDragon");
+            if (!UnlockedDishes.Contains("Plato_Ensalada")) UnlockedDishes.Add("Plato_Ensalada");
         }
         if (dayNumber == 3)
         {
-            if (!UnlockedDishes.Contains("Plato_Uchuva")) UnlockedDishes.Add("Plato_Uchuva");
-            if (!UnlockedDishes.Contains("Plato_Uchuva2")) UnlockedDishes.Add("Plato_Uchuva2");
+            if (!UnlockedDishes.Contains("Plato_Sopa")) UnlockedDishes.Add("Plato_Sopa");
+            if (!UnlockedDishes.Contains("Plato_BobaTea")) UnlockedDishes.Add("Plato_BobaTea");
         }
     }
 
@@ -55,8 +55,8 @@ public class PandaRequest : MonoBehaviour
     public void ClearList()
     {
         UnlockedDishes.Clear();
-        if (!UnlockedDishes.Contains("Plato_Bamboo")) UnlockedDishes.Add("Plato_Bamboo");
-        if (!UnlockedDishes.Contains("Plato_Blueberry")) UnlockedDishes.Add("Plato_Blueberry");
+        if (!UnlockedDishes.Contains("Plato_BambuCocido")) UnlockedDishes.Add("Plato_BambuCocido");
+        if (!UnlockedDishes.Contains("Plato_BambuRelleno")) UnlockedDishes.Add("Plato_BambuRelleno");
         GenerateRandomRequests();
     }
 
