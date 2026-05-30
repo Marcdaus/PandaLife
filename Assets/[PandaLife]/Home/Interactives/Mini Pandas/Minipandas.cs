@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class Minipandas : Interactuable
     [SerializeField] private ParticleSystem eatingParticles;
     private ParticleSystem eatingParticlesInstance;
      private Animator animator;
+    [SerializeField] private PinUIElement myRequestPin;
+    [SerializeField] private float transitionTime = 0.5f;
 
     void Awake()
     {
@@ -45,68 +48,72 @@ public class Minipandas : Interactuable
             }
         }
     }
-    
+
 
     public void InteractuarConPlato(Dish dish, Player player)
     {
-        Debug.Log("Mini panda se come el plato ");
-        
         if (dish != null)
         {
-            if (hungerSystem.IsRageActivated)
-            {
-                Debug.Log("Esta enfadado y no quiere comer");
-                return;
-            }
-            int saciedad = dish.GetSaciedad();
-            animator.SetTrigger("eating");
-            SpawEatingParticles(dish.GetColor());
-            Debug.Log(dish.GetColor());
+            if (hungerSystem.IsRageActivated) return;
 
-            string nombreDelPlatoEvaluado = dish.GetNombre();
-
-            // Verificamos si el plato que nos dan NO ES el que el panda quiere
-            if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
-            {
-                // Si es un plato distinto, penalizamos reduciendo la saciedad
-                saciedad = saciedad / 2;
-                Debug.Log($"El panda quería {pedidoDeseado} pero le diste {nombreDelPlatoEvaluado}. Penalización aplicada. Saciedad final: {saciedad}");
-            }
-            else
-            {
-                Debug.Log("El plato le gusta. Saciedad completa: " + saciedad);
-            }
-            hungerSystem.Restaurar(saciedad);
-            hungerSystem.PauseHunger(5f);
-            //Debug.Log("minipandas: Dish name: " + dish.name);
-            //Debug.Log("minipandas: Dish instance ID: " + dish.GetInstanceID());
-
-            if (GameManager.instance != null)
-            {
-                PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
-                if (pandaReq != null)
-                {
-                    // Cambiamos el pedido
-                    pandaReq.ReplaceRequestAtIndex(indicePanda);
-
-                    // Actualizamos pedidoDeseado
-                    ActualizarPedidoDebug();
-
-                    // Buscamos el RequestManager para actualizar los sprites en la UI inmediatamente
-                    RequestManager requestManager = FindAnyObjectByType<RequestManager>();
-                    if (requestManager != null)
-                    {
-                        requestManager.ActualizarTextosManual();
-                    }
-                }
-            }
+            
+            StartCoroutine(SequenceChangeRequest(dish, player));
         }
-  
-       Destroy(player.pickedobject.gameObject);
-        player.SetPickedObject(null);
     }
 
-     public override void Interactuar()
+    private IEnumerator SequenceChangeRequest(Dish dish, Player player)
+    {
+        // Bloquear evaluación y Ocultar
+        if (myRequestPin != null)
+        {
+            myRequestPin.SetTransitionState(true);
+            myRequestPin.Hide();
+        }
+
+        // Esperar a que la animación de "Hide" termine
+        yield return new WaitForSeconds(transitionTime);
+
+        // Lógica de comer
+        int saciedad = dish.GetSaciedad();
+        animator.SetTrigger("eating");
+        SpawEatingParticles(dish.GetColor());
+
+        string nombreDelPlatoEvaluado = dish.GetNombre();
+        if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
+        {
+            saciedad /= 2;
+        }
+
+        hungerSystem.Restaurar(saciedad);
+        hungerSystem.PauseHunger(5f);
+
+        // Cambiar el pedido en el Data
+        if (GameManager.instance != null)
+        {
+            PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
+            if (pandaReq != null)
+            {
+                pandaReq.ReplaceRequestAtIndex(indicePanda);
+                ActualizarPedidoDebug();
+
+                RequestManager requestManager = FindAnyObjectByType<RequestManager>();
+                if (requestManager != null) requestManager.ActualizarTextosManual();
+            }
+        }
+
+        // Destruir objetos del jugador
+        Destroy(player.pickedobject.gameObject);
+        player.SetPickedObject(null);
+
+        // Volver a mostrar con el nuevo pedido
+        if (myRequestPin != null)
+        {
+            myRequestPin.SetTransitionState(false); // Desbloqueamos
+            myRequestPin.Show(); // Forzamos la aparición
+        }
+    }
+
+    public override void Interactuar()
     {
         if (hungerSystem.IsRageActivated)
         {
