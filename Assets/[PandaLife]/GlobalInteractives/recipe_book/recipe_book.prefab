@@ -549,32 +549,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipes:
-  - recipename: Plato_Bamboo
+  - recipename: Plato_BambuRelleno
     pandaFaces:
+    - {fileID: 2594554769580419103}
     - {fileID: 7409378179471544942}
     - {fileID: 4735213246794043325}
-    - {fileID: 2594554769580419103}
-  - recipename: Plato_RedDragon
+  - recipename: Plato_BambuCocido
     pandaFaces:
+    - {fileID: 3209021702308695990}
     - {fileID: 5204512835313784884}
     - {fileID: 361942937633951170}
-    - {fileID: 3209021702308695990}
-  - recipename: Plato_Blueberry
+  - recipename: Plato_Ensalada
     pandaFaces:
+    - {fileID: 1769821938627258289}
     - {fileID: 2089645667161272994}
     - {fileID: 668256924995582261}
-    - {fileID: 1769821938627258289}
-  - recipename: Plato_Uchuva
+  - recipename: Plato_Sopa
     pandaFaces:
+    - {fileID: 6340358875283494665}
     - {fileID: 3569065459892944669}
     - {fileID: 7204640065091516517}
-    - {fileID: 6340358875283494665}
-  - recipename: Plato_Uchuva2
+  - recipename: Plato_BobaTea
     pandaFaces:
+    - {fileID: 466283532552693761}
     - {fileID: 1037755009206767882}
     - {fileID: 1988740629467309920}
-    - {fileID: 466283532552693761}
   anim: {fileID: 6403490958572287255}
+  bamboosalad: {fileID: 5883548697511951667}
+  bobatea: {fileID: 4688622280755636292}
+  berrysoup: {fileID: 5426144418665022918}
+  sbamboosalad: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
+  sbobatea: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
+  sberrysoup: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
 --- !u!1 &2444186446925592146
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,7 +649,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a6b9509ea0f272408566353025fa593, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -929,7 +935,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a6b9509ea0f272408566353025fa593, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2294,7 +2300,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3661ffd5b6f8f8f4b9f02b1f3f7f7f70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a6b9509ea0f272408566353025fa593, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
