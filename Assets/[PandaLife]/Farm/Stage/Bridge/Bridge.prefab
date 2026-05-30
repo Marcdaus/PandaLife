@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5491097362393366416}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,10 +96,18 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c5bbbe35c55f147c5b0022a4fa285b8a, type: 2}
+    - target: {fileID: -1916899210259106318, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: -1592289475483123607, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c5bbbe35c55f147c5b0022a4fa285b8a, type: 2}
+    - target: {fileID: -1461331966654516721, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: -523365597130697834, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -107,6 +115,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
       propertyPath: m_Name
       value: puente
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1603246306389932429, guid: 07805aa8dd0fc4d039c16744d60dd831, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

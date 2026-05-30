@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-2995054579209509782
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 05-GrassSound_{-2995054579209509782}
+  m_AudioClip: {fileID: 8300000, guid: bb8ff41747c2945ddb4e0e4f52809fc8, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &4144971844311166178
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 01-GrassSound_{4144971844311166178}
+  m_AudioClip: {fileID: 8300000, guid: 4b3fb151f61104f999fba37f6e34eefe, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &5421291214867725820
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 02-GrassSound_{5421291214867725820}
+  m_AudioClip: {fileID: 8300000, guid: 1c6749ef35b8242ebb0a681687717393, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1307931743 &6418180475301049370
+AudioRandomContainer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GrassSteps
+  m_Volume: -28
+  m_Pitch: 616
+  m_AutomaticTriggerTime: 0
+  m_LoopCount: 1
+  m_VolumeRandomizationRange: {x: 0, y: 0}
+  m_PitchRandomizationRange: {x: 0, y: 200}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_LoopCountRandomizationRange: {x: 0, y: 0}
+  m_Elements:
+  - {fileID: 4144971844311166178}
+  - {fileID: 5421291214867725820}
+  - {fileID: 7376682819675900480}
+  - {fileID: 7760934828936500028}
+  - {fileID: -2995054579209509782}
+  m_AvoidRepeatingLast: 0
+  m_PlaybackMode: 1
+  m_TriggerMode: 0
+  m_AutomaticTriggerMode: 1
+  m_LoopMode: 2
+  m_VolumeRandomizationEnabled: 0
+  m_PitchRandomizationEnabled: 1
+  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_LoopCountRandomizationEnabled: 0
+--- !u!1233149941 &7376682819675900480
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 03-GrassSound_{7376682819675900480}
+  m_AudioClip: {fileID: 8300000, guid: 0aad89a9cd3e1472ba81b33ad635d087, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
+--- !u!1233149941 &7760934828936500028
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 04-GrassSound_{7760934828936500028}
+  m_AudioClip: {fileID: 8300000, guid: 5ada97f4b506b46cb875de671422d33d, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
