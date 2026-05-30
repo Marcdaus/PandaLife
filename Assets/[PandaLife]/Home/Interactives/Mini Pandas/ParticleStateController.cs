@@ -22,6 +22,12 @@ public class ParticleStateController : MonoBehaviour
     [SerializeField] private GameObject calmmodelface;
     [SerializeField] private GameObject ragemodelface;
 
+    [Header("Audio Random Containers")]
+    
+    [SerializeField] private AudioSource happynoisecontainer;
+    [SerializeField] private AudioSource hungrynoisecontainer;
+    [SerializeField] private AudioSource angrynoisecontainer;
+
     private ParticleSystemRenderer particlerenderer;
 
     private void Awake()
@@ -32,9 +38,10 @@ public class ParticleStateController : MonoBehaviour
         if (particlesystemref != null)
             particlerenderer = particlesystemref.GetComponent<ParticleSystemRenderer>();
 
-        ResetVisuals(); // 🔥 CLAVE REAL
+        ResetVisuals();
     }
 
+    
     // =========================
     // STATES
     // =========================
@@ -44,6 +51,9 @@ public class ParticleStateController : MonoBehaviour
         DisableAllFaces();
         if (happymodelface) happymodelface.SetActive(true);
         Apply(happymaterial, happysize);
+        happynoisecontainer.Play();
+
+
     }
 
     public void Normal()
@@ -51,6 +61,9 @@ public class ParticleStateController : MonoBehaviour
         DisableAllFaces();
         if (normalmodelface) normalmodelface.SetActive(true);
         StopParticles();
+
+        if(happynoisecontainer) happynoisecontainer.Stop();
+        if(hungrynoisecontainer) hungrynoisecontainer.Stop();
     }
 
     public void Hungry()
@@ -58,6 +71,8 @@ public class ParticleStateController : MonoBehaviour
         DisableAllFaces();
         if (hungrymodelface) hungrymodelface.SetActive(true);
         Apply(hungrymaterial, hungrysize);
+
+        hungrynoisecontainer.Play();
     }
 
     public void Sad()
@@ -65,6 +80,9 @@ public class ParticleStateController : MonoBehaviour
         DisableAllFaces();
         if (calmmodelface) calmmodelface.SetActive(true);
         Apply(sadmaterial, sadsize);
+
+        if (hungrynoisecontainer) hungrynoisecontainer.Stop();
+        if(angrynoisecontainer) angrynoisecontainer.Stop();
     }
 
     public void Angry()
@@ -72,6 +90,8 @@ public class ParticleStateController : MonoBehaviour
         DisableAllFaces();
         if (ragemodelface) ragemodelface.SetActive(true);
         Apply(angrymaterial, angrysize);
+
+        angrynoisecontainer.Play();
     }
 
     // =========================
