@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip splashClip;
     [SerializeField] private AudioClip fillBucketClip;
 
-    [SerializeField] private PlaySFX pandaSFX;
+    [SerializeField] private AudioSource pandaSFX;
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -641,10 +641,12 @@ public class Player : MonoBehaviour
     }
     public void PetPanda()
     {
-        if (pandaSFX != null)
-        {
-            pandaSFX.PlayPetting();
-        }
+        pandaSFX.PlayOneShot(pandaSFX.clip);
     }
+    public void StopPetPanda()
+    {
+        pandaSFX.Stop();
+    }
+
 }
    
