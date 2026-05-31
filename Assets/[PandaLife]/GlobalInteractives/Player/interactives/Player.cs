@@ -6,7 +6,7 @@ using UnityEngine.Audio;
 public class Player : MonoBehaviour
 {
     [SerializeField] private Transform interactionarea;
-    [SerializeField] private float detectionradius = 1f;
+    [SerializeField] private Vector3 detectionBoxSize = new Vector3(1f, 2f, 1.5f);
     public LayerMask interactlayer;
     [SerializeField] private Animator anim;
     private bool collectWater = false;
@@ -38,8 +38,9 @@ public class Player : MonoBehaviour
     {
         if (interactionarea != null)
         {
+            Gizmos.matrix = Matrix4x4.TRS(interactionarea.position, interactionarea.rotation, Vector3.one);
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(interactionarea.position, detectionradius);
+            Gizmos.DrawWireCube(Vector3.zero, detectionBoxSize);
         }
 
     }
@@ -91,7 +92,7 @@ public class Player : MonoBehaviour
     void ScanInteractables()
     {
         // Lanzamos la esfera de detección
-        Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
+        Collider[] detected = Physics.OverlapBox(interactionarea.position, detectionBoxSize / 2f, interactionarea.rotation, interactlayer);
 
         // Variables temporales para ver qué encontramos
         PickupDrop bucketTarget = null;
