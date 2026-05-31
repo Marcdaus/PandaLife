@@ -23,6 +23,7 @@ public class River : Interactuable
         if (player.IsHoldingBucket())
         {
             Debug.Log("El jugador está recogiendo agua del río...");
+            
         }
         else
         {

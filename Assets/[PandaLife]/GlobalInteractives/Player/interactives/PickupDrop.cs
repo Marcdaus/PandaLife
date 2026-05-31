@@ -85,12 +85,17 @@ public class PickupDrop : Interactuable
 
         picked = true;
         Mensaje($"{rb.name} recogido");
-
+        // Si el tutorial está activo y esto es un saco, completamos el paso
+        if (TutorialManager.instance != null && GetComponent<Bamboo_bag>() != null)
+        {
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.CogerSaco);
+        }
         // Si el tutorial está activo y esto es un cubo, completamos el paso
         if (TutorialManager.instance != null && GetComponent<BucketWater>() != null)
         {
             TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.CogerCubo);
         }
+        
     }
 
     public void Drop()

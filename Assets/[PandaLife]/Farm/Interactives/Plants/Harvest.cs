@@ -40,6 +40,10 @@ public class Harvest : Interactuable
                 area.VaciarParcela(); // Libera la parcela
 
             Debug.Log("Terreno libre para plantar");
+            if (TutorialManager.instance != null)
+            {
+                TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.Cosechar);
+            }
         }
         else
         {

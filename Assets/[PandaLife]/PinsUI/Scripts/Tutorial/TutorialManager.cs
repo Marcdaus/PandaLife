@@ -8,14 +8,14 @@ public class TutorialManager : MonoBehaviour
     // Pasos tutorial
     public enum TutorialStep
     {
-        SalirDeCasa = 0,
-        CogerSaco = 1,
-        Plantar = 2,
-        CogerCubo = 3,
-        LlenarCubo = 4,
-        RegarPlanta = 5,
+        SalirDeCasa = 0, //
+        CogerSaco = 1,//
+        Plantar = 2,//
+        CogerCubo = 3,//
+        LlenarCubo = 4,//
+        RegarPlanta = 5,//
         Cosechar = 6,
-        EntrarEnCasa = 7,
+        EntrarEnCasa = 7,//
         Caldero = 8,
         Completado = 9 // Tutorial acabado
     }

@@ -299,6 +299,14 @@ public class Player : MonoBehaviour
             BucketWater cubo = pickedobject.GetComponent<BucketWater>();
             if (cubo != null)
             {
+
+                // Completamos el paso del tutorial si estamos en el río
+                if (TutorialManager.instance != null)
+                {
+                    TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.LlenarCubo);
+                }
+
+
                 cubo.Fill();
             }
         }

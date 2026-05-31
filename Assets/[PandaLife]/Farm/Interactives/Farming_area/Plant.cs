@@ -44,6 +44,11 @@ public class Plant : Interactuable
 
         area.SetCropPrefab(cropselected);
         area.sowing();
+        // Si el tutorial está activo y esto es una parcela, completamos el paso
+        if (TutorialManager.instance != null && GetComponent<FarmingArea>() != null)
+        {
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.Plantar);
+        }
         Debug.Log("Sembrado correctamente y registrado en el sistema de guardado.");
     }
 

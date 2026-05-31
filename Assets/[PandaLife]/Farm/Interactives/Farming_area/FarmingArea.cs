@@ -26,6 +26,10 @@ public class FarmingArea : MonoBehaviour
 
         rend.material = watered ? wateredMaterial : dryMaterial;
         rend2.material = watered ? wateredMaterial : dryMaterial;
+        if (TutorialManager.instance != null)
+        {
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.RegarPlanta);
+        }
     }
 
     private Crop currentCrop;
@@ -113,7 +117,7 @@ public class FarmingArea : MonoBehaviour
             FarmDataManager.instance.SaveArea(areaID, emptyData);
         }
 
-        Debug.Log($"Parcela {areaID} ahora est� vac�a.");
+        Debug.Log($"Parcela {areaID} ahora está vacía.");
     }
 
     //para spawnear las particulas de tierra

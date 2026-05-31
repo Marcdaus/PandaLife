@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PinTutorialDoor : PinUIElement
+public class PinTutorialDoorSalir : PinUIElement
 {
     public override bool CheckCondition()
     {

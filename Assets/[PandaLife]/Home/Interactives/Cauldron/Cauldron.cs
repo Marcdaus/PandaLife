@@ -45,6 +45,10 @@ public class Cauldron : Interactuable
     // Interacción unificada
     public override void Interactuar(Player player)
     {
+        if (TutorialManager.instance != null)
+        {
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.Caldero);
+        }
         if (!player.IsHandEmpty()) return;
 
         if (!Checkresources(message, Text)) return;
@@ -59,6 +63,7 @@ public class Cauldron : Interactuable
         // Si no, abrimos el menú
         if (cauldronmenuUI.openmenu != null) cauldronmenuUI.openmenu.Play();
         cauldronmenuUI.OpenCauldron();
+        
     }
 
     public void SpawnDish(GameObject prefab, RecipesData receta, bool menuabierto)

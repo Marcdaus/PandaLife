@@ -46,6 +46,10 @@ public class SceneChange : Interactuable
         {
             TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.SalirDeCasa);
         }
+        if (TutorialManager.instance != null)
+        {
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.EntrarEnCasa);
+        }
 
         StartCoroutine(EsperarParaCargar(limpiarAntes, player));
     }
