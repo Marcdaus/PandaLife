@@ -7946,6 +7946,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
+      propertyPath: PettingaudioSource
+      value: 
+      objectReference: {fileID: 887667513}
     - target: {fileID: 3451203607494091818, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
       propertyPath: m_UseGravity
       value: 0
@@ -8141,6 +8145,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &887667513 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 691190834312731151, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
+  m_PrefabInstance: {fileID: 887667492}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900561528
 GameObject:
   m_ObjectHideFlags: 0
