@@ -2,23 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class SceneChange : Interactuable
 {
     public LoadScene LoadScene;
-    // Campos
-    [SerializeField] private GameString scenename; // Variable que contendrá el nombre de la escena a cargar
-    private Player player;
+    [SerializeField] private GameString scenename;
     private AudioSource opendoor;
-    // Función donde se encuentran los objetos
+
     private void Start()
     {
         opendoor = GetComponent<AudioSource>();
-        player = FindFirstObjectByType<Player>();
         LoadScene = FindFirstObjectByType<LoadScene>();
-        //pickupobject = FindFirstObjectByType<PickupDrop>();
     }
-    // Función interactuar que comprueba si tiene el cubo o un plato en la mano.
-    public override void Interactuar()
+
+    public override void Interactuar(Player player)
     {
         bool limpiarAntes = true; // Por defecto limpiamos antes de guardar
 
@@ -51,12 +48,11 @@ public class SceneChange : Interactuable
             Debug.Log("Tutorial de la puerta completado para esta partida.");
         }
 
-        // SIEMPRE llamamos a la corrutina para asegurar que la animación se reproduce
-        StartCoroutine(EsperarParaCargar(limpiarAntes));
+        StartCoroutine(EsperarParaCargar(limpiarAntes, player));
     }
 
 
-    IEnumerator EsperarParaCargar(bool limpiarAntes)
+    IEnumerator EsperarParaCargar(bool limpiarAntes, Player player)
     {
         // Iniciamos la animación de transición
         if (LoadScene != null)
@@ -64,31 +60,31 @@ public class SceneChange : Interactuable
             LoadScene.StartLoadScene();
         }
 
-        // Guardamos la persistencia
-        GuardarPlatoSueltoSiExiste(limpiarAntes);
+        // Guardamos la persistencia, pasándole el player
+        GuardarPlatoSueltoSiExiste(limpiarAntes, player);
 
         // Esperamos a que la animación termine
-        opendoor.Play();
+        if (opendoor != null) opendoor.Play();
         yield return new WaitForSeconds(1f);
 
         // Cargamos la escena
         SceneManager.LoadScene(scenename.Value);
-
-        
     }
 
-    private void GuardarPlatoSueltoSiExiste(bool limpiarAntes)
+    // La función de guardado usa el Player recibido para hacer las comprobaciones
+    private void GuardarPlatoSueltoSiExiste(bool limpiarAntes, Player player)
     {
         if (CauldronPersistenceManager.instance == null) return;
 
         Dish[] platos = FindObjectsByType<Dish>(FindObjectsSortMode.None);
         Cauldron cauldron = FindFirstObjectByType<Cauldron>();
 
-
         List<Dish> platosSueltos = new List<Dish>();
         foreach (Dish dish in platos)
         {
             GameObject raiz = dish.transform.root.gameObject;
+
+            // Usamos el player para ver qué tiene en la mano
             if (player.pickedobject != null &&
                 raiz == player.pickedobject.transform.root.gameObject) continue;
 
@@ -100,16 +96,13 @@ public class SceneChange : Interactuable
         if (limpiarAntes)
             CauldronPersistenceManager.instance.ClearAllDishStates();
 
-
         foreach (Dish dish in platosSueltos)
         {
             GameObject raiz = dish.transform.root.gameObject;
 
-
             bool esPlatoDelCaldero = false;
             if (cauldron != null && cauldron.PlatoPendienteGameObject != null)
             {
-
                 if (raiz == cauldron.PlatoPendienteGameObject.transform.root.gameObject)
                 {
                     esPlatoDelCaldero = true;
@@ -125,15 +118,4 @@ public class SceneChange : Interactuable
             );
         }
     }
-    //ahora funciona con la E
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        // Si es el player llama a interactuar
-        if (other.CompareTag("Player"))
-        {
-            Interactuar();
-        }
-    }
-    */
 }

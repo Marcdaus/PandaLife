@@ -15,13 +15,12 @@ public class Player : MonoBehaviour
 
     public PickupDrop pickedobject = null; // referencia al objeto que tienes en la mano
 
-    // Guardar el objeto prioritario detectado
-    private object currentTarget = null;
+    
 
     // Guardar el texto para mostrar en la pantalla
     private string currentActionText = "";
 
-    [SerializeField] private GameObject handpoint;
+    [SerializeField] public GameObject handpoint;
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
 
@@ -31,8 +30,10 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip splashClip;
     [SerializeField] private AudioClip fillBucketClip;
+    private Interactuable currentTarget = null;
+    [SerializeField] private AudioSource PettingaudioSource;
 
-    [SerializeField] private AudioSource pandaSFX;
+
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -51,11 +52,6 @@ public class Player : MonoBehaviour
         // Interactuar con E
         if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
-            if (ShouldShakeHead())
-            {
-                ShakeHead();
-                return;
-            }
             // Decidimos que animacion toca
             TriggerInteractionAnimation();
         }
@@ -67,73 +63,43 @@ public class Player : MonoBehaviour
     // Elegir animacion dependiendo del current target
     void TriggerInteractionAnimation()
     {
-        // Recuerden poner el evento al final de cada animacion
-        // para que se pueda mover el jugador.
         DisableMovement();
 
-        if (currentTarget is River && IsHoldingBucket())
+        if (currentTarget != null)
         {
-            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
-            if (cubo != null && cubo.haswater)
+            if (currentTarget.ShouldShakeHead(this))
             {
-                EnableMovement(); // no bloqueamos el movimiento
                 ShakeHead();
+
+                // Reproducimos el sonido de error si el objeto tiene un ScriptableObject asignado
+                InteractableObject data = currentTarget.GetInteractData();
+                if (data != null && data.errorSound != null)
+                {
+                    audioSource.PlayOneShot(data.errorSound);
+                }
+
                 return;
             }
 
-            collectWater = true;
-            anim.SetTrigger("CollectWater"); // Llenar cubo
-        }
-        else if (currentTarget is Harvest)
-        {
-            anim.SetTrigger("PickUp"); // Cosechar 
-        }
-        else if (currentTarget is WaterCrop)
-        {
-            anim.SetTrigger("Water"); // Regar
-        }
-        else if (currentTarget is PickupDrop)
-        {
-            if (!IsHandEmpty())
-            {
-                EnableMovement();
-                ShakeHead();
-                return;
-            }
-            anim.SetTrigger("PickUp"); // Recoger objetos
-        }
-        else if (currentTarget is Minipandas panda)
-        {
-            HungerSystem hunger = panda.GetComponent<HungerSystem>();
-            if (hunger != null && hunger.IsRageActivated) anim.SetTrigger("Pet");  // Acariciar
-            else if (CanInteractWithMiniPanda()) anim.SetTrigger("PickUp"); // Alimentar
-            else anim.SetTrigger("PickUp"); // Animación genérica
-        }
-        else if (currentTarget is Radio radio)
-        {
-            radio.PlayNotas();
-            anim.SetTrigger("Macarena");
-        }
-        else
-        {
-            // Demás objetos interactuables
-            anim.SetTrigger("Interactuar");
+            // Le pedimos al objeto su trigger. 
+            // Si es normal, nos dará el del ScriptableObject. Si es el Panda, nos dará uno dinámico.
+            anim.SetTrigger(currentTarget.GetAnimationTrigger(this));
         }
     }
 
     // Buscar objetos
     void ScanInteractables()
     {
-        // Lanzamos la esfera de detecci�n
+        // Lanzamos la esfera de detección
         Collider[] detected = Physics.OverlapSphere(interactionarea.position, detectionradius, interactlayer);
 
-        // Variables temporales para ver qu� encontramos
+        // Variables temporales para ver qué encontramos
         PickupDrop bucketTarget = null;
         Harvest harvesttarget = null;
         WaterCrop watertarget = null;
-        IInteractuable othertarget = null;
+        Interactuable othertarget = null;
 
-        // 1. Prioridad m�xima: coger cubo si hay uno y no est�s sosteniendo nada
+        // 1. Prioridad máxima: coger cubo si hay uno y no est�s sosteniendo nada
         if (IsHandEmpty())
         {
             foreach (Collider col in detected)
@@ -211,7 +177,7 @@ public class Player : MonoBehaviour
             {
                 foreach (Collider col in detected)
                 {
-                    IInteractuable interactuable = col.GetComponentInParent<IInteractuable>();
+                    Interactuable interactuable = col.GetComponentInParent<Interactuable>();
                     if (interactuable != null)
                     {
                         Component interactuableComp = interactuable as Component;
@@ -266,7 +232,7 @@ public class Player : MonoBehaviour
             // Mostrar texto según si puedes o no regar
             if (!IsHoldingBucket())
                 currentActionText = "necesitas el cubo";
-            else if (!pickedobject.GetComponent<BucketWater>().haswater)
+            else if (!pickedobject.GetComponent<BucketWater>().hasWater)
                 currentActionText = "el cubo está vacío";
             else
                 currentActionText = "regar";
@@ -294,19 +260,7 @@ public class Player : MonoBehaviour
                     currentActionText = "Interactuar";
                 }
             }
-            // Los demás
-            else
-            {
-                Interactuable interactuableRef = (currentTarget as MonoBehaviour)?.GetComponent<Interactuable>();
-                if (interactuableRef != null)
-                {
-                    currentActionText = interactuableRef.mensajeInteraccion;
-                }
-                else
-                {
-                    currentActionText = "Interactuar";
-                }
-            }
+            
         }
 
         // Finalmente, encendemos la UI con el texto que haya ganado, o la apagamos
@@ -320,50 +274,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    // Asegúrate de que esta función sea public si la llamas desde un Animation Event
     public void Interact()
     {
-        // Si estamos recogiendo agua, la animación ya se disparó y el movimiento está bloqueado.
-        // Aquí no hacemos nada, porque la lógica real de llenado sucederá en FinishWaterCollection().
-        if (currentTarget is River && IsHoldingBucket())
-        {
-            return;
-        }
+        // Si no hay objetivo, salimos
+        if (currentTarget == null) return;
 
-        if (currentTarget is PickupDrop bucket)
+        // Por ahora mantenemos los if antiguos de los objetos que AÚN no hemos actualizado
+        
+        
+        // Todo lo que hereda de Interactuable pasa por aquí
+        else
         {
-            if (!IsHandEmpty())
-            {
-                Debug.Log("Ya tienes algo en la mano, no puedes coger esto.");
-                return;
-            }
-            bucket.SetHandpoint(handpoint.transform);
-            bucket.PickUp();
-            pickedobject = bucket;
-
-            // Si era un plato en el suelo, ya no está suelto
-            Dish dish = bucket.GetComponentInChildren<Dish>();
-            if (dish != null)
-                CauldronPersistenceManager.instance?.ClearDishState();
-        }
-        else if (currentTarget is Harvest harvest)
-        {
-            harvest.Interactuar();
-        }
-        else if (currentTarget is WaterCrop water)
-        {
-            water.Interactuar();
-        }
-        else if (currentTarget is IInteractuable other)
-        {
-            HandleOtherInteraction(other);
+            currentTarget.Interactuar(this);
         }
     }
 
     // Esta función se mantiene para ser llamada al FINAL de la animación de recoger agua
     public void FinishWaterCollection()
     {
-        // 1. Rellenar el cubo físicamente/visualmente
+        // Rellenar el cubo físicamente/visualmente
         if (pickedobject != null)
         {
             BucketWater cubo = pickedobject.GetComponent<BucketWater>();
@@ -390,7 +319,7 @@ public class Player : MonoBehaviour
     bool CanWater(WaterCrop watercrop)
     {
         PickupDrop bucket = GetBucket();
-        if (bucket == null || !bucket.GetComponent<BucketWater>().haswater)
+        if (bucket == null || !bucket.GetComponent<BucketWater>().hasWater)
         {
             return false;
         }
@@ -412,61 +341,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    void HandleOtherInteraction(IInteractuable interactuable)
-    {
-        if (IsHoldingBucket() && !(interactuable is River))
-        {
-            Debug.Log("No puedes plantar mientras sostienes el cubo");
-            return;
-        }
-        if (interactuable is PickupDrop cube && IsHandEmpty())
-        {
-            if (!IsHandEmpty())
-            {
-                Debug.Log("La mano está ocupada.");
-                return;
-            }
-            cube.SetHandpoint(handpoint.transform);
-            pickedobject = cube;
-
-            // Si era un plato en el suelo, ya no está suelto
-            Dish dish = cube.GetComponentInChildren<Dish>();
-            if (dish != null)
-                CauldronPersistenceManager.instance?.ClearDishState();
-
-            Dish dishComp = pickedobject.GetComponentInParent<Dish>();
-            if (dishComp != null)
-            {
-                Debug.Log("Plato recogido con saciedad: " + dishComp.GetSaciedad());
-                Debug.Log(dishComp.GetIngredientesTexto());
-            }
-
-            cube.PickUp();
-
-        }
-        if (interactuable is Minipandas minipanda)
-        {
-            if (CanInteractWithMiniPanda())
-            {
-                Dish dishComp = pickedobject.GetComponentInParent<Dish>();
-                //Debug.Log("ANTES de darlo:");
-                //Debug.Log("player: Dish name: " + pickedobject.name);
-                //Debug.Log("player: Dish instance ID: " + pickedobject.GetInstanceID()); 
-                minipanda.InteractuarConPlato(dishComp, this);
-                //Debug.Log("pikedu:" + dishComp);
-                return;
-            }
-            else
-            {
-                minipanda.Interactuar(); //panda con ira
-            }
-            return;
-        }
-        else
-        {
-            interactuable.Interactuar();
-        }
-    }
+    
 
     public void Drop()
     {
@@ -584,68 +459,9 @@ public class Player : MonoBehaviour
         DisableMovement();
         anim.SetTrigger("ShakeHead");
     }
-
-    bool ShouldShakeHead()
-    {
-        // Intentar coger algo con mano llena
-        if (!IsHandEmpty() && (currentTarget is BucketWater || currentTarget is PickupDrop))
-            return true;
-
-        // Intentar rellenar cubo ya lleno
-        if (currentTarget is River && IsHoldingBucket())
-        {
-            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
-            if (cubo != null && cubo.haswater) return true;
-        }
-
-        // Intentar regar sin cubo, o con cubo vacío, o planta ya regada
-        if (currentTarget is WaterCrop watercrop)
-        {
-            if (!IsHoldingBucket()) return true;
-            BucketWater cubo = pickedobject.GetComponent<BucketWater>();
-            if (cubo == null || !cubo.haswater) return true;
-
-            // Planta ya regada o lista para cosechar
-            Crop crop = watercrop.GetComponent<Crop>();
-            if (crop != null && crop.IsWatered) return true;
-            if (crop != null && crop.IsHarvestable()) return true;
-
-        }
-
-        if (currentTarget is Plant)
-        {
-            if (IsHandEmpty()) return true;
-        }
-
-        if (currentTarget is Harvest && !IsHandEmpty()) return true;
-
-        if (currentTarget is Cauldron && !IsHandEmpty()) return true;
-
-        if (currentTarget is Minipandas panda)
-        {
-            HungerSystem hunger = panda.GetComponent<HungerSystem>();
-            if (hunger != null && !hunger.IsRageActivated)
-            {
-                if (IsHandEmpty()) return true;
-            }
-
-            if (hunger != null && hunger.IsRageActivated)
-            {
-                if (!IsHandEmpty()) return true;
-            }
-        }
-
-        if (currentTarget is Radio && !IsHandEmpty()) return true;
-
-        return false;
-    }
     public void PetPanda()
     {
-        pandaSFX.PlayOneShot(pandaSFX.clip);
-    }
-    public void StopPetPanda()
-    {
-        pandaSFX.Stop();
+       PettingaudioSource.Play();
     }
 
 }

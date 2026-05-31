@@ -4,39 +4,31 @@ using UnityEngine;
 
 public class Minipandas : Interactuable
 {
-
     private HungerSystem hungerSystem;
+    private Animator animator;
 
-    [SerializeField] private int indicePanda; // 0, 1 o 2
-    [SerializeField] private string pedidoDeseado; // Aquí guardaremos qué es lo que quiere ("bambu cocido", "sopa de bayas", etc.)
+    [SerializeField] private int indicePanda;
+    [SerializeField] private string pedidoDeseado;
     [SerializeField] private float porcentajecalmado;
-   [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private ParticleSystem eatingParticles;
-    private ParticleSystem eatingParticlesInstance;
-     private Animator animator;
+
     [SerializeField] private PinUIElement myRequestPin;
     [SerializeField] private float transitionTime = 0.5f;
 
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip soundCorrectDish; // Sonido de Ding
-    [SerializeField] private AudioClip soundWrongDish;   // Sonido de error
-    [SerializeField] private AudioClip soundNewRequest;  // Sonido al aparecer un nuevo pedido Pop
-
-    [SerializeField] private PlaySFX pandaSFX;
+    [SerializeField] private AudioClip soundCorrectDish;
+    [SerializeField] private AudioClip soundWrongDish;
+    [SerializeField] private AudioClip soundNewRequest;
 
     void Awake()
     {
         hungerSystem = GetComponent<HungerSystem>();
-
-        if (audioSource == null)
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
-        // Al arrancar, el panda busca el GameManager y sus pedidos
         if (GameManager.instance != null)
         {
             PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
@@ -44,48 +36,84 @@ public class Minipandas : Interactuable
 
             if (pandaReq != null)
             {
-                // Obtenemos la memoria de los pedidos actuales
                 List<string> pedidosActuales = pandaReq.GetCurrentRequests();
-
-                // Comprobamos que la lista tenga suficientes elementos para evitar errores
                 if (pedidosActuales.Count > indicePanda)
                 {
                     pedidoDeseado = pedidosActuales[indicePanda];
-                    Debug.Log($"Mini panda {indicePanda} configurado. Quiere comer: {pedidoDeseado}");
-                }
-                else
-                {
-                    Debug.LogWarning($"El panda {indicePanda} no encontró un pedido en la lista.");
                 }
             }
         }
     }
 
-
-    public void InteractuarConPlato(Dish dish, Player player)
+    // Textos dinámicos
+    public override string GetActionText(Player player)
     {
-        if (dish != null)
-        {
-            if (hungerSystem.IsRageActivated) return;
+        if (hungerSystem != null && hungerSystem.IsRageActivated) return "Acariciar";
+        if (!player.IsHandEmpty() && player.pickedobject.GetComponentInParent<Dish>() != null) return "Alimentar";
+        return "Interactuar";
+    }
 
-            
-            StartCoroutine(SequenceChangeRequest(dish, player));
+    // Animaciones dinámicas
+    public override string GetAnimationTrigger(Player player)
+    {
+        if (hungerSystem != null && hungerSystem.IsRageActivated) return "Pet";
+        return "PickUp"; // Animación de alimentar
+    }
+
+    // Condición negar con la cabeza
+    public override bool ShouldShakeHead(Player player)
+    {
+        if (hungerSystem == null) return false;
+
+        if (hungerSystem.IsRageActivated)
+        {
+            // Para acariciar necesita las manos vacías
+            return !player.IsHandEmpty();
+        }
+        else
+        {
+            // Para alimentar necesita tener un plato en la mano
+            if (player.IsHandEmpty()) return true;
+            Dish dish = player.pickedobject.GetComponentInParent<Dish>();
+            if (dish == null) return true; // Tiene algo, pero no es un plato
+        }
+
+        return false;
+    }
+
+    public override void Interactuar(Player player)
+    {
+        if (hungerSystem.IsRageActivated)
+        {
+            RageSystem rage = GetComponent<RageSystem>();
+            if (rage != null)
+            {
+                rage.ReducirIraPorcentaje(porcentajecalmado);
+                Debug.Log("Has calmado al panda ");
+            }
+        }
+        else
+        {
+            if (player.IsHandEmpty()) return;
+
+            Dish dish = player.pickedobject.GetComponentInParent<Dish>();
+            if (dish != null)
+            {
+                StartCoroutine(SequenceChangeRequest(dish, player));
+            }
         }
     }
 
     private IEnumerator SequenceChangeRequest(Dish dish, Player player)
     {
-        // Bloquear evaluación y Ocultar
         if (myRequestPin != null)
         {
             myRequestPin.SetTransitionState(true);
             myRequestPin.Hide();
         }
 
-        // Esperar a que la animación de "Hide" termine
         yield return new WaitForSeconds(transitionTime);
 
-        // Lógica de comer
         int saciedad = dish.GetSaciedad();
         animator.SetTrigger("eating");
         SpawEatingParticles(dish.GetColor());
@@ -94,25 +122,16 @@ public class Minipandas : Interactuable
         if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
         {
             saciedad /= 2;
-            // Reproducir sonido de Error
-            if (audioSource != null && soundWrongDish != null)
-            {
-                audioSource.PlayOneShot(soundWrongDish);
-            }
+            if (audioSource != null && soundWrongDish != null) audioSource.PlayOneShot(soundWrongDish);
         }
         else
         {
-            // Reproducir sonido Ding
-            if (audioSource != null && soundCorrectDish != null)
-            {
-                audioSource.PlayOneShot(soundCorrectDish);
-            }
+            if (audioSource != null && soundCorrectDish != null) audioSource.PlayOneShot(soundCorrectDish);
         }
 
         hungerSystem.Restaurar(saciedad);
         hungerSystem.PauseHunger(5f);
 
-        // Cambiar el pedido en el Data
         if (GameManager.instance != null)
         {
             PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
@@ -120,44 +139,19 @@ public class Minipandas : Interactuable
             {
                 pandaReq.ReplaceRequestAtIndex(indicePanda);
                 ActualizarPedidoDebug();
-
                 RequestManager requestManager = FindAnyObjectByType<RequestManager>();
                 if (requestManager != null) requestManager.ActualizarTextosManual();
             }
         }
 
-        // Destruir objetos del jugador
         Destroy(player.pickedobject.gameObject);
         player.SetPickedObject(null);
 
-        // Volver a mostrar con el nuevo pedido
         if (myRequestPin != null)
         {
-            myRequestPin.SetTransitionState(false); // Desbloqueamos
-            myRequestPin.Show(); // Forzamos la aparición
-            if (audioSource != null && soundNewRequest != null)
-            {
-                audioSource.PlayOneShot(soundNewRequest);
-            }
-        }
-    }
-
-    public override void Interactuar()
-    {
-        if (hungerSystem.IsRageActivated)
-        {
-            RageSystem rage = GetComponent<RageSystem>();
-
-            if (rage != null)
-            {
-                rage.ReducirIraPorcentaje(porcentajecalmado); 
-                Debug.Log("Has calmado al panda ");
-            }
-        }
-        else
-        {
-            Debug.Log("El panda está tranquilo");
-            Debug.Log("el panda: si no me muevo no me ve");
+            myRequestPin.SetTransitionState(false);
+            myRequestPin.Show();
+            if (audioSource != null && soundNewRequest != null) audioSource.PlayOneShot(soundNewRequest);
         }
     }
 
@@ -165,31 +159,16 @@ public class Minipandas : Interactuable
     {
         PandaRequest pReq = GameManager.instance.GetComponent<PandaRequest>();
         List<string> pedidos = pReq.GetCurrentRequests();
-        if (pedidos.Count > indicePanda)
-        {
-            pedidoDeseado = pedidos[indicePanda];
-        }
+        if (pedidos.Count > indicePanda) pedidoDeseado = pedidos[indicePanda];
     }
 
     private void SpawEatingParticles(Color color)
     {
-    foreach (Transform point in spawnPoints)
-    {
-            audioSource.Play();
-            Eating();
-            ParticleSystem instance =
-            Instantiate(eatingParticles, point.position, Quaternion.identity, point);
-            
-        var main = instance.main;
-        main.startColor = color;
-    }
-    }
-
-    public void Eating()
-    {
-        if (pandaSFX != null)
+        foreach (Transform point in spawnPoints)
         {
-            pandaSFX.PlayEating();
+            ParticleSystem instance = Instantiate(eatingParticles, point.position, Quaternion.identity, point);
+            var main = instance.main;
+            main.startColor = color;
         }
     }
 }
