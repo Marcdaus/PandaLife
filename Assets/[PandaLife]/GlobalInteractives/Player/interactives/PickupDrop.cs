@@ -104,6 +104,10 @@ public class PickupDrop : Interactuable
         transform.SetParent(null);
 
         picked = false;
+        if (interactData != null && interactData.dropSound != null)
+        {
+            AudioSource.PlayClipAtPoint(interactData.dropSound, transform.position);
+        }
         Mensaje($"{rb.name} soltado");
     }
 
