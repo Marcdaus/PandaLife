@@ -8,12 +8,18 @@ public class PlaySFX : MonoBehaviour
     [SerializeField] private AudioClip[] hungryClips;
     [SerializeField] private AudioClip[] angryClips;
 
-    [SerializeField] private AudioClip[] pettingClips;   // panda acariciado
-    [SerializeField] private AudioClip[] eatingClips;    // panda comiendo
-
+    [SerializeField] private AudioClip[] pettingClips;
+    [SerializeField] private AudioClip[] eatingClips;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+
+    [Header("Volúmenes")]
+    [Range(0f, 1f)]
+    [SerializeField] private float pettingVolume = 0.3f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float eatingVolume = 0.5f;
 
     private enum Emotion
     {
@@ -76,7 +82,6 @@ public class PlaySFX : MonoBehaviour
         if (clips == null || clips.Length == 0)
             return;
 
-        // Si ya está en esa emoción, no reiniciamos
         if (currentEmotion == emotion && loopCoroutine != null)
             return;
 
@@ -105,22 +110,21 @@ public class PlaySFX : MonoBehaviour
 
     public void PlayPetting()
     {
-        PlaySingleAction(pettingClips);
+        PlaySingleAction(pettingClips, pettingVolume);
     }
 
     public void PlayEating()
     {
-        PlaySingleAction(eatingClips);
+        PlaySingleAction(eatingClips, eatingVolume);
     }
 
-    private void PlaySingleAction(AudioClip[] clips)
+    private void PlaySingleAction(AudioClip[] clips, float volume)
     {
         if (clips == null || clips.Length == 0)
             return;
 
         AudioClip clip = clips[Random.Range(0, clips.Length)];
 
-        // NO coroutine, NO loop
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, volume);
     }
 }
