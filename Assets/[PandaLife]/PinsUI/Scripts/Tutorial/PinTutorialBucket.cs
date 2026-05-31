@@ -4,6 +4,6 @@ public class PinTutorialBucket : PinUIElement
 {
     public override bool CheckCondition()
     {
-        return !GameManager.instance.tutorialCuboCompletado;
+        return TutorialManager.instance.currentStep == TutorialManager.TutorialStep.SalirDeCasa;
     }
 }

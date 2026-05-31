@@ -86,11 +86,10 @@ public class PickupDrop : Interactuable
         picked = true;
         Mensaje($"{rb.name} recogido");
 
-        // Completar el tutorial de coger la cubeta y no mostrar más el pin
-        if (!GameManager.instance.tutorialCuboCompletado)
+        // Si el tutorial está activo y esto es un cubo, completamos el paso
+        if (TutorialManager.instance != null && GetComponent<BucketWater>() != null)
         {
-            GameManager.instance.tutorialCuboCompletado = true;
-            Debug.Log("Tutorial de coger el cubo completado para esta partida.");
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.CogerCubo);
         }
     }
 

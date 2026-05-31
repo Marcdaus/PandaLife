@@ -41,11 +41,10 @@ public class SceneChange : Interactuable
             }
         }
 
-        // Completar el tutorial de puerta y no mostrar más el pin
-        if (!GameManager.instance.tutorialPuertaCompletado)
+        // Completar paso del tutorial
+        if (TutorialManager.instance != null)
         {
-            GameManager.instance.tutorialPuertaCompletado = true;
-            Debug.Log("Tutorial de la puerta completado para esta partida.");
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.SalirDeCasa);
         }
 
         StartCoroutine(EsperarParaCargar(limpiarAntes, player));
