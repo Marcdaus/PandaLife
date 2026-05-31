@@ -233,10 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da4edc08a1669304c87a025756a879e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mensajeInteraccion: interactuar
+  interactData: {fileID: 11400000, guid: d153dacaac720d846b25768f53ba7b74, type: 2}
   cauldronmenuUI: {fileID: 8018199601868414255}
-  handpoint: {fileID: 887667494}
-  jugador: {fileID: 887667496}
   displayPoint: {fileID: 256316689}
   Text: {fileID: 1928420293}
   message: "No tienes recursos suficientes. Sal al huerto y consigue m\xE1s"
@@ -8028,22 +8026,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
---- !u!4 &887667494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7312942074402719645, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
-  m_PrefabInstance: {fileID: 887667492}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &887667496 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
-  m_PrefabInstance: {fileID: 887667492}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a91ce445427215a41a59ab611376d4a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &887667498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4393243063098544268, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}

@@ -3,35 +3,50 @@ using UnityEngine;
 public class Harvest : Interactuable
 {
     [SerializeField] private Crop crop;
-    public FarmingArea area; //se guarda la parcela donde esta plantado para marcarla como vacia al cosechar
+    public FarmingArea area; // Se guarda la parcela para marcarla vacía al cosechar
 
     void Awake()
     {
         crop = GetComponent<Crop>();
-       
     }
 
-    public override void Interactuar()
+    // Condición para negar con la cabeza
+    public override bool ShouldShakeHead(Player player)
+    {
+        // Si el jugador intenta cosechar pero NO tiene las manos vacías
+        if (!player.IsHandEmpty())
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    public override void Interactuar(Player player)
     {
         if (crop == null) return;
 
-        
+        if (!player.IsHandEmpty())
+        {
+            Debug.Log("No puedes cosechar con las manos ocupadas.");
+            return;
+        }
+
         if (crop.IsHarvestable())
         {
-          
-            crop.Harvest(); // llama a la funci�n de cosechar del Crop
+            crop.Harvest(); // Llama a la función de cosechar del Crop
 
             if (area != null)
-                area.VaciarParcela(); // libera la parcela
+                area.VaciarParcela(); // Libera la parcela
+
             Debug.Log("Terreno libre para plantar");
         }
         else
         {
-            Debug.Log("A�n no est� libre");
+            Debug.Log("Aún no está listo");
         }
     }
 
-    // permite que Player obtenga la referencia al Crop
     public Crop GetCrop()
     {
         return crop;

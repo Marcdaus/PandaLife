@@ -1,11 +1,12 @@
 using UnityEngine;
 
+// Fíjate que vuelve a ser MonoBehaviour
 public class BucketWater : MonoBehaviour
 {
     [SerializeField] private GameObject emptybucketobject;
     [SerializeField] private GameObject fullbucketobject;
 
-    public bool haswater = false;
+    public bool hasWater = false;
 
     private void Start()
     {
@@ -14,18 +15,13 @@ public class BucketWater : MonoBehaviour
 
     public void Fill()
     {
-        if (haswater)
-        {
-            Debug.Log("El cubo ya está lleno");
-            return;
-        }
+        if (hasWater) return;
 
-        haswater = true;
+        hasWater = true;
         UpdateVisual();
-
         Debug.Log("Cubo lleno");
 
-        if (!GameManager.instance.tutorialRioCompletado)
+        if (GameManager.instance != null && !GameManager.instance.tutorialRioCompletado)
         {
             GameManager.instance.tutorialRioCompletado = true;
             Debug.Log("Tutorial de coger el cubo completado para esta partida.");
@@ -34,13 +30,13 @@ public class BucketWater : MonoBehaviour
 
     public void Empty()
     {
-        haswater = false;
+        hasWater = false;
         UpdateVisual();
     }
 
     private void UpdateVisual()
     {
-        emptybucketobject.SetActive(!haswater);
-        fullbucketobject.SetActive(haswater);
+        if (emptybucketobject != null) emptybucketobject.SetActive(!hasWater);
+        if (fullbucketobject != null) fullbucketobject.SetActive(hasWater);
     }
 }

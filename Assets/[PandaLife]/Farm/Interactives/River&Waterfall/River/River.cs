@@ -2,14 +2,25 @@ using UnityEngine;
 
 public class River : Interactuable
 {
-    Player player;
-    private void Start()
+    public override bool ShouldShakeHead(Player player)
     {
-        player = FindFirstObjectByType<Player>();
+        // Si el jugador intenta interactuar con el río, tiene el cubo en la mano, 
+        // pero el cubo YA TIENE AGUA, entonces niega con la cabeza.
+        if (player.IsHoldingBucket())
+        {
+            BucketWater cubo = player.pickedobject.GetComponent<BucketWater>();
+            if (cubo != null && cubo.hasWater)
+            {
+                return true;
+            }
+        }
+        return false;
     }
-    public override void Interactuar()
+
+    public override void Interactuar(Player player)
     {
-        if (player != null && player.IsHoldingBucket())
+        
+        if (player.IsHoldingBucket())
         {
             Debug.Log("El jugador está recogiendo agua del río...");
         }
