@@ -7,5 +7,5 @@ public class InteractableObject : ScriptableObject
     public string animationTrigger = "Interactuar"; // El trigger del Animator
     public AudioClip interactionSound; // Sonido único para este objeto
     public AudioClip errorSound; // Sonido si el jugador se equivoca (Agitar la cabeza)
-    public int priority = 0; // Para ordenar qué objeto agarrar primero si hay varios juntos
+    public AudioClip dropSound; // Sonido si el jugador suelta el objeto
 }

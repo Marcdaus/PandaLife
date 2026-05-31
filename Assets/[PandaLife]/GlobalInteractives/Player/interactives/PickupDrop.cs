@@ -28,6 +28,12 @@ public class PickupDrop : Interactuable
 
         PickUp(); // Función de recoger
 
+        if (interactData != null && interactData.interactionSound != null)
+        {
+            //  Con esto suena el sonido al cogerlo
+            AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
+        }
+
         // Le decimos al jugador que ahora sostiene este objeto
         player.SetPickedObject(this);
 
