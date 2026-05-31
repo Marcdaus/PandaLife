@@ -17,6 +17,7 @@ public class Minipandas : Interactuable
     [SerializeField] private float transitionTime = 0.5f;
 
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private PlaySFX eatingaudiosource;
     [SerializeField] private AudioClip soundCorrectDish;
     [SerializeField] private AudioClip soundWrongDish;
     [SerializeField] private AudioClip soundNewRequest;
@@ -122,11 +123,19 @@ public class Minipandas : Interactuable
         if (!string.IsNullOrEmpty(pedidoDeseado) && nombreDelPlatoEvaluado != pedidoDeseado)
         {
             saciedad /= 2;
-            if (audioSource != null && soundWrongDish != null) audioSource.PlayOneShot(soundWrongDish);
+            if (audioSource != null && soundWrongDish != null)
+            { 
+                audioSource.PlayOneShot(soundWrongDish);
+                eatingaudiosource.Eating();
+            }
         }
         else
         {
-            if (audioSource != null && soundCorrectDish != null) audioSource.PlayOneShot(soundCorrectDish);
+            if (audioSource != null && soundCorrectDish != null) 
+            { 
+                audioSource.PlayOneShot(soundCorrectDish);
+                eatingaudiosource.Eating();
+            }
         }
 
         hungerSystem.Restaurar(saciedad);

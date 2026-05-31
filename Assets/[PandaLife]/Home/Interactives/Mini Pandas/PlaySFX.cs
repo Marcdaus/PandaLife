@@ -13,6 +13,7 @@ public class PlaySFX : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource sfxSource;
 
     [Header("Volúmenes")]
     [Range(0f, 1f)]
@@ -113,7 +114,7 @@ public class PlaySFX : MonoBehaviour
         PlaySingleAction(pettingClips, pettingVolume);
     }
 
-    public void PlayEating()
+    public void Eating()
     {
         PlaySingleAction(eatingClips, eatingVolume);
     }
@@ -123,8 +124,8 @@ public class PlaySFX : MonoBehaviour
         if (clips == null || clips.Length == 0)
             return;
 
-        AudioClip clip = clips[Random.Range(0, clips.Length)];
+        AudioClip clip = clips[(int)Random.Range(0, clips.Length)];
 
-        audioSource.PlayOneShot(clip, volume);
+        sfxSource.PlayOneShot(clip, volume);
     }
 }
