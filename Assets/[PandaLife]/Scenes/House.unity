@@ -2493,7 +2493,7 @@ PrefabInstance:
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: anim
       value: 
-      objectReference: {fileID: 2112565840}
+      objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: note
       value: 
@@ -26589,7 +26589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11c334de6543e044a60c53d9eb5cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 2112565840}
+  anim: {fileID: 1880743201}
   tiempoEsperaAnimacion: 3
 --- !u!4 &1766580195
 Transform:
@@ -27264,6 +27264,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8141857047674934764, guid: 28009ed4add65cc429702a10cb302399, type: 3}
   m_PrefabInstance: {fileID: 1876920685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1880743201 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2636172422646190299, guid: 229b4c99ae8e83d488b658a4cf436a66, type: 3}
+  m_PrefabInstance: {fileID: 2081975913}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1887358666
 GameObject:
@@ -37571,11 +37576,6 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!95 &2112565840 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 493472625893400838, guid: 229b4c99ae8e83d488b658a4cf436a66, type: 3}
-  m_PrefabInstance: {fileID: 2081975913}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2130761213
 PrefabInstance:
   m_ObjectHideFlags: 0
