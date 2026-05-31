@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip splashClip;
     [SerializeField] private AudioClip fillBucketClip;
     private Interactuable currentTarget = null;
+    [SerializeField] private AudioSource PettingaudioSource;
+
 
     private void OnDrawGizmos()
     {
@@ -456,6 +458,10 @@ public class Player : MonoBehaviour
         Debug.Log("ShakeHead llamado");
         DisableMovement();
         anim.SetTrigger("ShakeHead");
+    }
+    public void PetPanda()
+    {
+       PettingaudioSource.Play();
     }
 
 }
