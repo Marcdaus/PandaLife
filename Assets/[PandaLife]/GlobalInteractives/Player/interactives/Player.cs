@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip splashClip;
     [SerializeField] private AudioClip fillBucketClip;
+    [SerializeField] private AudioClip feedingClip;
     private Interactuable currentTarget = null;
     [SerializeField] private AudioSource PettingaudioSource;
 
@@ -460,6 +461,11 @@ public class Player : MonoBehaviour
         audioSource.PlayOneShot(fillBucketClip);
     }
 
+    public void GivingFood()
+    {
+        audioSource.clip = feedingClip;
+        audioSource.Play();
+    }
 
     //-----------------------------
     public void ShakeHead()
