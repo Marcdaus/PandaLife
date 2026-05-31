@@ -21,10 +21,10 @@ public class BucketWater : MonoBehaviour
         UpdateVisual();
         Debug.Log("Cubo lleno");
 
-        if (GameManager.instance != null && !GameManager.instance.tutorialRioCompletado)
+        // Si el tutorial está activo y esto es un cubo, completamos el paso
+        if (TutorialManager.instance != null && GetComponent<BucketWater>() != null)
         {
-            GameManager.instance.tutorialRioCompletado = true;
-            Debug.Log("Tutorial de coger el cubo completado para esta partida.");
+            TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.CogerCubo);
         }
     }
 

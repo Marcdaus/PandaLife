@@ -20,11 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoBayaArandanos;
     public TextMeshProUGUI textoBayaUchuva;
 
-    [Header("Variables de Tutorial")]
-    public bool tutorialCuboCompletado = false;
-    public bool tutorialRioCompletado = false;
-    public bool tutorialPuertaCompletado = false;
-
+    
     [Header("Variables de Sistema de dia")]
     public float tiempoTranscurrido = 0f;
     public float minutosActualesTotales;
@@ -157,13 +153,11 @@ public class GameManager : MonoBehaviour
         animacionNoteMostrada = false;
         animacionTeddyMostrada = false;
 
+        // --- Tutorial ---
+        TutorialManager.instance.ResetTutorial();
+
         // --- Recursos ---
         quitarBambu();
-
-        // --- Tutorial ---
-        tutorialCuboCompletado = false;
-        tutorialRioCompletado = false;
-        tutorialPuertaCompletado = false;
 
         // --- Recompensas ---
         tedypersistente = false;

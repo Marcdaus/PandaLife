@@ -4,6 +4,6 @@ public class PinTutorialDoor : PinUIElement
 {
     public override bool CheckCondition()
     {
-        return !GameManager.instance.tutorialPuertaCompletado;
+        return TutorialManager.instance.currentStep == TutorialManager.TutorialStep.SalirDeCasa;
     }
 }
