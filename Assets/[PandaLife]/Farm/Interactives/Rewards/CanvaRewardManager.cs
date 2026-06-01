@@ -6,8 +6,6 @@ public class CanvaRewardManager : MonoBehaviour
     [SerializeField] private Animator anim;
 
     [SerializeField] private float tiempoEsperaAnimacion = 4.0f;
-    [SerializeField] private AudioSource newseed;
-    [SerializeField] private AudioSource newcollectable;
     private void Start()
     {
         if (GameManager.instance == null) return;
@@ -33,7 +31,6 @@ public class CanvaRewardManager : MonoBehaviour
 
                 if (anim != null)
                 {
-                    newseed.Play();
                     anim.SetTrigger("Reddragon");   
                     Debug.Log("[Recompensas] Mostrando Saco Red Dragon");
                 }
@@ -52,7 +49,7 @@ public class CanvaRewardManager : MonoBehaviour
 
                 if (anim != null)
                 {
-                    newcollectable.Play();
+                    
                     anim.SetTrigger("Note"); 
                     Debug.Log("[Recompensas] Condición cumplida: Mostrando Nota");
                 }
@@ -74,7 +71,7 @@ public class CanvaRewardManager : MonoBehaviour
 
                 if (anim != null)
                 {
-                    newseed.Play();
+                    
                     anim.SetTrigger("Uchuva"); 
                     Debug.Log("[Recompensas] Mostrando Saco Uchuva");
                 }
@@ -89,8 +86,7 @@ public class CanvaRewardManager : MonoBehaviour
                 GameManager.instance.animacionTeddyMostrada = true;
 
                 if (anim != null)
-                {
-                    newcollectable.Play();
+                { 
                     anim.SetTrigger("Teddy"); 
                     Debug.Log("[Recompensas] Condición cumplida: Mostrando Teddy");
                 }
