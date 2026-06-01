@@ -21457,6 +21457,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1551019923 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2636172422646190299, guid: 229b4c99ae8e83d488b658a4cf436a66, type: 3}
+  m_PrefabInstance: {fileID: 2081975913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1553955991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27361,8 +27366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e11c334de6543e044a60c53d9eb5cc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  tiempoEsperaAnimacion: 3
+  anim: {fileID: 1551019923}
+  tiempoEsperaAnimacion: 4
 --- !u!4 &1766580195
 Transform:
   m_ObjectHideFlags: 0
