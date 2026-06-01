@@ -203,6 +203,7 @@ public class DayNightCycle : MonoBehaviour
             
 ;
         }
+        if (!ingameover) { 
         if(GameManager.instance.numday > 1)
         {
             percentage1.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
@@ -213,6 +214,7 @@ public class DayNightCycle : MonoBehaviour
         {
             GameManager.instance.Resetplay();
             SceneManager.LoadScene(theend.Value);
+        }
         }
 
     }
