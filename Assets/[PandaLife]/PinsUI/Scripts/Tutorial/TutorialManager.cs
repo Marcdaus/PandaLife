@@ -19,8 +19,22 @@ public class TutorialManager : MonoBehaviour
         Caldero = 8,
         Completado = 9 // Tutorial acabado
     }
+    public enum TutorialRecipeBook
+    {
+        FirstDay = 0, 
+        OpenRedDragon = 1,
+        CloseRedDragon = 2,
+        SecondDay = 3,
+        OpenUchuva = 4,
+        CloseUchuva = 5,
+        Completado = 6
+    }
+
+    
 
     public TutorialStep currentStep = TutorialStep.SalirDeCasa;
+    public TutorialRecipeBook currentStepRecipe = TutorialRecipeBook.FirstDay;
+
 
     // Evento para avanzar el tutorial sin usar el Update()
     public event Action OnTutorialAdvanced;
@@ -49,10 +63,23 @@ public class TutorialManager : MonoBehaviour
             OnTutorialAdvanced?.Invoke();
         }
     }
+    public void CompleteRecipeStep(TutorialRecipeBook stepToComplete)
+    {
+        // Solo avanzamos si el paso que intentamos completar es el paso actual
+        if (currentStepRecipe == stepToComplete)
+        {
+            currentStepRecipe++; // Pasamos al siguiente
+            Debug.Log($"[TutorialManager] Avanzado a: {currentStepRecipe}");
+
+            // Avisamos a los pines
+            OnTutorialAdvanced?.Invoke();
+        }
+    }
 
     public void ResetTutorial()
     {
         currentStep = TutorialStep.SalirDeCasa;
+        currentStepRecipe = TutorialRecipeBook.FirstDay;
         OnTutorialAdvanced?.Invoke();
     }
 }

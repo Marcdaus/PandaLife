@@ -27,11 +27,21 @@ public class RecipebookActions : MonoBehaviour
     {
         anim.SetTrigger("Open");
         Updatefaces();
+        if (TutorialManager.instance != null)
+        {
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.OpenUchuva);
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.OpenRedDragon);
+        }
     }
 
     public void Close_notebook()
     {
         anim.SetTrigger("Close");
+        if (TutorialManager.instance != null)
+        {
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.CloseUchuva);
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.CloseRedDragon);
+        }
     }
 
     public void Updatefaces()

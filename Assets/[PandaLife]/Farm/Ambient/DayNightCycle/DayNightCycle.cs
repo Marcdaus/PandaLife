@@ -159,6 +159,13 @@ public class DayNightCycle : MonoBehaviour
                 persistentereq.UnlockDishesForDay(GameManager.instance.numday);
                 persistentereq.GenerateRandomRequests();
                 Debug.Log("Nuevos pedidos generados para el día: " + GameManager.instance.numday);
+                // Completamos el paso del tutorial si estamos en el río
+                if (TutorialManager.instance != null)
+                {
+                    TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.FirstDay);
+                
+                    TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.SecondDay);
+                }
             }
             else
             {
