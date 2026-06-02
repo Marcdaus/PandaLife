@@ -128,7 +128,7 @@ public class MenuCauldron : MonoBehaviour
 
     public void StartCooking(RecipesData recipe)
     {
-        bubblessound.ChangeSound();
+        
         if (cooking) return;
 
         if (!HasIngredients(recipe))
@@ -137,7 +137,7 @@ public class MenuCauldron : MonoBehaviour
             panelcooking.SetActive(true);
             return;
         }
-
+        bubblessound.ChangeSound();
         // Consumir ingredientes
         GameManager.instance.sumarBambu(-recipe.bambuverde, 1);
         GameManager.instance.sumarBambu(-recipe.bamburojo, 3);
