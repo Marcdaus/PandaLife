@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class RecipeCard : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class RecipeCard : MonoBehaviour
 
     [SerializeField] private GameObject iconocandado;
 
+    public Button button;
 
 
     private void Awake()
@@ -112,6 +114,8 @@ public class RecipeCard : MonoBehaviour
         cookingbutton.interactable = false;
         cookingbutton.image.color = Color.gray;
         GetComponent<EventTrigger>().enabled = false;
+        button.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
+        button.onClick.SetPersistentListenerState(1, UnityEventCallState.RuntimeOnly);
     }
 
     public void UnBlock()
@@ -120,5 +124,7 @@ public class RecipeCard : MonoBehaviour
         cookingbutton.image.color = colorOriginal;
         if (iconocandado != null) iconocandado.SetActive(false);
         GetComponent<EventTrigger>().enabled = true;
+        button.onClick.SetPersistentListenerState(0, UnityEventCallState.RuntimeOnly);
+        button.onClick.SetPersistentListenerState(1, UnityEventCallState.Off);
     }
 }
