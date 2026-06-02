@@ -40,6 +40,7 @@ public class MenuCauldron : MonoBehaviour
 
     [Header("Sonidos")]
     [SerializeField] private AudioSource openmenu;
+    [SerializeField] private BubblesSound bubblessound;
 
     private void Start()
     {
@@ -126,6 +127,7 @@ public class MenuCauldron : MonoBehaviour
 
     public void StartCooking(RecipesData recipe)
     {
+        bubblessound.ChangeSound();
         if (cooking) return;
 
         if (!HasIngredients(recipe))
@@ -203,6 +205,7 @@ public class MenuCauldron : MonoBehaviour
         if (receta.prefabResultado != null) {
             cauldron.SpawnDish(receta.prefabResultado, receta, panelcauldron.activeSelf);
         }
+        bubblessound.ChangeSound();
 
         foreach (RecipeCard tarjeta in tarjetas) tarjeta.CheckUnblock();
         worldpanelbar.SetActive(false);
