@@ -45,7 +45,7 @@ public class MenuCauldron : MonoBehaviour
 
     private void Start()
     {
-        openmenu = GetComponent<AudioSource>();
+        
         panelcauldron.SetActive(true);
         panelcooking.SetActive(false);
 
