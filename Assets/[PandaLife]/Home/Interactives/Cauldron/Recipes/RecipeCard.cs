@@ -103,6 +103,7 @@ public class RecipeCard : MonoBehaviour
         cookingbutton.interactable = false;
         cookingbutton.image.color = Color.black;
         if (iconocandado != null) iconocandado.SetActive(true);
+        GetComponent<EventTrigger>().enabled = false;
         // aquí ponemos luego el candado
     }
 
@@ -117,5 +118,6 @@ public class RecipeCard : MonoBehaviour
         cookingbutton.interactable = true;
         cookingbutton.image.color = colorOriginal;
         if (iconocandado != null) iconocandado.SetActive(false);
+        GetComponent<EventTrigger>().enabled = true;
     }
 }
