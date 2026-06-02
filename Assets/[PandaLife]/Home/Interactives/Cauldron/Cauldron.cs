@@ -17,7 +17,8 @@ public class Cauldron : Interactuable
     [SerializeField] private float tiempoMensaje = 3.0f;
     private Coroutine mensajeCoroutine;
     [SerializeField] private Animator anim;
-
+    [Header("Sonidos")]
+    [SerializeField] private AudioSource finishdish;
     public GameObject PlatoPendienteGameObject => platopendiente;
     public bool tieneplatopendiente => platopendiente != null;
 
@@ -45,6 +46,7 @@ public class Cauldron : Interactuable
     // Interacción unificada
     public override void Interactuar(Player player)
     {
+        
         if (TutorialManager.instance != null)
         {
             TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.Caldero);
@@ -59,15 +61,14 @@ public class Cauldron : Interactuable
             GiveDish(player);
             return;
         }
-
-        // Si no, abrimos el menú
-        if (cauldronmenuUI.openmenu != null) cauldronmenuUI.openmenu.Play();
+     
         cauldronmenuUI.OpenCauldron();
-        
+
     }
 
     public void SpawnDish(GameObject prefab, RecipesData receta, bool menuabierto)
     {
+        finishdish.Play();
         if (menuabierto)
         {
             Player player = FindFirstObjectByType<Player>(); // Buscamos al jugador localmente

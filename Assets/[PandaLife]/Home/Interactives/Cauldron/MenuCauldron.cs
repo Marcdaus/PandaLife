@@ -32,22 +32,17 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private ParticleSystem bubbleparticles;
     [SerializeField] private float normalbubbleemission;  // Emisión de las burbujas en reposo
     [SerializeField] private float cookingbubbleemission; // Emisión de las burbujas al cocinar
-    /*
-    [Header("cursor")]
-    private CursorManager cursorManager;
-    */
+
     [Header("Water Shader")]
     [SerializeField] private Renderer waterRenderer;
     private string colorPropertyName = "_MainColor";
     [SerializeField] private Color defaultWater;
 
     [Header("Sonidos")]
-    public AudioSource openmenu;
+    [SerializeField] private AudioSource openmenu;
+    public AudioSource hoversound;
+    public AudioSource pressedsound;
 
-    /* private void Awake()
-     {
-         cursorManager = Object.FindFirstObjectByType<CursorManager>();
-     }*/
     private void Start()
     {
         openmenu = GetComponent<AudioSource>();
@@ -110,7 +105,7 @@ public class MenuCauldron : MonoBehaviour
     {
         //cursorManager.cursorblock = true;
         //cursorManager.MostrarCursor();
-        
+        openmenu.Play();
 
         panelcauldron.SetActive(true);
         worldpanelbar.SetActive(false);

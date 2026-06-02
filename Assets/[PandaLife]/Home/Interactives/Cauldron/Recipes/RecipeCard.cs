@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class RecipeCard : MonoBehaviour
@@ -18,6 +19,8 @@ public class RecipeCard : MonoBehaviour
     private Color colorOriginal;
 
     [SerializeField] private GameObject iconocandado;
+
+
 
     private void Awake()
     {
@@ -45,6 +48,15 @@ public class RecipeCard : MonoBehaviour
     private void OnClick()
     {
         menucauldron.StartCooking(receta);
+        menucauldron.pressedsound.Play();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        
+        if (cookingbutton.interactable)
+        {
+            menucauldron.hoversound.Play();
+        }
     }
 
     private void ShowRecipe()
