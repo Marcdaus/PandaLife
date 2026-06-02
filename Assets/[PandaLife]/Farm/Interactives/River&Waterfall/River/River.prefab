@@ -63,21 +63,21 @@ MonoBehaviour:
     - Position:
         x: -0.0070081055
         y: -5.495848
-        z: 5.430666
+        z: -11.65
       TangentIn:
         x: -0
         y: -0
-        z: -5.1811233
+        z: -3.4736087
       TangentOut:
         x: 0
         y: 0
-        z: 5.1811233
+        z: 3.4736087
       Rotation:
         value:
-          x: -0.0002524046
-          y: 0.9999459
-          z: 0.0030908077
-          w: -0.00993969
+          x: -0.0026555208
+          y: 0.99987596
+          z: 0.004646077
+          w: -0.014815582
     - Position:
         x: -1.037008
         y: -5.1758485
@@ -85,17 +85,17 @@ MonoBehaviour:
       TangentIn:
         x: -0
         y: -0
-        z: -11.670929
+        z: -8.886108
       TangentOut:
         x: 0
         y: 0
-        z: 6.169052
+        z: 5.736488
       Rotation:
         value:
-          x: 0.0030689398
-          y: 0.9931528
-          z: -0.0005493664
-          w: -0.11678121
+          x: 0.003160963
+          y: 0.9928638
+          z: 0.00021366388
+          w: -0.11921177
     - Position:
         x: -7.3114934
         y: -5.2758484
@@ -146,10 +146,10 @@ MonoBehaviour:
         z: 3.2700813
       Rotation:
         value:
-          x: 0
-          y: 0.74312866
-          z: 0
-          w: -0.6691485
+          x: -0.0010784664
+          y: 0.74312794
+          z: 0.00097110274
+          w: -0.66914785
     m_MetaData:
     - Mode: 0
       Tension: 0.5
@@ -302,8 +302,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 10
-  MaxDistance: 20
+  MinDistance: 5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -313,23 +313,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.71428573
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -1.4005619
+      outSlope: -1.4005619
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.7145718
+      outSlope: -0.7145718
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -718,7 +718,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807787104280066925}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
@@ -726,16 +726,16 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 15
+  MaxDistance: 2
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
