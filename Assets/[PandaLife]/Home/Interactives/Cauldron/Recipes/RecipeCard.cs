@@ -111,7 +111,7 @@ public class RecipeCard : MonoBehaviour
 
     public void Block()
     {
-        cookingbutton.interactable = false;
+        //cookingbutton.interactable = false;
         cookingbutton.image.color = Color.gray;
         GetComponent<EventTrigger>().enabled = false;
         button.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
@@ -120,7 +120,7 @@ public class RecipeCard : MonoBehaviour
 
     public void UnBlock()
     {
-        cookingbutton.interactable = true;
+        //cookingbutton.interactable = true;
         cookingbutton.image.color = colorOriginal;
         if (iconocandado != null) iconocandado.SetActive(false);
         GetComponent<EventTrigger>().enabled = true;
