@@ -40,6 +40,7 @@ public class MenuCauldron : MonoBehaviour
 
     [Header("Sonidos")]
     [SerializeField] private AudioSource openmenu;
+    [SerializeField] private AudioSource closemenu;
     [SerializeField] private BubblesSound bubblessound;
 
     private void Start()
@@ -120,7 +121,7 @@ public class MenuCauldron : MonoBehaviour
     {
         //cursorManager.cursorblock = false;
         //cursorManager.OcultarCursor();
-        openmenu.Play();
+        closemenu.Play();
         panelcauldron.SetActive(false);
         if (cooking) worldpanelbar.SetActive(true);
         else panelcooking.SetActive(false);
