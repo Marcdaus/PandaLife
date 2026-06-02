@@ -292,9 +292,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: c3d711def57b08d4c8a049e039ac9c17, type: 3}
+  m_Resource: {fileID: 8300000, guid: 3fc915776f4b5ac4c877cd44406c30f8, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -302,8 +302,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 10
+  MinDistance: 6
+  MaxDistance: 15
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -704,27 +704,27 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4356503429130969282, guid: b33c9d200e778ce41aaf53e2f283284d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 125212411597069985}
+      addedObject: {fileID: 2224254708828446653}
   m_SourcePrefab: {fileID: 100100000, guid: b33c9d200e778ce41aaf53e2f283284d, type: 3}
 --- !u!1 &1807787104280066925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4356503429130969282, guid: b33c9d200e778ce41aaf53e2f283284d, type: 3}
   m_PrefabInstance: {fileID: 2694247701087411119}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &125212411597069985
+--- !u!82 &2224254708828446653
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807787104280066925}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: abc7a0c0d722d7848875b932006221ac, type: 3}
+  m_Resource: {fileID: 8300000, guid: f5b602a96256c8045b957fcbdfb21721, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -732,8 +732,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 2
+  MinDistance: 5
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -743,32 +743,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.42197037
-      value: 1.006382
-      inSlope: -Infinity
-      outSlope: -Infinity
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.22577733
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.82508886
-      value: 1.0031929
-      inSlope: -0.44644016
-      outSlope: -0.44644016
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.28789666
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0.22387826
-      outSlope: 0.22387826
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.11275414
-      outWeight: 0.20416714
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -791,8 +782,8 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.12791252
-      value: 0.99160767
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
