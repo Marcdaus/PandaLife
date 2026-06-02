@@ -21,6 +21,8 @@ public class Minipandas : Interactuable
     [SerializeField] private AudioClip soundCorrectDish;
     [SerializeField] private AudioClip soundWrongDish;
     [SerializeField] private AudioClip soundNewRequest;
+    [SerializeField] private AudioClip soundCloseRequest;
+
 
     void Awake()
     {
@@ -107,6 +109,7 @@ public class Minipandas : Interactuable
 
     private IEnumerator SequenceChangeRequest(Dish dish, Player player)
     {
+        // Ocultar el pin actual
         if (myRequestPin != null)
         {
             myRequestPin.SetTransitionState(true);
@@ -115,6 +118,7 @@ public class Minipandas : Interactuable
 
         yield return new WaitForSeconds(transitionTime);
 
+        // Comer (animación, partículas, sonidos, saciedad)
         int saciedad = dish.GetSaciedad();
         animator.SetTrigger("eating");
         SpawEatingParticles(dish.GetColor());
@@ -124,16 +128,19 @@ public class Minipandas : Interactuable
         {
             saciedad /= 2;
             if (audioSource != null && soundWrongDish != null)
-            { 
+            {
                 audioSource.PlayOneShot(soundWrongDish);
+                audioSource.PlayOneShot(soundCloseRequest);
+
                 eatingaudiosource.Eating();
             }
         }
         else
         {
-            if (audioSource != null && soundCorrectDish != null) 
-            { 
+            if (audioSource != null && soundCorrectDish != null)
+            {
                 audioSource.PlayOneShot(soundCorrectDish);
+                audioSource.PlayOneShot(soundCloseRequest);
                 eatingaudiosource.Eating();
             }
         }
@@ -141,6 +148,14 @@ public class Minipandas : Interactuable
         hungerSystem.Restaurar(saciedad);
         hungerSystem.PauseHunger(5f);
 
+        // Destruir el plato para liberar al jugador
+        Destroy(player.pickedobject.gameObject);
+        player.SetPickedObject(null);
+
+        // Esperar 3 segundos mientras el panda mastica y el jugador ya es libre
+        yield return new WaitForSeconds(3f);
+
+        // Generar el nuevo pedido
         if (GameManager.instance != null)
         {
             PandaRequest pandaReq = GameManager.instance.GetComponent<PandaRequest>();
@@ -153,9 +168,7 @@ public class Minipandas : Interactuable
             }
         }
 
-        Destroy(player.pickedobject.gameObject);
-        player.SetPickedObject(null);
-
+        // Volver a mostrar el pin con el nuevo pedido y su sonido
         if (myRequestPin != null)
         {
             myRequestPin.SetTransitionState(false);
