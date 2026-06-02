@@ -5,6 +5,8 @@ public class PickupDrop : Interactuable
     [SerializeField] private Transform handpoint;
     private Rigidbody rb;
     private bool picked = false;
+    public AudioClip waterSound; // Sonido alternativo para el cubo lleno
+
 
     void Awake()
     {
@@ -28,10 +30,23 @@ public class PickupDrop : Interactuable
 
         PickUp(); // Función de recoger
 
-        if (interactData != null && interactData.interactionSound != null)
+        BucketWater bucket = GetComponent<BucketWater>();
+
+        // Si es un cubo Y tiene agua, suena el sonido alternativo
+        if (bucket != null && bucket.hasWater)
         {
-            //  Con esto suena el sonido al cogerlo
-            AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
+            if (interactData != null && waterSound != null)
+            {
+                AudioSource.PlayClipAtPoint(waterSound, transform.position);
+            }
+        }
+        // Si no es un cubo, o es un cubo vacío, suena el sonido normal
+        else
+        {
+            if (interactData != null && interactData.interactionSound != null)
+            {
+                AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
+            }
         }
 
         // Le decimos al jugador que ahora sostiene este objeto
