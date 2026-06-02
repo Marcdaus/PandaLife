@@ -7,11 +7,11 @@ public class SceneChange : Interactuable
 {
     public LoadScene LoadScene;
     [SerializeField] private GameString scenename;
-    private AudioSource opendoor;
+    
 
     private void Start()
     {
-        opendoor = GetComponent<AudioSource>();
+      
         LoadScene = FindFirstObjectByType<LoadScene>();
     }
 
@@ -67,7 +67,7 @@ public class SceneChange : Interactuable
         GuardarPlatoSueltoSiExiste(limpiarAntes, player);
 
         // Esperamos a que la animación termine
-        if (opendoor != null) opendoor.Play();
+        ;
         yield return new WaitForSeconds(1f);
 
         // Cargamos la escena
