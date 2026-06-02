@@ -48,16 +48,8 @@ public class RecipeCard : MonoBehaviour
     private void OnClick()
     {
         menucauldron.StartCooking(receta);
-        menucauldron.pressedsound.Play();
     }
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        
-        if (cookingbutton.interactable)
-        {
-            menucauldron.hoversound.Play();
-        }
-    }
+
 
     private void ShowRecipe()
     {

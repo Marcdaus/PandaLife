@@ -40,8 +40,6 @@ public class MenuCauldron : MonoBehaviour
 
     [Header("Sonidos")]
     [SerializeField] private AudioSource openmenu;
-    public AudioSource hoversound;
-    public AudioSource pressedsound;
 
     private void Start()
     {
