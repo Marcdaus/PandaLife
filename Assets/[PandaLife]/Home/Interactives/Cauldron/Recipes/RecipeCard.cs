@@ -111,6 +111,7 @@ public class RecipeCard : MonoBehaviour
     {
         cookingbutton.interactable = false;
         cookingbutton.image.color = Color.gray;
+        GetComponent<EventTrigger>().enabled = false;
     }
 
     public void UnBlock()
