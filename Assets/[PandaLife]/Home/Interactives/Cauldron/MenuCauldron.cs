@@ -41,7 +41,8 @@ public class MenuCauldron : MonoBehaviour
     [Header("Sonidos")]
     [SerializeField] private AudioSource openmenu;
     [SerializeField] private AudioSource closemenu;
-    [SerializeField] private BubblesSound bubblessound;
+    [SerializeField] private ChangeSound bubblessound;
+    [SerializeField] private ChangeSound firessound;
 
     private void Start()
     {
@@ -138,7 +139,8 @@ public class MenuCauldron : MonoBehaviour
             panelcooking.SetActive(true);
             return;
         }
-        bubblessound.ChangeSound();
+        bubblessound.Change();
+        firessound.Change();
         // Consumir ingredientes
         GameManager.instance.sumarBambu(-recipe.bambuverde, 1);
         GameManager.instance.sumarBambu(-recipe.bamburojo, 3);
@@ -207,7 +209,8 @@ public class MenuCauldron : MonoBehaviour
         if (receta.prefabResultado != null) {
             cauldron.SpawnDish(receta.prefabResultado, receta, panelcauldron.activeSelf);
         }
-        bubblessound.ChangeSound();
+        bubblessound.Change();
+        firessound.Change();
 
         foreach (RecipeCard tarjeta in tarjetas) tarjeta.CheckUnblock();
         worldpanelbar.SetActive(false);
