@@ -73,11 +73,13 @@ public class Player : MonoBehaviour
             {
                 ShakeHead();
 
-                // Reproducimos el sonido de error si el objeto tiene un ScriptableObject asignado
                 InteractableObject data = currentTarget.GetInteractData();
                 if (data != null && data.errorSound != null)
                 {
-                    audioSource.PlayOneShot(data.errorSound);
+                    // Asignamos el randomizador
+                    audioSource.resource = data.errorSound;
+
+                    audioSource.Play();
                 }
 
                 return;
