@@ -7,8 +7,8 @@ public class BarraManager : MonoBehaviour
     private static BarraManager _instancia;
     public static BarraManager Instancia => _instancia;
 
-    public float hungerMaxValue = 100f;
-    public float hungerChangeRate = 0.5f;
+    // public float hungerMaxValue = 100f;
+    // public float hungerChangeRate = 0.5f;
 
     public float rageMaxValue = 100f;
     public float rageChangeRate = 0.5f;
@@ -45,7 +45,6 @@ public class BarraManager : MonoBehaviour
         sceneLoaded = false;
         isResetting = true;
 
-        // 🔥 IMPORTANTE: reset visual indirecto
         Invoke(nameof(EndResetFlag), 0.2f);
     }
 

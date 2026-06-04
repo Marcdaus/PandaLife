@@ -1287,6 +1287,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: calmModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: rageModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happyModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungryModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925373805177930607, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: normalModelFace
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3006752344759472490, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_Name
       value: DarkMiniPanda
@@ -1313,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 866897959}
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: changeRate
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4883566758012373200, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: calmModelFace
@@ -5029,6 +5049,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49dfd70b965b1dc43b5715eba9883624, type: 3}
+--- !u!224 &748403877 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2784450896879753544, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &766567453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5295,7 +5320,7 @@ PrefabInstance:
       objectReference: {fileID: 866897961}
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: changeRate
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6072292591135846536, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: calmModelFace
@@ -5309,6 +5334,26 @@ PrefabInstance:
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1276883261}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: calmModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: rageModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: happyModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: hungryModelFace
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7775126657401483444, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: normalModelFace
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8625036175254793208, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -6447,6 +6492,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07226fc303340fe4784aaa8c320a65d0, type: 3}
+--- !u!224 &997449233 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1533674993995792620, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1019903694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2023238295356773021, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
@@ -7561,6 +7611,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1276883272 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4324810586116022313, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1276883259}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1284855035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11777,7 +11832,7 @@ PrefabInstance:
       objectReference: {fileID: 866897960}
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: changeRate
-      value: 0.5
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 7994404267010699718, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: calmModelFace
@@ -13746,6 +13801,26 @@ PrefabInstance:
       propertyPath: percentage3
       value: 
       objectReference: {fileID: 66822358}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: redPandaBar
+      value: 
+      objectReference: {fileID: 748403877}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: darkPandaBar
+      value: 
+      objectReference: {fileID: 1276883272}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: lightPandaBar
+      value: 
+      objectReference: {fileID: 997449233}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: darkPandaHunger
+      value: 
+      objectReference: {fileID: 2142771018}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: lightPandaHunger
+      value: 
+      objectReference: {fileID: 923221391}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: 'elementlistbag.Array.data[0]'
       value: 

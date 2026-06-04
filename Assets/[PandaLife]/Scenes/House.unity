@@ -2641,6 +2641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1602393428}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: changeRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: angryModelFace
       value: 
       objectReference: {fileID: 0}
@@ -3115,6 +3119,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1650870855}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: redPandaBar
+      value: 
+      objectReference: {fileID: 1753617053}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: darkPandaBar
+      value: 
+      objectReference: {fileID: 1753617054}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: menucauldron
       value: 
       objectReference: {fileID: 2119825087}
@@ -3126,6 +3138,10 @@ PrefabInstance:
       propertyPath: darkminipanda
       value: 
       objectReference: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: lightPandaBar
+      value: 
+      objectReference: {fileID: 1753617055}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: lightminipanda
       value: 
@@ -3143,6 +3159,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: darkPandaHunger
+      value: 
+      objectReference: {fileID: 1382341811}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: doorwindowlight
       value: 
       objectReference: {fileID: 0}
@@ -3154,6 +3174,10 @@ PrefabInstance:
       propertyPath: directionallight
       value: 
       objectReference: {fileID: 1713541572}
+    - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
+      propertyPath: lightPandaHunger
+      value: 
+      objectReference: {fileID: 1413066099}
     - target: {fileID: 4871344987461225253, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
       propertyPath: rightwindowlight
       value: 
@@ -20617,6 +20641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1174622874}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: changeRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: indicatorImage
       value: 
       objectReference: {fileID: 1860897841}
@@ -26673,6 +26701,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 657884871}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: changeRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: angryModelFace
       value: 
       objectReference: {fileID: 659497170}
@@ -27379,6 +27411,21 @@ MonoBehaviour:
 Light:
   m_CorrespondingSourceObject: {fileID: 5073458281472842211, guid: b3549f900bf430641a3620a670ed3bef, type: 3}
   m_PrefabInstance: {fileID: 715850524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1753617053 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2784450896879753544, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1753617054 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4324810586116022313, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1753617055 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1533674993995792620, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+  m_PrefabInstance: {fileID: 1860897836}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1758059316
 GameObject:

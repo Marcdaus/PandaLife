@@ -47,6 +47,14 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private TextMeshProUGUI percentage2;
     [SerializeField] private TextMeshProUGUI percentage3;
 
+    [SerializeField] private RectTransform darkPandaBar;
+    [SerializeField] private RectTransform redPandaBar;
+    [SerializeField] private RectTransform lightPandaBar;
+
+    [SerializeField] private HungerSystem darkPandaHunger;
+    [SerializeField] private HungerSystem lightPandaHunger;
+
+
     [Header("soltar cosas entre cambio de escena")]
     private Player player;
     private PickupDrop pickupobject;
@@ -104,6 +112,8 @@ public class DayNightCycle : MonoBehaviour
 
         player = FindFirstObjectByType<Player>();
         pickupobject = FindFirstObjectByType<PickupDrop>();
+
+        ConfigurarBarrasPorDia();
 
     }
 
@@ -179,6 +189,12 @@ public class DayNightCycle : MonoBehaviour
             {
                 GameManager.instance.valuepercentage = 25;
                 GameManager.instance.barmultiplicator = 1.25f;
+                if (darkPandaHunger != null)
+                {
+                    darkPandaHunger.MaxValue = 150f;
+                    lightPandaHunger.MaxValue = 50f;
+                }
+
             }
 
             
@@ -390,7 +406,35 @@ public class DayNightCycle : MonoBehaviour
         }
         
     }
-    
+
+    void ConfigurarBarrasPorDia()
+    {
+        // Si estamos en el día 3
+        if (GameManager.instance.numday >= 3)
+        {
+            // Cambiamos escalas
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.5f, 1f, 1f);
+            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.5f, 1f, 1f);
+
+            // Cambiamos el valor máximo
+            if (darkPandaHunger != null)
+            {
+                darkPandaHunger.MaxValue = 150f;
+            }
+            if (lightPandaHunger != null)
+            {
+                lightPandaHunger.MaxValue = 50f;
+            }
+        }
+        else
+        {
+            // Escalas normales para el día 1 y 2
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
+            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
+        }
+    }
 
 }
                 
