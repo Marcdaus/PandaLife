@@ -184,15 +184,28 @@ public class DayNightCycle : MonoBehaviour
             if(GameManager.instance.numday == 2) { 
                 GameManager.instance.valuepercentage = 15;
                 GameManager.instance.barmultiplicator = 1.15f;
+
+                if (lightPandaHunger != null)
+                {
+                    lightPandaHunger.MaxValue = 90f;
+                }
+                if (darkPandaHunger != null)
+                {
+                    darkPandaHunger.MaxValue = 110f;
+                }
             }
             if (GameManager.instance.numday == 3)
             {
                 GameManager.instance.valuepercentage = 25;
                 GameManager.instance.barmultiplicator = 1.25f;
+
+                if (lightPandaHunger != null)
+                {
+                    lightPandaHunger.MaxValue = 80f;
+                }
                 if (darkPandaHunger != null)
                 {
-                    darkPandaHunger.MaxValue = 150f;
-                    lightPandaHunger.MaxValue = 50f;
+                    darkPandaHunger.MaxValue = 120f;
                 }
 
             }
@@ -413,23 +426,34 @@ public class DayNightCycle : MonoBehaviour
         if (GameManager.instance.numday >= 3)
         {
             // Cambiamos escalas
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.5f, 1f, 1f);
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.4f, 1f, 1f);
             if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.5f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.6f, 1f, 1f);
 
             // Cambiamos el valor máximo
-            if (darkPandaHunger != null)
-            {
-                darkPandaHunger.MaxValue = 150f;
-            }
-            if (lightPandaHunger != null)
-            {
-                lightPandaHunger.MaxValue = 50f;
-            }
+            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 120f;
+            
+            if (lightPandaHunger != null) lightPandaHunger.MaxValue = 80f;
+            
         }
+        // Si estamos en el día 2
+        else if (GameManager.instance.numday == 2)
+        {
+            // Cambiamos escalas
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.2f, 1f, 1f);
+            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.8f, 1f, 1f);
+
+            // Cambiamos el valor máximo
+            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 110f;
+            
+            if (lightPandaHunger != null) lightPandaHunger.MaxValue = 90f;
+            
+        }
+        
         else
         {
-            // Escalas normales para el día 1 y 2
+            // Escalas normales para el día 1
             if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
             if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
             if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
