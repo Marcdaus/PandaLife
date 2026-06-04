@@ -7,4 +7,10 @@ public class PinOpenExclamation : PinUIElement
         return  TutorialManager.instance.currentStepRecipe == TutorialManager.TutorialRecipeBook.OpenRedDragon ||
                 TutorialManager.instance.currentStepRecipe == TutorialManager.TutorialRecipeBook.OpenUchuva;
     }
+    override public void Hide()
+    {
+        if (!gameObject.activeSelf) return;
+        gameObject.SetActive(false);
+
+    }
 }

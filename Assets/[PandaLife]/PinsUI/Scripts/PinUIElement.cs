@@ -71,7 +71,7 @@ public abstract class PinUIElement : MonoBehaviour
         animator.SetTrigger("show");
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         if (!gameObject.activeSelf) return;
         animator.SetTrigger("hide");
