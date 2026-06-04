@@ -122,7 +122,7 @@ public class MenuCauldron : MonoBehaviour
     {
         //cursorManager.cursorblock = false;
         //cursorManager.OcultarCursor();
-        closemenu.Play();
+        if(GameManager.instance.soundon)closemenu.Play();
         panelcauldron.SetActive(false);
         if (cooking) worldpanelbar.SetActive(true);
         else panelcooking.SetActive(false);

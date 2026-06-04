@@ -99,6 +99,7 @@ public class DayNightCycle : MonoBehaviour
         {
             doorwindowlight = door.GetComponent<Light>();
         }
+        GameManager.instance.soundon = true;
     }
     void Start()
     {
@@ -318,7 +319,11 @@ public class DayNightCycle : MonoBehaviour
             }
 
 
-            if (isinto) menucauldron.CloseCauldron();
+            if (isinto) {
+                GameManager.instance.soundon = false;
+                menucauldron.CloseCauldron();
+            }
+                
 
             daytext.text = "Día " + (GameManager.instance.numday + 1);
 
@@ -327,10 +332,10 @@ public class DayNightCycle : MonoBehaviour
                 recttextday.anchorMin = new Vector2(0.5f, 0.5f);
                 recttextday.anchorMax = new Vector2(0.5f, 0.5f);
                 recttextday.pivot = new Vector2(0.5f, 0.5f);
-                recttextday.anchoredPosition = Vector2.zero;
+                recttextday.anchoredPosition = new Vector2(-40f, 0f);
 
-                // Tamaño grande y alineación
-                daytext.fontSize = 80f;
+            // Tamaño grande y alineación
+            daytext.fontSize = 30f;
                 daytext.alignment = TextAlignmentOptions.Center;
             }
             else

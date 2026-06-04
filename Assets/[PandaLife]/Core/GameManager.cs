@@ -43,7 +43,9 @@ public class GameManager : MonoBehaviour
     [Header("Barras")]
     public float barmultiplicator = 1f;
     public int valuepercentage = 0;
-    
+    [Header("sonido")]
+    public bool soundon = true;
+
     void Start()
     {
        //bambuverde = 0;
