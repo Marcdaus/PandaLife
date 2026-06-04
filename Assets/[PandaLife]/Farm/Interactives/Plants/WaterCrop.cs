@@ -22,13 +22,28 @@ public class WaterCrop : Interactuable
             if (cubo == null || !cubo.hasWater) return true;
         }
 
-        // Intentar regar una planta ya regada o lista para cosechar
-        if (crop != null)
+        // Comprobamos el bloque entero de 4 parcelas
+        FarmingArea miArea = GetComponentInParent<FarmingArea>();
+        if (miArea != null && miArea.transform.parent != null)
         {
-            if (crop.IsWatered) return true;
-            if (crop.IsHarvestable()) return true;
-        }
+            // Buscamos todas las plantas en este grupo
+            Crop[] todosLosCultivos = miArea.transform.parent.GetComponentsInChildren<Crop>();
+            bool todasListas = true;
 
+            foreach (Crop c in todosLosCultivos)
+            {
+                // Si al menos una planta no está regada, dejamos que se gaste el agua de la cubeta
+                if (!c.IsWatered && !c.IsHarvestable())
+                {
+                    todasListas = false;
+                    break;
+                }
+            }
+
+            // Si todas estaban regadas/cosechables, dice que no
+            if (todasListas) return true;
+        }
+        
         return false;
     }
 
@@ -50,13 +65,35 @@ public class WaterCrop : Interactuable
             return;
         }
 
-        if (crop != null && (crop.IsWatered || crop.IsHarvestable()))
-        {
-            Debug.Log("La planta ya está regada o lista para cosechar.");
-            return;
-        }
+        bool riegoAlguna = false;
 
-        crop.Water();
-        water.Empty();
+        // Buscamos a la farming area y a la parcela
+        FarmingArea miArea = GetComponentInParent<FarmingArea>();
+
+        if (miArea != null && miArea.transform.parent != null)
+        {
+            // Recolectamos todas las plantas dentro del grupo de 4
+            Crop[] todosLosCultivos = miArea.transform.parent.GetComponentsInChildren<Crop>();
+
+            // Regamos todas las que necesiten agua
+            foreach (Crop c in todosLosCultivos)
+            {
+                if (!c.IsWatered && !c.IsHarvestable())
+                {
+                    c.Water();
+                    riegoAlguna = true;
+                }
+            }
+        }
+        
+        // Solo vaciamos el cubo si conseguimos regar al menos una planta
+        if (riegoAlguna)
+        {
+            water.Empty();
+        }
+        else
+        {
+            Debug.Log("Todas las plantas de este bloque ya están regadas o listas para cosechar.");
+        }
     }
 }
