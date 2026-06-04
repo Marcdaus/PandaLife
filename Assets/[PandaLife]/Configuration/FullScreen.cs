@@ -9,6 +9,8 @@ public class FullScreen : MonoBehaviour
     public Toggle toggle;
     public TMP_Dropdown dropdownresolution;
     Resolution[] resolutions;
+    [SerializeField] private AudioSource buttonsound;
+    private bool isInitialized = false;
     private void Start()
     {
         if(Screen.fullScreen)
@@ -20,9 +22,14 @@ public class FullScreen : MonoBehaviour
             toggle.isOn = false;
         }
         checkresolutions();
+        isInitialized = true;
     }
     public void Fullscreen(bool fullscreen)
     {
+        if (isInitialized && buttonsound != null)
+        {
+            buttonsound.Play();
+        }
         Screen.fullScreen = fullscreen;
     }
     public void checkresolutions()
