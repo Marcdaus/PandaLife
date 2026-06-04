@@ -185,7 +185,7 @@ public class Cauldron : Interactuable
 
     public bool Checkresources(string message, TextMeshProUGUI text)
     {
-        if (GameManager.instance.bambuverde <= 0 && GameManager.instance.bamburojo <= 0 && GameManager.instance.bayaarandanos <= 0 && GameManager.instance.bayauchuva <= 0)
+        if (GameManager.instance.bambuverde <= 0 && GameManager.instance.bamburojo <= 0 && GameManager.instance.bayaarandanos <= 0 && GameManager.instance.bayauchuva <= 0 && platopendiente==null)
         {
             text.text = message;
             anim.SetTrigger("ShakeHead");
