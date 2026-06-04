@@ -106,7 +106,7 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_adelantardia()
     {
-        GameManager.instance.tiempoTranscurrido = 280.0f;
+        GameManager.instance.tiempoTranscurrido = 560.0f;
     }
     public void Cheat_retrasardia()
     {

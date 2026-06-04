@@ -593,7 +593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b692e0d25bbae46308aab166d2f84bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mensajeInteraccion: dar plato
+  interactData: {fileID: 0}
   indicePanda: 0
   pedidoDeseado: 
   porcentajecalmado: 20
@@ -604,10 +604,11 @@ MonoBehaviour:
   myRequestPin: {fileID: 0}
   transitionTime: 0.5
   audioSource: {fileID: 7496217028698572115}
+  eatingaudiosource: {fileID: 0}
   soundCorrectDish: {fileID: 8300000, guid: 29875d31b6025b045ae01f5caae5ddd1, type: 3}
   soundWrongDish: {fileID: 8300000, guid: 0177f3a0e77fb6a4e9fe6407c07272cd, type: 3}
   soundNewRequest: {fileID: 8300000, guid: a16d6de5ff8dea548ad8af1737f3eae6, type: 3}
-  pandaSFX: {fileID: 7012308921671125203}
+  soundCloseRequest: {fileID: 0}
 --- !u!114 &3743121433790640506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,7 +663,7 @@ MonoBehaviour:
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 100
-  changeRate: 0.5
+  changeRate: 0.25
   valueText: {fileID: 0}
   pandaID: DarkPanda
   barraUI: {fileID: 0}
@@ -898,6 +899,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: deb3d22376c19f34c89ece2874d9d192, type: 3}
   - {fileID: 8300000, guid: eeb9b519ab466004ab2471b10227bee4, type: 3}
   audioSource: {fileID: 7576110966301157541}
+  sfxSource: {fileID: 0}
   pettingVolume: 0.3
   eatingVolume: 0.5
 --- !u!82 &7576110966301157541
