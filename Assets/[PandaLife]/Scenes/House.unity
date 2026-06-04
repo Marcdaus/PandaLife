@@ -2572,6 +2572,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1593127030835618089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_Speed
       value: 1
@@ -2585,9 +2593,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1413066111}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: angryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 634885665}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: happyVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: hungryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: angryClips.Array.size
       value: 3
@@ -2611,19 +2631,19 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'angryClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 1aafbf3b278d49842bcc38c8c35582a0, type: 3}
+      objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'angryClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
+      objectReference: {fileID: 8300000, guid: 1aafbf3b278d49842bcc38c8c35582a0, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'happyClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: ce982272a0e307c449a340fe2cc00d4b, type: 3}
+      objectReference: {fileID: 8300000, guid: 768ed96bc8f9d4948afd64d575d00f99, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'happyClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 768ed96bc8f9d4948afd64d575d00f99, type: 3}
+      objectReference: {fileID: 8300000, guid: ce982272a0e307c449a340fe2cc00d4b, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'happyClips.Array.data[2]'
       value: 
@@ -2643,11 +2663,11 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'hungryClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: c8e6f2ff83ae3974186702f83f55c6bc, type: 3}
+      objectReference: {fileID: 8300000, guid: 268fe37a66899e3429a0f3b86fcf33eb, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'hungryClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 268fe37a66899e3429a0f3b86fcf33eb, type: 3}
+      objectReference: {fileID: 8300000, guid: c8e6f2ff83ae3974186702f83f55c6bc, type: 3}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: bar
       value: 
@@ -2713,9 +2733,17 @@ PrefabInstance:
       value: 0.10234219
       objectReference: {fileID: 0}
     - target: {fileID: 2887328893738481980, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2887328893738481980, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
+    - target: {fileID: 2887328893738481980, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3677090349733741016, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: spawnpoint
       value: 
@@ -20865,6 +20893,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1888857797}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: angryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: happyVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: hungryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: angryClips.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -20904,10 +20944,22 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8548456797623729055, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
+    - target: {fileID: 8548456797623729055, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -21182,7 +21234,7 @@ AudioSource:
   m_GameObject: {fileID: 693592405}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
@@ -26664,10 +26716,26 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
+    - target: {fileID: 2462036474294100454, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: sfxSource
       value: 
       objectReference: {fileID: 2070676502}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: angryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: happyVolume
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: hungryVolume
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: happyClips.Array.size
       value: 3
@@ -26677,17 +26745,29 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'angryClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'angryClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c77f954c7d62b954796aaa56ea3d4186, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'angryClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1aafbf3b278d49842bcc38c8c35582a0, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'happyClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: ce982272a0e307c449a340fe2cc00d4b, type: 3}
+      objectReference: {fileID: 8300000, guid: 33d5f776298db5c40a10718e4e0c502b, type: 3}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'happyClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: 768ed96bc8f9d4948afd64d575d00f99, type: 3}
+      objectReference: {fileID: 8300000, guid: ce982272a0e307c449a340fe2cc00d4b, type: 3}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'happyClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 33d5f776298db5c40a10718e4e0c502b, type: 3}
+      objectReference: {fileID: 8300000, guid: 768ed96bc8f9d4948afd64d575d00f99, type: 3}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'hungryClips.Array.data[0]'
       value: 
@@ -26948,6 +27028,14 @@ PrefabInstance:
       propertyPath: particlesystemref
       value: 
       objectReference: {fileID: 298310474}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

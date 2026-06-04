@@ -16,6 +16,16 @@ public class PlaySFX : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
 
     [Header("Volúmenes")]
+
+    [Range(0f, 1f)]
+    [SerializeField] private float happyVolume = 0.5f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float hungryVolume = 0.5f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float angryVolume = 0.5f;
+
     [Range(0f, 1f)]
     [SerializeField] private float pettingVolume = 0.3f;
 
@@ -37,27 +47,27 @@ public class PlaySFX : MonoBehaviour
 
     private Coroutine loopCoroutine;
 
-    void Awake()
+    private void Awake()
     {
         if (audioSource == null)
             audioSource = GetComponent<AudioSource>();
     }
 
-    // -------------------- PUBLIC API --------------------
+    // -------------------- PUBLIC ESTADOS --------------------
 
     public void PlayHappy()
     {
-        StartEmotion(Emotion.Happy, happyClips);
+        StartEmotion(Emotion.Happy, happyClips, happyVolume);
     }
 
     public void PlayHungry()
     {
-        StartEmotion(Emotion.Hungry, hungryClips);
+        StartEmotion(Emotion.Hungry, hungryClips, hungryVolume);
     }
 
     public void PlayAngry()
     {
-        StartEmotion(Emotion.Angry, angryClips);
+        StartEmotion(Emotion.Angry, angryClips, angryVolume);
     }
 
     public void StopAll()
@@ -78,7 +88,7 @@ public class PlaySFX : MonoBehaviour
 
     // -------------------- CORE --------------------
 
-    private void StartEmotion(Emotion emotion, AudioClip[] clips)
+    private void StartEmotion(Emotion emotion, AudioClip[] clips, float volume)
     {
         if (clips == null || clips.Length == 0)
             return;
@@ -87,6 +97,8 @@ public class PlaySFX : MonoBehaviour
             return;
 
         StopAll();
+
+        audioSource.volume = volume;
 
         currentEmotion = emotion;
         currentClips = clips;
@@ -109,6 +121,8 @@ public class PlaySFX : MonoBehaviour
         }
     }
 
+    // -------------------- ACCIONES --------------------
+
     public void PlayPetting()
     {
         PlaySingleAction(pettingClips, pettingVolume);
@@ -124,8 +138,9 @@ public class PlaySFX : MonoBehaviour
         if (clips == null || clips.Length == 0)
             return;
 
-        AudioClip clip = clips[(int)Random.Range(0, clips.Length)];
+        AudioClip clip = clips[Random.Range(0, clips.Length)];
 
-        sfxSource.PlayOneShot(clip, volume);
+        if (sfxSource != null)
+            sfxSource.PlayOneShot(clip, volume);
     }
 }
