@@ -22,6 +22,7 @@ public class Minipandas : Interactuable
     [SerializeField] private AudioClip soundWrongDish;
     [SerializeField] private AudioClip soundNewRequest;
     [SerializeField] private AudioClip soundCloseRequest;
+    [SerializeField] private PlaySFX pettingsound;
 
 
     void Awake()
@@ -91,6 +92,7 @@ public class Minipandas : Interactuable
             RageSystem rage = GetComponent<RageSystem>();
             if (rage != null)
             {
+                pettingsound.PlayPetting();
                 rage.ReducirIraPorcentaje(porcentajecalmado);
                 Debug.Log("Has calmado al panda ");
             }
