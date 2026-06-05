@@ -181,6 +181,6 @@ public class RageSystem : BarSystem
             bar.value = 0f;
 
         if (particlecontroller != null)
-            particlecontroller.ResetVisuals(); // 🔥 IMPORTANTE
+            particlecontroller.ResetVisuals(); //  IMPORTANTE
     }
 }

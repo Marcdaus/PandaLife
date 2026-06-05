@@ -99,7 +99,7 @@ public class DayNightCycle : MonoBehaviour
         {
             doorwindowlight = door.GetComponent<Light>();
         }
-        GameManager.instance.soundon = true;
+        if(!ingameover)GameManager.instance.soundon = true;
     }
     void Start()
     {

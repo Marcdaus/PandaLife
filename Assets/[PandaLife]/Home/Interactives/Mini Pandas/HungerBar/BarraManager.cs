@@ -71,7 +71,7 @@ public class BarraManager : MonoBehaviour
         if (ragingCount == 3)
         {
             sceneLoaded = true;
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Cinematic");
             return;
         }
 
@@ -80,7 +80,7 @@ public class BarraManager : MonoBehaviour
             if (value >= rageMaxValue)
             {
                 sceneLoaded = true;
-                SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene("Cinematic");
                 return;
             }
         }
