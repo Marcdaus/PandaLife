@@ -1395,6 +1395,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 962703665}
     - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 5383525070291589233}
+    - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: textoBambuRojo
       value: 
       objectReference: {fileID: 7496061819042208312}
@@ -13745,6 +13749,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f0de0ff7b0110c44a98633fd5b4e5ad, type: 3}
+--- !u!82 &5383525070291589233 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4450616557196197914, guid: 2f0de0ff7b0110c44a98633fd5b4e5ad, type: 3}
+  m_PrefabInstance: {fileID: 5383525070291589232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6336325674937227425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3088564838267191460, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
