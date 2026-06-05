@@ -28,6 +28,8 @@ public class Harvest : Interactuable
     public override void Interactuar(Player player)
     {
         if (crop == null) return;
+        AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
+
 
         if (!player.IsHandEmpty())
         {
