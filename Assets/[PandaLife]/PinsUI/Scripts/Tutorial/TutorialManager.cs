@@ -12,12 +12,14 @@ public class TutorialManager : MonoBehaviour
         CogerSaco = 1,//
         Plantar = 2,//
         CogerCubo = 3,//
-        LlenarCubo = 4,//
-        RegarPlanta = 5,//
-        Cosechar = 6,
-        EntrarEnCasa = 7,//
-        Caldero = 8,
-        Completado = 9 // Tutorial acabado
+        Flecha1 = 4,//
+        LlenarCubo = 5,//
+        Flecha2 = 6,//
+        RegarPlanta = 7,//
+        Cosechar = 8,
+        EntrarEnCasa = 9,//
+        Caldero = 10,
+        Completado = 11 // Tutorial acabado
     }
     public enum TutorialRecipeBook
     {
