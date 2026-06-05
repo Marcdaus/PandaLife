@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
     }
 
