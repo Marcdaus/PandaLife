@@ -5,6 +5,7 @@ public class Radio : Interactuable
 {
     [SerializeField] private ParticleSystem notasParticles;
     [SerializeField] private float duracion;
+    [SerializeField] private AudioSource macarena;
 
     // Condiciónnegar con la cabeza
     public override bool ShouldShakeHead(Player player)
@@ -16,7 +17,7 @@ public class Radio : Interactuable
     public override void Interactuar(Player player)
     {
         if (!player.IsHandEmpty()) return;
-
+        macarena.Play();
         PlayNotas();
     }
 
