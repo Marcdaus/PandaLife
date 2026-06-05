@@ -28,7 +28,6 @@ public class Harvest : Interactuable
     public override void Interactuar(Player player)
     {
         if (crop == null) return;
-        AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
 
 
         if (!player.IsHandEmpty())
@@ -40,10 +39,14 @@ public class Harvest : Interactuable
         if (crop.IsHarvestable())
         {
             //audiosource.Play();
-            AudioSource.PlayClipAtPoint(
+            AudioSource.PlayClipAtPoint(audiosource.clip, transform.position);
+
+
+           /* AudioSource.PlayClipAtPoint(
                 audiosource.clip,
                 transform.position
-            );
+            );*/
+
             crop.Harvest(); // Llama a la función de cosechar del Crop
 
             if (area != null)
