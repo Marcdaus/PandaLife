@@ -53,7 +53,7 @@ public class FarmingArea : MonoBehaviour
                     SpawnObject();
                     if (currentCrop != null)
                     {
-                        currentCrop.LoadSavedState(savedData.growthStage, savedData.isWatered);
+                        currentCrop.LoadSavedState(savedData.growthStage, savedData.isWatered, savedData.timeWateredTicks);
                         ThereIsSomething = true;
                     }
                 }
@@ -76,7 +76,8 @@ public class FarmingArea : MonoBehaviour
                     isPlanted = true,
                     growthStage = currentCrop.growthstage,
                     cropType = currentCrop.type, 
-                    isWatered = currentCrop.IsWatered
+                    isWatered = currentCrop.IsWatered,
+                    timeWateredTicks = 0
                 };
 
                 FarmDataManager.instance.SaveArea(areaID, newData);

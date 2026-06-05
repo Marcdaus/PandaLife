@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using System;
 public class Crop : MonoBehaviour
 {
     [Range(1, 3)] public int growthstage = 1;
@@ -17,6 +17,7 @@ public class Crop : MonoBehaviour
     public int maxStages = 3;
 
     private bool watered = false;
+    private long waterTimeTicks = 0;
 
     [SerializeField] private string areaID;
     public string AreaID => areaID;
@@ -55,21 +56,29 @@ public class Crop : MonoBehaviour
         }
 
         watered = true;
+        waterTimeTicks = DateTime.Now.Ticks;
+
         if (farmingArea != null)
         {
             farmingArea.SetWatered(true);
         }
         UpdateSingletonData();
-        StartCoroutine(Grow());
+        StartCoroutine(Grow(growtime));
     }
 
-    IEnumerator Grow()
+    IEnumerator Grow(float timeToWait)
     {
         Debug.Log("Planta regada, creciendo...");
+        yield return new WaitForSeconds(timeToWait);
+        AdvanceGrowthStage();
+    }
 
-        yield return new WaitForSeconds(growtime);
-
+    // NUEVO: Separamos la lógica de avanzar de fase para reutilizarla
+    private void AdvanceGrowthStage()
+    {
         watered = false;
+        waterTimeTicks = 0; // Reseteamos el tiempo
+
         if (farmingArea != null)
         {
             farmingArea.SetWatered(false);
@@ -84,13 +93,12 @@ public class Crop : MonoBehaviour
         else if (growthstage == 2 && maxStages == 3)
         {
             stage2.SetActive(false);
-            stage3.SetActive(true);
+            if (stage3 != null) stage3.SetActive(true);
             growthstage = 3;
         }
 
         UpdateSingletonData();
         Debug.Log("Nueva fase: " + growthstage);
-
     }
 
     // ========================
@@ -105,7 +113,7 @@ public class Crop : MonoBehaviour
         Destroy(gameObject);
     }
     //  función para cargar el estado al entrar a la escena
-    public void LoadSavedState(int savedStage, bool savedWatered)
+    public void LoadSavedState(int savedStage, bool savedWatered, long savedTimeTicks)
     {
         growthstage = savedStage;
         watered = savedWatered;
@@ -121,7 +129,21 @@ public class Crop : MonoBehaviour
         // Si estaba regado y no ha terminado de crecer, retomamos la corrutina
         if (watered && growthstage < maxStages)
         {
-            StartCoroutine(Grow());
+            long ticksPassed = DateTime.Now.Ticks - waterTimeTicks;
+            float secondsPassed = (float)TimeSpan.FromTicks(ticksPassed).TotalSeconds;
+
+            float remainingTime = growtime - secondsPassed;
+
+            if (remainingTime <= 0)
+            {
+                // Si ya pasó el tiempo necesario mientras estabas en otra escena
+                AdvanceGrowthStage();
+            }
+            else
+            {
+                // Si aún le falta tiempo, iniciamos la corrutina con el tiempo restante
+                StartCoroutine(Grow(remainingTime));
+            }
         }
     }
     private void UpdateSingletonData()
@@ -131,7 +153,8 @@ public class Crop : MonoBehaviour
             isPlanted = true,
             growthStage = growthstage,
             cropType = type,
-            isWatered = watered
+            isWatered = watered,
+            timeWateredTicks = waterTimeTicks
         };
         FarmDataManager.instance.SaveArea(areaID, data);
     }
