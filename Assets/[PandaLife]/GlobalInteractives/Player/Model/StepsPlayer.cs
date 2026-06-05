@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StepsPlayer : MonoBehaviour
 {
@@ -16,7 +17,15 @@ public class StepsPlayer : MonoBehaviour
 
     private void Start()
     {
-        sourceActual = sourceGrass;
+        string nombreEscena = SceneManager.GetActiveScene().name;
+        if (nombreEscena == "Farm")
+        {
+            sourceActual = sourceGrass;
+        }
+        else {
+            sourceActual = sourceHome;
+        }
+        
     }
 
 public void ReproducirPaso()

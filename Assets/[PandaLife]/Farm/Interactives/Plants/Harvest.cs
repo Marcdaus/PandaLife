@@ -2,8 +2,11 @@ using UnityEngine;
 
 public class Harvest : Interactuable
 {
+
     [SerializeField] private Crop crop;
     public FarmingArea area; // Se guarda la parcela para marcarla vacía al cosechar
+
+      [SerializeField] private AudioSource audiosource;
 
     void Awake()
     {
@@ -34,6 +37,11 @@ public class Harvest : Interactuable
 
         if (crop.IsHarvestable())
         {
+            //audiosource.Play();
+            AudioSource.PlayClipAtPoint(
+                audiosource.clip,
+                transform.position
+            );
             crop.Harvest(); // Llama a la función de cosechar del Crop
 
             if (area != null)

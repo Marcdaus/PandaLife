@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public LayerMask interactlayer;
     [SerializeField] private Animator anim;
     private bool collectWater = false;
+    [SerializeField] private AudioClip croptakingsound;
 
     [SerializeField] private RecipesData receta;
 
@@ -34,7 +35,6 @@ public class Player : MonoBehaviour
     private Interactuable currentTarget = null;
     [SerializeField] private AudioSource PettingaudioSource;
 
-
     private void OnDrawGizmos()
     {
         if (interactionarea != null)
@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         {
             // Decidimos que animacion toca
             TriggerInteractionAnimation();
+
         }
 
         // Soltar objetos con Q
