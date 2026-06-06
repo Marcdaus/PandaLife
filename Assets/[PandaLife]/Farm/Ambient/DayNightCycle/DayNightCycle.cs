@@ -131,24 +131,23 @@ public class DayNightCycle : MonoBehaviour
                 if (!GameManager.instance.stopTime) GameManager.instance.tiempoTranscurrido += Time.deltaTime * GameManager.instance.multiplicadorvelocidaddia;
                 GameManager.instance.porcentaje = GameManager.instance.tiempoTranscurrido / durationsinseconds;
 
-                // 1. Control de Rotación
+                // Control de Rotación
                 float anguloActual = Mathf.Lerp(startangle, endangle, GameManager.instance.porcentaje);
 
                 if (!isinto) transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
-                // 2. Control de Reloj
+                //  Control de Reloj
                 ActualizarReloj(GameManager.instance.porcentaje);
 
-                // 3. Control de obscurezers
+                //Control de obscurezers
                 ActualizarFundido();
 
-                // 4. Control del texto dia
+                //  Control del texto dia
                 ActualizarTexto();
-
-                // 5. Control del color de la cámara
+ 
             }
             else
             {
-                // 1. Control de Rotación
+                // Control de Rotación
                 float anguloActual = Mathf.Lerp(startangle, endangle, GameManager.instance.porcentaje);
                 transform.localEulerAngles = new Vector3(anguloActual, 0, 0);
             }
