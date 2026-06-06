@@ -20,14 +20,14 @@ public class BlurMaterialActivation : MonoBehaviour
     {
         if (materialesAOscurecer == null || materialesAOscurecer.Length == 0) return;
 
-        // Limpiamos listas por si acaso el Timeline se repite
+        // Limpiar listas por si acaso el Timeline se repite
         copiasMateriales.Clear();
         coloresOriginales.Clear();
 
-        // 1. Detectamos el tipo de Shader
+        // Detectarel tipo de Shader
         ConfigurarPropiedadColor(materialesAOscurecer[0]);
 
-        // 2. Clonamos los materiales y los aplicamos a la escena de inmediato
+        // Clonamos los materiales y los aplicamos a la escena de inmediato
         for (int i = 0; i < materialesAOscurecer.Length; i++)
         {
             if (materialesAOscurecer[i] != null)
@@ -40,7 +40,7 @@ public class BlurMaterialActivation : MonoBehaviour
             }
         }
 
-        // 3. Iniciamos el oscurecimiento
+        // 3. Iniciar el oscurecimiento
         if (copiasMateriales.Count > 0)
         {
             StartCoroutine(RutinaOscurecerTodo());

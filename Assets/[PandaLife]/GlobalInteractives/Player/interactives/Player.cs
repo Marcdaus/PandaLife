@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         WaterCrop watertarget = null;
         Interactuable othertarget = null;
 
-        // 1. Prioridad máxima: coger cubo si hay uno y no est�s sosteniendo nada
+        // Prioridad máxima: coger cubo si hay uno y no est�s sosteniendo nada
         if (IsHandEmpty())
         {
             foreach (Collider col in detected)
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 2. Buscar cosecha solo si no hay cubo
+        // Buscar cosecha solo si no hay cubo
         if (bucketTarget == null)
         {
             foreach (Collider col in detected)
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 3. Buscar riego solo si no hay cubo ni cosecha
+        // Buscar riego solo si no hay cubo ni cosecha
         if (isinto == false)
         {
             if (bucketTarget == null && harvesttarget == null) // quitamos el IsHoldingBucket()
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        // 4. Otros objetos si no hay cubo, cosecha ni riego
+        // Otros objetos si no hay cubo, cosecha ni riego
         if (bucketTarget == null && harvesttarget == null && watertarget == null)
         {
             // Prioridad 1: caldero con plato pendiente
