@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoBambuRojo;
     public TextMeshProUGUI textoBayaArandanos;
     public TextMeshProUGUI textoBayaUchuva;
-
-    [SerializeField] private AudioSource audiosource;
     
     
     [Header("Variables de Sistema de dia")]
@@ -77,7 +75,6 @@ public class GameManager : MonoBehaviour
         
         if (tipo == 1)
         {
-            audiosource.Play();
             bambuverde += cantidad;
             ActualizarInventarioUI();
         }

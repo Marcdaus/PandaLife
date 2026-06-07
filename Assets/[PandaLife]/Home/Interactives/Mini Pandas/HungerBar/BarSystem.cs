@@ -5,8 +5,8 @@ using UnityEngine.UI;
 public abstract class BarSystem : MonoBehaviour, IBarSystem
 {
     //Variables comunes a ambos sistemas
-    [SerializeField] protected Slider bar;
-    [SerializeField] protected Image fillImage;
+   // [SerializeField] protected Image fillImage;
+    [SerializeField] protected Image fullBarImage;
     [SerializeField] protected Image indicatorImage;
 
     //Variables de la barra
@@ -36,10 +36,10 @@ public abstract class BarSystem : MonoBehaviour, IBarSystem
 
     public virtual void UpdateUI()
     {
-        if (bar != null)
+     
+        if (fullBarImage != null)
         {
-            bar.maxValue = maxValue;
-            bar.value = currentValue;
+            fullBarImage.fillAmount = currentValue / maxValue;
         }
 
         if (valueText != null)

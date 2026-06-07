@@ -8,11 +8,10 @@ public class RageSystem : BarSystem
 
     [SerializeField] private string pandaID;
 
-    private Color calmColor = new Color(1f, 0f, 0f);
-    private Color rageColor = new Color(0.6f, 0f, 0f);
-
     [SerializeField] private Sprite calmFace;
     [SerializeField] private Sprite rageFace;
+    [SerializeField] private Sprite calmBarSprite;
+    [SerializeField] private Sprite rageBarSprite;
 
     [SerializeField] private ParticleStateController particlecontroller;
 
@@ -47,11 +46,9 @@ public class RageSystem : BarSystem
     // ACTIVATE
     // =========================
 
-    public void ActivateRage(Slider sharedBar, Image sharedFill)
+    public void ActivateRage(Image sharedFullBar)
     {
-      
-        bar = sharedBar;
-        fillImage = sharedFill;
+        fullBarImage = sharedFullBar;
 
         GameManager.instance.miniPandasHambrientos--;
 
@@ -109,8 +106,8 @@ public class RageSystem : BarSystem
         // CALM
         if (percentage < 50f)
         {
-            if (fillImage != null)
-                fillImage.color = calmColor;
+             if (fullBarImage != null)
+                fullBarImage.sprite = calmBarSprite;
 
             if (indicatorImage != null)
                 indicatorImage.sprite = calmFace;
@@ -126,8 +123,8 @@ public class RageSystem : BarSystem
         // ANGRY
         else
         {
-            if (fillImage != null)
-                fillImage.color = rageColor;
+            if (fullBarImage != null)
+                fullBarImage.sprite = rageBarSprite;
 
             if (indicatorImage != null)
                 indicatorImage.sprite = rageFace;
@@ -175,10 +172,7 @@ public class RageSystem : BarSystem
         currentValue = 0f;
         currentState = RageState.None;
 
-        UpdateColors();
-
-        if (bar != null)
-            bar.value = 0f;
+        UpdateUI();
 
         if (particlecontroller != null)
             particlecontroller.ResetVisuals(); //  IMPORTANTE

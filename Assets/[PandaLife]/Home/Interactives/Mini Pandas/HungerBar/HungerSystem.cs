@@ -16,9 +16,13 @@ public class HungerSystem : BarSystem
     [SerializeField] private Sprite normalFace;
     [SerializeField] private Sprite angryFace;
 
-    private Color satisfiedbarcolor = Color.green;
-    private Color normalbarcolor = Color.yellow;
-    private Color hungrybarcolor = Color.red;
+    [SerializeField] private Sprite happyBarSprite;
+    [SerializeField] private Sprite normalBarSprite;
+    [SerializeField] private Sprite hungryBarSprite;
+
+    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Sprite normalbackground;
+    [SerializeField] private Sprite brokenbackground;
 
     [SerializeField] private ParticleStateController particlecontroller;
 
@@ -57,7 +61,7 @@ public class HungerSystem : BarSystem
 
             Deactivate();
 
-            rageSystem.ActivateRage(bar, fillImage);
+            rageSystem.ActivateRage(fullBarImage);
 
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
@@ -101,6 +105,7 @@ public class HungerSystem : BarSystem
         if (rageSystem != null && !rageactivated && currentValue <= 0)
         {
             rageactivated = true;
+            backgroundImage.sprite = brokenbackground;
 
             currentState = PandaState.Rage;
 
@@ -109,7 +114,7 @@ public class HungerSystem : BarSystem
             if (particlecontroller != null)
                 particlecontroller.ClearAll();
 
-            rageSystem.ActivateRage(bar, fillImage);
+            rageSystem.ActivateRage(fullBarImage);
 
             if (barraUI != null)
                 barraUI.SetRage(rageSystem);
@@ -137,8 +142,8 @@ public class HungerSystem : BarSystem
         // HAMBRIENTO
         if (percentage < 50f)
         {
-            if (fillImage != null)
-                fillImage.color = hungrybarcolor;
+            if (fullBarImage != null)
+                fullBarImage.sprite = hungryBarSprite;
 
             if (indicatorImage != null)
                 indicatorImage.sprite = angryFace;
@@ -154,8 +159,8 @@ public class HungerSystem : BarSystem
         // NORMAL
         else if (percentage < 80f)
         {
-            if (fillImage != null)
-                fillImage.color = normalbarcolor;
+            if (fullBarImage!= null)
+                fullBarImage.sprite = normalBarSprite;
 
             if (indicatorImage != null)
                 indicatorImage.sprite = normalFace;
@@ -171,8 +176,8 @@ public class HungerSystem : BarSystem
         // FELIZ
         else
         {
-            if (fillImage != null)
-                fillImage.color = satisfiedbarcolor;
+            if (fullBarImage != null)
+                fullBarImage.sprite = happyBarSprite;
 
             if (indicatorImage != null)
                 indicatorImage.sprite = happyFace;
@@ -224,6 +229,7 @@ public class HungerSystem : BarSystem
         else
         {
             currentValue = maxValue;
+            backgroundImage.sprite = normalbackground;
 
             if (rageSystem != null)
                 rageSystem.ResetSystem();
@@ -236,9 +242,7 @@ public class HungerSystem : BarSystem
 
     private void RefreshVisuals()
     {
-        UpdateColors();
+        UpdateUI();
 
-        if (bar != null)
-            bar.value = currentValue;
     }
 }
