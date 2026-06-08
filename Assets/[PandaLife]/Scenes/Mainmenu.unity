@@ -325,6 +325,8 @@ GameObject:
   m_Component:
   - component: {fileID: 549125038}
   - component: {fileID: 549125037}
+  - component: {fileID: 549125039}
+  - component: {fileID: 549125040}
   m_Layer: 0
   m_Name: buttonsound
   m_TagString: Untagged
@@ -444,6 +446,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &549125039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549125036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68d1051e31f4e984681be5adc33b9a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &549125040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549125036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfaa3c50c091144bbe7da5a59e9e238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: ff393b393a3966149afafb82ea6e084f, type: 3}
 --- !u!1 &579157647
 GameObject:
   m_ObjectHideFlags: 0
@@ -873,6 +900,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 549125037}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1096003775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,8 +1268,8 @@ MonoBehaviour:
   HomeScene: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
   ConfigurationScene: {fileID: 11400000, guid: 688ff25d0c58d20428aa765d0db2b2f4, type: 2}
   MainmenuScene: {fileID: 11400000, guid: ddb115cfc230b4f48bb928cb9c85ec7a, type: 2}
-  buttonSound: {fileID: 549125037}
-  backSound: {fileID: 0}
+  buttonSound: {fileID: 8300000, guid: ff393b393a3966149afafb82ea6e084f, type: 3}
+  backSound: {fileID: 8300000, guid: 28e0b259459a92f49a81c559b8f2f54f, type: 3}
 --- !u!1 &2134030859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1535,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 601967134}
   - {fileID: 257411253}
-  - {fileID: 2031060839}
-  - {fileID: 579157650}
   - {fileID: 549125038}
   - {fileID: 946020793}
+  - {fileID: 2031060839}
+  - {fileID: 579157650}
