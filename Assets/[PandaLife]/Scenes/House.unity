@@ -2596,6 +2596,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1593127030835618089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_Speed
       value: 1
@@ -21127,7 +21135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: pettingClips.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: 'angryClips.Array.data[3]'
@@ -21179,6 +21187,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8548456797623729055, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
@@ -27320,6 +27336,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
