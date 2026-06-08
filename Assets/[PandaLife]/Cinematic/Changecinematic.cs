@@ -7,15 +7,16 @@ public class Changecinematic : MonoBehaviour
     [SerializeField] private Image scene1;
     [SerializeField] private Image scene2;
     [SerializeField] private Image scene3;
-    
+    [SerializeField] private Animator anim;
+
 
     // Update is called once per frame
     public IEnumerator Start()
     {
         yield return new WaitForSeconds(5f);
-        scene1.gameObject.SetActive(false);
+        anim.SetTrigger("de1a2");
         yield return new WaitForSeconds(5f);
-        scene2.gameObject.SetActive(false);
+        anim.SetTrigger("de2a3");
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("GameOver");
     }
@@ -23,11 +24,13 @@ public class Changecinematic : MonoBehaviour
     {
         if(scene1.gameObject.activeSelf == true)
         {
-            scene1.gameObject.SetActive(false);
-        }else if (scene2.gameObject.activeSelf == true)
+            anim.SetTrigger("de1a2");
+        }
+        else if (scene2.gameObject.activeSelf == true)
         {
-            scene2.gameObject.SetActive(false);
-        }else
+            anim.SetTrigger("de2a3");
+        }
+        else
         {
             SceneManager.LoadScene("GameOver");
         }
