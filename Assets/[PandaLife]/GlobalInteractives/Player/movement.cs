@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class movement : MonoBehaviour
@@ -20,7 +21,8 @@ public class movement : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(h, 0, v);
+        Vector3 move = new Vector3(h, 0, v).normalized;
+        Debug.Log($"Input: {move}");
 
         // Obtener la dirección de la cámara (solo eje Y)
         Vector3 camForward = Camera.main.transform.forward;
