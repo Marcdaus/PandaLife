@@ -148,6 +148,7 @@ MonoBehaviour:
   soundWrongDish: {fileID: 0}
   soundNewRequest: {fileID: 0}
   soundCloseRequest: {fileID: 0}
+  pettingsound: {fileID: 0}
 --- !u!114 &5983621882240184350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,10 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  fillImage: {fileID: 0}
+  fullBarImage: {fileID: 0}
   indicatorImage: {fileID: 0}
-  maxValue: 100
+  maxValue: 120
   currentValue: 100
   changeRate: 0.25
   valueText: {fileID: 0}
@@ -188,6 +188,12 @@ MonoBehaviour:
   happyFace: {fileID: 21300000, guid: 1741beb14f30e4fba9b7bb30f019d8c9, type: 3}
   normalFace: {fileID: 21300000, guid: c1a04464553e24b0daea021f9571a9f4, type: 3}
   angryFace: {fileID: 21300000, guid: 5785704753a97471a82078d6465a7ea2, type: 3}
+  happyBarSprite: {fileID: 0}
+  normalBarSprite: {fileID: 0}
+  hungryBarSprite: {fileID: 0}
+  backgroundImage: {fileID: 0}
+  normalbackground: {fileID: 0}
+  brokenbackground: {fileID: 0}
   particlecontroller: {fileID: 0}
 --- !u!114 &7994404267010699718
 MonoBehaviour:
@@ -201,8 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  fillImage: {fileID: 0}
+  fullBarImage: {fileID: 0}
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 0
@@ -211,6 +216,8 @@ MonoBehaviour:
   pandaID: LightPanda
   calmFace: {fileID: 21300000, guid: f741924842c84463bb457c7f16412a87, type: 3}
   rageFace: {fileID: 21300000, guid: ac5981e6ddeb240669c4d221e931dc10, type: 3}
+  calmBarSprite: {fileID: 0}
+  rageBarSprite: {fileID: 0}
   particlecontroller: {fileID: 0}
 --- !u!65 &2066868754207065064
 BoxCollider:
@@ -389,6 +396,9 @@ MonoBehaviour:
   eatingClips: []
   audioSource: {fileID: 0}
   sfxSource: {fileID: 0}
+  happyVolume: 0.5
+  hungryVolume: 0.5
+  angryVolume: 0.5
   pettingVolume: 0.3
   eatingVolume: 0.5
 --- !u!82 &1530794417178339192
