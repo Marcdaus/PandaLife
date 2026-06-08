@@ -2596,6 +2596,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1593127030835618089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_Speed
       value: 1
@@ -2667,15 +2675,15 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'eatingClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 771c4ca130036ea4b94f1dfba100d579, type: 3}
+      objectReference: {fileID: 8300000, guid: cf212c33722d64348a7a451130cece35, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'eatingClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: eeb9b519ab466004ab2471b10227bee4, type: 3}
+      objectReference: {fileID: 8300000, guid: dfe9e4faa748da340b16abea37378ad6, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'eatingClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: deb3d22376c19f34c89ece2874d9d192, type: 3}
+      objectReference: {fileID: 8300000, guid: 21540803949efa04a8285e98a65336b1, type: 3}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'hungryClips.Array.data[0]'
       value: 
@@ -8762,7 +8770,7 @@ PrefabInstance:
     - target: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
       propertyPath: feedingClip
       value: 
-      objectReference: {fileID: 8300000, guid: 4f7970b58fc99774d9e4759f22a9b2cc, type: 3}
+      objectReference: {fileID: 8300000, guid: ca2b06ee0ec43ac4ba9ea831b0a64853, type: 3}
     - target: {fileID: 1854719733215657051, guid: be1f8a3123a37164d8adcc5bfad0022b, type: 3}
       propertyPath: PettingaudioSource
       value: 
@@ -8891,7 +8899,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 08373194e3c89ca4aac9c652290d3ec2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 6f50f25af3e1f9248b084c22d9905984, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -21127,7 +21135,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: pettingClips.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: 'angryClips.Array.data[3]'
@@ -21145,6 +21153,18 @@ PrefabInstance:
       propertyPath: 'happyClips.Array.data[2]'
       value: 
       objectReference: {fileID: 8300000, guid: 33d5f776298db5c40a10718e4e0c502b, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'eatingClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cf212c33722d64348a7a451130cece35, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'eatingClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dfe9e4faa748da340b16abea37378ad6, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'eatingClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 21540803949efa04a8285e98a65336b1, type: 3}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: 'hungryClips.Array.data[0]'
       value: 
@@ -21167,6 +21187,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8548456797623729055, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
@@ -26987,6 +27015,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 768ed96bc8f9d4948afd64d575d00f99, type: 3}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'eatingClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cf212c33722d64348a7a451130cece35, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'eatingClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: dfe9e4faa748da340b16abea37378ad6, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'eatingClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 21540803949efa04a8285e98a65336b1, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'hungryClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: c8e6f2ff83ae3974186702f83f55c6bc, type: 3}
@@ -27296,6 +27336,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: MaxDistance
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

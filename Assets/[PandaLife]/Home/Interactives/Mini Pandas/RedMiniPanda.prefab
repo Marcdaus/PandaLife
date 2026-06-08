@@ -163,6 +163,7 @@ MonoBehaviour:
   soundWrongDish: {fileID: 8300000, guid: 0177f3a0e77fb6a4e9fe6407c07272cd, type: 3}
   soundNewRequest: {fileID: 8300000, guid: a16d6de5ff8dea548ad8af1737f3eae6, type: 3}
   soundCloseRequest: {fileID: 0}
+  pettingsound: {fileID: 0}
 --- !u!114 &2455369744477720433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,10 +213,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad72e284c2e8d24c98719495e1617c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  fillImage: {fileID: 0}
+  fullBarImage: {fileID: 0}
   indicatorImage: {fileID: 0}
-  maxValue: 100
+  maxValue: 120
   currentValue: 100
   changeRate: 0.25
   valueText: {fileID: 0}
@@ -225,6 +225,12 @@ MonoBehaviour:
   happyFace: {fileID: 21300000, guid: b76192ab1a4aa454b93e18c429aa8054, type: 3}
   normalFace: {fileID: 21300000, guid: 4805b311d0e384fe69a220557cee9330, type: 3}
   angryFace: {fileID: 21300000, guid: 2e2e6a0c82b01448baaa5f7d953c2f2f, type: 3}
+  happyBarSprite: {fileID: 0}
+  normalBarSprite: {fileID: 0}
+  hungryBarSprite: {fileID: 0}
+  backgroundImage: {fileID: 0}
+  normalbackground: {fileID: 0}
+  brokenbackground: {fileID: 0}
   particlecontroller: {fileID: 7775126657401483444}
 --- !u!114 &6072292591135846536
 MonoBehaviour:
@@ -238,8 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f6688e62c67444c9aa3f8ec18c279a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 0}
-  fillImage: {fileID: 0}
+  fullBarImage: {fileID: 0}
   indicatorImage: {fileID: 0}
   maxValue: 100
   currentValue: 0
@@ -248,6 +253,8 @@ MonoBehaviour:
   pandaID: RedPanda
   calmFace: {fileID: 21300000, guid: 6267c40bee9e042a7ae4fb3e107f7ba9, type: 3}
   rageFace: {fileID: 21300000, guid: 1375a147e77624371b7f857d9aebe06c, type: 3}
+  calmBarSprite: {fileID: 0}
+  rageBarSprite: {fileID: 0}
   particlecontroller: {fileID: 7775126657401483444}
 --- !u!65 &3045734630366819736
 BoxCollider:
@@ -432,6 +439,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: deb3d22376c19f34c89ece2874d9d192, type: 3}
   audioSource: {fileID: 8593075290543907950}
   sfxSource: {fileID: 0}
+  happyVolume: 0.5
+  hungryVolume: 0.5
+  angryVolume: 0.5
   pettingVolume: 0.3
   eatingVolume: 0.5
 --- !u!82 &8593075290543907950
