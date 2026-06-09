@@ -40,10 +40,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7802404847550383486}
-  - component: {fileID: 1593127030835618089}
   - component: {fileID: 4719293781042035594}
   - component: {fileID: 3677090349733741016}
   - component: {fileID: 5983621882240184350}
+  - component: {fileID: 1593127030835618089}
   - component: {fileID: 1955038742388269089}
   - component: {fileID: 7994404267010699718}
   - component: {fileID: 2066868754207065064}
@@ -77,28 +77,6 @@ Transform:
   - {fileID: 2624344749299580033}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!195 &1593127030835618089
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5278786288208957454}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &4719293781042035594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,6 +142,28 @@ MonoBehaviour:
   hungerSystem: {fileID: 1955038742388269089}
   rageSystem: {fileID: 7994404267010699718}
   barraUI: {fileID: 0}
+--- !u!195 &1593127030835618089
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278786288208957454}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &1955038742388269089
 MonoBehaviour:
   m_ObjectHideFlags: 0
