@@ -73,23 +73,23 @@ public class GameManager : MonoBehaviour
     public void sumarBambu(int cantidad, int tipo)
     {
         
-        if (tipo == 1)
+        if (tipo == 0)
         {
             bambuverde += cantidad;
             ActualizarInventarioUI();
         }
-        else if (tipo == 2)
+        else if (tipo == 1)
         {
                 bayaarandanos += cantidad;
                 ActualizarInventarioUI();
         }
-        else if (tipo == 3)
+        else if (tipo == 2)
         {
             bamburojo += cantidad;
             ActualizarInventarioUI();
         }
         
-        else if(tipo == 4)
+        else if(tipo == 3)
         {
             bayauchuva += cantidad;
             ActualizarInventarioUI();
