@@ -62,6 +62,7 @@ MonoBehaviour:
   type: 2
   maxStages: 3
   areaID: 
+  audiosource: {fileID: 6618666776773011244}
 --- !u!114 &295671738845752416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +223,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b3321730651a432a8d31d8d76a0ffe0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

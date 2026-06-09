@@ -21,6 +21,12 @@ public class Crop : MonoBehaviour
 
     [SerializeField] private string areaID;
     public string AreaID => areaID;
+    [SerializeField] private AudioSource audiosource;
+
+    public void Start()
+    {
+        AudioSource.PlayClipAtPoint(audiosource.clip, transform.position);
+    }
 
     public void SetAreaID(string id)
     {
