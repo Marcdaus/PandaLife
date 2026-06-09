@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoBayaArandanos;
     public TextMeshProUGUI textoBayaUchuva;
     
+    [SerializeField] private AudioSource audiosource;
     
     [Header("Variables de Sistema de dia")]
     public float tiempoTranscurrido = 0f;
@@ -72,7 +73,7 @@ public class GameManager : MonoBehaviour
 
     public void sumarBambu(int cantidad, int tipo)
     {
-        
+        audiosource.Play();
         if (tipo == 0)
         {
             bambuverde += cantidad;
