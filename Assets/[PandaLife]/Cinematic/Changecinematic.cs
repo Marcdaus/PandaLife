@@ -32,13 +32,21 @@ public class Changecinematic : MonoBehaviour
         yield return new WaitForSeconds(1f);
         anim.SetTrigger("dialogbox_1");
         yield return new WaitForSeconds(1f);
-        StartCoroutine(ShowLine(dialoguelines[0], Dialogue_scene1));
+        yield return StartCoroutine(ShowLine(dialoguelines[0], Dialogue_scene1, dialogueText_1));
 
         //Scena 2
+
         yield return new WaitForSeconds(time);
         anim.SetTrigger("de1a2");
-        yield return new WaitForSeconds(time);
+       
 
+        yield return new WaitForSeconds(2f);
+        anim.SetTrigger("dialogbox_2");
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(ShowLine(dialoguelines[1], Dialogue_scene2, dialogueText_2));
+
+        yield return new WaitForSeconds(time);
         //Scena 3
         anim.SetTrigger("de2a3");
         yield return new WaitForSeconds(time);
@@ -63,16 +71,16 @@ public class Changecinematic : MonoBehaviour
         
     }
 
-    private IEnumerator ShowLine(string dialogueline,AudioSource clip) 
+    private IEnumerator ShowLine(string dialogueline,AudioSource clip, TextMeshProUGUI text) 
     {
         //reproduce el sonido del dialogo
         clip.Play();
         //limpia el texto antes de mostrar la nueva linea
-        dialogueText_1.text = string.Empty;
+        text.text = string.Empty;
         //muestra cada letra de la linea de dialogo con un retraso entre cada una
         foreach (char letter in dialogueline.ToCharArray())
         {
-            dialogueText_1.text += letter;
+            text.text += letter;
             yield return new WaitForSeconds(textvelocity);
         }
     }
