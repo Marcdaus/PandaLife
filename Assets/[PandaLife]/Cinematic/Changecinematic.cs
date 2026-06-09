@@ -25,6 +25,7 @@ public class Changecinematic : MonoBehaviour
     [SerializeField] private AudioSource Dialogue_scene1;
     [SerializeField] private AudioSource Dialogue_scene2;
     [SerializeField] private AudioSource Dialogue_scene3;
+    public LoadScene LoadScene;
     // Update is called once per frame
     public IEnumerator Start()
     {
@@ -61,7 +62,7 @@ public class Changecinematic : MonoBehaviour
     }
     public void changescene()
     {
-            SceneManager.LoadScene("GameOver"); 
+        SceneManager.LoadScene("GameOver");
     }
 
     private IEnumerator ShowLine(string dialogueline,AudioSource clip, TextMeshProUGUI text) 
@@ -77,4 +78,5 @@ public class Changecinematic : MonoBehaviour
             yield return new WaitForSeconds(textvelocity);
         }
     }
+      
 }
