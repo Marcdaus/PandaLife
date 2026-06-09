@@ -49,26 +49,19 @@ public class Changecinematic : MonoBehaviour
         yield return new WaitForSeconds(time);
         //Scena 3
         anim.SetTrigger("de2a3");
+
+        yield return new WaitForSeconds(2f);
+        anim.SetTrigger("dialogbox_3");
+        yield return new WaitForSeconds(1f);
+
+        yield return StartCoroutine(ShowLine(dialoguelines[2], Dialogue_scene3, dialogueText_3));
+
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene("GameOver");
     }
     public void changescene()
     {
-        //si esta oculta la escena 1, entonces se activa la escena 2 
-        if (scene1.gameObject.activeSelf == true)
-        {
-            anim.SetTrigger("de1a2");
-        }
-        else if (scene2.gameObject.activeSelf == true)
-        {
-            anim.SetTrigger("de2a3");
-        }
-        else
-        {
-            SceneManager.LoadScene("GameOver");
-        }
- 
-        
+            SceneManager.LoadScene("GameOver"); 
     }
 
     private IEnumerator ShowLine(string dialogueline,AudioSource clip, TextMeshProUGUI text) 
