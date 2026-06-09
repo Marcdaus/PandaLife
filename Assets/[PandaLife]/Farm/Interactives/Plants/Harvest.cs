@@ -50,6 +50,7 @@ public class Harvest : Interactuable
             if (TutorialManager.instance != null)
             {
                 TutorialManager.instance.CompleteStep(TutorialManager.TutorialStep.Cosechar);
+
             }
         }
         else
