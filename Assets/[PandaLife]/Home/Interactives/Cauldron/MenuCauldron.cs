@@ -142,10 +142,10 @@ public class MenuCauldron : MonoBehaviour
         bubblessound.Change();
         firessound.Change();
         // Consumir ingredientes
-        GameManager.instance.sumarBambu(-recipe.bambuverde, 1);
-        GameManager.instance.sumarBambu(-recipe.bamburojo, 3);
-        GameManager.instance.sumarBambu(-recipe.arandano, 2);
-        GameManager.instance.sumarBambu(-recipe.bayauchuva, 4);
+        GameManager.instance.sumarBambu(-recipe.bambuverde, 0);
+        GameManager.instance.sumarBambu(-recipe.bamburojo, 2);
+        GameManager.instance.sumarBambu(-recipe.arandano, 1);
+        GameManager.instance.sumarBambu(-recipe.bayauchuva, 3);
 
         SetWaterColor(recipe.colorAgua);
         StartCoroutine(Cooking(recipe, 0f));
