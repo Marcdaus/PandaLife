@@ -1017,7 +1017,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3191124534460362943, guid: 529060b65b701d44ab7094fbd7566aca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 13.099991
+      value: 13.099976
       objectReference: {fileID: 0}
     - target: {fileID: 3954970887667380279, guid: 529060b65b701d44ab7094fbd7566aca, type: 3}
       propertyPath: m_Name
@@ -2731,6 +2731,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1593127030835618089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -1372625422
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593127030835618089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: avoidancePriority
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1870956072221833009, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2738,7 +2746,7 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: sfxSource
       value: 
-      objectReference: {fileID: 1413066111}
+      objectReference: {fileID: 1413066110}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: angryVolume
       value: 0.16
@@ -2746,7 +2754,7 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 634885665}
+      objectReference: {fileID: 1413066111}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: happyVolume
       value: 0.16
@@ -2770,6 +2778,10 @@ PrefabInstance:
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: hungryClips.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: pettingClips.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: 'angryClips.Array.data[0]'
@@ -2815,6 +2827,18 @@ PrefabInstance:
       propertyPath: 'hungryClips.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: c8e6f2ff83ae3974186702f83f55c6bc, type: 3}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: 'pettingClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a9b0e0d1c1199e41a933d540b7092fe, type: 3}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: 'pettingClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bfddebada85b26a40917fedca718bb24, type: 3}
+    - target: {fileID: 1879575817666719522, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: 'pettingClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ca53b2291e898b409942c694cf882fb, type: 3}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: bar
       value: 
@@ -2926,7 +2950,7 @@ PrefabInstance:
     - target: {fileID: 3677090349733741016, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: audioSource
       value: 
-      objectReference: {fileID: 1413066110}
+      objectReference: {fileID: 634885665}
     - target: {fileID: 3677090349733741016, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: myRequestPin
       value: 
@@ -20962,6 +20986,14 @@ PrefabInstance:
       propertyPath: m_Speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 811145347322403785, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: m_AgentTypeID
+      value: -334000983
+      objectReference: {fileID: 0}
+    - target: {fileID: 811145347322403785, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: avoidancePriority
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 918611884013585434, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.11
@@ -21180,7 +21212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: angryClips.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: happyClips.Array.size
@@ -21192,8 +21224,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: pettingClips.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'angryClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 1aafbf3b278d49842bcc38c8c35582a0, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'angryClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'angryClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: c77f954c7d62b954796aaa56ea3d4186, type: 3}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: 'angryClips.Array.data[3]'
       value: 
@@ -21231,9 +21275,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 268fe37a66899e3429a0f3b86fcf33eb, type: 3}
     - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'hungryClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 268fe37a66899e3429a0f3b86fcf33eb, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: 'pettingClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: e675b84651e797a4b9acda958c65700c, type: 3}
+      objectReference: {fileID: 8300000, guid: 5a9b0e0d1c1199e41a933d540b7092fe, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'pettingClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bfddebada85b26a40917fedca718bb24, type: 3}
+    - target: {fileID: 7012308921671125203, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: 'pettingClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ca53b2291e898b409942c694cf882fb, type: 3}
     - target: {fileID: 7496217028698572115, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -21450,11 +21506,11 @@ AudioSource:
   m_GameObject: {fileID: 693592405}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -27048,6 +27104,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: pettingClips.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: 'angryClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: ce6a3012df012804f876e4c25f11c76d, type: 3}
@@ -27091,6 +27151,18 @@ PrefabInstance:
       propertyPath: 'hungryClips.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: 268fe37a66899e3429a0f3b86fcf33eb, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'pettingClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a9b0e0d1c1199e41a933d540b7092fe, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'pettingClips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: bfddebada85b26a40917fedca718bb24, type: 3}
+    - target: {fileID: 2587899783329321004, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: 'pettingClips.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ca53b2291e898b409942c694cf882fb, type: 3}
     - target: {fileID: 3045734630366819736, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_Size.x
       value: 0.5929556
