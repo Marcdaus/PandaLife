@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
     public LayerMask interactlayer;
     [SerializeField] private Animator anim;
     private bool collectWater = false;
-    [SerializeField] private AudioClip croptakingsound;
 
     [SerializeField] private RecipesData receta;
 

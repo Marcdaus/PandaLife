@@ -1583,7 +1583,7 @@ PrefabInstance:
     - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: audiosource
       value: 
-      objectReference: {fileID: 5383525070291589233}
+      objectReference: {fileID: 80174475}
     - target: {fileID: 2105156229392085248, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: textoBambuRojo
       value: 
@@ -1657,6 +1657,11 @@ PrefabInstance:
 --- !u!1 &80174474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5096898177279698985, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+  m_PrefabInstance: {fileID: 80174473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &80174475 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7783404862840716137, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
   m_PrefabInstance: {fileID: 80174473}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &95350692
@@ -19264,16 +19269,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -26.199951
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4450616557196197914, guid: 2f0de0ff7b0110c44a98633fd5b4e5ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f0de0ff7b0110c44a98633fd5b4e5ad, type: 3}
---- !u!82 &5383525070291589233 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 4450616557196197914, guid: 2f0de0ff7b0110c44a98633fd5b4e5ad, type: 3}
-  m_PrefabInstance: {fileID: 5383525070291589232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6336325674937227425 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3088564838267191460, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
