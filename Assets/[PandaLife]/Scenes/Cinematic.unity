@@ -129,7 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4230293}
   - component: {fileID: 4230292}
-  - component: {fileID: 4230291}
   m_Layer: 0
   m_Name: FireSound
   m_TagString: Untagged
@@ -137,20 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &4230291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4230290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd83d6c7b06faf4ca99a7fa599b581d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sound1: {fileID: 4230292}
-  sound2: {fileID: 0}
 --- !u!82 &4230292
 AudioSource:
   m_ObjectHideFlags: 0
@@ -982,7 +967,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1209239629}
   - component: {fileID: 1209239628}
-  - component: {fileID: 1209239627}
   m_Layer: 0
   m_Name: BubblesSound
   m_TagString: Untagged
@@ -990,20 +974,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1209239627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1209239626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd83d6c7b06faf4ca99a7fa599b581d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sound1: {fileID: 1209239628}
-  sound2: {fileID: 0}
 --- !u!82 &1209239628
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1017,7 +987,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 1ad25e2e84423e94d96a93dc53f4b27d, type: 2}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1292,6 +1262,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 632725950423775209, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 632725950423775209, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8731131293287116201, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 632725950423775209, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1661939921657590793, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 1661939921657590793, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8731131293287116201, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 1661939921657590793, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2526242019830404361, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
       propertyPath: m_Name
       value: Canvas_cinematic
@@ -1326,12 +1320,24 @@ PrefabInstance:
       objectReference: {fileID: 580129458}
     - target: {fileID: 5152886893428106007, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
       propertyPath: 'dialoguelines.Array.data[2]'
-      value: Noo.. la alfombra que se nos quema la casa , la casa , la has liado
-        tio !!!!!!
+      value: Noo.. la alfombra que se nos quema la casa , la casa , LA HAS LIADO
+        TIO !!!!!!
       objectReference: {fileID: 0}
     - target: {fileID: 7513448763685446111, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
       propertyPath: m_Name
       value: dialogtext3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8543609413363958442, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 8543609413363958442, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 8731131293287116201, guid: 6721428a4abf28141bb0eb859776cb83, type: 2}
+    - target: {fileID: 8543609413363958442, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9044169058150739641, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
       propertyPath: m_Pivot.x
