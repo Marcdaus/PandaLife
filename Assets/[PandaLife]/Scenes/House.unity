@@ -219,9 +219,29 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 3475422930191595887, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1898653760}
+    - target: {fileID: 3475422930191595887, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3475422930191595887, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3734204570490508736, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_Name
       value: recipe_book
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 5998520810470423109, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_SizeDelta.x
@@ -241,7 +261,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9216793593753825723, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_Color.a
-      value: 0.627451
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -29077,6 +29097,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49d76a90a79fd0e41954961629691598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1898653760 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4482411642063671277, guid: 1a564409017b3b6488e077c1264e9cfe, type: 3}
+  m_PrefabInstance: {fileID: 2058936108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909436376
 GameObject:
   m_ObjectHideFlags: 0
