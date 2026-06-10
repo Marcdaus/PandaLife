@@ -4067,12 +4067,36 @@ PrefabInstance:
       value: recipe_book
       objectReference: {fileID: 0}
     - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 3866418336696065201, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -60
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143441350208439841, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143441350208439841, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2eae71f7badcb4a348cd18043c9df73d, type: 3}
+    - target: {fileID: 5292509713154332099, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 5292509713154332099, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 5292509713154332099, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4083,7 +4107,8 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5713054561149588700, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
@@ -13964,11 +13989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5568110413237243175, guid: e6e6d8898920cd94d80967d3a6317f89, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5568110413237243175, guid: e6e6d8898920cd94d80967d3a6317f89, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5568110413237243175, guid: e6e6d8898920cd94d80967d3a6317f89, type: 3}
       propertyPath: m_AnchoredPosition.y
