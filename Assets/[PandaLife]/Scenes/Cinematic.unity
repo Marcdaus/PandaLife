@@ -505,10 +505,7 @@ PrefabInstance:
     - {fileID: 2395008049759876411, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5342462856638962075, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1267209320}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
 --- !u!1 &580129457
 GameObject:
@@ -1086,26 +1083,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1267209315 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5342462856638962075, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
-  m_PrefabInstance: {fileID: 275243743}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1267209320
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1267209315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd524ec251cbd7a4ca9d0d64aad536c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  opentransition: {fileID: 0}
-  closetransition: {fileID: 0}
 --- !u!1 &1439542293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1299,10 @@ PrefabInstance:
       propertyPath: 'dialoguelines.Array.data[2]'
       value: Noo.. la alfombra que se nos quema la casa , la casa , LA HAS LIADO
         TIO !!!!!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928392270882385561, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SkipCinematic
       objectReference: {fileID: 0}
     - target: {fileID: 7513448763685446111, guid: 6f9e68e5ee127c241b3e3f2cf62cde56, type: 3}
       propertyPath: m_Name
