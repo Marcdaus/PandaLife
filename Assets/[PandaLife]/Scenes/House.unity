@@ -3557,6 +3557,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2978422852756290379, guid: 33d6aa435caa3274ebe39029285d3d30, type: 3}
   m_PrefabInstance: {fileID: 1294485015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &736878428
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736878431}
+  - component: {fileID: 736878430}
+  - component: {fileID: 736878429}
+  m_Layer: 0
+  m_Name: AudioListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &736878429
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736878428}
+  m_Enabled: 1
+--- !u!1818360608 &736878430
+PositionConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736878428}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Weight: 1
+  m_TranslationAtRest: {x: 6.32, y: 2.08, z: 2.596}
+  m_TranslationOffset: {x: 0.19000006, y: 2.08, z: 0.10338998}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_Active: 1
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 887667498}
+    weight: 1
+--- !u!4 &736878431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736878428}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.32, y: 2.08, z: 2.596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &742354868 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5307107673124397354, guid: fa56779c56fa0274489f26bd2d231ad5, type: 3}
@@ -42941,6 +43002,7 @@ SceneRoots:
   - {fileID: 539661387}
   - {fileID: 1971564069}
   - {fileID: 1503270493}
+  - {fileID: 736878431}
   - {fileID: 887667492}
   - {fileID: 1364624480}
   - {fileID: 1603166151}
