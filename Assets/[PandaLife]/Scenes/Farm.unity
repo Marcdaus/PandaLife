@@ -1661,6 +1661,10 @@ PrefabInstance:
       propertyPath: textoBayaArandanos
       value: 
       objectReference: {fileID: 8334060835878794602}
+    - target: {fileID: 3160739717008820012, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: LoadScene
+      value: 
+      objectReference: {fileID: 344954400817152824}
     - target: {fileID: 5096898177279698985, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -17790,6 +17794,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+--- !u!114 &344954400817152824 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3437042254361781452, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+  m_PrefabInstance: {fileID: 344954400817152823}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd524ec251cbd7a4ca9d0d64aad536c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &875553398149921292 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8835379514226832870, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}

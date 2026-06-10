@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,16 +9,36 @@ public class MainMenuActions : MonoBehaviour
     [SerializeField] private GameString MainmenuScene;
     [SerializeField] private AudioClip buttonSound;
     [SerializeField] private AudioClip backSound;
-    
+    public LoadScene LoadScene;
+
+
+    private void Start()
+    {
+
+        LoadScene = FindFirstObjectByType<LoadScene>();
+    }
     public void Play()
     {
         SoundManager.instance.PlaySfx(buttonSound);
-        SceneManager.LoadScene(HomeScene.Value); 
+        StartCoroutine(changescene(HomeScene.Value));
+        
     }
     public void Configuration()
     {
         SoundManager.instance.PlaySfx(buttonSound);
         SceneManager.LoadScene(ConfigurationScene.Value); 
+    }
+
+    public IEnumerator changescene(string sceneName)
+    {
+        // Iniciamos la animación de transición
+        if (LoadScene != null)
+        {
+            LoadScene.StartLoadScene();
+        }
+        yield return new WaitForSeconds(1f);
+
+        SceneManager.LoadScene(sceneName);
     }
     public void Exit()
     {//para simular que sales del juego

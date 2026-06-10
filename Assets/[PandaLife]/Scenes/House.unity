@@ -10151,6 +10151,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3846769111249113122, guid: 07eda36c2cb28de44a873130f37775cc, type: 3}
   m_PrefabInstance: {fileID: 1069270443}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1071576902 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3437042254361781452, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+  m_PrefabInstance: {fileID: 467351355}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd524ec251cbd7a4ca9d0d64aad536c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1077174944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4060880759531892577, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
@@ -22158,6 +22169,10 @@ PrefabInstance:
       propertyPath: textoBayaArandanos
       value: 
       objectReference: {fileID: 230660774}
+    - target: {fileID: 3160739717008820012, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+      propertyPath: LoadScene
+      value: 
+      objectReference: {fileID: 1071576902}
     - target: {fileID: 5096898177279698985, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
       propertyPath: m_Name
       value: GameManager
