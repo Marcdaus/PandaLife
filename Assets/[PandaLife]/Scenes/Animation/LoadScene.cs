@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
@@ -8,12 +9,12 @@ public class LoadScene : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-
         EndLoadScene();
     }
 
     public void StartLoadScene()
     {
+        
         opentransition.Play();
         Debug.Log("StartLoadScene called");
         anim.SetTrigger("Start");

@@ -1,7 +1,24 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
+    private bool isopen = false;
+    [SerializeField] private Player panda;
+    [SerializeField] private GameString HomeScene;
+    [SerializeField] private GameString MainmenuScene;
+    [SerializeField] private AudioMixerSnapshot normalAudio;
+    [SerializeField] private AudioMixerSnapshot pausedAudio;
+    [SerializeField] private GameObject pauseMask;
+    private bool paused = false;
+
+    //Seleccionar a los pandas
+    [SerializeField] private Path minipandared;
+    [SerializeField] private Path minipandablack;
+    [SerializeField] private Path minipandalight;
+
+
     public void TimeStop()
     {
         if (GameManager.instance.stopTime == false)
@@ -24,5 +41,98 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
+    public void StopPanda()
+    {
+        if (!isopen)
+        {
+            panda.DisableMovement();
+        }
+        else
+        {
+            panda.EnableMovement();
+        }
+    }
+
+    public void StopMiniPandas()
+    {
+        if (!isopen)
+        {
+            minipandared.StopPandas();
+            minipandablack.StopPandas();
+            minipandalight.StopPandas();
+        }
+        else
+        {
+            minipandared.ResumePandas();
+            minipandablack.ResumePandas();
+            minipandalight.ResumePandas();
+        }
+    }
+   
+    public bool Paused
+    {
+        get => paused;
+        set
+        {
+            if (paused == value) return;
+            paused = value;
+            if (paused)
+            {
+                pausedAudio.TransitionTo(1f);
+                pauseMask.SetActive(true);
+            }
+            else
+            {
+                normalAudio.TransitionTo(1f);
+                pauseMask.SetActive(false);
+            }
+        }
+    }
+    //====================================================
+    //                BBOTONES DEL MENÚ
+    //====================================================
+    public void OpenMenu()
+    {
+        isopen = true;
+
+        StopPanda();
+        StopMiniPandas();
+        StopBars();
+        TimeStop();
+        Paused = Paused;
+    }
+    public void Continue()
+    {
+        isopen = false;
+        StopPanda();
+        StopMiniPandas();
+        StopBars();
+        TimeStop();
+   
+        Paused = !Paused;
+    } 
+    // Botón para el menú principal
+    public void GoToMainMenu()
+    {
+        isopen = false;
+        StopPanda();
+        StopMiniPandas();
+        StopBars();
+        TimeStop();
+        Paused = !Paused;
+        GameManager.instance.Resetplay();
+        SceneManager.LoadScene(MainmenuScene.Value);
+    }
+    public void Replay() 
+    { 
+        isopen = false;
+        StopPanda();
+        StopMiniPandas();
+        StopBars();
+        TimeStop();
+        Paused = !Paused;
+        GameManager.instance.Resetplay();
+        SceneManager.LoadScene(HomeScene.Value);
+    }
 
 }
