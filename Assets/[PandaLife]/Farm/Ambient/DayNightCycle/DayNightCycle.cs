@@ -52,6 +52,7 @@ public class DayNightCycle : MonoBehaviour
     [SerializeField] private RectTransform lightPandaBar;
 
     [SerializeField] private HungerSystem darkPandaHunger;
+    [SerializeField] private HungerSystem redPandaHunger;
     [SerializeField] private HungerSystem lightPandaHunger;
 
 
@@ -189,9 +190,13 @@ public class DayNightCycle : MonoBehaviour
                 {
                     lightPandaHunger.MaxValue = 100f;
                 }
+                if (redPandaHunger != null)
+                {
+                    redPandaHunger.MaxValue = 100f;
+                }
                 if (darkPandaHunger != null)
                 {
-                    darkPandaHunger.MaxValue = 140f;
+                    darkPandaHunger.MaxValue = 120f;
                 }
             }
             if (GameManager.instance.numday == 3)
@@ -203,9 +208,13 @@ public class DayNightCycle : MonoBehaviour
                 {
                     lightPandaHunger.MaxValue = 80f;
                 }
+                if (redPandaHunger != null)
+                {
+                    redPandaHunger.MaxValue = 100f;
+                }
                 if (darkPandaHunger != null)
                 {
-                    darkPandaHunger.MaxValue = 160f;
+                    darkPandaHunger.MaxValue = 80f;
                 }
 
             }
@@ -430,13 +439,13 @@ public class DayNightCycle : MonoBehaviour
         if (GameManager.instance.numday >= 3)
         {
             // Cambiamos escalas
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.4f, 1f, 1f);
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
             if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.6f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
 
             // Cambiamos el valor máximo
-            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 160f;
-            
+            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 80f;
+            if (darkPandaHunger != null) redPandaHunger.MaxValue = 100f;
             if (lightPandaHunger != null) lightPandaHunger.MaxValue = 80f;
             
         }
@@ -444,13 +453,13 @@ public class DayNightCycle : MonoBehaviour
         else if (GameManager.instance.numday == 2)
         {
             // Cambiamos escalas
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1.2f, 1f, 1f);
+            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
             if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(0.8f, 1f, 1f);
+            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
 
             // Cambiamos el valor máximo
-            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 140f;
-            
+            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 120f;
+            if (darkPandaHunger != null) redPandaHunger.MaxValue = 100f;
             if (lightPandaHunger != null) lightPandaHunger.MaxValue = 100f;
             
         }
