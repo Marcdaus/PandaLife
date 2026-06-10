@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class BarraManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class BarraManager : MonoBehaviour
     public bool hungerPaused = false;
     public bool isResetting = false;
 
+    public LoadScene LoadScene;
+
     private void Awake()
     {
         if (_instancia == null)
@@ -36,9 +39,15 @@ public class BarraManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+        LoadScene = FindFirstObjectByType<LoadScene>();
+    }
+
     private void Update()
     {
-        CheckRage();
+        StartCoroutine(CheckRage());
     }
 
     public void ResetSceneState()
@@ -54,9 +63,9 @@ public class BarraManager : MonoBehaviour
         isResetting = false;
     }
 
-    public void CheckRage()
+    public IEnumerator CheckRage()
     {
-        if (sceneLoaded) return;
+        if (sceneLoaded) yield break;
 
         HungerSystem[] pandas =
             FindObjectsByType<HungerSystem>(FindObjectsSortMode.None);
@@ -72,8 +81,8 @@ public class BarraManager : MonoBehaviour
         if (ragingCount == 3)
         {
             sceneLoaded = true;
-            SceneManager.LoadScene("Cinematic");
-            return;
+            StartCoroutine(LoadingScene("Cinematic"));
+            yield break;
         }
 
         foreach (var value in rageValues.Values)
@@ -81,9 +90,26 @@ public class BarraManager : MonoBehaviour
             if (value >= rageMaxValue)
             {
                 sceneLoaded = true;
-                SceneManager.LoadScene("Cinematic");
-                return;
+                StartCoroutine(LoadingScene("Cinematic"));
+                yield break;
             }
         }
+    }
+
+
+    private IEnumerator LoadingScene(string sceneName)
+    {
+        if (LoadScene != null)
+        {
+            LoadScene.StartLoadScene();
+        }
+        else
+        {
+            LoadScene = FindFirstObjectByType<LoadScene>();
+            LoadScene.StartLoadScene();
+
+        }
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneName);
     }
 }
