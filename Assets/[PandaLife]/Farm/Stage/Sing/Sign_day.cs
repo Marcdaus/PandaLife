@@ -14,6 +14,7 @@ public class Sign_day : MonoBehaviour
         else if(GameManager.instance.numday == 3)
         {
             sign2.SetActive(true);
+            sign1.SetActive(true);
         }
     }
 }
