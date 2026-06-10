@@ -1,33 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1233149941 &-7606378078614007187
+AudioContainerElement:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: fire_idle_03_{-7606378078614007187}
+  m_AudioClip: {fileID: 8300000, guid: 77a4a3c0bc0c5404da72d1a1a2897420, type: 3}
+  m_Volume: 0
+  m_Enabled: 1
 --- !u!1233149941 &-5561410525589597716
 AudioContainerElement:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: fire_idle_01_{-5561410525589597716}
-  m_AudioClip: {fileID: 8300000, guid: a13659256aa2a7f4e87a61475a340347, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
---- !u!1233149941 &-2803227084908244341
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: fire_idle_02_{-2803227084908244341}
+  m_Name: fire_idle_02_{-5561410525589597716}
   m_AudioClip: {fileID: 8300000, guid: 98e9ad76b570d934ebfccd2406e8b2dd, type: 3}
-  m_Volume: 0
-  m_Enabled: 1
---- !u!1233149941 &689999387403228692
-AudioContainerElement:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: fire_idle_03_{689999387403228692}
-  m_AudioClip: {fileID: 8300000, guid: 77a4a3c0bc0c5404da72d1a1a2897420, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
@@ -47,8 +37,7 @@ AudioRandomContainer:
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
   - {fileID: -5561410525589597716}
-  - {fileID: -2803227084908244341}
-  - {fileID: 689999387403228692}
+  - {fileID: -7606378078614007187}
   m_AvoidRepeatingLast: 0
   m_PlaybackMode: 1
   m_TriggerMode: 1
