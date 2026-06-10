@@ -16,6 +16,7 @@ public class BarraManager : MonoBehaviour
     public Dictionary<string, float> hungerValues = new();
     public Dictionary<string, float> rageValues = new();
     public Dictionary<string, bool> rageStates = new();
+    public Dictionary<string, bool> backgroundStates = new();
 
     public bool sceneLoaded = false;
     public bool comingFromGameOver = false;

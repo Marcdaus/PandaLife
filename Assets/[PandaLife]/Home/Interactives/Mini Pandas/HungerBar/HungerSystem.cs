@@ -42,6 +42,12 @@ public class HungerSystem : BarSystem
             {
                 currentValue = manager.hungerValues[pandaID];
                 rageactivated = manager.rageStates[pandaID];
+               
+                if (manager.backgroundStates.ContainsKey(pandaID))
+                {
+                    bool isBroken = manager.backgroundStates[pandaID];
+                    backgroundImage.sprite = isBroken ? brokenbackground : normalbackground;
+                }
             }
             else
             {
@@ -50,6 +56,9 @@ public class HungerSystem : BarSystem
 
                 manager.hungerValues[pandaID] = currentValue;
                 manager.rageStates[pandaID] = rageactivated;
+
+                manager.backgroundStates[pandaID] = false; 
+                backgroundImage.sprite = normalbackground;
             }
         }
 
@@ -129,6 +138,8 @@ public class HungerSystem : BarSystem
 
             BarraManager.Instancia.hungerValues[pandaID] = currentValue;
             BarraManager.Instancia.rageStates[pandaID] = rageactivated;
+
+            BarraManager.Instancia.backgroundStates[pandaID] = (backgroundImage.sprite == brokenbackground);
         }
     }
 
@@ -230,6 +241,11 @@ public class HungerSystem : BarSystem
         {
             currentValue = maxValue;
             backgroundImage.sprite = normalbackground;
+
+            if (BarraManager.Instancia != null && pandaID != "")
+            {
+                BarraManager.Instancia.backgroundStates[pandaID] = false;
+            }
 
             if (rageSystem != null)
                 rageSystem.ResetSystem();

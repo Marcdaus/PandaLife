@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
             BarraManager.Instancia.hungerValues.Clear();
             BarraManager.Instancia.rageValues.Clear();
             BarraManager.Instancia.rageStates.Clear();
+            BarraManager.Instancia.backgroundStates.Clear();
             BarraManager.Instancia.sceneLoaded = false;
             BarraManager.Instancia.comingFromGameOver = false;
 
