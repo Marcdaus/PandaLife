@@ -13,6 +13,11 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private GameObject pauseMask;
     private bool paused = false;
 
+    //Seleccionar a los pandas
+    [SerializeField] private Path minipandared;
+    [SerializeField] private Path minipandablack;
+    [SerializeField] private Path minipandalight;
+
 
     public void TimeStop()
     {
@@ -50,9 +55,19 @@ public class PauseMenuController : MonoBehaviour
 
     public void StopMiniPandas()
     {
-
+        if (!isopen)
+        {
+            minipandared.StopPandas();
+            minipandablack.StopPandas();
+            minipandalight.StopPandas();
+        }
+        else
+        {
+            minipandared.ResumePandas();
+            minipandablack.ResumePandas();
+            minipandalight.ResumePandas();
+        }
     }
-
    
     public bool Paused
     {
@@ -88,11 +103,12 @@ public class PauseMenuController : MonoBehaviour
     }
     public void Continue()
     {
+        isopen = false;
         StopPanda();
         StopMiniPandas();
         StopBars();
         TimeStop();
-        isopen= false;
+   
         Paused = !Paused;
     } 
     // Botón para el menú principal
