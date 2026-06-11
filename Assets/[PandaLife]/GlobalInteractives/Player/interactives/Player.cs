@@ -17,9 +17,6 @@ public class Player : MonoBehaviour
 
     
 
-    // Guardar el texto para mostrar en la pantalla
-    private string currentActionText = "";
-
     [SerializeField] public GameObject handpoint;
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
@@ -33,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip feedingClip;
     private Interactuable currentTarget = null;
     [SerializeField] private AudioSource PettingaudioSource;
+
+    private ActionIconType currentActionIcon = ActionIconType.None;
 
     private void OnDrawGizmos()
     {
@@ -50,6 +49,14 @@ public class Player : MonoBehaviour
         ScanInteractables();
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
+        if (!IsHandEmpty())
+        {
+            InteractionTextUI.instance.MostrarIconoSoltar();
+        }
+        else
+        {
+            InteractionTextUI.instance.OcultarIconoSoltar();
+        }
         // Interactuar con E
         if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
@@ -217,29 +224,29 @@ public class Player : MonoBehaviour
 
         // Reseteamos las variables por si hemos dejado de mirar un objeto
         currentTarget = null;
-        currentActionText = "";
+        currentActionIcon = ActionIconType.None;
 
         // Determinamos el objetivo final y le asignamos su texto al mismo tiempo
         if (bucketTarget != null)
         {
             currentTarget = bucketTarget;
-            currentActionText = "coger cubeta";
+            currentActionIcon = ActionIconType.PickUpBucket;
         }
         else if (harvesttarget != null)
         {
             currentTarget = harvesttarget;
-            currentActionText = "cosechar";
+            currentActionIcon = ActionIconType.Harvest;
         }
         else if (watertarget != null)
         {
             currentTarget = watertarget;
-            // Mostrar texto según si puedes o no regar
+            // Mostrar icono de error o de regar según el estado
             if (!IsHoldingBucket())
-                currentActionText = "necesitas el cubo";
+                currentActionIcon = ActionIconType.NeedBucket;
             else if (!pickedobject.GetComponent<BucketWater>().hasWater)
-                currentActionText = "el cubo está vacío";
+                currentActionIcon = ActionIconType.EmptyBucket;
             else
-                currentActionText = "regar";
+                currentActionIcon = ActionIconType.Water;
         }
         else if (othertarget != null)
         {
@@ -248,33 +255,57 @@ public class Player : MonoBehaviour
             // Minipandas
             if (currentTarget is Minipandas panda)
             {
-                // Obtenemos el HungerSystem para comprobar el estado de ira
                 HungerSystem hunger = (panda as MonoBehaviour).GetComponent<HungerSystem>();
 
                 if (hunger != null && hunger.IsRageActivated)
-                {
-                    currentActionText = "Acariciar";
-                }
+                    currentActionIcon = ActionIconType.Pet;
                 else if (CanInteractWithMiniPanda())
+                    currentActionIcon = ActionIconType.Feed;
+                else
+                    currentActionIcon = ActionIconType.Interact;
+            }
+            // Caldero
+            else if (currentTarget is Cauldron)
+            {
+                currentActionIcon = ActionIconType.Cauldron;
+            }
+            // Radio
+            else if (currentTarget.GetComponent<Radio>() != null)
+            {
+                currentActionIcon = ActionIconType.Radio;
+            }
+            // Plantar en FarmingArea
+            else if (currentTarget is Plant)
+            {
+                currentActionIcon = ActionIconType.Plant;
+            }
+            // Coger saco de semillas u otro PickupDrop
+            else if (currentTarget is PickupDrop pickup)
+            {
+                if (pickup.GetComponent<Bamboo_bag>() != null || pickup.GetComponent<BlueberryBag>() != null || pickup.GetComponent<RedDragonBag>() != null || pickup.GetComponent<UchuvaBerryBag>() != null)
                 {
-                    currentActionText = "Alimentar";
+                    currentActionIcon = ActionIconType.PickUpSeedBag;
                 }
                 else
                 {
-                    currentActionText = "Interactuar";
+                    currentActionIcon = ActionIconType.Interact; // Otros pickup
                 }
             }
-            
+            else
+            {
+                // Para cualquier otro interactuable general
+                currentActionIcon = ActionIconType.Interact;
+            }
         }
 
-        // Finalmente, encendemos la UI con el texto que haya ganado, o la apagamos
+        // Finalmente, avisamos a la UI con el tipo de icono que debe mostrar
         if (currentTarget != null)
         {
-            InteractionTextUI.instance.MostrarMensaje(currentActionText);
+            InteractionTextUI.instance.MostrarIcono(currentActionIcon);
         }
         else
         {
-            InteractionTextUI.instance.OcultarMensaje();
+            InteractionTextUI.instance.OcultarIcono();
         }
     }
 

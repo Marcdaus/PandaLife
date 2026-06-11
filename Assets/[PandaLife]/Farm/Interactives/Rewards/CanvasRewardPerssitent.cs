@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class CheatMenuPersistent : MonoBehaviour
+public class CanvasRewardPerssitent : MonoBehaviour
 {
-    public static CheatMenuPersistent instance;
+    public static CanvasRewardPerssitent instance;
 
     void Awake()
     {

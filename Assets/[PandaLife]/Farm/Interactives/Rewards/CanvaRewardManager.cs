@@ -1,11 +1,37 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CanvaRewardManager : MonoBehaviour
 {
     [SerializeField] private Animator anim;
 
     [SerializeField] private float tiempoEsperaAnimacion = 4.0f;
+    private Coroutine secuenciaActual;
+    private void OnEnable()
+    {
+        
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (GameManager.instance == null) return;
+
+        
+        if (secuenciaActual != null)
+        {
+            StopCoroutine(secuenciaActual);
+        }
+
+       
+        secuenciaActual = StartCoroutine(SecuenciaRecompensasRoutine());
+    }
     private void Start()
     {
         if (GameManager.instance == null) return;
