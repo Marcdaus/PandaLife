@@ -6,11 +6,11 @@ public class PauseMenuController : MonoBehaviour
 {
     private bool isopen = false;
     [SerializeField] private Player panda;
-    [SerializeField] private GameString HomeScene;
-    [SerializeField] private GameString MainmenuScene;
-    [SerializeField] private AudioMixerSnapshot normalAudio;
-    [SerializeField] private AudioMixerSnapshot pausedAudio;
-    [SerializeField] private GameObject pauseMask;
+    [SerializeField] private GameString homescene;
+    [SerializeField] private GameString mainmenuscene;
+    [SerializeField] private AudioMixerSnapshot normalaudio;
+    [SerializeField] private AudioMixerSnapshot pausedaudio;
+    [SerializeField] private GameObject pausemask;
     private bool paused = false;
 
     //Seleccionar a los pandas
@@ -19,8 +19,10 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private Path minipandalight;
 
 
+    
     public void TimeStop()
     {
+        Debug.Log("CHEAT: Detener/Reanudar tiempo");
         if (GameManager.instance.stopTime == false)
         {
             GameManager.instance.stopTime = true;
@@ -34,6 +36,7 @@ public class PauseMenuController : MonoBehaviour
     }
     public void StopBars()
     {
+        Debug.Log("CHEAT: Detener/Reanudar barras");
         if (BarraManager.Instancia != null)
         {
             BarraManager.Instancia.hungerPaused = !BarraManager.Instancia.hungerPaused;
@@ -43,19 +46,27 @@ public class PauseMenuController : MonoBehaviour
 
     public void StopPanda()
     {
-        if (!isopen)
+        Debug.Log("CHEAT: Detener/Reanudar panda");
+        if (isopen)
         {
             panda.DisableMovement();
         }
-        else
-        {
+        else 
+        { 
             panda.EnableMovement();
         }
+     
     }
 
     public void StopMiniPandas()
     {
-        if (!isopen)
+        Debug.Log("CHEAT: Detener/Reanudar mini pandas");
+        if (minipandared == null && minipandablack == null && minipandalight == null)
+        {
+            Debug.Log("No hay mini pandas asignados, se omite.");
+            return;
+        }
+        if (isopen)
         {
             minipandared.StopPandas();
             minipandablack.StopPandas();
@@ -78,13 +89,13 @@ public class PauseMenuController : MonoBehaviour
             paused = value;
             if (paused)
             {
-                pausedAudio.TransitionTo(1f);
-                pauseMask.SetActive(true);
+                pausedaudio.TransitionTo(1f);
+                pausemask.SetActive(true);
             }
             else
             {
-                normalAudio.TransitionTo(1f);
-                pauseMask.SetActive(false);
+                normalaudio.TransitionTo(1f);
+                pausemask.SetActive(false);
             }
         }
     }
@@ -94,34 +105,36 @@ public class PauseMenuController : MonoBehaviour
     public void OpenMenu()
     {
         isopen = true;
-
-        StopPanda();
+        pausemask.SetActive(true);
         StopMiniPandas();
         StopBars();
         TimeStop();
-        Paused = Paused;
+        StopPanda();
+        Paused = true;
     }
     public void Continue()
     {
         isopen = false;
+        pausemask.SetActive(false);
         StopPanda();
         StopMiniPandas();
         StopBars();
         TimeStop();
    
-        Paused = !Paused;
+        Paused = false;
     } 
     // Botón para el menú principal
     public void GoToMainMenu()
     {
         isopen = false;
+        pausemask.SetActive(false);
         StopPanda();
         StopMiniPandas();
         StopBars();
         TimeStop();
-        Paused = !Paused;
+        Paused = false;
         GameManager.instance.Resetplay();
-        SceneManager.LoadScene(MainmenuScene.Value);
+        SceneManager.LoadScene(mainmenuscene.Value);
     }
     public void Replay() 
     { 
@@ -130,9 +143,13 @@ public class PauseMenuController : MonoBehaviour
         StopMiniPandas();
         StopBars();
         TimeStop();
-        Paused = !Paused;
-        GameManager.instance.Resetplay();
-        SceneManager.LoadScene(HomeScene.Value);
+        Paused = false;
+        pausemask.SetActive(false);
+        if (BarraManager.Instancia != null)
+        {
+            GameManager.instance.Resetplay();
+            SceneManager.LoadScene(homescene.Value);
+        }
     }
 
 }
