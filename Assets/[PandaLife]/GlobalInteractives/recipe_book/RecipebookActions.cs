@@ -31,6 +31,8 @@ public class RecipebookActions : MonoBehaviour
         {
             TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.OpenUchuva);
             TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.OpenRedDragon);
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.OpenRecipeBook);
+
         }
     }
 
@@ -41,6 +43,7 @@ public class RecipebookActions : MonoBehaviour
         {
             TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.CloseUchuva);
             TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.CloseRedDragon);
+            TutorialManager.instance.CompleteRecipeStep(TutorialManager.TutorialRecipeBook.CloseRecipeBook);
         }
     }
 
