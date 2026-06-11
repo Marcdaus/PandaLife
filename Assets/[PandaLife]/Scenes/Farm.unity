@@ -1721,8 +1721,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 2626485880552058091, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
     - {fileID: 3326780279596987329, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
+    - {fileID: 2626485880552058091, guid: 3e6084c0b0cb746a788772e1bf34c371, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -19601,7 +19601,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
     - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: homescene
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a6f28aea24cbfb488356b6ca961ba1a, type: 2}
+    - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: pauseMask
+      value: 
+      objectReference: {fileID: 5974538463332451709}
+    - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: pausemask
       value: 
       objectReference: {fileID: 5974538463332451709}
     - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
@@ -19609,11 +19617,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 24500006, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
     - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: normalaudio
+      value: 
+      objectReference: {fileID: 24500006, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
+    - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: pausedAudio
       value: 
       objectReference: {fileID: 6716725227336906327, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
     - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: pausedaudio
+      value: 
+      objectReference: {fileID: 6716725227336906327, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
+    - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: MainmenuScene
+      value: 
+      objectReference: {fileID: 11400000, guid: ddb115cfc230b4f48bb928cb9c85ec7a, type: 2}
+    - target: {fileID: 6819636538355885572, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: mainmenuscene
       value: 
       objectReference: {fileID: 11400000, guid: ddb115cfc230b4f48bb928cb9c85ec7a, type: 2}
     - target: {fileID: 7277026248652140835, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
@@ -19711,6 +19731,22 @@ PrefabInstance:
     - target: {fileID: 7561785699885128000, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 750735344}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PauseMenuController, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -61,8 +61,9 @@ public class PauseMenuController : MonoBehaviour
     public void StopMiniPandas()
     {
         Debug.Log("CHEAT: Detener/Reanudar mini pandas");
-        if (!minipandablack & !minipandalight & !minipandalight)
+        if (minipandared == null && minipandablack == null && minipandalight == null)
         {
+            Debug.Log("No hay mini pandas asignados, se omite.");
             return;
         }
         if (isopen)
@@ -105,10 +106,10 @@ public class PauseMenuController : MonoBehaviour
     {
         isopen = true;
         pausemask.SetActive(true);
-        StopPanda();
         StopMiniPandas();
         StopBars();
         TimeStop();
+        StopPanda();
         Paused = true;
     }
     public void Continue()
@@ -144,8 +145,11 @@ public class PauseMenuController : MonoBehaviour
         TimeStop();
         Paused = false;
         pausemask.SetActive(false);
-        GameManager.instance.Resetplay();
-        SceneManager.LoadScene(homescene.Value);
+        if (BarraManager.Instancia != null)
+        {
+            GameManager.instance.Resetplay();
+            SceneManager.LoadScene(homescene.Value);
+        }
     }
 
 }
