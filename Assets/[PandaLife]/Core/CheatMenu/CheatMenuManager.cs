@@ -69,18 +69,18 @@ public class CheatMenuManager : MonoBehaviour
 
     public void Cheat_Dar10Bambu()
     {
+        GameManager.instance.sumarBambu(10, 0);
         GameManager.instance.sumarBambu(10, 1);
         GameManager.instance.sumarBambu(10, 2);
         GameManager.instance.sumarBambu(10, 3);
-        GameManager.instance.sumarBambu(10, 4);
         Debug.Log("CHEAT: +10 Bambú");
     }
     public void Cheat_Dar1Bambu()
     {
+        GameManager.instance.sumarBambu(1, 0);
         GameManager.instance.sumarBambu(1, 1);
         GameManager.instance.sumarBambu(1, 2);
         GameManager.instance.sumarBambu(1, 3);
-        GameManager.instance.sumarBambu(1, 4);
         Debug.Log("CHEAT: +10 Bambú");
     }
 
