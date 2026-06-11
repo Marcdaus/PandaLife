@@ -1719,6 +1719,7 @@ GameObject:
   - component: {fileID: 376147197}
   - component: {fileID: 376147199}
   - component: {fileID: 376147198}
+  - component: {fileID: 376147200}
   m_Layer: 5
   m_Name: paw_drop
   m_TagString: Untagged
@@ -1736,7 +1737,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 40683500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1783,6 +1784,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 376147196}
   m_CullTransparentMesh: 1
+--- !u!95 &376147200
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376147196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16f0448a6d519094c8686c1e4427d298, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &398188355
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15555,6 +15578,7 @@ GameObject:
   - component: {fileID: 1127418994}
   - component: {fileID: 1127418993}
   - component: {fileID: 1127418992}
+  - component: {fileID: 1127418995}
   m_Layer: 5
   m_Name: paw_interaction
   m_TagString: Untagged
@@ -15619,6 +15643,28 @@ RectTransform:
   m_AnchoredPosition: {x: 520, y: 80}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!95 &1127418995
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1127418991}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16f0448a6d519094c8686c1e4427d298, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1128654643
 GameObject:
   m_ObjectHideFlags: 0
@@ -16318,6 +16364,8 @@ MonoBehaviour:
   iconPickUpSeedBag: {fileID: 21300000, guid: d1ae980aa9ea11b4c9cd8563a7715eb5, type: 3}
   iconRadio: {fileID: 21300000, guid: be7a9c0b6f0cf9a49ae83d7f1755d57e, type: 3}
   iconCauldron: {fileID: 21300000, guid: 705163db215e85449b391cf9617eb3d3, type: 3}
+  animPrincipal: {fileID: 1127418995}
+  animSoltar: {fileID: 376147200}
 --- !u!1 &1288838917 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1522129146087048461, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
