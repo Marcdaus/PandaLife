@@ -43,6 +43,11 @@ public class InteractionTextUI : MonoBehaviour
     [SerializeField] private Sprite iconRadio;
     [SerializeField] private Sprite iconCauldron;
 
+    [SerializeField] private Animator animPrincipal;
+    [SerializeField] private Animator animSoltar;
+    private bool iconoPrincipalActivo = false;
+    private bool iconoSoltarActivo = false;
+
     void Awake()
     {
         if (instance == null)
@@ -83,31 +88,40 @@ public class InteractionTextUI : MonoBehaviour
 
         if (panelPrincipal != null && tipoAccion != ActionIconType.None)
         {
-            panelPrincipal.SetActive(true);
+            if (!iconoPrincipalActivo)
+            {
+                panelPrincipal.SetActive(true);
+                if (animPrincipal != null) animPrincipal.SetTrigger("Mostrar");
+                iconoPrincipalActivo = true;
+            }
         }
     }
 
     public void OcultarIcono()
     {
-        if (panelPrincipal != null)
+        if (iconoPrincipalActivo)
         {
-            panelPrincipal.SetActive(false);
+            if (animPrincipal != null) animPrincipal.SetTrigger("Ocultar");
+            iconoPrincipalActivo = false;
         }
     }
 
     public void MostrarIconoSoltar()
     {
-        if (panelSoltar != null && !panelSoltar.activeSelf)
+        if (!iconoSoltarActivo)
         {
             panelSoltar.SetActive(true);
+            if (animSoltar != null) animSoltar.SetTrigger("Mostrar");
+            iconoSoltarActivo = true;
         }
     }
 
     public void OcultarIconoSoltar()
     {
-        if (panelSoltar != null && panelSoltar.activeSelf)
+        if (iconoSoltarActivo)
         {
-            panelSoltar.SetActive(false);
+            if (animSoltar != null) animSoltar.SetTrigger("Ocultar");
+            iconoSoltarActivo = false;
         }
     }
 }
