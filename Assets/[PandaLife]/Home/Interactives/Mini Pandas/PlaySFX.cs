@@ -66,11 +66,12 @@ public class PlaySFX : MonoBehaviour
 
     public void PlayPetting()
     {
-        pettingclips.PlayOneShot(pettingclips.clip);
+        pettingclips.Play();
     }
     public void Eating()
     {
-        eatingclips.PlayOneShot(eatingclips.clip);
+        Debug.Log("Eating");
+        eatingclips.Play();
     }
 
 }
