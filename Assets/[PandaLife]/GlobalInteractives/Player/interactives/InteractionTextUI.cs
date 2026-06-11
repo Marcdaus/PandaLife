@@ -11,7 +11,11 @@ public enum ActionIconType
     EmptyBucket,
     Pet,
     Feed,
-    Interact
+    Interact,
+    Plant,
+    PickUpSeedBag,
+    Radio,
+    Cauldron
 }
 
 public class InteractionTextUI : MonoBehaviour
@@ -34,6 +38,10 @@ public class InteractionTextUI : MonoBehaviour
     [SerializeField] private Sprite iconPet;
     [SerializeField] private Sprite iconFeed;
     [SerializeField] private Sprite iconInteract; // Icono genérico, patita
+    [SerializeField] private Sprite iconPlant;
+    [SerializeField] private Sprite iconPickUpSeedBag;
+    [SerializeField] private Sprite iconRadio;
+    [SerializeField] private Sprite iconCauldron;
 
     void Awake()
     {
@@ -64,6 +72,10 @@ public class InteractionTextUI : MonoBehaviour
                 case ActionIconType.EmptyBucket: iconoInteraccion.sprite = iconEmptyBucket; break;
                 case ActionIconType.Pet: iconoInteraccion.sprite = iconPet; break;
                 case ActionIconType.Feed: iconoInteraccion.sprite = iconFeed; break;
+                case ActionIconType.Plant: iconoInteraccion.sprite = iconPlant; break;
+                case ActionIconType.PickUpSeedBag: iconoInteraccion.sprite = iconPickUpSeedBag; break;
+                case ActionIconType.Radio: iconoInteraccion.sprite = iconRadio; break;
+                case ActionIconType.Cauldron: iconoInteraccion.sprite = iconCauldron; break;
                 case ActionIconType.Interact: iconoInteraccion.sprite = iconInteract; break;
                 default: iconoInteraccion.sprite = null; break;
             }

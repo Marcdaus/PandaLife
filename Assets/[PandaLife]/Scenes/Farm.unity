@@ -4192,6 +4192,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2998777698369795202, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2998777698369795202, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 3475422930191595887, guid: e248b2607b82ffb4898918372ef7ed89, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -13368,7 +13376,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 600, y: 80}
+  m_AnchoredPosition: {x: 700, y: 80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1551156197
@@ -18694,11 +18702,19 @@ PrefabInstance:
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconFeed
       value: 
-      objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
+      objectReference: {fileID: 21300000, guid: 6e3de17cca235a34d8d18ae57217e930, type: 3}
+    - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+      propertyPath: iconPlant
+      value: 
+      objectReference: {fileID: 21300000, guid: e7ca55575dce7b74983c4e94837ee7d3, type: 3}
+    - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+      propertyPath: iconRadio
+      value: 
+      objectReference: {fileID: 21300000, guid: be7a9c0b6f0cf9a49ae83d7f1755d57e, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconWater
       value: 
-      objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
+      objectReference: {fileID: 21300000, guid: 456b8b2d6671de14994b10a7bdcb5315, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconHarvest
       value: 
@@ -18708,25 +18724,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1787779542}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+      propertyPath: iconCauldron
+      value: 
+      objectReference: {fileID: 21300000, guid: 705163db215e85449b391cf9617eb3d3, type: 3}
+    - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconInteract
       value: 
       objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconNeedBucket
       value: 
-      objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
+      objectReference: {fileID: 21300000, guid: c0bc438931d46d949ae65eef0e77110b, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconEmptyBucket
       value: 
-      objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
+      objectReference: {fileID: 21300000, guid: b1586e26838972f42b5dee1b928ace79, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconPickUpBucket
       value: 
-      objectReference: {fileID: 21300000, guid: c170fd93549774de7b72b8424ced8adc, type: 3}
+      objectReference: {fileID: 21300000, guid: b1586e26838972f42b5dee1b928ace79, type: 3}
     - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: iconoInteraccion
       value: 
       objectReference: {fileID: 17840028}
+    - target: {fileID: 8572140113964072881, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
+      propertyPath: iconPickUpSeedBag
+      value: 
+      objectReference: {fileID: 21300000, guid: d1ae980aa9ea11b4c9cd8563a7715eb5, type: 3}
     - target: {fileID: 8835379514226832870, guid: 60e2516c39d4ebc4297f80674f9e1b01, type: 3}
       propertyPath: farmingArea
       value: 

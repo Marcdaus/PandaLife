@@ -258,16 +258,37 @@ public class Player : MonoBehaviour
                 HungerSystem hunger = (panda as MonoBehaviour).GetComponent<HungerSystem>();
 
                 if (hunger != null && hunger.IsRageActivated)
-                {
                     currentActionIcon = ActionIconType.Pet;
-                }
                 else if (CanInteractWithMiniPanda())
-                {
                     currentActionIcon = ActionIconType.Feed;
+                else
+                    currentActionIcon = ActionIconType.Interact;
+            }
+            // Caldero
+            else if (currentTarget is Cauldron)
+            {
+                currentActionIcon = ActionIconType.Cauldron;
+            }
+            // Radio
+            else if (currentTarget.GetComponent<Radio>() != null)
+            {
+                currentActionIcon = ActionIconType.Radio;
+            }
+            // Plantar en FarmingArea
+            else if (currentTarget is Plant)
+            {
+                currentActionIcon = ActionIconType.Plant;
+            }
+            // Coger saco de semillas u otro PickupDrop
+            else if (currentTarget is PickupDrop pickup)
+            {
+                if (pickup.GetComponent<Bamboo_bag>() != null || pickup.GetComponent<BlueberryBag>() != null || pickup.GetComponent<RedDragonBag>() != null || pickup.GetComponent<UchuvaBerryBag>() != null)
+                {
+                    currentActionIcon = ActionIconType.PickUpSeedBag;
                 }
                 else
                 {
-                    currentActionIcon = ActionIconType.Interact;
+                    currentActionIcon = ActionIconType.Interact; // Otros pickup
                 }
             }
             else
@@ -280,7 +301,6 @@ public class Player : MonoBehaviour
         // Finalmente, avisamos a la UI con el tipo de icono que debe mostrar
         if (currentTarget != null)
         {
-            // Cambiaremos MostrarMensaje por un nuevo método que reciba el Enum
             InteractionTextUI.instance.MostrarIcono(currentActionIcon);
         }
         else
