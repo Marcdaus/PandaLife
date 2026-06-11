@@ -21,29 +21,44 @@ public class PlaySFX : MonoBehaviour
 
     public void PlayHappy()
     {
-        StopAll();
-        happypanda.Play();
+        if (happypanda != null)
+        {
+            StopAll();
+            happypanda.Play();
+        }
+        return;
 
     }
 
     public void PlayHungry()
     {
-        StopAll();
-        hungrypanda.Play();
+        if (hungrypanda != null)
+        {
+            StopAll();
+            hungrypanda.Play();
+        }
+        return;
     }
 
     public void PlayAngry()
     {
-        StopAll();
-        angrypanda.Play();
+        if (angrypanda != null)
+        {
+            StopAll();
+            angrypanda.Play();
+        }
+        return;
     }
 
     public void StopAll()
     {
-
-        happypanda.Stop();
-        angrypanda.Stop();
-        hungrypanda.Stop();
+        if(happypanda != null)
+        {
+            happypanda.Stop();
+            angrypanda.Stop();
+            hungrypanda.Stop();
+        }
+     
 
     }
 

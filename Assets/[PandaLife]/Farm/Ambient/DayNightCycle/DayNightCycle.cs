@@ -438,38 +438,59 @@ public class DayNightCycle : MonoBehaviour
         // Si estamos en el día 3
         if (GameManager.instance.numday >= 3)
         {
-            // Cambiamos escalas
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
-
-            // Cambiamos el valor máximo
-            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 80f;
-            if (darkPandaHunger != null) redPandaHunger.MaxValue = 100f;
-            if (lightPandaHunger != null) lightPandaHunger.MaxValue = 80f;
-            
+            if (darkPandaHunger != null)
+            {
+                darkPandaHunger.MaxValue = 80f;
+                darkPandaHunger.limiteVisualSlider = 0.64f;
+            }
+            if (redPandaHunger != null)
+            {
+                redPandaHunger.MaxValue = 100f;
+                redPandaHunger.limiteVisualSlider = 0.8f;
+            }
+            if (lightPandaHunger != null)
+            {
+                lightPandaHunger.MaxValue = 80f;
+                lightPandaHunger.limiteVisualSlider = 0.64f;
+            }
         }
         // Si estamos en el día 2
         else if (GameManager.instance.numday == 2)
         {
-            // Cambiamos escalas
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
-
-            // Cambiamos el valor máximo
-            if (darkPandaHunger != null) darkPandaHunger.MaxValue = 120f;
-            if (darkPandaHunger != null) redPandaHunger.MaxValue = 100f;
-            if (lightPandaHunger != null) lightPandaHunger.MaxValue = 100f;
-            
+            if (darkPandaHunger != null)
+            {
+                darkPandaHunger.MaxValue = 120f;
+                darkPandaHunger.limiteVisualSlider = 0.96f;
+            }
+            if (redPandaHunger != null)
+            {
+                redPandaHunger.MaxValue = 100f;
+                redPandaHunger.limiteVisualSlider = 0.8f;
+            }
+            if (lightPandaHunger != null)
+            {
+                lightPandaHunger.MaxValue = 100f;
+                lightPandaHunger.limiteVisualSlider = 0.8f;
+            }
         }
-        
+        // Para el día 1
         else
         {
-            // Escalas normales para el día 1
-            if (darkPandaBar != null) darkPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (redPandaBar != null) redPandaBar.localScale = new Vector3(1f, 1f, 1f);
-            if (lightPandaBar != null) lightPandaBar.localScale = new Vector3(1f, 1f, 1f);
+            if (darkPandaHunger != null)
+            {
+                darkPandaHunger.MaxValue = 120f;
+                darkPandaHunger.limiteVisualSlider = 1f;
+            }
+            if (redPandaHunger != null)
+            {
+                redPandaHunger.MaxValue = 120f;
+                redPandaHunger.limiteVisualSlider = 1f;
+            }
+            if (lightPandaHunger != null)
+            {
+                lightPandaHunger.MaxValue = 120f;
+                lightPandaHunger.limiteVisualSlider = 1f;
+            }
         }
     }
 

@@ -19,6 +19,7 @@ public class HungerSystem : BarSystem
     [SerializeField] private Sprite happyBarSprite;
     [SerializeField] private Sprite normalBarSprite;
     [SerializeField] private Sprite hungryBarSprite;
+    [SerializeField] private Image fondoBarraImage;
 
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Sprite normalbackground;
@@ -27,6 +28,8 @@ public class HungerSystem : BarSystem
     [SerializeField] private ParticleStateController particlecontroller;
 
     private bool ispaused = false;
+
+    public float limiteVisualSlider = 1f;
 
     public bool IsRageActivated => rageactivated;
 
@@ -260,5 +263,30 @@ public class HungerSystem : BarSystem
     {
         UpdateUI();
 
+    }
+    public override void UpdateUI()
+    {
+        if (currentValue > maxValue)
+        {
+            currentValue = maxValue;
+        }
+
+        if (fullBarImage != null)
+        {
+            fullBarImage.fillAmount = (currentValue / maxValue) * limiteVisualSlider;
+        }
+
+        
+        if (fondoBarraImage != null)
+        {
+            fondoBarraImage.fillAmount = limiteVisualSlider;
+        }
+
+        if (valueText != null)
+        {
+            valueText.text = Mathf.RoundToInt(currentValue).ToString();
+        }
+
+        UpdateColors();
     }
 }

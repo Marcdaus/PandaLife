@@ -3327,6 +3327,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 691380451}
     - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
+      propertyPath: fondoBarraImage
+      value: 
+      objectReference: {fileID: 1663848703}
+    - target: {fileID: 1955038742388269089, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: hungryBarSprite
       value: 
       objectReference: {fileID: 21300000, guid: 297c3d3675257431c8107fd777cd28a2, type: 3}
@@ -21628,6 +21632,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 446937290}
     - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
+      propertyPath: fondoBarraImage
+      value: 
+      objectReference: {fileID: 1874410549}
+    - target: {fileID: 36702331613538537, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: hungryBarSprite
       value: 
       objectReference: {fileID: 21300000, guid: 297c3d3675257431c8107fd777cd28a2, type: 3}
@@ -22449,7 +22457,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 6418180475301049370, guid: f51d2b30ebda66140a18a00f91a466b8, type: 2}
+  m_Resource: {fileID: 6418180475301049370, guid: a3f8028064bd72240909f81d322f27e7, type: 2}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -22643,7 +22651,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 6418180475301049370, guid: e29dbcd1495ab2345b78268adccc0dec, type: 2}
+  m_Resource: {fileID: 6418180475301049370, guid: e6fd855218329c8478b688fa8e8a9208, type: 2}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -28440,6 +28448,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 140415744}
     - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
+      propertyPath: fondoBarraImage
+      value: 
+      objectReference: {fileID: 1405990688}
+    - target: {fileID: 3925000151688609082, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: hungryBarSprite
       value: 
       objectReference: {fileID: 21300000, guid: 297c3d3675257431c8107fd777cd28a2, type: 3}
@@ -28478,7 +28490,7 @@ PrefabInstance:
     - target: {fileID: 4305645988720861641, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 6418180475301049370, guid: 8210b675b4728044592af1a49fb8fd3c, type: 2}
+      objectReference: {fileID: 6418180475301049370, guid: a3f8028064bd72240909f81d322f27e7, type: 2}
     - target: {fileID: 4305645988720861641, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: MaxDistance
       value: 4
@@ -29704,25 +29716,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4625626725361871086, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 3367562386588550849, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367562386588550849, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillMethod
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4625626725361871086, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625626725361871086, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4741111607497671366, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4741111607497671366, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488953732285465993, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488953732285465993, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5488953732285465993, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillMethod
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764408600221864223, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5764408600221864223, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillMethod
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5782226032237037198, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6196631446990617408, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8519800803023918455, guid: 2c6839511e11c564e9855a1059cf5baa, type: 3}
+      propertyPath: m_FillRect
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40704,7 +40752,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 6418180475301049370, guid: c8ec69c864e44a94d81fd1a03965a9c6, type: 2}
+  m_Resource: {fileID: 6418180475301049370, guid: e6fd855218329c8478b688fa8e8a9208, type: 2}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -41027,7 +41075,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 8160811288516325549, guid: bb13c02ae7e5e674889f5ebffadd7222, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 6418180475301049370, guid: 0780c7fdeddfb7e44a9ba9d2ca834028, type: 2}
+  m_Resource: {fileID: 6418180475301049370, guid: 7fe83489a22026f42ba854d228b63e69, type: 2}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
