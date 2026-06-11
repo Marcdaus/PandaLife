@@ -24,13 +24,15 @@ public class TutorialManager : MonoBehaviour
     }
     public enum TutorialRecipeBook
     {
-        FirstDay = 0, 
-        OpenRedDragon = 1,
-        CloseRedDragon = 2,
-        SecondDay = 3,
-        OpenUchuva = 4,
-        CloseUchuva = 5,
-        Completado = 6
+        OpenRecipeBook = 0,
+        CloseRecipeBook = 1,
+        FirstDay = 2, 
+        OpenRedDragon = 3,
+        CloseRedDragon = 4,
+        SecondDay = 5,
+        OpenUchuva = 6,
+        CloseUchuva = 7,
+        Completado = 8
     }
 
     

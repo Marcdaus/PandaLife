@@ -18,8 +18,10 @@ public class PauseMenuController : MonoBehaviour
     [SerializeField] private Path minipandablack;
     [SerializeField] private Path minipandalight;
 
+   
+  
 
-    
+
     public void TimeStop()
     {
         Debug.Log("CHEAT: Detener/Reanudar tiempo");
@@ -133,8 +135,10 @@ public class PauseMenuController : MonoBehaviour
         StopBars();
         TimeStop();
         Paused = false;
-        GameManager.instance.Resetplay();
+       
         SceneManager.LoadScene(mainmenuscene.Value);
+        BarraManager.Instancia.ResetSceneState();
+        GameManager.instance.Resetplay();
     }
     public void Replay() 
     { 
@@ -147,8 +151,9 @@ public class PauseMenuController : MonoBehaviour
         pausemask.SetActive(false);
         if (BarraManager.Instancia != null)
         {
-            GameManager.instance.Resetplay();
             SceneManager.LoadScene(homescene.Value);
+            BarraManager.Instancia.ResetSceneState();
+            GameManager.instance.Resetplay();
         }
     }
 
