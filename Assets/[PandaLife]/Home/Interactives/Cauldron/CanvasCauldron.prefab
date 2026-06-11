@@ -1000,13 +1000,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f4456a04bf3bec5428f8eb2fbc84733b, type: 2}
     - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 21300000, guid: a495f61b27e5b0d45a14c332db4ddef1, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
       propertyPath: tiempo
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: norecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: a8b4b0d280c1ff249a619dc4fe281323, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
       propertyPath: saciedad
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: lockrecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a6f8cfa7960481438d56889357fc9f6, type: 3}
     - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
       propertyPath: nombrereceta
       value: 
@@ -1373,6 +1385,18 @@ PrefabInstance:
       propertyPath: receta
       value: 
       objectReference: {fileID: 11400000, guid: edda775a62c078c479aa909c30352f43, type: 2}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 45b0a1b2a74b9e44f8549cc8f4e19728, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: norecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: cc994f6e7d03fed40a482bbc42fdeff9, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: lockrecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: b0bd97b2e637bac43ae925a4e4784276, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4748463500389865471, guid: ca436cc7517488e46a6648fff8911189, type: 3}
@@ -1727,6 +1751,18 @@ PrefabInstance:
       propertyPath: receta
       value: 
       objectReference: {fileID: 11400000, guid: 9c7b09319dfd906499c2fe3a8d22a79c, type: 2}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 1da21b8f3f9e87f49bc43640ee1f0b1e, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: norecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 807433cd8bfd52840841ce47fed41b8d, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: lockrecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 0695a338e9b41274ea8c179ec156432a, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4748463500389865471, guid: ca436cc7517488e46a6648fff8911189, type: 3}
@@ -2081,6 +2117,18 @@ PrefabInstance:
       propertyPath: receta
       value: 
       objectReference: {fileID: 11400000, guid: 2184d93c406ee654086273cb7ed328fe, type: 2}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 21300000, guid: afa99a0a1e821c6488350a554b5cd6fb, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: norecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: d29b37c8168875142980b690059fc480, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: lockrecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: f3a97c084c9f89f42b1d21cfdf709068, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4748463500389865471, guid: ca436cc7517488e46a6648fff8911189, type: 3}
@@ -2427,6 +2475,18 @@ PrefabInstance:
       propertyPath: receta
       value: 
       objectReference: {fileID: 11400000, guid: bfa73a2b5d5378e4a94b91a545217be9, type: 2}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: recipe
+      value: 
+      objectReference: {fileID: 21300000, guid: b2e75bbc9cc57784084f3d61ff585ba2, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: norecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: afc226a1a9893e245940c37225909102, type: 3}
+    - target: {fileID: 8050571569727058966, guid: ca436cc7517488e46a6648fff8911189, type: 3}
+      propertyPath: lockrecipe
+      value: 
+      objectReference: {fileID: 21300000, guid: 268da58ac5ead0f4ca1c44b4ee715104, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4748463500389865471, guid: ca436cc7517488e46a6648fff8911189, type: 3}
