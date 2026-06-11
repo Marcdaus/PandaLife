@@ -17,9 +17,6 @@ public class Player : MonoBehaviour
 
     
 
-    // Guardar el texto para mostrar en la pantalla
-    private string currentActionText = "";
-
     [SerializeField] public GameObject handpoint;
     [SerializeField] private GameObject bucket;
     [SerializeField] private bool isinto = false;
@@ -33,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip feedingClip;
     private Interactuable currentTarget = null;
     [SerializeField] private AudioSource PettingaudioSource;
+
+    private ActionIconType currentActionIcon = ActionIconType.None;
 
     private void OnDrawGizmos()
     {
@@ -50,6 +49,14 @@ public class Player : MonoBehaviour
         ScanInteractables();
         if (collectWater) return; // Solo bloqueamos la interacción/drop
 
+        if (!IsHandEmpty())
+        {
+            InteractionTextUI.instance.MostrarIconoSoltar();
+        }
+        else
+        {
+            InteractionTextUI.instance.OcultarIconoSoltar();
+        }
         // Interactuar con E
         if (Input.GetButtonDown("Interactuar") && currentTarget != null)
         {
@@ -217,29 +224,29 @@ public class Player : MonoBehaviour
 
         // Reseteamos las variables por si hemos dejado de mirar un objeto
         currentTarget = null;
-        currentActionText = "";
+        currentActionIcon = ActionIconType.None;
 
         // Determinamos el objetivo final y le asignamos su texto al mismo tiempo
         if (bucketTarget != null)
         {
             currentTarget = bucketTarget;
-            currentActionText = "coger cubeta";
+            currentActionIcon = ActionIconType.PickUpBucket;
         }
         else if (harvesttarget != null)
         {
             currentTarget = harvesttarget;
-            currentActionText = "cosechar";
+            currentActionIcon = ActionIconType.Harvest;
         }
         else if (watertarget != null)
         {
             currentTarget = watertarget;
-            // Mostrar texto según si puedes o no regar
+            // Mostrar icono de error o de regar según el estado
             if (!IsHoldingBucket())
-                currentActionText = "necesitas el cubo";
+                currentActionIcon = ActionIconType.NeedBucket;
             else if (!pickedobject.GetComponent<BucketWater>().hasWater)
-                currentActionText = "el cubo está vacío";
+                currentActionIcon = ActionIconType.EmptyBucket;
             else
-                currentActionText = "regar";
+                currentActionIcon = ActionIconType.Water;
         }
         else if (othertarget != null)
         {
@@ -248,33 +255,37 @@ public class Player : MonoBehaviour
             // Minipandas
             if (currentTarget is Minipandas panda)
             {
-                // Obtenemos el HungerSystem para comprobar el estado de ira
                 HungerSystem hunger = (panda as MonoBehaviour).GetComponent<HungerSystem>();
 
                 if (hunger != null && hunger.IsRageActivated)
                 {
-                    currentActionText = "Acariciar";
+                    currentActionIcon = ActionIconType.Pet;
                 }
                 else if (CanInteractWithMiniPanda())
                 {
-                    currentActionText = "Alimentar";
+                    currentActionIcon = ActionIconType.Feed;
                 }
                 else
                 {
-                    currentActionText = "Interactuar";
+                    currentActionIcon = ActionIconType.Interact;
                 }
             }
-            
+            else
+            {
+                // Para cualquier otro interactuable general
+                currentActionIcon = ActionIconType.Interact;
+            }
         }
 
-        // Finalmente, encendemos la UI con el texto que haya ganado, o la apagamos
+        // Finalmente, avisamos a la UI con el tipo de icono que debe mostrar
         if (currentTarget != null)
         {
-            InteractionTextUI.instance.MostrarMensaje(currentActionText);
+            // Cambiaremos MostrarMensaje por un nuevo método que reciba el Enum
+            InteractionTextUI.instance.MostrarIcono(currentActionIcon);
         }
         else
         {
-            InteractionTextUI.instance.OcultarMensaje();
+            InteractionTextUI.instance.OcultarIcono();
         }
     }
 
