@@ -18,6 +18,17 @@ public class RecipeCard : MonoBehaviour
 
     [SerializeField] private GameObject iconocandado;
 
+    [Header("imagenes por defecto")]
+    [SerializeField] private Sprite recipe;
+
+    [Header("imagenes sin recursos")]
+    [SerializeField] private Sprite norecipe;
+
+    [Header("imagenes bloqueadas")]
+
+    [SerializeField] private Sprite lockrecipe;
+
+
     public Button button;
 
 
@@ -69,7 +80,7 @@ public class RecipeCard : MonoBehaviour
     public void BlockedByDay()
     {
         cookingbutton.interactable = false;
-        cookingbutton.image.color = Color.black;
+        cookingbutton.image.sprite = lockrecipe;
         if (iconocandado != null) iconocandado.SetActive(true);
         GetComponent<EventTrigger>().enabled = false;
         // aquí ponemos luego el candado
@@ -78,7 +89,7 @@ public class RecipeCard : MonoBehaviour
     public void Block()
     {
         //cookingbutton.interactable = false;
-        cookingbutton.image.color = Color.gray;
+        cookingbutton.image.sprite = norecipe;
         GetComponent<EventTrigger>().enabled = false;
         button.onClick.SetPersistentListenerState(0, UnityEventCallState.Off);
         button.onClick.SetPersistentListenerState(1, UnityEventCallState.RuntimeOnly);
@@ -87,7 +98,7 @@ public class RecipeCard : MonoBehaviour
     public void UnBlock()
     {
         //cookingbutton.interactable = true;
-        cookingbutton.image.color = colorOriginal;
+        cookingbutton.image.sprite = recipe;
         if (iconocandado != null) iconocandado.SetActive(false);
         GetComponent<EventTrigger>().enabled = true;
         button.onClick.SetPersistentListenerState(0, UnityEventCallState.RuntimeOnly);

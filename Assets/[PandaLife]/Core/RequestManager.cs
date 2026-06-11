@@ -35,8 +35,6 @@ public class RequestManager : MonoBehaviour
 
         if (spriteDict.ContainsKey(request))
             return spriteDict[request];
-
-        Debug.Log("No sprite found for request: " + request);
         return null;
     }
 
