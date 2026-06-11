@@ -509,7 +509,17 @@ public class Player : MonoBehaviour
     }
     public void PetPanda()
     {
-       PettingaudioSource.Play();
+        Debug.Log("¡La función PetPanda se ha ejecutado correctamente!");
+
+        if (PettingaudioSource != null)
+        {
+            Debug.Log("El AudioSource que intenta reproducir es: " + PettingaudioSource.clip?.name);
+            PettingaudioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("¡PettingaudioSource está vacío en el momento de reproducir!");
+        }
     }
 
 }
