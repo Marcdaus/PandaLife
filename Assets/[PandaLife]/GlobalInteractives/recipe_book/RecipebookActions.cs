@@ -22,6 +22,10 @@ public class RecipebookActions : MonoBehaviour
     [SerializeField] private Sprite sbamboosalad;
     [SerializeField] private Sprite sbobatea;
     [SerializeField] private Sprite sberrysoup;
+    [Header("locks")]
+    [SerializeField] private GameObject lock1;
+    [SerializeField] private GameObject lock2;
+    [SerializeField] private GameObject lock3;
 
     public void Open_notebook()
     {
@@ -52,12 +56,16 @@ public class RecipebookActions : MonoBehaviour
         if(GameManager.instance.numday == 2)
         {
             bamboosalad.sprite = sbamboosalad;
+            lock1.SetActive(false);
         }
         else if(GameManager.instance.numday == 3)
         {
             bobatea.sprite = sbobatea;
             berrysoup.sprite = sberrysoup;
             bamboosalad.sprite = sbamboosalad;
+            lock1.SetActive(false);
+            lock2.SetActive(false);
+            lock3.SetActive(false);
 
         }
         if (GameManager.instance == null) return;
