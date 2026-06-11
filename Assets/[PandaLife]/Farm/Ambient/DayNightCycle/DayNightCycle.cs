@@ -115,6 +115,7 @@ public class DayNightCycle : MonoBehaviour
         player = FindFirstObjectByType<Player>();
         pickupobject = FindFirstObjectByType<PickupDrop>();
 
+
         ConfigurarBarrasPorDia();
 
     }
