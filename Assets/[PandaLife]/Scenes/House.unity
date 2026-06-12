@@ -1943,9 +1943,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1892664134052157466, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892664134052157466, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8832477c9960d2342b78f0b37e188dc6, type: 3}
     - target: {fileID: 4335178538414893276, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: m_Name
       value: CanvasPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713345376142554463, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 4713345376142554463, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 4879071483704854488, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2163,6 +2179,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_Transition
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bacef7ebb0db704aae02d4955e92a3e, type: 3}
+    - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0a8d2e9a37c8fb148b6471785b699c1e, type: 3}
     - target: {fileID: 9059943598178420369, guid: 28a7028585c80400cbf6749b9de1b31f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -2420,6 +2448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 923299978}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: b673485f825646d49961ce3301118b5c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ce5d873ee676294c9986319f2875b24, type: 2}
     - target: {fileID: 3053188878395140861, guid: d6f47a7b6f219124196274f7187ba035, type: 3}
       propertyPath: m_Name
       value: Wall_side_left_02
@@ -2464,10 +2496,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: b673485f825646d49961ce3301118b5c, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 1ce5d873ee676294c9986319f2875b24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
