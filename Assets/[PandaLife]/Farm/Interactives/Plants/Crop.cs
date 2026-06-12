@@ -25,7 +25,7 @@ public class Crop : MonoBehaviour
 
     public void Start()
     {
-        AudioSource.PlayClipAtPoint(audiosource.clip, transform.position);
+        audiosource.Play();
     }
 
     public void SetAreaID(string id)
