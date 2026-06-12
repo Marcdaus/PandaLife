@@ -37,7 +37,7 @@ public class PickupDrop : Interactuable
         {
             if (interactData != null && waterSound != null)
             {
-                AudioSource.PlayClipAtPoint(waterSound, transform.position);
+                ReproducirSonidoEnPunto(waterSound, transform.position);
             }
         }
         // Si no es un cubo, o es un cubo vacío, suena el sonido normal
@@ -45,7 +45,7 @@ public class PickupDrop : Interactuable
         {
             if (interactData != null && interactData.interactionSound != null)
             {
-                AudioSource.PlayClipAtPoint(interactData.interactionSound, transform.position);
+                ReproducirSonidoEnPunto(interactData.interactionSound, transform.position);
             }
         }
 
@@ -125,7 +125,7 @@ public class PickupDrop : Interactuable
         picked = false;
         if (interactData != null && interactData.dropSound != null)
         {
-            AudioSource.PlayClipAtPoint(interactData.dropSound, transform.position);
+            ReproducirSonidoEnPunto(interactData.dropSound, transform.position);
         }
         Mensaje($"{rb.name} soltado");
     }
