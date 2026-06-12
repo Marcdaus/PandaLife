@@ -1,61 +1,88 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using NUnit.Framework;
 using System.Collections.Generic;
 
 public class FullScreen : MonoBehaviour
 {
     public Toggle toggle;
     public TMP_Dropdown dropdownresolution;
-    Resolution[] resolutions;
+
+    private Resolution[] filteredResolutions;
     [SerializeField] private AudioSource buttonsound;
     private bool isInitialized = false;
+
     private void Start()
     {
-        if(Screen.fullScreen)
-        {
-            toggle.isOn = true;
-        }
-        else
-        {
-            toggle.isOn = false;
-        }
+       
+        toggle.isOn = Screen.fullScreen;
+
+        
         checkresolutions();
+
+        
         isInitialized = true;
     }
+
     public void Fullscreen(bool fullscreen)
     {
+        Screen.fullScreen = fullscreen;
+
+        // Solo suena si el juego ya terminó de iniciar y el usuario interactuó
         if (isInitialized && buttonsound != null)
         {
             buttonsound.Play();
         }
-        Screen.fullScreen = fullscreen;
     }
+
     public void checkresolutions()
     {
-        resolutions = Screen.resolutions;
+        Resolution[] allResolutions = Screen.resolutions;
         dropdownresolution.ClearOptions();
-        List<string> options = new List<string>();
-        int Currentresolution = 0;
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            string option = resolutions[i].width + " x " + resolutions[i].height;
-            options.Add(option);
 
-            if(Screen.fullScreen && resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+        List<string> options = new List<string>();
+        List<Resolution> uniqueResolutions = new List<Resolution>();
+
+        int currentResolutionIndex = 0;
+
+        for (int i = 0; i < allResolutions.Length; i++)
+        {
+            // Creamos el texto de la opción
+            string option = allResolutions[i].width + " x " + allResolutions[i].height;
+
+            // Si la lista de opciones no contiene este tamaño, lo añadimos (así evitamos duplicados por Hz)
+            if (!options.Contains(option))
             {
-                Currentresolution = i;
+                options.Add(option);
+                uniqueResolutions.Add(allResolutions[i]);
+
+                // Guardamos el índice si coincide con la resolución actual de la pantalla
+                if (allResolutions[i].width == Screen.currentResolution.width &&
+                    allResolutions[i].height == Screen.currentResolution.height)
+                {
+                    currentResolutionIndex = uniqueResolutions.Count - 1;
+                }
             }
         }
+
+   
+        filteredResolutions = uniqueResolutions.ToArray();
+
         dropdownresolution.AddOptions(options);
-        dropdownresolution.value = Currentresolution;
+        dropdownresolution.value = currentResolutionIndex;
         dropdownresolution.RefreshShownValue();
     }
+
     public void changeresolution(int resolutionindex)
     {
-        Resolution resolution = resolutions[resolutionindex];
-        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
-    }
+        if (resolutionindex < 0 || resolutionindex >= filteredResolutions.Length) return;
 
+        Resolution resolution = filteredResolutions[resolutionindex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+
+        if (isInitialized && buttonsound != null)
+        {
+            buttonsound.Play();
+        }
+    }
 }
