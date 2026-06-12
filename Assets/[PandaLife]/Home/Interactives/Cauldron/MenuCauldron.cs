@@ -44,6 +44,8 @@ public class MenuCauldron : MonoBehaviour
     [SerializeField] private ChangeSound bubblessound;
     [SerializeField] private ChangeSound firessound;
 
+    [SerializeField] private AudioClip buttonSound;
+
 
     private void Start()
     {
@@ -103,6 +105,11 @@ public class MenuCauldron : MonoBehaviour
         }
     }
 
+    public void CloseCauldronButton()
+    {
+        SoundManager.instance.PlaySfx(buttonSound);
+        CloseCauldron();
+    }
     public void OpenCauldron()
     {
         //cursorManager.cursorblock = true;
