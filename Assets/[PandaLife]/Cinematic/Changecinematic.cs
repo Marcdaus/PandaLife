@@ -43,7 +43,7 @@ public class Changecinematic : MonoBehaviour
 
         //Scena 2
 
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(3f);
         anim.SetTrigger("de1a2");
        
 
@@ -53,7 +53,7 @@ public class Changecinematic : MonoBehaviour
 
         yield return StartCoroutine(ShowLine(dialoguelines[1], Dialogue_scene2, dialogueText_2));
 
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(3f);
         //Scena 3
         anim.SetTrigger("de2a3");
 
@@ -63,7 +63,7 @@ public class Changecinematic : MonoBehaviour
 
         yield return StartCoroutine(ShowLine(dialoguelines[2], Dialogue_scene3, dialogueText_3));
 
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(3f);
         
         if (LoadScene != null)
         {
