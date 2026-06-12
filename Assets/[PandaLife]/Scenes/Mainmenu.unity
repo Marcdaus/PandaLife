@@ -9634,6 +9634,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+--- !u!114 &1115091867 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3437042254361781452, guid: 8588c210a818d5940b1f0b379ce6781b, type: 3}
+  m_PrefabInstance: {fileID: 1115091866}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd524ec251cbd7a4ca9d0d64aad536c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1155485269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16288,6 +16299,10 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 946020792}
+    - target: {fileID: 5359000165962388607, guid: 221ba4a07ccadd14182a57646b9c91c5, type: 3}
+      propertyPath: LoadScene
+      value: 
+      objectReference: {fileID: 1115091867}
     - target: {fileID: 7982227814823242112, guid: 221ba4a07ccadd14182a57646b9c91c5, type: 3}
       propertyPath: m_Name
       value: CanvasMainmenu
