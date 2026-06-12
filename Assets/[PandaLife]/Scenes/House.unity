@@ -3167,7 +3167,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: MaxDistance
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1530794417178339192, guid: 8fc9b411c52c043368f5b705f59c8c8e, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -22032,7 +22032,7 @@ PrefabInstance:
       objectReference: {fileID: 6418180475301049370, guid: 46d81d9953f1e9d46b88dcd0987d8a5a, type: 2}
     - target: {fileID: 7496217028698572115, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: MaxDistance
-      value: 500
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7496217028698572115, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: m_PlayOnAwake
@@ -22052,7 +22052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: MaxDistance
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7576110966301157541, guid: a1844bca9e7e34bf5ab65034728ae412, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -22295,7 +22295,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -22392,7 +22392,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -22511,7 +22511,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -22608,7 +22608,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -22696,7 +22696,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: e6fd855218329c8478b688fa8e8a9208, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -22704,8 +22704,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 4
+  MinDistance: 0.5
+  MaxDistance: 1
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -28536,7 +28536,7 @@ PrefabInstance:
       objectReference: {fileID: 6418180475301049370, guid: a3f8028064bd72240909f81d322f27e7, type: 2}
     - target: {fileID: 4305645988720861641, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: MaxDistance
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4305645988720861641, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: m_PlayOnAwake
@@ -28712,7 +28712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: MaxDistance
-      value: 500
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8593075290543907950, guid: a53d909cc8037444f812a8b0464bdf77, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
@@ -30239,7 +30239,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -30358,7 +30358,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -30455,7 +30455,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -30543,7 +30543,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: e6fd855218329c8478b688fa8e8a9208, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -30551,8 +30551,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 4
+  MinDistance: 0.5
+  MaxDistance: 1
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -40797,7 +40797,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: e6fd855218329c8478b688fa8e8a9208, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -40805,8 +40805,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 4
+  MinDistance: 0.5
+  MaxDistance: 1
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -40935,7 +40935,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -41032,7 +41032,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -41129,7 +41129,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 4
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -44533,9 +44533,17 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f24c2f4ff5396aa44894b3dc0ecb4b38, type: 2}
+    - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
       propertyPath: m_fontSizeBase
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5230244338338627368, guid: f24c2f4ff5396aa44894b3dc0ecb4b38, type: 2}
     - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
       propertyPath: m_VerticalAlignment
       value: 512
@@ -44543,6 +44551,10 @@ PrefabInstance:
     - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5824650354296992408, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8635025395893604601, guid: 5c0f7b621e884f04ead5a5a44fbbab96, type: 3}
       propertyPath: m_AnchorMax.x

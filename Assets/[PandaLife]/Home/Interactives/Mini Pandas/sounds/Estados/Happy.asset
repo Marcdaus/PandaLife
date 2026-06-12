@@ -29,11 +29,11 @@ AudioRandomContainer:
   m_Name: Happy
   m_Volume: 0
   m_Pitch: 0
-  m_AutomaticTriggerTime: 0
+  m_AutomaticTriggerTime: 2
   m_LoopCount: 1
   m_VolumeRandomizationRange: {x: 0, y: 0}
   m_PitchRandomizationRange: {x: 0, y: 0}
-  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 0}
+  m_AutomaticTriggerTimeRandomizationRange: {x: 0, y: 3}
   m_LoopCountRandomizationRange: {x: 0, y: 0}
   m_Elements:
   - {fileID: 8284650422973459500}
@@ -46,7 +46,7 @@ AudioRandomContainer:
   m_LoopMode: 0
   m_VolumeRandomizationEnabled: 0
   m_PitchRandomizationEnabled: 0
-  m_AutomaticTriggerTimeRandomizationEnabled: 0
+  m_AutomaticTriggerTimeRandomizationEnabled: 1
   m_LoopCountRandomizationEnabled: 0
 --- !u!1233149941 &8284650422973459500
 AudioContainerElement:
