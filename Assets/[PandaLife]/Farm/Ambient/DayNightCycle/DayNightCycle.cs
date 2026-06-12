@@ -243,12 +243,7 @@ public class DayNightCycle : MonoBehaviour
 ;
         }
         if (!ingameover) { 
-        if(GameManager.instance.numday > 1)
-        {
-            percentage1.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
-            percentage2.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
-            percentage3.text = "+" + GameManager.instance.valuepercentage.ToString() + "%/s";
-        }
+        
         if (GameManager.instance.numday == 4)
         {
             GameManager.instance.Resetplay();
