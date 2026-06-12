@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Cauldron : Interactuable
 {
@@ -13,6 +14,7 @@ public class Cauldron : Interactuable
 
     [Header("Recursos insuficientes")]
     [SerializeField] private TextMeshProUGUI Text;
+    [SerializeField] private GameObject backgraundtext;
     [SerializeField] private string message;
     [SerializeField] private float tiempoMensaje = 3.0f;
     private Coroutine mensajeCoroutine;
@@ -192,6 +194,7 @@ public class Cauldron : Interactuable
 
             if (mensajeCoroutine != null) StopCoroutine(mensajeCoroutine);
 
+            backgraundtext.SetActive(true);
             mensajeCoroutine = StartCoroutine(OcultarTextoTrasTiempo(text, tiempoMensaje));
             return false;
         }
@@ -202,5 +205,6 @@ public class Cauldron : Interactuable
     {
         yield return new WaitForSeconds(tiempo);
         if (textComponent != null) textComponent.text = string.Empty;
+        backgraundtext.SetActive(false);
     }
 }
