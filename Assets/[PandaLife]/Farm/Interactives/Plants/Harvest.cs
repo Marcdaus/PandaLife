@@ -39,7 +39,7 @@ public class Harvest : Interactuable
         if (crop.IsHarvestable())
         {
 
-            AudioSource.PlayClipAtPoint(audiosource.clip, transform.position);
+            audiosource.Play();
 
             crop.Harvest(); // Llama a la función de cosechar del Crop
 
